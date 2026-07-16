@@ -1,4 +1,4 @@
-package servis;
+package service;
 
 public class ManthlySumService {
 

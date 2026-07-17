@@ -14,6 +14,8 @@
 <div class="sidebar">
   <div class="user-profile">
   
+  <div class="avatar">アイコン</div>
+  
     <div class="avatar"></div>
     <span class="username">ユーザー</span>
   </div>

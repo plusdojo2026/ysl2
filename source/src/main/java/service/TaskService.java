@@ -47,5 +47,17 @@ public class TaskService extends DBAccess{
 		return progressList;
 	}
 	
-	//期限超過タスク検索
+	//期限超過タスク検索（ダッシュボード）
+	public ArrayList<TaskDTO> selectOverTasks(int userId){
+		ArrayList<TaskDTO> taskList = new ArrayList<TaskDTO>();
+		
+		return taskList;
+	}
+	
+	//担当タスク検索（ダッシュボード）
+	public ArrayList<TaskDTO> selectAssignedTasks(int userId) {
+		ArrayList<TaskDTO> taskList = new ArrayList<TaskDTO>();
+		
+		return taskList;
+	}
 }

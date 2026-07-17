@@ -1,7 +1,9 @@
 package service;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import dao.TaskDAO;
 import dto.AllDTO;
 import dto.TaskDTO;
 
@@ -16,6 +18,13 @@ public class TaskService extends DBAccess{
 	public int registTask(TaskDTO dto) {
 		int ans = 0;
 		
+		TaskDAO dao = new TaskDAO(super.conn);
+		try {
+			ans = dao.registTask(dto);
+		} catch (SQLException e) {
+			System.out.println("SQL文おかしい");
+			e.printStackTrace();
+		}
 		return ans;
 	}
 	
@@ -23,6 +32,13 @@ public class TaskService extends DBAccess{
 	public int updateTask(TaskDTO dto) {
 		int ans = 0;
 		
+		TaskDAO dao = new TaskDAO(super.conn);
+		try {
+			ans = dao.updateTask(dto);
+		} catch (SQLException e) {
+			System.out.println("SQL文おかしい");
+			e.printStackTrace();
+		}
 		return ans;
 	}
 	
@@ -30,6 +46,13 @@ public class TaskService extends DBAccess{
 	public ArrayList<AllDTO> selectTasks() {
 		ArrayList<AllDTO> taskList = new ArrayList<AllDTO>();
 		
+		TaskDAO dao = new TaskDAO(super.conn);
+		try {
+			taskList = dao.registTask();
+		} catch (SQLException e) {
+			System.out.println("SQL文おかしい");
+			e.printStackTrace();
+		}
 		return taskList;
 	}
 	
@@ -37,6 +60,13 @@ public class TaskService extends DBAccess{
 	public int deleteTask(int taskId) {
 		int ans = 0;
 		
+		TaskDAO dao = new TaskDAO(super.conn);
+		try {
+			ans = dao.deleteTask(taskId);
+		} catch (SQLException e) {
+			System.out.println("SQL文おかしい");
+			e.printStackTrace();
+		}
 		return ans;
 	}
 	
@@ -44,6 +74,13 @@ public class TaskService extends DBAccess{
 	public ArrayList<AllDTO> countProgress() {
 		ArrayList<AllDTO> progressList = new ArrayList<AllDTO>();
 		
+		TaskDAO dao = new TaskDAO(super.conn);
+		try {
+			progressList = dao.countProgress();
+		} catch (SQLException e) {
+			System.out.println("SQL文おかしい");
+			e.printStackTrace();
+		}
 		return progressList;
 	}
 	
@@ -51,6 +88,13 @@ public class TaskService extends DBAccess{
 	public ArrayList<TaskDTO> selectOverTasks(int userId){
 		ArrayList<TaskDTO> taskList = new ArrayList<TaskDTO>();
 		
+		TaskDAO dao = new TaskDAO(super.conn);
+		try {
+			taskList = dao.selectOverTask(userId);
+		} catch (SQLException e) {
+			System.out.println("SQL文おかしい");
+			e.printStackTrace();
+		}
 		return taskList;
 	}
 	
@@ -58,6 +102,13 @@ public class TaskService extends DBAccess{
 	public ArrayList<TaskDTO> selectAssignedTasks(int userId) {
 		ArrayList<TaskDTO> taskList = new ArrayList<TaskDTO>();
 		
+		TaskDAO dao = new TaskDAO(super.conn);
+		try {
+			taskList = dao.registTask(userId);
+		} catch (SQLException e) {
+			System.out.println("SQL文おかしい");
+			e.printStackTrace();
+		}
 		return taskList;
 	}
 }

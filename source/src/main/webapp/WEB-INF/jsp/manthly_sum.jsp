@@ -46,10 +46,10 @@
     			 </thead>
     			 <tbody>
     			 	<tr>
-      					<th scope="row">${c.case_id}</th>
-					    <td>${c.case_name}</td>
+      					<th scope="row">${case_id}</th>
+					    <td>${case_name}</td>
 					    <td>${}</td>
-					    <td>${m.budgeted_man_hours}</td>
+					    <td>${budgeted_man_hours}</td>
 					    <td>${}</td>
     				</tr>
     			 </tbody>

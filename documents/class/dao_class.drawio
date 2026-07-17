@@ -1,35 +1,38 @@
 <mxfile host="65bd71144e">
     <diagram id="FiwLhSfAqCs7Xlh_osOK" name="ページ1">
-        <mxGraphModel dx="710" dy="434" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1072" dy="659" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="20" value="CaseDAO" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="350" y="490" width="290" height="250" as="geometry"/>
+                    <mxGeometry x="350" y="490" width="330" height="290" as="geometry"/>
                 </mxCell>
                 <mxCell id="21" value="+ conn: Connection" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="20" vertex="1">
-                    <mxGeometry y="26" width="290" height="26" as="geometry"/>
+                    <mxGeometry y="26" width="330" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="22" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="20" vertex="1">
-                    <mxGeometry y="52" width="290" height="8" as="geometry"/>
+                    <mxGeometry y="52" width="330" height="8" as="geometry"/>
                 </mxCell>
                 <mxCell id="23" value="+ CaseDAO(conn:Connection)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="20" vertex="1">
-                    <mxGeometry y="60" width="290" height="26" as="geometry"/>
+                    <mxGeometry y="60" width="330" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="30" value="&lt;div&gt;&lt;u&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;案件全検索（案件一覧画面）&lt;/font&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;+ selecCases(&lt;/span&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;) : ArrayList&amp;lt;AllDTO&amp;gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="20" vertex="1">
-                    <mxGeometry y="86" width="290" height="44" as="geometry"/>
+                    <mxGeometry y="86" width="330" height="44" as="geometry"/>
                 </mxCell>
                 <mxCell id="54" value="&lt;div&gt;&lt;span&gt;&lt;u style=&quot;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;案件登録&lt;/font&gt;&lt;/u&gt;&lt;/span&gt;&lt;/div&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;+ registCase(CaseDTO) : int&lt;/font&gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="20" vertex="1">
-                    <mxGeometry y="130" width="290" height="40" as="geometry"/>
+                    <mxGeometry y="130" width="330" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="28" value="&lt;div&gt;&lt;u&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;案件編集・ステータス変更&lt;/font&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;+ updateCase(CaseDTO) : int&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="20" vertex="1">
-                    <mxGeometry y="170" width="290" height="40" as="geometry"/>
+                    <mxGeometry y="170" width="330" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="95" value="&lt;u&gt;案件コードの重複チェック&lt;/u&gt;&lt;div&gt;+ checkDuplicateCaseId(caseId String) : int&amp;nbsp;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" vertex="1" parent="20">
-                    <mxGeometry y="210" width="290" height="40" as="geometry"/>
+                <mxCell id="95" value="&lt;u&gt;案件コードの重複チェック&lt;/u&gt;&lt;div&gt;+ checkDuplicateCaseId(caseId String) : int&amp;nbsp;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="20" vertex="1">
+                    <mxGeometry y="210" width="330" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="96" value="&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;&lt;font style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;&lt;u style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;進行中案件検索（ダッシュボード）&lt;/u&gt;&lt;/font&gt;&lt;/div&gt;&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(0, 0, 0);&quot;&gt;+ selectWorkingCases(&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(0, 0, 0);&quot;&gt;userId : int&lt;/span&gt;) : ArrayList&amp;lt;TaskDTO&amp;gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" vertex="1" parent="20">
+                    <mxGeometry y="250" width="330" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="27" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="20" vertex="1">
-                    <mxGeometry y="250" width="290" as="geometry"/>
+                    <mxGeometry y="290" width="330" as="geometry"/>
                 </mxCell>
                 <mxCell id="32" value="UserDAO" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="10" y="490" width="300" height="286" as="geometry"/>
@@ -55,14 +58,14 @@
                 <mxCell id="39" value="&lt;div&gt;&lt;u&gt;ユーザー編集・パスワード変更&lt;/u&gt;&lt;/div&gt;+ updateUser(UserDTO) : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="32" vertex="1">
                     <mxGeometry y="198" width="300" height="44" as="geometry"/>
                 </mxCell>
-                <mxCell id="94" value="&lt;u&gt;ログインidの重複チェック&lt;/u&gt;&lt;div&gt;+ checkDuplicateLoginId(loginId String) : int&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" vertex="1" parent="32">
+                <mxCell id="94" value="&lt;u&gt;ログインidの重複チェック&lt;/u&gt;&lt;div&gt;+ checkDuplicateLoginId(loginId String) : int&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="32" vertex="1">
                     <mxGeometry y="242" width="300" height="44" as="geometry"/>
                 </mxCell>
                 <mxCell id="40" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="32" vertex="1">
                     <mxGeometry y="286" width="300" as="geometry"/>
                 </mxCell>
                 <mxCell id="45" value="TaskDAO" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="710" y="490" width="340" height="414" as="geometry"/>
+                    <mxGeometry x="710" y="490" width="340" height="370" as="geometry"/>
                 </mxCell>
                 <mxCell id="46" value="+ conn: Connection" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="45" vertex="1">
                     <mxGeometry y="26" width="340" height="26" as="geometry"/>
@@ -94,11 +97,8 @@
                 <mxCell id="85" value="&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;u&gt;担当タスク検索（ダッシュボード）&lt;/u&gt;&lt;/span&gt;&lt;/div&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;+ selectAssindTasks(&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;userId : int&lt;/span&gt;) : ArrayList&amp;lt;TaskDTO&amp;gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="45" vertex="1">
                     <mxGeometry y="330" width="340" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="84" value="&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;u&gt;進行中タスク検索（ダッシュボード）&lt;/u&gt;&lt;/font&gt;&lt;/div&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;+ selectWorkingTasks(&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;userId : int&lt;/span&gt;) : ArrayList&amp;lt;TaskDTO&amp;gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="45" vertex="1">
-                    <mxGeometry y="370" width="340" height="44" as="geometry"/>
-                </mxCell>
                 <mxCell id="53" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="45" vertex="1">
-                    <mxGeometry y="414" width="340" as="geometry"/>
+                    <mxGeometry y="370" width="340" as="geometry"/>
                 </mxCell>
                 <mxCell id="55" value="ManHourDAO" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="1110" y="492" width="290" height="280" as="geometry"/>

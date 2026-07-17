@@ -2,9 +2,7 @@ package action;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
-
 import dto.UserDTO;
 import service.UserService;
 
@@ -31,7 +29,11 @@ public class AdminAction {
 
 	//ユーザ追加メソッド
 	public String registUser() throws UnsupportedEncodingException {
+		request.setCharacterEncoding("UTF-8");
+		
 		String page = "/WEB-INF/jsp/admin.jsp";
+		String name = request.getParameter("userName");
+		String email = request.getParameter("email"):
 		
 		
 

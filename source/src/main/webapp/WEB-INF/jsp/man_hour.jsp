@@ -13,8 +13,8 @@
 <c:forEach var="" items="${}" >
 <form method="POST" action="<c:url value='/Controller'/>">
 	<div clas="pop">
-		<p>${c.case_name}</p><br>
-		<p>${t.task_name}</p><br>
+		<p>${c.case_name}</p>
+		<p>${t.task_name}</p>
 	</div>	
 	<div clas="man_h">
 	<label>作業日<br>

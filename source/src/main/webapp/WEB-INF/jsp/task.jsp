@@ -47,11 +47,12 @@
 		<a href="/Controller/?page_id=L006&button_id=task_link&task_id=${t.task_id}">タスク名：${t.task_name}</a>
 		<p>担当者：${t.manager}</p>
 		<p>期限：${t.deadline_date}</p>
-		<p>予算工数：${t.estimated_mon_hours}</p>
+		<p>見積工数：${t.estimated_mon_hours}</p>
 		<p>実績工数：${t.actual_man_hours}</p>
 		<p>ステータス${t.task_status}</p>
 		<p>優先度：${t.priority}</p>
 		<p>進捗：${t.task_progress}</p>
+		<p>説明：${t.memo}</p>
 		<input type="button" value="編集">
 	</c:forEach>
 	</div>
@@ -187,6 +188,9 @@
 			<option value="完了">完了</option>
 			<option value="保留">保留</option>
 		</select>
+		</p>
+		<p>
+		<label></label>説明
 		</p>
 		<input type="submit" name="button_id" value="保存">
 		<input type="button" value="戻る">

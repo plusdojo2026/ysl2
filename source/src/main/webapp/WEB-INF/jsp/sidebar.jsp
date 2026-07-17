@@ -1,11 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <title>サイドバー</title>
+ <link rel="stylesheet" type="text/html" href="${pageContext.request.contextPath}/css/sidebar.css">
 </head>
+
 <body>
 
 <div class="sidebar">
@@ -37,6 +40,9 @@
     </li>
   </ul>
   
+  <div class="sidebar-footer">
+    <a href="#" class="footer-link">ログアウト</a>
+  </div>
   
   <div class="sidebar-footer">
     <a href="#" class="footer-link">パスワード変更</a>

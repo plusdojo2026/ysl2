@@ -39,16 +39,25 @@ public class AdminAction {
 		String email = request.getParameter("email");
 	
 	//dto
-		UserDto dto = new UserDto();
+		UserDTO dto = new UserDTO();
 		if (id !=null);
 		dto.setUserId(Integer.parseInt(id));
 	
-		dto.setUserName(name);
-		dto.setUserEmail(email);
-		dto.setuserid(id);
+		dto.setName(name);
+		dto.setMail(mail);
+		dto.setid(id);
 		
+		UserService service = new UserService();
+		boolean isSuccess = service.updateUser(dto);
 		
+		if (isSuccess) {
+			request.setAttribute("message", "ユーザーの編集に成功しました！");
+		} else {
+			request.setAttribute("message", "ユーザーの編集に失敗しました。");
+		}
 		
+		ArrayList<UserDTO> userList = service.selectUsers();
+		request.setAttribute("userList", userList);
 		
 
 		return page;

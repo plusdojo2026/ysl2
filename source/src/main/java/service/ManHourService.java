@@ -1,5 +1,6 @@
 package service;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -13,11 +14,11 @@ public class ManHourService {
 	}
 	
 	//実績工数
-	public ArrayList<AllDTO> selectManHours(int task_id) {
+	public ArrayList<AllDTO> selectManHours(String case_id) {
 		ArrayList<AllDTO> list = null;
 		ManHourDAO dao = new ManHourDAO(conn);
 		try {
-			list = dao.sumCaseManHours(task_id);
+			list = dao.selectManHours(case_id);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -26,11 +27,11 @@ public class ManHourService {
 	}
 	
 	//工数登録メソッド
-	public int registManHour(){
+	public int registManHour(Double today_man_hours, String work_details, Date work_date){
 		ManHourDAO dao = new ManHourDAO(conn);
 		int ans = 0;
 		try {
-			ans = dao.registManHour();
+			ans = dao.registManHour(today_man_hours, work_details, work_date);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -52,11 +53,11 @@ public class ManHourService {
 	}
 	
 	//工数ログ
-	public ArrayList<AllDTO> sumCaseManHours(){
+	public ArrayList<AllDTO> sumCaseManHours(int task_id){
 		ArrayList<AllDTO> list = null;
 		ManHourDAO dao = new ManHourDAO(conn);
 		try {
-			list = dao.selectManHoursDAO();
+			list = dao.sumCaseManHours(task_id);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}

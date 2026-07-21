@@ -19,15 +19,17 @@
 	<!-- 3つのサマリーカードをそれぞれカードで表示する -->
 		<div class ="deadline_over_tasks_counts">
 			<h3>期限超過タスク数</h3>
+			<p>${}</p>
 			
 		</div>
 		<div class ="my_tasks_counts">
 			<h3>担当タスク数</h3>
-		
+			<p>${}</p>
 		</div>	
+		
 		<div class ="now_cases_counts">
 			<h3>進行中案件数</h3>
-		
+			<p>${}</p>
 		</div>
 </div>
 	<!-- 3つのサマリーカードここまで -->
@@ -47,7 +49,7 @@
 				<th>優先度</th>
 			</tr>
 			
-			<c:forEach var="o" o="${deadLineOverTasks}">
+			<c:forEach var="o" o="${OverTaskList}">
 			<!-- 変数"o" で一覧取得-->
 			<!-- 期限超過分のタスクを一覧取得 -->
 			<tr>
@@ -55,8 +57,8 @@
 				<td><c:out value ="${o.caseName}"></td>
 				<td><c:out value ="${o.startDate}"></td>
 				<td><c:out value ="${o.endDate}"></td>
-				<td><c:out value ="${o.actuaryDate}"></td>
-				<td><c:out value ="${o.estimatedDtae}"></td>
+				<td><c:out value ="${o.actualManHours}"></td>
+				<td><c:out value ="${o.estimatedManHours}"></td>
 				<td><c:out value ="${o.priority}"></td>				
 			</tr>
 			</c:forEach>		
@@ -75,17 +77,17 @@
 				<th>優先度</th>
 			</tr>
 			
-			<c:forEach var="m" m="${myTasks}">
+			<c:forEach var="m" m="${MyTaskList}">
 			<!-- 変数"m" で一覧取得-->
 			<!-- "manager"が自分、つまりログイン中のセッションと一致するタスクを絞り込む -->
 			<tr>
-				<td><c:out value ="${o.taskName}"></td>
-				<td><c:out value ="${o.caseName}"></td>
-				<td><c:out value ="${o.startDate}"></td>
-				<td><c:out value ="${o.endDate}"></td>
-				<td><c:out value ="${o.actuaryDate}"></td>
-				<td><c:out value ="${o.estimatedDtae}"></td>
-				<td><c:out value ="${o.priority}"></td>		
+				<td><c:out value ="${m.taskName}"></td>
+				<td><c:out value ="${m.caseName}"></td>
+				<td><c:out value ="${m.startDate}"></td>
+				<td><c:out value ="${m.endDate}"></td>
+				<td><c:out value ="${m.actuaryDate}"></td>
+				<td><c:out value ="${m.estimatedDtae}"></td>
+				<td><c:out value ="${m.priority}"></td>		
 			</tr>		
 			</c:forEach>
 			<!-- 工数登録ボタン (ページIDとボタンIDを持たせる)-->
@@ -104,15 +106,15 @@
 				<th>優先度</th>
 			</tr>
 			
-			<c:forEach var="n" n="${nowCases}">
+			<c:forEach var="c" c="${CaseList}">
 			<!-- 変数"n" で一覧取得-->
 			<!-- "status"が進行中の案件を絞り込む -->
 			<tr>
-				<td><c:out value="${n.caseId}"></td>
-				<td><c:out value="${n.caseName}"></td>
-				<td><c:out value="${n.customerName}"></td>
-				<td><c:out value="${n.pmId}"></td>
-				<td><c:out value="${n.priority}"></td>		
+				<td><c:out value="${c.caseId}"></td>
+				<td><c:out value="${c.caseName}"></td>
+				<td><c:out value="${c.customerName}"></td>
+				<td><c:out value="${c.pmId}"></td>
+				<td><c:out value="${c.priority}"></td>		
 			</tr>
 			</c:forEach>
 		</div>	

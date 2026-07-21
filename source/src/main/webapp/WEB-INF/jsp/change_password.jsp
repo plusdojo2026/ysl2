@@ -7,7 +7,7 @@
   </head>
   <body>
     <div>
-      <form action="/Controller">
+      <form action="<c:url value='/Controller'/>">
         <div>
           <p>パスワード</p>
           <input type="text" name="pw" id="pw" required />

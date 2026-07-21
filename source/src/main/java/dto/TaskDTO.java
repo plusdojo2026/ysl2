@@ -9,11 +9,13 @@ public class TaskDTO {
 	private String status;		//ステータス
 	private String priority;	//優先度
 	private String startDate;	//開始日
-	private String endDate;		//終了予定日
-	private double budgetedManHours;	//予算工数
+	private String deadlineDate;		//期限
+	private double estimatedManHours;	//見積工数
+	private int taskProgress;	//進捗率
 	private String memo;		//説明
 	private String createdAt;	//作成日
 	private String updatedAt;	//更新日
+	
 	
 	//ゲッターセッター
 	public int getTaskId() {
@@ -58,17 +60,23 @@ public class TaskDTO {
 	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
-	public String getEndDate() {
-		return endDate;
+	public String getDeadlineDate() {
+		return deadlineDate;
 	}
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
+	public void setDeadlineDate(String deadlineDate) {
+		this.deadlineDate = deadlineDate;
 	}
-	public double getBudgetedManHours() {
-		return budgetedManHours;
+	public double getEstimatedManHours() {
+		return estimatedManHours;
 	}
-	public void setBudgetedManHours(double budgetedManHours) {
-		this.budgetedManHours = budgetedManHours;
+	public void setEstimatedManHours(double estimatedManHours) {
+		this.estimatedManHours = estimatedManHours;
+	}
+	public int getTaskProgress() {
+		return taskProgress;
+	}
+	public void setTaskProgress(int taskProgress) {
+		this.taskProgress = taskProgress;
 	}
 	public String getMemo() {
 		return memo;

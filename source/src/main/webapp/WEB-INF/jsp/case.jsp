@@ -99,7 +99,7 @@
         </p>
 		 <p>
           <label
-            >見積工数<br />
+            >予算工数<br />
             <input
               type="number"
               min="0"

@@ -27,14 +27,14 @@ public class UserService extends DBAccess{
 	}
 	
 	//パスワード変更・メンバー編集メソッド
-	public int UpdataUser(String loginId,String pw) {
+	public int updataUser(UserDTO dto) {
 		int result = 0;
 		
 		return result;
 	}
 	
 	//ユーザー検査メソッド
-	public ArrayList<UserDTO>selectUsers(UserDTO dto){
+	public ArrayList<UserDTO>selectUsers(){
 		ArrayList<UserDTO> userList = new ArrayList<>();
 		
 		return userList;

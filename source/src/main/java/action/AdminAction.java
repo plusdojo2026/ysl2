@@ -34,9 +34,9 @@ public class AdminAction {
 		request.setCharacterEncoding("UTF-8");
 		
 		String page = "/WEB-INF/jsp/admin.jsp";
-		String id = request.getParameter("userid");
+		String id = request.getParameter("loginid");
 		String name = request.getParameter("userName");
-		String email = request.getParameter("email");
+		String mail = request.getParameter("email");
 	
 	//dto
 		UserDTO dto = new UserDTO();
@@ -45,12 +45,12 @@ public class AdminAction {
 	
 		dto.setName(name);
 		dto.setMail(mail);
-		dto.setid(id);
+		dto.setLoginId(id);
 		
 		UserService service = new UserService();
-		boolean isSuccess = service.updateUser(dto);
+		int isSuccess = service.updataUser(dto);
 		
-		if (isSuccess) {
+		if (isSuccess==1) {
 			request.setAttribute("message", "ユーザーの編集に成功しました！");
 		} else {
 			request.setAttribute("message", "ユーザーの編集に失敗しました。");

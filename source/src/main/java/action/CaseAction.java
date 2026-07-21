@@ -47,7 +47,7 @@ public class CaseAction {
 		String status = request.getParameter("status");
 		
 		CaseService service = new CaseService();
-		int ans = service.registCase(caseId,caseName,customerName,status,priority,pmId,startDate,endDate,budgetedManHours,memo);
+		int ans = service.registCase();
 		
 		ArrayList<AllDTO> caseList = service.selectCases();
 		request.setAttribute("caseList", caseList);

@@ -9,7 +9,7 @@ public class CaseDTO {
 	private int pmId;
 	private String startDate;
 	private String endDate;
-	private String budgetedManHour;
+	private Double budgetedManHours;
 	private String memo;
 	private String createdAt;
 	private String updatedAt;
@@ -78,12 +78,12 @@ public class CaseDTO {
 		this.endDate = endDate;
 	}
 
-	public String getBudgetManHour() {
-		return budgetedManHour;
+	public Double getBudgetedManHours() {
+		return budgetedManHours;
 	}
 
-	public void setBudgetManHour(String budgetManHour) {
-		this.budgetedManHour = budgetManHour;
+	public void setBudgetedManHours(double budgetManHour) {
+		this.budgetedManHours = budgetManHour;
 	}
 
 	public String getMemo() {

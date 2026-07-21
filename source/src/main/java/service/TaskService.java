@@ -85,8 +85,8 @@ public class TaskService extends DBAccess{
 	}
 	
 	//期限超過タスク検索（ダッシュボード）------------------------s
-	public ArrayList<TaskDTO> selectOverTasks(int userId){
-		ArrayList<TaskDTO> taskList = new ArrayList<TaskDTO>();
+	public ArrayList<AllDTO> selectOverTasks(int userId){
+		ArrayList<AllDTO> taskList = new ArrayList<AllDTO>();
 		
 		TaskDAO dao = new TaskDAO(super.conn);
 		try {
@@ -99,8 +99,8 @@ public class TaskService extends DBAccess{
 	}
 	
 	//担当タスク検索（ダッシュボード）-----------------------------
-	public ArrayList<TaskDTO> selectAssignedTasks(int userId) {
-		ArrayList<TaskDTO> taskList = new ArrayList<TaskDTO>();
+	public ArrayList<AllDTO> selectAssignedTasks(int userId) {
+		ArrayList<AllDTO> taskList = new ArrayList<AllDTO>();
 		
 		TaskDAO dao = new TaskDAO(super.conn);
 		try {

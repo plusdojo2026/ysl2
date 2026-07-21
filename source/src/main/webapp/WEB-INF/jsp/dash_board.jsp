@@ -14,24 +14,24 @@
 <div class="main">
 		
 <!-- ダッシュボード要素6つ（期限超過タスク数・担当タスク数・進行中案件数・期限超過タスク・担当タスク・進行中案件）を表示 -->
-<div class = "dash_boards"><!-- CSSで全カードをまとめるためのclass -->
+	<div class = "dash_boards"><!-- CSSで全カードをまとめるためのclass -->
 
-	<!-- 3つのサマリーカードをそれぞれカードで表示する -->
+	<!-- "3つのサマリーカード"をそれぞれカードで表示する -->
 		<div class ="deadline_over_tasks_counts">
 			<h3>期限超過タスク数</h3>
-			<p>${}</p>
+			<p>${overTasks}</p>
 			
 		</div>
 		<div class ="my_tasks_counts">
 			<h3>担当タスク数</h3>
-			<p>${}</p>
+			<p>${myTasks}</p>
 		</div>	
 		
 		<div class ="now_cases_counts">
 			<h3>進行中案件数</h3>
-			<p>${}</p>
+			<p>${caseLists}</p>
 		</div>
-</div>
+	</div>
 	<!-- 3つのサマリーカードここまで -->
 	
 	<!-- 下3つのカードでタスク内容を表示する。各カード内のデータの表示は、テーブルを用いる-->

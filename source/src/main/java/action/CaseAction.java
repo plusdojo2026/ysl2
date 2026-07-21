@@ -35,19 +35,19 @@ public class CaseAction {
 		String page = "/WEB-INF/jsp/case.jsp";
 		
 		request.setCharacterEncoding("UTF-8");
-		String case_id = request.getParameter("case_id");
-		String case_name = request.getParameter("case_name");
-		String customer_name = request.getParameter("customer_name");
-		int pm_id = Integer.parseInt(request.getParameter("pm_id")); 
+		String caseId = request.getParameter("case_id");
+		String caseName = request.getParameter("case_name");
+		String customerName = request.getParameter("customer_name");
+		int pmId = Integer.parseInt(request.getParameter("pm_id")); 
 		String memo = request.getParameter("memo");
-		String start_date = request.getParameter("start_date");
-		String end_date = request.getParameter("end_date");
+		String startDate = request.getParameter("start_date");
+		String endDate = request.getParameter("end_date");
 		String priority = request.getParameter("priority");
-		double estimated_man_hours = Double.parseDouble(request.getParameter("estimated_man_hours")); 
+		double budgetedManHours = Double.parseDouble(request.getParameter("budgeted_man_hours")); 
 		String status = request.getParameter("status");
 		
 		CaseService service = new CaseService();
-		int ans = service.registCase(case_id,case_name,customer_name,pm_id,memo,start_date,end_date,priority,estimated_man_hours,status);
+		int ans = service.registCase(caseId,caseName,customerName,status,priority,pmId,startDate,endDate,budgetedManHours,memo);
 		
 		ArrayList<AllDTO> caseList = service.selectCases();
 		request.setAttribute("caseList", caseList);
@@ -57,12 +57,24 @@ public class CaseAction {
 	
 	
 	//案件編集メソッド
-	
-	
-	
+	public String updateCase() throws UnsupportedEncodingException {
+		String page =  "/WEB-INF/jsp/case.jsp";
+		
+		
+		return page;
+	}
 	
 	//案件詳細メソッド
-	
+	public String selectCaseDetail() throws UnsupportedEncodingException{
+		String page =  "/WEB-INF/jsp/case.jsp";
+		
+		return page;
+	}
 	//ステータス変更メソッド
+	public String updateStatus() throws UnsupportedEncodingException{
+		String page =  "/WEB-INF/jsp/case.jsp";
+		
+		return page;
+	}
 
 }

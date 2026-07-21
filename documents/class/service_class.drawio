@@ -1,32 +1,35 @@
 <mxfile host="65bd71144e">
     <diagram id="vtqDsGyhjbo1Ara4jLw-" name="クラス図　Service">
-        <mxGraphModel dx="1334" dy="1657" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1281" dy="1676" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="sEulbgWXGhEAaZwcWKiL-1" value="UserService" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=default;" parent="1" vertex="1">
-                    <mxGeometry x="-640" y="-520" width="270" height="310" as="geometry"/>
+                    <mxGeometry x="-790" y="-520" width="470" height="350" as="geometry"/>
                 </mxCell>
                 <mxCell id="sEulbgWXGhEAaZwcWKiL-2" value="&lt;div&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;u&gt;DBにアクセス&lt;/u&gt;&lt;/font&gt;&lt;/div&gt;&lt;font face=&quot;Helvetica&quot;&gt;+ UserService()&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="sEulbgWXGhEAaZwcWKiL-1" vertex="1">
-                    <mxGeometry y="26" width="270" height="42" as="geometry"/>
+                    <mxGeometry y="26" width="470" height="42" as="geometry"/>
                 </mxCell>
                 <mxCell id="sEulbgWXGhEAaZwcWKiL-4" value="&lt;div&gt;&lt;u&gt;ログインメソッド&lt;/u&gt;&lt;/div&gt;+ login(loginId String , pw String)&amp;nbsp;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;: UserDTO&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="sEulbgWXGhEAaZwcWKiL-1" vertex="1">
-                    <mxGeometry y="68" width="270" height="40" as="geometry"/>
+                    <mxGeometry y="68" width="470" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="28" value="&lt;u style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251);&quot;&gt;ユーザー検索メソッド&lt;/u&gt;&lt;br style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251);&quot;&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251);&quot;&gt;+ selectUsers() : &lt;span style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); background-color: transparent;&quot;&gt;ArrayList&amp;lt;UserDTO&amp;gt;&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="sEulbgWXGhEAaZwcWKiL-1" vertex="1">
-                    <mxGeometry y="108" width="270" height="40" as="geometry"/>
+                    <mxGeometry y="108" width="470" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="55" value="&lt;u style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251);&quot;&gt;アクティブユーザー一覧取得&lt;/u&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251);&quot;&gt;+ selectActiveUsers() : &lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); background-color: transparent; color: rgb(0, 0, 0);&quot;&gt;ArrayList&amp;lt;UserDTO&amp;gt;&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="sEulbgWXGhEAaZwcWKiL-1">
-                    <mxGeometry y="148" width="270" height="40" as="geometry"/>
+                    <mxGeometry y="148" width="470" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="sEulbgWXGhEAaZwcWKiL-3" value="&lt;div&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;u&gt;ユーザー登録メソッド&lt;/u&gt;&lt;/font&gt;&lt;/div&gt;&lt;font face=&quot;Helvetica&quot;&gt;+ userRegist(UseDTO)&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;: int&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="sEulbgWXGhEAaZwcWKiL-1" vertex="1">
-                    <mxGeometry y="188" width="270" height="42" as="geometry"/>
+                    <mxGeometry y="188" width="470" height="42" as="geometry"/>
                 </mxCell>
-                <mxCell id="sEulbgWXGhEAaZwcWKiL-5" value="&lt;u&gt;パスワード変更・メンバー編集メソッド&lt;/u&gt;&lt;div&gt;+ UpdateUser(loginId&amp;nbsp; String,&amp;nbsp; pw String) : int&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="sEulbgWXGhEAaZwcWKiL-1" vertex="1">
-                    <mxGeometry y="230" width="270" height="40" as="geometry"/>
+                <mxCell id="sEulbgWXGhEAaZwcWKiL-5" value="&lt;u&gt;ユーザー編集メソッド&lt;/u&gt;&lt;div&gt;+ UpdateUser(UserDTO) : int&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="sEulbgWXGhEAaZwcWKiL-1" vertex="1">
+                    <mxGeometry y="230" width="470" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="&lt;u&gt;パスワード変更&lt;/u&gt;&lt;div&gt;+ updatePassword(loginId String, currentPassword String, newPassword String) : int&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="sEulbgWXGhEAaZwcWKiL-1">
+                    <mxGeometry y="270" width="470" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="52" value="&lt;u&gt;ログインidの重複チェック&lt;/u&gt;&lt;div&gt;+ checkDuplicateLoginId(loginId String) : int&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="sEulbgWXGhEAaZwcWKiL-1" vertex="1">
-                    <mxGeometry y="270" width="270" height="40" as="geometry"/>
+                    <mxGeometry y="310" width="470" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="sEulbgWXGhEAaZwcWKiL-6" value="DBAccess" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=default;" parent="1" vertex="1">
                     <mxGeometry x="360" y="-720" width="160" height="110" as="geometry"/>
@@ -104,10 +107,10 @@
                     <mxGeometry x="10" y="-670" width="160" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="sEulbgWXGhEAaZwcWKiL-38" value="+ dto:UserDTO" style="text;strokeColor=default;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-600" y="-204" width="160" height="26" as="geometry"/>
+                    <mxGeometry x="-600" y="-54" width="160" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="sEulbgWXGhEAaZwcWKiL-39" value="+ dao:UserDAO" style="text;strokeColor=default;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-600" y="-230" width="160" height="26" as="geometry"/>
+                    <mxGeometry x="-600" y="-80" width="160" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="29" value="TaskService" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="100" y="-520" width="320" height="360" as="geometry"/>

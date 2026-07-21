@@ -9,7 +9,7 @@
     <div>
       <h1>ログイン</h1>
 
-      <form action="/Controller">
+      <form action="<c:url value='/Controller'/>">
         <div class="err-message">エラーメッセージ表示エリア</div>
         <div>
           <p>ログインID</p>

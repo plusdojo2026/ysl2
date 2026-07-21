@@ -2,7 +2,9 @@ package action;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
+
 import dto.UserDTO;
 import service.UserService;
 
@@ -32,8 +34,20 @@ public class AdminAction {
 		request.setCharacterEncoding("UTF-8");
 		
 		String page = "/WEB-INF/jsp/admin.jsp";
+		String id = request.getParameter("userid");
 		String name = request.getParameter("userName");
-		String email = request.getParameter("email"):
+		String email = request.getParameter("email");
+	
+	//dto
+		UserDto dto = new UserDto();
+		if (id !=null);
+		dto.setUserId(Integer.parseInt(id));
+	
+		dto.setUserName(name);
+		dto.setUserEmail(email);
+		dto.setuserid(id);
+		
+		
 		
 		
 

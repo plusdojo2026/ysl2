@@ -14,7 +14,7 @@ public class TaskService extends DBAccess{
 		super.access();
 	}
 	
-	//タスクデータ登録メソッド
+	//タスクデータ登録メソッド-------------------------------
 	public int registTask(TaskDTO dto) {
 		int ans = 0;
 		
@@ -28,7 +28,7 @@ public class TaskService extends DBAccess{
 		return ans;
 	}
 	
-	//タスクデータ編集メソッド
+	//タスクデータ編集メソッド-------------------------------
 	public int updateTask(TaskDTO dto) {
 		int ans = 0;
 		
@@ -42,13 +42,13 @@ public class TaskService extends DBAccess{
 		return ans;
 	}
 	
-	//タスク全検索メソッド
+	//タスク全検索メソッド-----------------------------------
 	public ArrayList<AllDTO> selectTasks() {
 		ArrayList<AllDTO> taskList = new ArrayList<AllDTO>();
 		
 		TaskDAO dao = new TaskDAO(super.conn);
 		try {
-			taskList = dao.registTask();
+			taskList = dao.selectTasks();
 		} catch (SQLException e) {
 			System.out.println("SQL文おかしい");
 			e.printStackTrace();
@@ -56,7 +56,7 @@ public class TaskService extends DBAccess{
 		return taskList;
 	}
 	
-	//タスク削除メソッド
+	//タスク削除メソッド--------------------------------------
 	public int deleteTask(int taskId) {
 		int ans = 0;
 		
@@ -70,7 +70,7 @@ public class TaskService extends DBAccess{
 		return ans;
 	}
 	
-	//タスク進捗のカウントメソッド
+	//タスク進捗のカウントメソッド-----------------------------
 	public ArrayList<AllDTO> countProgress() {
 		ArrayList<AllDTO> progressList = new ArrayList<AllDTO>();
 		
@@ -84,13 +84,13 @@ public class TaskService extends DBAccess{
 		return progressList;
 	}
 	
-	//期限超過タスク検索（ダッシュボード）
+	//期限超過タスク検索（ダッシュボード）------------------------s
 	public ArrayList<TaskDTO> selectOverTasks(int userId){
 		ArrayList<TaskDTO> taskList = new ArrayList<TaskDTO>();
 		
 		TaskDAO dao = new TaskDAO(super.conn);
 		try {
-			taskList = dao.selectOverTask(userId);
+			taskList = dao.selectOverTasks(userId);
 		} catch (SQLException e) {
 			System.out.println("SQL文おかしい");
 			e.printStackTrace();
@@ -98,13 +98,13 @@ public class TaskService extends DBAccess{
 		return taskList;
 	}
 	
-	//担当タスク検索（ダッシュボード）
+	//担当タスク検索（ダッシュボード）-----------------------------
 	public ArrayList<TaskDTO> selectAssignedTasks(int userId) {
 		ArrayList<TaskDTO> taskList = new ArrayList<TaskDTO>();
 		
 		TaskDAO dao = new TaskDAO(super.conn);
 		try {
-			taskList = dao.registTask(userId);
+			taskList = dao.selectAssignedTasks(userId);
 		} catch (SQLException e) {
 			System.out.println("SQL文おかしい");
 			e.printStackTrace();

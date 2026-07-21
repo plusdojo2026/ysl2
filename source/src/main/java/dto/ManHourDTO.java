@@ -60,5 +60,4 @@ public class ManHourDTO {
 	public void setUpdateAt(String updateAt) {
 		this.updateAt = updateAt;
 	}
-		
 }

@@ -31,6 +31,8 @@ public class ManthlySumDAO {
 		
 		ResultSet rs = pStmt.executeQuery();//結果をrsにまとめる
 		
+		
+		return TotalCasesAndManHours;
 	}
 	
 	//月ごとの実績工数計算メソッド
@@ -46,7 +48,12 @@ public class ManthlySumDAO {
 		
 		//DTOに取得したデータをセットする
 		while(rs.next()) {
-			
+			AllDTO dto = new AllDTO();
+			dto.setCaseId(rs.getString("case_id"));						//案件コード
+			dto.setCaseName(rs.getString("case_name"));					//案件名
+			dto.setActualManHours(rs.getDouble("actual_man_hours"));	//実績工数
+			dto.setBudgetedManHours(rs.getDouble("budgeted_man_hours"));//予算工数
+			ManthlyCases.add(dto);
 		}
 		//Serviceに返却
 		return ManthlyCases;
@@ -65,7 +72,10 @@ public class ManthlySumDAO {
 		
 		//DTOに取得したデータをセットする
 		while(rs.next()) {
-			
+			AllDTO dto = new AllDTO();
+			dto.setUserId(rs.getInt("user_id"));				//担当者(ユーザーIDで自動登録されているもの)
+			dto.setActualManHours(rs.getDouble("actual_man_hours"));	//集計月における、その担当者のタスクの工数
+			ManthAndMembers.add(dto);
 		}
 		//Serviceに返却
 		return ManthAndMembers;

@@ -8,6 +8,13 @@ SELECT tasks.case_id AS '案件コード', cases.case_name AS '案件名', SUM(t
     JOIN cases
     ON tasks.case_id = cases.case_id
     GROUP BY tasks.case_id;
+
+-- タスクごとの実績工数を計算するメソッド
+SELECT tasks.task_id, task_name , SUM(today_man_hours) AS '実績工数'
+	FROM tasks
+    JOIN man_hours
+    ON tasks.task_id = man_hours.task_id
+    GROUP BY tasks.task_id;
     
 -- 案件ごとのタスク進捗を計算するメソッド
 SELECT case_id AS '案件コード',

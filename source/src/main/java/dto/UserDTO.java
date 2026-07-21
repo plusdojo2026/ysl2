@@ -1,30 +1,30 @@
 package dto;
 
 public class UserDTO {
-	private int user_id;
-	private String login_id;
+	private int userId;
+	private String loginId;
 	private String pw;
 	private String name;
 	private String mail;
-	private int is_admin;
-	private int is_active;
-	private String created_at;
-	private String updated_at;
+	private int isAdmin;
+	private int isActive;
+	private String createdAt;
+	private String updatedAt;
 	
-	public int getUser_id() {
-		return user_id;
+	public int getUserId() {
+		return userId;
 	}
 	
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	
-	public String getLogin_id() {
-		return login_id;
+	public String getLoginId() {
+		return loginId;
 	}
 	
-	public void setLogin_id(String login_id) {
-		this.login_id = login_id;
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
 	}
 	
 	public String getPw() {
@@ -51,36 +51,36 @@ public class UserDTO {
 		this.mail = mail;
 	}
 	
-	public int getIs_admin() {
-		return is_admin;
+	public int getIsAdmin() {
+		return isAdmin;
 	}
 	
-	public void setIs_admin(int is_admin) {
-		this.is_admin = is_admin;
+	public void setIsAdmin(int isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 	
-	public int getIs_active() {
-		return is_active;
+	public int getIsActive() {
+		return isActive;
 	}
 	
-	public void setIs_active(int is_active) {
-		this.is_active = is_active;
+	public void setIsActive(int isActive) {
+		this.isActive = isActive;
 	}
 	
-	public String getCreated_at() {
-		return created_at;
+	public String getCreatedAt() {
+		return createdAt;
 	}
 	
-	public void setCreated_at(String created_at) {
-		this.created_at = created_at;
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
 	}
 	
-	public String getUpdated_at() {
-		return updated_at;
+	public String getUpdatedAt() {
+		return updatedAt;
 	}
 	
-	public void setUpdated_at(String updated_at) {
-		this.updated_at = updated_at;
+	public void setUpdatedAt(String updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 	
 }

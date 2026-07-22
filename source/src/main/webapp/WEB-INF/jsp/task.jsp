@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
@@ -51,7 +52,6 @@
 		<p>実績工数：${t.actual_man_hours}</p>
 		<p>ステータス${t.task_status}</p>
 		<p>優先度：${t.priority}</p>
-		<p>進捗：${t.task_progress}</p>
 		<p>説明：${t.memo}</p>
 		<input type="button" value="編集">
 	</c:forEach>

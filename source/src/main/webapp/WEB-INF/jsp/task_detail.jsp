@@ -12,18 +12,17 @@
 <body>
 <main>
     <h1>タスク詳細</h1>
-    <c:forEach var="t" items="">
-        <p>案件名：${t.case_name}</p>
-        <p>タスク名：${t.task_name}</p>
-        <p>担当者：${t.manager}</p>
-        <p>実績工数：${t.actual_man_hours}</p>
-        <p>開始日：${t.start_date}</p>
-        <p>案件名：${t.case_name}</p>
-		<p>タスク名：${t.task_name}</a>
-		<p>担当者：${t.manager}</p>
-		<p>期限：${t.deadline_date}</p>
-		<p>見積工数：${t.estimated_mon_hours}</p>
-		<p>実績工数：${t.actual_man_hours}</p>
+        <p>案件名：${task.case_name}</p>
+        <p>タスク名：${task.task_name}</p>
+        <p>担当者：${task.manager}</p>
+        <p>実績工数：${task.actual_man_hours}</p>
+        <p>開始日：${task.start_date}</p>
+        <p>案件名：${task.case_name}</p>
+		<p>タスク名：${task.task_name}</a>
+		<p>担当者：${task.manager}</p>
+		<p>期限：${task.deadline_date}</p>
+		<p>見積工数：${task.estimated_mon_hours}</p>
+		<p>実績工数：${task.actual_man_hours}</p>
 		<form method="POST" action="<c:url value='/Controller'/>">
 			<label for="status">ステータス<br></label>
 			<input type="hidden" name="page_id" value="L007">
@@ -38,7 +37,6 @@
 		<p>優先度：${t.priority}</p>
 		<p>進捗率：${t.task_progress}</p>
 		<input type="button" value="編集">
-    </c:forEach>
 	<button><a href="/Controller/?page_id=L007&button_id=mon_hours_link&task_id=${t.task_id}">工数登録</a></button>
 	<div>
 	<h2>工数ログ</h2>

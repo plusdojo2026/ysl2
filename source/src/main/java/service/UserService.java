@@ -1,7 +1,9 @@
 package service;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import dao.UserDAO;
 import dto.UserDTO; 
 
 public class UserService extends DBAccess{
@@ -13,8 +15,16 @@ public class UserService extends DBAccess{
 	}
 	
 	//ユーザー登録メソッド
-	public int UserRegist(UserDTO Dto) {
+	public int UserRegist(UserDTO dto) {
 		int result = 0;
+		
+		UserDAO dao = new UserDAO(super.conn);
+		try {
+			result = dao.registUser(dto);
+		} catch (SQLException e) {
+			System.out.println("SQL文おかしい");
+			e.printStackTrace();
+		}
 		
 		return result;
 	}
@@ -23,12 +33,28 @@ public class UserService extends DBAccess{
 	public UserDTO login(String loginId, String pw) {
 		UserDTO user = null;
 		
+		UserDAO dao = new UserDAO(super.conn);
+		try {
+			user = dao.login(loginId,pw);
+		} catch (SQLException e) {
+			System.out.println("SQL文おかしい");
+			e.printStackTrace();
+		}
+		
 		return user;
 	}
 	
-	//メンバー編集メソッド
+	//ユーザー編集メソッド
 	public int updataUser(UserDTO dto) {
 		int result = 0;
+		
+		UserDAO dao = new UserDAO(super.conn);
+		try {
+			result = dao.updateUser(dto);
+		} catch (SQLException e) {
+			System.out.println("SQL文おかしい");
+			e.printStackTrace();
+		}
 		
 		return result;
 	}
@@ -37,6 +63,14 @@ public class UserService extends DBAccess{
 	public int updatepassword(String loginId, String currentPassword, String newPassword) {
 		int result = 0;
 		
+		UserDAO dao = new UserDAO(super.conn);
+		try {
+			result = dao.updatePassword(currentPassword,newPassword,loginId);
+		} catch (SQLException e) {
+			System.out.println("SQL文おかしい");
+			e.printStackTrace();
+		}
+		
 		return result;
 	}
 	
@@ -44,12 +78,29 @@ public class UserService extends DBAccess{
 	public ArrayList<UserDTO>selectUsers(){
 		ArrayList<UserDTO> userList = new ArrayList<>();
 		
+		UserDAO dao = new UserDAO(super.conn);
+		try {
+			userList = dao.selectUsers();
+		} catch (SQLException e) {
+			System.out.println("SQL文おかしい");
+			e.printStackTrace();
+		}
+		
 		return userList;
 	}
 	
 	//id重複チェックメソッド
 	public int checkDuplicateLoginId(String loginId) {
 		int result = 0;
+		
+		UserDAO dao = new UserDAO(super.conn);
+		try {
+			result = dao.checkDuplicateLoginId(loginId);
+		} catch (SQLException e) {
+			System.out.println("SQL文おかしい");
+			e.printStackTrace();
+		}
+		
 		
 		return result;
 	}

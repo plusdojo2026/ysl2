@@ -114,4 +114,21 @@ public class UserService extends DBAccess{
 		
 		return result;
 	}
+	
+	//アクティブユーザー一覧取得メソッド
+	public ArrayList<UserDTO> selectActiveUSers(){
+		ArrayList<UserDTO> userList = new ArrayList<>();
+		
+		UserDAO dao = new UserDAO(super.conn);
+		try {
+			userList = dao.selectUsers();
+		} catch (SQLException e) {
+			System.out.println("SQL文おかしい");
+			e.printStackTrace();
+		}
+		
+		return userList;
+	}
+		
+	
 }

@@ -37,6 +37,8 @@ public class AdminAction {
 		String id = request.getParameter("loginid");
 		String name = request.getParameter("userName");
 		String mail = request.getParameter("email");
+		
+	//ユーザー編集メソッド、updataUser
 	
 	//dto
 		UserDTO dto = new UserDTO();

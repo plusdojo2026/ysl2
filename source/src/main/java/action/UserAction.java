@@ -27,10 +27,7 @@ public class UserAction {
 		int is_active = Integer.parseInt(request.getParameter("is_active"));
 	
 		
-		
-		
 	}
 
-	
 
 }

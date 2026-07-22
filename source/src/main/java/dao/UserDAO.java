@@ -183,7 +183,7 @@ public class UserDAO {
 	public int checkDuplicateLoginId(String loginId) throws SQLException {
 		int ans = 0;
 		
-		String sql = "SELECT * FROM users WHERE login_id = ?";
+		String sql = "SELECT COUNT(*) FROM users WHERE login_id = ?";
 		//デバッグ（SQL文の確認用）
 		System.out.println(sql);
 		
@@ -192,6 +192,13 @@ public class UserDAO {
 		
 		//?に値をセットする
 		pStmt.setString(1, loginId);
+
+		ResultSet rs = pStmt.executeQuery();
+		
+		//(1)は左側から1個目を指定している。serviceの方でansの値を使用してエラーチェックを行う
+		while (rs.next()) {
+			ans = rs.getInt(1); //0か1が入る。
+		}
 		
 		return ans;
 	}

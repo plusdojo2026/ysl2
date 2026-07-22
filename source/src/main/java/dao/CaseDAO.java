@@ -22,7 +22,14 @@ public class CaseDAO {
 	public ArrayList<AllDTO> selectCases() throws SQLException {
 		ArrayList<AllDTO> caseList = new ArrayList<AllDTO>();
 
-		String sql = "SELECT * FROM cases";
+		String sql = "SELECT cases.case_id , case_name , customer_name , cases.status , cases.priority , cases.pm_id , cases.start_date , cases.end_date , SUM(today_man_hours) AS actual_man_hours,"
+				+ "    COUNT(tasks.task_id) AS all_tasks,COUNT(CASE WHEN tasks.status='完了' THEN 1 ELSE NULL END) AS completed_tasks"
+				+ "	   FROM tasks"
+				+ "    JOIN man_hours"
+				+ "    ON tasks.task_id = man_hours.task_id"
+				+ "    JOIN cases"
+				+ "    ON tasks.case_id = cases.case_id"
+				+ "    GROUP BY tasks.case_id;";
 
 		PreparedStatement pStmt = conn.prepareStatement(sql);
 
@@ -31,16 +38,17 @@ public class CaseDAO {
 		while (rs.next()) {
 			AllDTO dto = new AllDTO();
 
-			dto.setCaseId(rs.getString("case_id"));
+			dto.setCaseId(rs.getString("cases.case_id"));
 			dto.setCaseName(rs.getString("case_name"));
 			dto.setCustomerName(rs.getString("customer_name"));
-			dto.setCaseStatus(rs.getString("status"));
-			dto.setCasePriority(rs.getString("priority"));
-			dto.setPmId(rs.getInt("pm_id"));
-			dto.setCaseStartDate(rs.getString("start_date"));
-			dto.setEndDate(rs.getString("end_date"));
-			dto.setBudgetedManHours(rs.getDouble("budgeted_man_hours"));
-			dto.setCaseMemo(rs.getString("memo"));
+			dto.setCaseStatus(rs.getString("cases.status"));
+			dto.setCasePriority(rs.getString("cases.priority"));
+			dto.setPmId(rs.getInt("cases.pm_id"));
+			dto.setCaseStartDate(rs.getString("cases.start_date"));
+			dto.setEndDate(rs.getString("cases.end_date"));
+			dto.setActualManHours(rs.getDouble("actual_man_hours"));
+			dto.setAllTasks(rs.getInt("all_tasks"));
+			dto.setCompletedTasks(rs.getInt("completed_tasks"));
 
 			caseList.add(dto);
 		}
@@ -142,6 +150,19 @@ public class CaseDAO {
 		}
 
 		return caseList;
+	}
+
+	//ステータス変更メソッド
+	public int updatestatus(String caseId, String status) throws SQLException {
+		int ans = 0;
+		String sql = "UPDATE cases SET status=? WHERE case_id = ?";
+		PreparedStatement pStmt = conn.prepareStatement(sql);
+
+		pStmt.setString(1, status);
+		pStmt.setString(2, caseId);
+		ans = pStmt.executeUpdate();
+
+		return ans;
 	}
 
 }

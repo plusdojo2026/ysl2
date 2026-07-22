@@ -22,13 +22,17 @@ public class ManthlySumDAO {
 	
 	//集計案件一覧検索メソッド(後でserviceで詰めなおす中身1/2)
 	public ArrayList<ManHourDTO> selectManthlySum() throws SQLException{
-
+					//↑<AllDTOに変更?>
 		ArrayList<ManHourDTO> TotalCasesAndManHours = new ArrayList<ManHourDTO>();//変数TotalManHoursで工数DTOをnewする
 		
 		//SQLメモ
-		//目的→作成日(created_at)が検索月と一致する案件コード(case_id)を検索し、案件名、予算工数、プログレスバーを取得
+		//目的→作業日(work_date)が検索月と一致する案件コード(case_id)を検索し、案件名、プログレスバー(実績工数、予算工数)を取得
 		//SQL文を準備・↓casesテーブルから案件コードと案件名、予算工数を取得
-		String sql ="SELECT case_id,case_name,budgeted_man_hours FROM cases;";
+		String sql ="SELECT tasks.case_id AS '案件コード',SUM(today_man_hours) AS '実績工数'"
+				+ "FROM tasks"
+				+ "JOIN man_hours"
+				+ "ON tasks.task_id = man_hours.task_id"
+				+ "GROUP BY tasks.case_id;";
 		
 		System.out.println(sql);//SQL文の確認用
 		PreparedStatement pStmt = conn.prepareStatement(sql);//connとSQLをpStmtにまとめる
@@ -40,7 +44,7 @@ public class ManthlySumDAO {
 			ManHourDTO dto = new ManHourDTO();
 			dto.setCaseId(rs.getString("case_id"));						//案件コード
 			dto.setCaseName(rs.getString("case_name"));					//案件名
-			dto.setBudgetedManHours(rs.getDouble("budgeted_man_hours"));//予算工数
+			dto.setBudgetedManHours(rs.getDouble("budgeted_man_hours"));//実績工数
 			TotalCasesAndManHours.add(dto);
 		}
 		
@@ -57,22 +61,29 @@ public class ManthlySumDAO {
 		//SQLメモ
 		//月ごとの実績工数を取得する(method.sql参照 + 加工)
 		//SQL文を準備
-		String sql ="SELECT tasks.case_id AS '案件コード',SUM(today_man_hours) AS '今月の実績工数'"
-					+ "FROM tasks"
-					+ "JOIN man_hours"
-					+ "ON tasks.task_id = man_hours.task_id"
-					+ "JOIN cases"
-					+ "ON tasks.case_id = cases.case_id"
-					+ "GROUP BY tasks.case_id;"
-					+ "HAVING MONTH(work_date) = ?;";//今月分だけをヒットさせる関数で絞る
-		
-		
+		String sql ="SELECT tasks.case_id AS '案件コード', cases.case_name AS '案件名', SUM(today_man_hours) AS '実績工数',"
+				+ "cases.budgeted_man_hours AS '予算工数'"
+				+ "FROM tasks"
+				+ "LEFT JOIN man_hours"
+				+ "ON tasks.task_id = man_hours.task_id"
+				+ "LEFT JOIN cases"
+				+ "ON tasks.case_id = cases.case_id"
+				+ "WHERE work_date LIKE '2___-__%'"//今月分だけをヒットさせる
+				+ "GROUP BY tasks.case_id;";
+			
 		System.out.println(sql);//SQL文の確認用
 		PreparedStatement pStmt = conn.prepareStatement(sql);//connとSQLをpStmtにまとめる
 		
 		ResultSet rs = pStmt.executeQuery();//結果をrsにまとめる
 		
-		
+		//DTOに取得したデータをセットする
+		while(rs.next()) {
+			AllDTO dto = new AllDTO();
+			dto.setCaseId(rs.getString("case_id"));						//案件コード
+			dto.setCaseName(rs.getString("case_name"));					//案件名
+			dto.setTodayManHours(rs.getDouble("today_man_hours"));		//月ごとかつ案件ごとの実績工数
+			dto.setBudgetedManHours(rs.getDouble("budgeted_man_hours"));//予算工数	
+		}
 		//Serviceに返却
 		return ManthlyCases;
 	}

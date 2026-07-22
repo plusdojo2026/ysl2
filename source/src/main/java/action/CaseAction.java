@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import dto.AllDTO;
 import dto.CaseDTO;
 import service.CaseService;
+import service.ManHourService;
 
 public class CaseAction {
 
@@ -22,11 +23,11 @@ public class CaseAction {
 	//案件一覧メソッド
 	public String selectCase() {
 		String page = "/WEB-INF/jsp/case.jsp";
-
+		
 		CaseService service = new CaseService();
 		ArrayList<AllDTO> caseList = service.selectCases();
 		request.setAttribute("caseList", caseList);
-
+		
 		return page;
 	}
 
@@ -107,6 +108,19 @@ public class CaseAction {
 	public String selectCaseDetail() throws UnsupportedEncodingException {
 		String page = "/WEB-INF/jsp/case_detail.jsp";
 		
+		//案件詳細取得
+		CaseService caseservice = new CaseService();
+		
+		
+		
+		//案件タスク一覧取得
+		
+		
+		
+		//工数ログ(最新10件)
+		ManHourService manService = new ManHourService();
+		ArrayList<AllDTO> manList = manService.sumCaseManHours();
+		request.setAttribute("manList",manList);
 		
 		
 		return page;

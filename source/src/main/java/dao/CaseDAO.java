@@ -164,5 +164,21 @@ public class CaseDAO {
 
 		return ans;
 	}
+	
+	//案件詳細用メソッド
+	public AllDTO selectDetailCase(String caseId) throws SQLException {
+		AllDTO dto = new AllDTO();
+		
+		String sql = "SELECT * FROM cases WHERE case_id = ? ";
+		PreparedStatement pStmt = conn.prepareStatement(sql);
+		
+		pStmt.setString(1,caseId);
+		
+		ResultSet rs = pStmt.executeQuery();
+		
+		dto.setCaseId(rs.getString("case_id"));
+		
+		return dto;
+	}
 
 }

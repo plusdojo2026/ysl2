@@ -100,7 +100,23 @@ public class CaseService extends DBAccess {
 		return ans;
 		
 	}
+	//案件詳細用メソッド
+	public AllDTO selectDetailCase(String caseId) {
+		AllDTO dto = null;
+		CaseDAO dao = new CaseDAO(super.conn);
+		
+		try {
+			dto = dao.selectDetailCase(caseId);
+		} catch (SQLException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
 
 }
 	
 	
+
+

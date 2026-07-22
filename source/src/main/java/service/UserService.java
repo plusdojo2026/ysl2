@@ -26,8 +26,15 @@ public class UserService extends DBAccess{
 		return user;
 	}
 	
-	//パスワード変更・メンバー編集メソッド
+	//メンバー編集メソッド
 	public int updataUser(UserDTO dto) {
+		int result = 0;
+		
+		return result;
+	}
+	
+	//パスワード変更メソッド
+	public int updatepassword(String loginId, String currentPassword, String newPassword) {
 		int result = 0;
 		
 		return result;

@@ -62,15 +62,25 @@ public class UserService extends DBAccess{
 	//パスワード変更メソッド
 	public int updatepassword(String loginId, String currentPassword, String newPassword) {
 		int result = 0;
-		
+		UserDTO dto = null;
+				
 		UserDAO dao = new UserDAO(super.conn);
 		try {
-			result = dao.updatePassword(currentPassword,newPassword,loginId);
+			dto = dao.login(loginId,currentPassword);
 		} catch (SQLException e) {
 			System.out.println("SQL文おかしい");
 			e.printStackTrace();
 		}
-		
+		if (dto == null) {
+			return result;
+		}else {
+			try {
+				result = dao.updatePassword(loginId, newPassword);
+			}catch (SQLException e) {
+				System.out.println("SQL文おかしい");
+				e.printStackTrace();
+			}
+		}
 		return result;
 	}
 	

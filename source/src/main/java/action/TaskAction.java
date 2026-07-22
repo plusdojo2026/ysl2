@@ -9,6 +9,7 @@ import dto.AllDTO;
 import dto.TaskDTO;
 import dto.UserDTO;
 import service.TaskService;
+import service.UserService;
 
 public class TaskAction {
 	
@@ -21,11 +22,41 @@ public class TaskAction {
 	//タスク一覧メソッド----------------------------------------------
 	public String selectTask() throws UnsupportedEncodingException {
 		//戻り値（遷移先）のURL
-		String page = null;
+		String page = "/WEB-INF/jsp/task.jsp";
+		
+		//以下、タスク一覧表示用データの取得と格納↓
 		//DTOの箱
-		ArrayList<AllDTO> tDTO = null;
-		ArrayList<AllDTO> mDTO = null;
-		ArrayList<UserDTO> uDTO = null;
+		ArrayList<AllDTO> tList = null;
+		ArrayList<UserDTO> uList = null;
+		//Servicrの実体化
+		TaskService tService = new TaskService();
+		tList = tService.selectTasks();
+		request.setAttribute("allTasksList", tList);
+		
+		UserService uService = new UserService();
+		uList = uService.selectActiveUsers();
+		request.setAttribute("activeUsersList", uList);
+		
+		return page;
+	}
+	
+	//タスク詳細表示メソッド------------------------------------------
+	public String selectTaskDetail() throws UnsupportedEncodingException {
+		//戻り値（遷移先）のURL
+		String page = "/WEB-INF/jsp/task.jsp";
+		
+		//入力値の取得
+		request.setCharacterEncoding("UTF-8");
+		int taskId = Integer.parseInt(request.getParameter("taskId"));
+		
+		//以下、タスク詳細表示用データの取得と格納↓
+		//dtoの箱
+		AllDTO dto = null;
+		//Serviceの実体化
+		TaskService tService = new TaskService();
+		dto = tService.selectTaskDetail(taskId);
+		//リクエストスコープに格納
+		request.setAttribute("task", dto);
 		
 		return page;
 	}
@@ -33,7 +64,7 @@ public class TaskAction {
 	//タスク登録メソッド----------------------------------------------
 	public String registTask() throws UnsupportedEncodingException {
 		//戻り値（遷移先）のURL
-		String page = null;
+		String page = "/WEB-INF/jsp/task.jsp";
 		//DTOの箱
 		TaskDTO dto = null;
 		
@@ -72,16 +103,25 @@ public class TaskAction {
 			request.setAttribute("msg", "案件の登録に失敗しました");
 		}
 		
-		//タスク一覧情報を取得
+		//以下、タスク一覧表示用データの取得と格納↓
+		//DTOの箱
+		ArrayList<AllDTO> tList = null;
+		ArrayList<UserDTO> uList = null;
+		//Servicrの実体化
+		tList = tService.selectTasks();
+		request.setAttribute("allTasksList", tList);
 		
-		
+		UserService uService = new UserService();
+		uList = uService.selectActiveUsers();
+		request.setAttribute("activeUsersList", uList);
+	
 		return page;
 	}
 	
 	//タスク編集メソッド----------------------------------------------
 	public String updateTask() throws UnsupportedEncodingException {
 		//戻り値（遷移先）のURL
-		String page = null;
+		String page = "/WEB-INF/jsp/task.jsp";
 		//DTOの箱
 		TaskDTO dto = null;
 		
@@ -117,10 +157,22 @@ public class TaskAction {
 		int ans = tService.updateTask(dto);
 		
 		if (ans == 1) {
-			request.setAttribute("ans", "タスクを編集しました");
+			request.setAttribute("msg", "タスクを編集しました");
 		}else {
-			request.setAttribute("ans", "タスクの編集に失敗しました");
+			request.setAttribute("msg", "タスクの編集に失敗しました");
 		}
+		
+		//以下、タスク一覧表示用データの取得と格納↓
+		//DTOの箱
+		ArrayList<AllDTO> tList = null;
+		ArrayList<UserDTO> uList = null;
+		//Servicrの実体化
+		tList = tService.selectTasks();
+		request.setAttribute("allTasksList", tList);
+		
+		UserService uService = new UserService();
+		uList = uService.selectActiveUsers();
+		request.setAttribute("activeUsersList", uList);
 		
 		return page;
 	}
@@ -128,7 +180,7 @@ public class TaskAction {
 	//タスク削除メソッド----------------------------------------------
 	public String deleteTask() throws UnsupportedEncodingException {
 		//戻り値（遷移先）のURL
-		String page = null;
+		String page = "/WEB-INF/jsp/task.jsp";
 		
 		//入力値取得
 		int taskId = Integer.parseInt(request.getParameter("taskId"));
@@ -138,10 +190,22 @@ public class TaskAction {
 		int ans = tService.deleteTask(taskId);
 		
 		if (ans == 1) {
-			request.setAttribute("ans", "タスクを削除しました");
+			request.setAttribute("msg", "タスクを削除しました");
 		}else {
-			request.setAttribute("ans", "タスクの削除に失敗しました");
+			request.setAttribute("msg", "タスクの削除に失敗しました");
 		}
+		
+		//以下、タスク一覧表示用データの取得と格納↓
+		//DTOの箱
+		ArrayList<AllDTO> tList = null;
+		ArrayList<UserDTO> uList = null;
+		//Servicrの実体化
+		tList = tService.selectTasks();
+		request.setAttribute("allTasksList", tList);
+		
+		UserService uService = new UserService();
+		uList = uService.selectActiveUsers();
+		request.setAttribute("activeUsersList", uList);
 		
 		return page;
 	}
@@ -149,7 +213,7 @@ public class TaskAction {
 	//タスクステータス変更メソッド----------------------------------------------
 	public String updateStatus() throws UnsupportedEncodingException {
 		//戻り値（遷移先）のURL
-		String page = null;
+		String page = "/WEB-INF/jsp/task_detail.jsp";
 		//DTOの箱
 		TaskDTO dto = null;
 		
@@ -170,6 +234,14 @@ public class TaskAction {
 		}else {
 			request.setAttribute("ans", "タスクの削除に失敗しました");
 		}
+		
+		//以下、タスク詳細表示用データの取得と格納↓
+		//dtoの箱
+		AllDTO task = null;
+		//Serviceの実体化
+		task = tService.selectTaskDetail(taskId);
+		//リクエストスコープに格納
+		request.setAttribute("task", task);
 		
 		return page;
 	}

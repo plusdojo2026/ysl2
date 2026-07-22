@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="mFRpktfDw7a6qIpLwKZB" name="Action クラス図">
-        <mxGraphModel dx="616" dy="488" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="686" dy="473" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -43,7 +43,7 @@
                 <mxCell id="6HdmdKk1KnPZ4cYd77go-8" value="&lt;div&gt;&lt;u&gt;案件一覧メソッド&lt;/u&gt;&lt;/div&gt;+ selectCase(): String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="6HdmdKk1KnPZ4cYd77go-5" vertex="1">
                     <mxGeometry y="60" width="200" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="4" value="案件詳細メソッド&lt;div&gt;+ selectCaseDetail(): String&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="6HdmdKk1KnPZ4cYd77go-5">
+                <mxCell id="4" value="案件詳細メソッド&lt;div&gt;+ selectCaseDetail(): String&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="6HdmdKk1KnPZ4cYd77go-5" vertex="1">
                     <mxGeometry y="100" width="200" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="ILw476ckPGksBMFmUKTJ-19" value="&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;u&gt;案件登録メソッド&lt;/u&gt;&lt;/span&gt;&lt;/div&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;+ registCase(): String&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="6HdmdKk1KnPZ4cYd77go-5" vertex="1">
@@ -67,7 +67,7 @@
                 <mxCell id="6HdmdKk1KnPZ4cYd77go-12" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;u&gt;タスク一覧メソッド&lt;/u&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;+ selectTask(): String&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="6HdmdKk1KnPZ4cYd77go-9" vertex="1">
                     <mxGeometry y="60" width="200" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="5" value="タスク詳細メソッド&lt;div&gt;+ selectTaskDetail(): Sting&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="6HdmdKk1KnPZ4cYd77go-9">
+                <mxCell id="5" value="タスク詳細メソッド&lt;div&gt;+ selectTaskDetail(): Sting&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="6HdmdKk1KnPZ4cYd77go-9" vertex="1">
                     <mxGeometry y="100" width="200" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="ILw476ckPGksBMFmUKTJ-23" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;u&gt;タスク登録メソッド&lt;/u&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;+ registTask(): String&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="6HdmdKk1KnPZ4cYd77go-9" vertex="1">
@@ -91,7 +91,7 @@
                 <mxCell id="ILw476ckPGksBMFmUKTJ-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="ILw476ckPGksBMFmUKTJ-1" vertex="1">
                     <mxGeometry y="52" width="200" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="dOwEA0Zf6ZgQaMw_yobB-3" value="&lt;u&gt;工数取得メソッド&lt;/u&gt;&lt;div&gt;+ updateManHour():String&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="ILw476ckPGksBMFmUKTJ-1" vertex="1">
+                <mxCell id="dOwEA0Zf6ZgQaMw_yobB-3" value="&lt;u&gt;工数取得メソッド&lt;/u&gt;&lt;div&gt;+ selectManHour():String&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="ILw476ckPGksBMFmUKTJ-1" vertex="1">
                     <mxGeometry y="60" width="200" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="dOwEA0Zf6ZgQaMw_yobB-4" value="&lt;u&gt;工数登録メソッド&lt;/u&gt;&lt;div&gt;+ registManHour():String&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="ILw476ckPGksBMFmUKTJ-1" vertex="1">

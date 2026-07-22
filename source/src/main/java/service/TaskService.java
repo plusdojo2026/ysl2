@@ -70,6 +70,20 @@ public class TaskService extends DBAccess{
 		return ans;
 	}
 	
+	//タスク1件表示メソッド（タスク詳細）----------------------
+	public AllDTO selectTaskDetail(int taskId) {
+		AllDTO dto = null;
+		
+		TaskDAO dao = new TaskDAO(super.conn);
+		try {
+			dto = dao.selectTaskDetail(taskId);
+		} catch (SQLException e) {
+			System.out.println("SQL文おかしい");
+			e.printStackTrace();
+		}
+		return dto;
+	}
+	
 	//タスク進捗のカウントメソッド-----------------------------
 	public ArrayList<AllDTO> countProgress() {
 		ArrayList<AllDTO> progressList = new ArrayList<AllDTO>();

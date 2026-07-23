@@ -22,14 +22,10 @@ public class ManHourAction {
 		String page ="/WEB-INF/jsp/case_detail.jsp";
 		//値の取得
 		request.setCharacterEncoding("UTF-8");
-		request.getParameter("work_date");
-		request.getParameter("task_name");
-		request.getParameter("task_name");
-		request.getParameter("today_man_hours");
-		request.getParameter("work_details");
+		int  taskId = Integer.parseInt(request.getParameter("task_id"));
 		
 		ManHourService service = new ManHourService();
-		ArrayList<AllDTO> list = service.sumCaseManHours();
+		ArrayList<AllDTO> list = service.selectManHours(taskId);
 		request.setAttribute("list", list);
 		
 		return page;
@@ -38,7 +34,6 @@ public class ManHourAction {
 	//工数登録メソッド
 	public String registManHour() throws UnsupportedEncodingException{
 		String page ="/WEB=INF/jsp/task_detail.jsp";
-		int ans  = 0;
 		//入力値の取得
 		request.setCharacterEncoding("UTF-8");
 		Double todayManHours =  Double.parseDouble(request.getParameter("today_man_hours"));
@@ -46,8 +41,9 @@ public class ManHourAction {
 		String workDate = request.getParameter("work_date");
 		
 		ManHourService service = new ManHourService();
-		ans = service.registManHour(todayManHours, workDetails, workDate);
-		request.setAttribute("ans", ans);
+		service.registManHour(todayManHours, workDetails, workDate);
+		int list = service.registManHour(todayManHours, workDate, workDate);
+		request.setAttribute("list", list);
 		
 		return page;
 		
@@ -56,13 +52,13 @@ public class ManHourAction {
 	//工数削除メソッド
 	public String deleteManHour() throws UnsupportedEncodingException{
 		String page ="/WEB-INF/jsp/task_detail.jsp";
-		int ans = 0;
 		request.setCharacterEncoding("UTF-8");
-		int id = Integer.parseInt(request.getParameter("man_hours_id"));
+		int  manHourId = Integer.parseInt(request.getParameter("man_hour_id"));
 		
 		ManHourService service = new ManHourService();
-		ans = service.deleteManHour(id);
-		request.setAttribute("ans", ans);
+		service.deleteManHour(manHourId);
+		int list = service.deleteManHour(manHourId);
+		request.setAttribute("list", list);
 		return page;
 		
 	}

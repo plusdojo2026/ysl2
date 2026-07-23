@@ -261,6 +261,8 @@ public class TaskDAO {
 		//まとめる
 		PreparedStatement pStmt = conn.prepareStatement(sql);
 		
+		System.out.println("SQL:" + sql);
+		
 		//SELECT文を実行し、結果表を取得
 		ResultSet rs = pStmt.executeQuery();
 		
@@ -298,6 +300,8 @@ public class TaskDAO {
 		//?に値をセット
 		pStmt.setInt(1, userId);
 		
+		System.out.println("SQL:"+ sql);
+		
 		//SELECT文を実行し、結果表を取得
 		ResultSet rs = pStmt.executeQuery();
 		
@@ -318,6 +322,7 @@ public class TaskDAO {
 			
 			taskList.add(dto);
 		}
+		System.out.println("期限超過タスク検索結果：" + taskList.size());
 		
 		return taskList;
 	}

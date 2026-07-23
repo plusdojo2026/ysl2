@@ -20,24 +20,37 @@
   
 
   <ul class="nav-menu">
+  
     <li class="nav-item active">
-      <span class="nav-text">ダッシュボード</span>
-      <span class="nav-badge">1</span>
+      <a href="${pageContext.request.contextPath}/jsp/dash_board.jsp" class="sidebar-link">
+      <span class="nav-badge">ダッシュボード</span>
+      </a>
     </li>
-    <li class="nav-item">
-      <span class="nav-text">案件</span>
-      <span class="nav-badge">2</span>
+       
+    <li class="nav-item active">
+      <a href="${pageContext.request.contextPath}/jsp/case.jsp" class="sidebar-link">
+      <span class="nav-badge">案件</span>
+      </a>
     </li>
-    <li class="nav-item">
-      <span class="nav-text">タスク管理</span>
-      <span class="nav-badge alert">3</span>
+    
+    <li class="nav-item active">
+      <a href="${pageContext.request.contextPath}/jsp/task.jsp" class="sidebar-link">
+      <span class="nav-badge">タスク管理</span>
+      </a>
     </li>
-    <li class="nav-item">
-      <span class="nav-text">月次集計</span>
+    
+        <li class="nav-item active">
+      <a href="${pageContext.request.contextPath}/jsp/manthly_sum.jsp" class="sidebar-link">
+      <span class="nav-badge">月次集計</span>
+      </a>
     </li>
-    <li class="nav-item">
-      <span class="nav-text">メンバー管理<br><small class="sub-text">(管理者)</small></span>
+
+        <li class="nav-item active">
+      <a href="${pageContext.request.contextPath}/jsp/admin.jsp" class="sidebar-link">
+      <span class="nav-badge">メンバー管理</span>
+      </a>
     </li>
+    
   </ul>
   
   <div class="sidebar-footer">

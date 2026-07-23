@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>案件一覧</title>
+	<meta charset="UTF-8">
+	<title>案件一覧</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
 </head>
 <body>
 	<div class="case">

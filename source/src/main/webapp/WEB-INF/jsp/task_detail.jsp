@@ -6,8 +6,9 @@
 	<head>
 	<meta charset="UTF-8">
 	<title>タスク詳細</title>
-<link rel="stylesheet" href="<c:url value='/css/menu.css' />">
-<link rel="stylesheet" href="<c:url value='/css/case.css' />">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
+	<link rel="stylesheet" href="<c:url value='/css/menu.css' />">
+	<link rel="stylesheet" href="<c:url value='/css/case.css' />">
 </head>
 <body>
 <main>

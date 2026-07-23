@@ -5,6 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>サイドバー</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/sidebar.css" />
   </head>
 

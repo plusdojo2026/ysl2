@@ -5,6 +5,7 @@ pageEncoding="UTF-8"%>
   <head>
     <meta charset="UTF-8" />
     <title>案件詳細</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
   </head>
   <body>
     <h1>案件詳細</h1>

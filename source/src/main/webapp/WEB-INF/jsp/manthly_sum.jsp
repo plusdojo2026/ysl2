@@ -4,9 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>月次集計</title>
-<link rel="stylesheet" action="/servlet/Controller">
+	<meta charset="UTF-8">
+	<title>月次集計</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
+	<link rel="stylesheet" action="/servlet/Controller">
 </head>
 <body>
 

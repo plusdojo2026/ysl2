@@ -4,8 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>ダッシュボード|Task Manager</title>
+	<meta charset="UTF-8">
+	<title>ダッシュボード|Task Manager</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
 </head>
 <body>
 

@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>メンバー管理 | TaskManager</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
 </head>
 <body>
 <header> <!-- sidebar.jspをインクルードする --> </header>

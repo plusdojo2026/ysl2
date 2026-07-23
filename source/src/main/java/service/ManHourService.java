@@ -13,11 +13,11 @@ public class ManHourService extends DBAccess{
 	}
 	
 	//実績工数
-	public ArrayList<AllDTO> selectManHours(int task_id) {
+	public ArrayList<AllDTO> sumCaseManHours(int tsak_id) {
 		ArrayList<AllDTO> list = null;
 		ManHourDAO dao = new ManHourDAO(conn);
 		try {
-			list = dao.selectManHours();
+			list = dao.sumCaseManHours(tsak_id);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -52,11 +52,11 @@ public class ManHourService extends DBAccess{
 	}
 	
 	//工数ログ
-	public ArrayList<AllDTO> sumCaseManHours(){
+	public ArrayList<AllDTO> selectManHours(int task_id){
 		ArrayList<AllDTO> list = null;
 		ManHourDAO dao = new ManHourDAO(conn);
 		try {
-			list = dao.sumCaseManHours();
+			list = dao.selectManHours(task_id);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -64,11 +64,11 @@ public class ManHourService extends DBAccess{
 	}
 	
 	//案件名・タスク名（工数登録）
-	public ArrayList<AllDTO> selectCaseName(){
+	public ArrayList<AllDTO> selectCaseName(int task_id){
 		ArrayList<AllDTO> list = null;
 		ManHourDAO dao = new ManHourDAO(conn);
 		try {
-			list = dao.selectCaseName();
+			list = dao.selectCaseName(task_id);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -80,7 +80,7 @@ public class ManHourService extends DBAccess{
 		ArrayList<AllDTO> list = null;
 		ManHourDAO dao = new ManHourDAO(conn);
 		try {
-			list = dao.sumCaseManHours();
+			list = dao.sumTaskManHours();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}

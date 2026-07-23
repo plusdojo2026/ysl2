@@ -1,11 +1,9 @@
 package action;
 
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
-import dto.AllDTO;
 import service.ManHourService;
 
 public class ManHourAction {
@@ -25,8 +23,8 @@ public class ManHourAction {
 		int  taskId = Integer.parseInt(request.getParameter("task_id"));
 		
 		ManHourService service = new ManHourService();
-		ArrayList<AllDTO> list = service.selectManHours(taskId);
-		request.setAttribute("list", list);
+		service.selectManHours(taskId);
+		request.setAttribute("task_id", taskId);
 		
 		return page;
 	}
@@ -42,9 +40,9 @@ public class ManHourAction {
 		
 		ManHourService service = new ManHourService();
 		service.registManHour(todayManHours, workDetails, workDate);
-		int list = service.registManHour(todayManHours, workDate, workDate);
-		request.setAttribute("list", list);
-		
+		request.setAttribute("today_man_hours", todayManHours);
+		request.setAttribute("work_details", workDate);
+		request.setAttribute("work_date", workDate);
 		return page;
 		
 	}
@@ -57,8 +55,8 @@ public class ManHourAction {
 		
 		ManHourService service = new ManHourService();
 		service.deleteManHour(manHourId);
-		int list = service.deleteManHour(manHourId);
-		request.setAttribute("list", list);
+		service.deleteManHour(manHourId);
+		request.setAttribute("man_hour_id", manHourId);
 		return page;
 		
 	}

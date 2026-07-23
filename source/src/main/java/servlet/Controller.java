@@ -31,6 +31,9 @@ public class Controller extends HttpServlet {
 		String pageId = request.getParameter("page_id");
 		//ボタンの詳細を取得
 		String buttonId = request.getParameter("button_id");
+
+		System.out.println("ページ：" + pageId + " ボタン：" + buttonId);
+
 		
 		//何もわたってきて無ければログイン画面へ
 		if (pageId == null && buttonId == null) {
@@ -48,7 +51,10 @@ public class Controller extends HttpServlet {
 			TaskAction action = new TaskAction(request);
 			page = action.selectTaskDetail();
 		}
-		
+
+	
+
+		System.out.println("フォワード先ページ："+page);
 		//ログイン画面へフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 		dispatcher.forward(request, response);
@@ -166,5 +172,11 @@ public class Controller extends HttpServlet {
 			UserAction action = new UserAction(request);
 			page = action.updatePassword();
 		}
+
+
+		System.out.println("フォワード先ページ："+page);
+		//ログイン画面へフォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+		dispatcher.forward(request, response);
 	}
 }

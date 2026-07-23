@@ -2,10 +2,10 @@
 CREATE DATABASE ysl2;
 
 -- ユーザー作成
-CREATE USER 'ysl1'@'localhost' IDENTIFIED BY 'ZwH54wxWJQt378SN';
+CREATE USER 'ysl2'@'localhost' IDENTIFIED BY 'ZwH54wxWJQt378SN';
 
 -- 権限を付与（全DB・全テーブルへのフルアクセス）
-GRANT ALL PRIVILEGES ON *.* TO 'ysl1'@'localhost';
+GRANT ALL PRIVILEGES ON *.* TO 'ysl2'@'localhost';
 
 -- 反映
 FLUSH PRIVILEGES;

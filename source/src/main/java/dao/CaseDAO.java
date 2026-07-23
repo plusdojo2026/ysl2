@@ -143,8 +143,8 @@ public class CaseDAO {
 			dto.setCustomerName(rs.getString("customer_name"));
 			dto.setPmId(rs.getInt("pm_id"));
 			dto.setName(rs.getString("name"));
-			dto.setTaskStatus(rs.getString("status"));
-			dto.setTaskPriority(rs.getString("priority"));
+			dto.setCaseStatus(rs.getString("status"));
+			dto.setCasePriority(rs.getString("priority"));
 			caseList.add(dto);
 		}
 

@@ -38,6 +38,26 @@ public class Controller extends HttpServlet {
 		//何もわたってきて無ければログイン画面へ
 		if (pageId == null && buttonId == null) {
 			page = "/WEB-INF/jsp/login.jsp";
+		} else if (pageId.equals("side") && buttonId.equals("ダッシュボード")) {
+			//サイドバーのダッシュボード
+			DashBoardAction action = new DashBoardAction(request);
+			page = action.selectTask();
+		} else if (pageId.equals("side") && buttonId.equals("案件一覧")) {
+			//サイドバーの案件一覧
+			CaseAction action = new CaseAction(request);
+			page = action.selectCase();
+		} else if (pageId.equals("side") && buttonId.equals("タスク一覧")) {
+			//サイドバーのタスク一覧
+			TaskAction action = new TaskAction(request);
+			page = action.selectTask();
+		} else if (pageId.equals("side") && buttonId.equals("月次集計")) {
+			//サイドバーの月次集計
+			ManthlySumAction action = new ManthlySumAction(request);
+			page = action.selectManthlySum();
+		} else if (pageId.equals("side") && buttonId.equals("メンバー管理")) {
+			//サイドバーのメンバー管理（管理者）
+			AdminAction action = new AdminAction(request);
+			page = action.selectUser();
 		} else if (pageId.equals("L004") && buttonId.equals("case_link")) {
 			//案件一覧の案件詳細への遷移リンク
 			CaseAction action = new CaseAction(request);
@@ -46,11 +66,11 @@ public class Controller extends HttpServlet {
 			//ダッシュボード、タスク編集ページからの工数登録ボタン
 			ManHourAction action = new ManHourAction(request);
 			page = action.registManHour();
-		} else if (pageId.equals("L006") && buttonId.equals("tasl_link")) {
+		} else if (pageId.equals("L006") && buttonId.equals("task_link")) {
 			//タスク一覧のタスク詳細への遷移リンク
 			TaskAction action = new TaskAction(request);
 			page = action.selectTaskDetail();
-		}
+		} 
 
 	
 
@@ -83,27 +103,7 @@ public class Controller extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.invalidate();
 			page = "/WEB-INF/jsp/login.jsp";
-		} else if (pageId.equals("side") && buttonId.equals("ダッシュボード")) {
-			//サイドバーのダッシュボード
-			DashBoardAction action = new DashBoardAction(request);
-			page = action.selectTask();
-		} else if (pageId.equals("side") && buttonId.equals("案件一覧")) {
-			//サイドバーの案件一覧
-			CaseAction action = new CaseAction(request);
-			page = action.selectCase();
-		} else if (pageId.equals("side") && buttonId.equals("タスク一覧")) {
-			//サイドバーのタスク一覧
-			TaskAction action = new TaskAction(request);
-			page = action.selectTask();
-		} else if (pageId.equals("side") && buttonId.equals("月次集計")) {
-			//サイドバーの月次集計
-			ManthlySumAction action = new ManthlySumAction(request);
-			page = action.selectManthlySum();
-		} else if (pageId.equals("side") && buttonId.equals("メンバー管理")) {
-			//サイドバーのメンバー管理（管理者）
-			AdminAction action = new AdminAction(request);
-			page = action.selectUser();
-		} else if (pageId.equals("L002") && buttonId.equals("工数登録")) {
+		}else if (pageId.equals("L002") && buttonId.equals("工数登録")) {
 			//ダッシュボードの工数登録ボタン
 			ManHourAction action = new ManHourAction(request);
 			page = action.registManHour();

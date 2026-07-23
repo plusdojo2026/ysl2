@@ -13,7 +13,7 @@ public class ManHourService extends DBAccess{
 	}
 	
 	//実績工数
-	public ArrayList<AllDTO> selectManHours() {
+	public ArrayList<AllDTO> selectManHours(int task_id) {
 		ArrayList<AllDTO> list = null;
 		ManHourDAO dao = new ManHourDAO(conn);
 		try {

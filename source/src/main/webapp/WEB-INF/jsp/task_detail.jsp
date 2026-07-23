@@ -22,10 +22,11 @@
 		<p>期限：${task.deadlineDate}</p>
 		<p>見積工数：${task.estimatedMonHours}</p>
 		<p>実績工数：${task.actualManHours}</p>
+		<!-- ステータス変更フォーム -->
 		<form method="POST" action="<c:url value='/Controller'/>">
 			<label for="status">ステータス<br></label>
 			<input type="hidden" name="page_id" value="L007">
-			<input type="hidden" name="task_id" value="${task.taskId}">
+			<input type="hidden" name="task_id" value="${task.taskId}">"
 			<select name="status" id="status">
 				<option value="未着手" selected>未着手</option>
 				<option value="進行中">進行中</option>
@@ -34,13 +35,14 @@
 			</select>
 			<input type="submit" name="button_id" value="変更">
 		</form>
+		<!-- --------------------------- -->
 		<p>優先度：${task.priority}</p>
 		<p>進捗率：${task.taskProgress}</p>
 		<input type="button" value="編集">
 	<button><a href="/Controller/?page_id=L007&button_id=mon_hours_link&task_id=${t.task_id}">工数登録</a></button>
 	<div>
 	<h2>工数ログ</h2>
-	<c:forEach var="m" items="manHoursList">
+	<c:forEach var="m" items="${manHoursList}">
 	<form method="POST" action="<c:url value='/Controller'/>">
 		<input type="hidden" name="man_hours_id" value="${m.manHoursId}"
 		<p>${m.workDate}</p>

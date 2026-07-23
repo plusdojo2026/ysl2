@@ -8,7 +8,7 @@ public class ManthlySumAction {
 
     HttpServletRequest request;
 	
-	//コンストラクタ
+	//コンストラクタを定義
 	public ManthlySumAction(HttpServletRequest request) {
 		this.request=request;
 	}

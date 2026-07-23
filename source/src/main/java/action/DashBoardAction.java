@@ -3,9 +3,10 @@ package action;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import dto.AllDTO;
-import dto.CaseDTO;
+import dto.UserDTO;
 import service.DashBoardService;
 
 public class DashBoardAction {
@@ -22,10 +23,13 @@ public class DashBoardAction {
 		
 		String page = "/WEB-INF/jsp/dash_board.jsp";//ページを定義
 		
-//		//ユーザーIDをセッションから取得
-//		HttpSession session = request.getSession();
-//		session.setAttribute("user_id", userId);
-		int userId = Integer.parseInt(request.getParameter("userId"));
+//		※要修正
+//		ユーザーIDを取得
+		
+		HttpSession session = request.getSession();
+		UserDTO user = (UserDTO) session.getAttribute("user");
+		
+		int userId = user.getUserId();
 		
 		//期限超過タスク
 		DashBoardService service = new DashBoardService();//タスクserviceをnewでインスタンス化
@@ -42,7 +46,7 @@ public class DashBoardAction {
 		
 		//進行中案件
 		DashBoardService caseService = new DashBoardService();//ケースserviceをnewでインスタンス化
-		ArrayList<CaseDTO> caseList = caseService.selectWorkingCases(userId);//案件のデータをCaseListに格納
+		ArrayList<AllDTO> caseList = caseService.selectWorkingCases(userId);//案件のデータをCaseListに格納
 		request.setAttribute("caseList",caseList);//caseListの名前でcaseListをセット
 		int cases = caseList.size();//該当レコード数を計算 int型の変数"caseList"にレコード数を格納
 		request.setAttribute("cases",cases);

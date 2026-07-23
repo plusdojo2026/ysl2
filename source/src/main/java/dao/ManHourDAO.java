@@ -52,12 +52,12 @@ public class ManHourDAO {
 
 	
 	//案件名・タスク名（工数登録）
-	public ArrayList<AllDTO> selectCaseName() throws SQLException {
+	public ArrayList<AllDTO> selectCaseName(int task_id) throws SQLException {
 		ArrayList<AllDTO> list = new ArrayList<AllDTO>();
-		String sql ="SELECT case_name, task_name FROM tasks t JOIN cases c ON t.case_id = c.case_id WHERE t.task_id = ?";
+		String sql ="SELECT case_name, task_name FROM tasks t JOIN cases c ON t.case_id = c.case_id WHERE task_id";
 		System.out.println(sql);
 		PreparedStatement pStmt = conn.prepareStatement(sql);
-		
+		pStmt.setInt(1, task_id);
 		//SELECT文を実行し結果票を取得
 		ResultSet rs = pStmt.executeQuery();
 		
@@ -76,13 +76,13 @@ public class ManHourDAO {
 
 
 	//工数ログ(タスク詳細)
-	public ArrayList<AllDTO> sumCaseManHours() throws SQLException {
+	public ArrayList<AllDTO> selectManHours(int task_id) throws SQLException {
 		ArrayList<AllDTO> list = new ArrayList<AllDTO>();
 		String sql ="SELECT m.work_date AS '作業日', t.manager AS '担当者', m.today_man_hours AS '工数', m.work_details AS '作業内容' FROM man_hours m"
-					+ "JOIN tasks t ON m.task_id = t.task_id ORDER BY m.work_date";
+					+ "JOIN tasks t ON m.task_id = t.task_id ORDER BY m.work_date WHERE t.task_id = ?";
 		System.out.println(sql);
 		PreparedStatement pStmt = conn.prepareStatement(sql);
-		
+		pStmt.setInt(1, task_id);
 		//セレクト文を実行し結果票を取得
 		ResultSet rs = pStmt.executeQuery();
 		
@@ -103,7 +103,7 @@ public class ManHourDAO {
 	}
 
 	//実績工数
-	public ArrayList<AllDTO> selectManHours() throws SQLException {
+	public ArrayList<AllDTO> sumCaseManHours(int task_id) throws SQLException {
 		ArrayList<AllDTO> list = new ArrayList<AllDTO>();
 		String sql ="SELECT t.case_id AS '案件コード', c.case_name AS '案件名', SUM(today_man_hours) AS '実績工数'"
 					+"FROM tasks t JOIN man_hours m ON t.task_id = m.task_id JOIN cases c ON t.case_id = c.case_id GROUP BY t.case_id";
@@ -155,5 +155,7 @@ public class ManHourDAO {
 			return list;
 			
 		}
+
+		
 	
 }

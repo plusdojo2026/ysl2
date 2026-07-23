@@ -13,12 +13,13 @@
 <body>
 <main>
 	<h1>タスク一覧</h1>
+	<div>${msg}</div>
 	<div>
 	<form method="POST" action="<c:url value='/Controller'/>">
 		<input type="hidden" name="page_id" value="L006">
 		<input type="text" name="seach_word" placeholder="キーワード検索">
 		<select name="case_name">
-			<c:forEach var="c" items="">
+			<c:forEach var="c" items="allTaskList">
 				<option value="${c.case_id}">${c.case_name}</option>
 			</c:forEach>
 		</select>
@@ -43,7 +44,7 @@
 	</div>
 
 	<div>
-	<c:forEach var="t" items="">
+	<c:forEach var="t" items="allTasksList">
 		<p>案件名：${t.case_name}</p>
 		<a href="/Controller/?page_id=L006&button_id=task_link&task_id=${t.task_id}">タスク名：${t.task_name}</a>
 		<p>担当者：${t.manager}</p>
@@ -147,7 +148,7 @@
 		<p>
         <label for="manager">担当者<br></label>
 		<select name="manager" id="manager">
-			<c:forEach var="m" items="">
+			<c:forEach var="m" items="activeUserList">
 				<option value="${m.user_id}">${c.user_name}</option>
 			</c:forEach>
 		</select>

@@ -34,8 +34,8 @@
 			</select>
 			<input type="submit" name="button_id" value="変更">
 		</form>
-		<p>優先度：${t.priority}</p>
-		<p>進捗率：${t.task_progress}</p>
+		<p>優先度：${task.priority}</p>
+		<p>進捗率：${task.task_progress}</p>
 		<input type="button" value="編集">
 	<button><a href="/Controller/?page_id=L007&button_id=mon_hours_link&task_id=${t.task_id}">工数登録</a></button>
 	<div>

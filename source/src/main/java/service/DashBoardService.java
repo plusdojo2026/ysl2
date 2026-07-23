@@ -8,15 +8,17 @@ import dao.TaskDAO;
 import dto.AllDTO;
 import dto.CaseDTO;
 
-public class DashBoardService extends DBAccess{
+public class DashBoardService extends DBAccess {
 	
 	//コンストラクタ
-		public DashBoardService() {
-			super.access();
-		}
+	public DashBoardService() {
+		super.access();
+	}
 	
 	//期限超過タスク検索（ダッシュボード）------------------------
-	public ArrayList<AllDTO> selectOverTasks(int userId){
+	public ArrayList<AllDTO> selectOverTasks(int userId) {
+		super.access();
+		
 		ArrayList<AllDTO> OvertaskList = new ArrayList<AllDTO>();
 		
 		TaskDAO dao = new TaskDAO(super.conn);
@@ -29,9 +31,11 @@ public class DashBoardService extends DBAccess{
 		super.close();
 		return OvertaskList;
 	}
-
+	
 	//担当タスク検索（ダッシュボード）-----------------------------
 	public ArrayList<AllDTO> selectAssignedTasks(int userId) {
+		super.access();
+		
 		ArrayList<AllDTO> MytaskList = new ArrayList<AllDTO>();
 		
 		TaskDAO dao = new TaskDAO(super.conn);
@@ -45,19 +49,20 @@ public class DashBoardService extends DBAccess{
 		return MytaskList;
 	}
 	
-	
 	//進行中案件検索(ダッシュボード)--------------------------------------------
-		public ArrayList<CaseDTO> selectWorkingCases(int userId){
-			ArrayList<CaseDTO> caseList = null;
-			
-			CaseDAO dao = new CaseDAO(super.conn);
-			try {
-				caseList = dao.selectWorkingCases();
-			} catch (SQLException e) {
-				// TODO 自動生成された catch ブロック
-				e.printStackTrace();
-			}
-			super.close();	
-			return caseList;
+	public ArrayList<CaseDTO> selectWorkingCases(int userId) {
+		super.access();
+		
+		ArrayList<CaseDTO> caseList = null;
+		
+		CaseDAO dao = new CaseDAO(super.conn);
+		try {
+			caseList = dao.selectWorkingCases();
+		} catch (SQLException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
 		}
+		super.close();
+		return caseList;
+	}
 }

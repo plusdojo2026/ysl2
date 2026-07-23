@@ -22,31 +22,31 @@
   <ul class="nav-menu">
   
     <li class="nav-item active">
-      <a href="${pageContext.request.contextPath}/jsp/dash_board.jsp" class="sidebar-link">
+      <a href="${pageContext.request.contextPath}/Controller?page_id=side&button_id=ダッシュボード" class="sidebar-link">
       <span class="nav-badge">ダッシュボード</span>
       </a>
     </li>
        
     <li class="nav-item active">
-      <a href="${pageContext.request.contextPath}/jsp/case.jsp" class="sidebar-link">
+      <a href="${pageContext.request.contextPath}/Controller?page_id=side&button_id=案件" class="sidebar-link">
       <span class="nav-badge">案件</span>
       </a>
     </li>
     
     <li class="nav-item active">
-      <a href="${pageContext.request.contextPath}/jsp/task.jsp" class="sidebar-link">
+      <a href="${pageContext.request.contextPath}/Controller?page_id=side&button_id=タスク管理" class="sidebar-link">
       <span class="nav-badge">タスク管理</span>
       </a>
     </li>
     
         <li class="nav-item active">
-      <a href="${pageContext.request.contextPath}/jsp/manthly_sum.jsp" class="sidebar-link">
+      <a href="${pageContext.request.contextPath}/Controller?page_id=side&button_id=月次集計" class="sidebar-link">
       <span class="nav-badge">月次集計</span>
       </a>
     </li>
 
         <li class="nav-item active">
-      <a href="${pageContext.request.contextPath}/jsp/admin.jsp" class="sidebar-link">
+      <a href="${pageContext.request.contextPath}/Controller?page_id=side&button_id=メンバー管理" class="sidebar-link">
       <span class="nav-badge">メンバー管理</span>
       </a>
     </li>
@@ -54,11 +54,11 @@
   </ul>
   
   <div class="sidebar-footer">
-    <a href="${pageContext.request.contextPath}/jsp/login.jsp" class="footer-link">ログアウト</a>
+    <a href="${pageContext.request.contextPath}/Controller?page_id=side&button_id=ログイン" class="footer-link">ログアウト</a>
   </div>
   
   <div class="sidebar-footer">
-    <a href="${pageContext.request.contextPath}/jsp/change_password.jsp" class="footer-link">パスワード変更</a>
+    <a href="${pageContext.request.contextPath}/Controller?page_id=side&button_id=パスワード変更">パスワード変更</a>
   </div>
 </div>
 

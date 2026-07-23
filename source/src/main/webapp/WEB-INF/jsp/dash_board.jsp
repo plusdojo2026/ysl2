@@ -29,7 +29,7 @@
 		
 		<div class ="now_cases_counts">
 			<h3>進行中案件数</h3>
-			<p>${caseLists}</p>
+			<p>${cases}</p>
 		</div>
 	</div>
 	<!-- 3つのサマリーカードここまで -->
@@ -49,7 +49,7 @@
 				<th>優先度</th>
 			</tr>
 			
-			<c:forEach var="o" items="${OverTaskList}">
+			<c:forEach var="o" items="${overTaskList}">
 			<!-- 変数"o" で一覧取得-->
 			<!-- 期限超過分のタスクを一覧取得 -->
 			<tr>
@@ -77,7 +77,7 @@
 				<th>優先度</th>
 			</tr>
 			
-			<c:forEach var="m" items="${MyTaskList}">
+			<c:forEach var="m" items="${myTaskList}">
 			<!-- 変数"m" で一覧取得-->
 			<!-- "manager"が自分、つまりログイン中のセッションと一致するタスクを絞り込む -->
 			<tr>
@@ -106,7 +106,7 @@
 				<th>優先度</th>
 			</tr>
 			
-			<c:forEach var="c" items="${CaseList}">
+			<c:forEach var="c" items="${caseList}">
 			<!-- 変数"n" で一覧取得-->
 			<!-- "status"が進行中の案件を絞り込む -->
 			<tr>

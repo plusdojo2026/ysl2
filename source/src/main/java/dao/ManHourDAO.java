@@ -106,7 +106,7 @@ public class ManHourDAO {
 	public ArrayList<AllDTO> sumCaseManHours(int task_id) throws SQLException {
 		ArrayList<AllDTO> list = new ArrayList<AllDTO>();
 		String sql ="SELECT t.case_id AS '案件コード', c.case_name AS '案件名', SUM(today_man_hours) AS '実績工数'"
-					+"FROM tasks t JOIN man_hours m ON t.task_id = m.task_id JOIN cases c ON t.case_id = c.case_id GROUP BY t.case_id";
+					+" FROM tasks t JOIN man_hours m ON t.task_id = m.task_id JOIN cases c ON t.case_id = c.case_id GROUP BY t.case_id";
 		System.out.println(sql);
 		PreparedStatement pStmt = conn.prepareStatement(sql);
 		
@@ -132,10 +132,10 @@ public class ManHourDAO {
 		public ArrayList<AllDTO> sumTaskManHours() throws SQLException {
 			ArrayList<AllDTO> list = new ArrayList<AllDTO>();
 			String sql ="SELECT tasks.task_id, task_name , SUM(today_man_hours) AS '実績工数'"
-					+ "FROM tasks"
-					+ "JOIN man_hours"
-					+ "ON tasks.task_id = man_hours.task_id"
-					+ "GROUP BY tasks.task_id";
+					+ " FROM tasks"
+					+ " JOIN man_hours"
+					+ " ON tasks.task_id = man_hours.task_id"
+					+ " GROUP BY tasks.task_id";
 			System.out.println(sql);
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
@@ -161,8 +161,8 @@ public class ManHourDAO {
 			ArrayList<AllDTO> caseList = new ArrayList<AllDTO>();
 			
 			String sql ="SELECT work_date, task_name , manager , today_man_hours , work_details FROM man_hours "
-					+ "    INNER JOIN tasks ON tasks.task_id = man_hours.task_id  "
-					+ "    WHERE man_hours.task_id IN (SELECT tasks.task_id FROM tasks WHERE case_id = ? )ORDER BY work_date LIMIT 10;";
+					+ " INNER JOIN tasks ON tasks.task_id = man_hours.task_id  "
+					+ " WHERE man_hours.task_id IN (SELECT tasks.task_id FROM tasks WHERE case_id = ? )ORDER BY work_date LIMIT 10;";
 			
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			

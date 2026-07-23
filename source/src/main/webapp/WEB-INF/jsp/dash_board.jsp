@@ -97,7 +97,7 @@
 			<!-- 工数登録ボタン (ページIDとボタンIDを持たせる)-->
 			<form method="POST" action="<c:url value='/Controller'/>">
 				<input type="hidden" name="page_id" value="L002">
-				<input type="submit" name="button=id" value="工数登録">
+				<input type="submit" name="button_id" value="工数登録">
 			</form>
 			
 		</div>

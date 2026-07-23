@@ -24,17 +24,17 @@ public class TaskDAO {
 		
 		//SELECT文準備
 		String sql = "SELECT tasks.case_id, cases.case_name, tasks.task_id, task_name, users.name,"
-				+ "tasks.status, tasks.priority, deadline_date, estimated_man_hours, task_progress,"
-				+ "COALESCE (SUM(today_man_hours), 0) AS actual_man_hours, tasks.memo"
-				+ "FROM tasks"
-				+ "JOIN cases"
-				+ "ON tasks.case_id=cases.case_id"
-				+ "JOIN users"
-				+ "ON tasks.manager=users.user_id"
-				+ "LEFT JOIN man_hours"
-				+ "ON tasks.task_id = man_hours.task_id"
-				+ "GROUP BY tasks.task_id"
-				+ "ORDER BY tasks.deadline_date";
+				+ " tasks.status, tasks.priority, deadline_date, estimated_man_hours, task_progress,"
+				+ " COALESCE (SUM(today_man_hours), 0) AS actual_man_hours, tasks.memo"
+				+ " FROM tasks"
+				+ " JOIN cases"
+				+ " ON tasks.case_id=cases.case_id"
+				+ " JOIN users"
+				+ " ON tasks.manager=users.user_id"
+				+ " LEFT JOIN man_hours"
+				+ " ON tasks.task_id = man_hours.task_id"
+				+ " GROUP BY tasks.task_id"
+				+ " ORDER BY tasks.deadline_date";
 		
 		//まとめる
 		PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -71,10 +71,10 @@ public class TaskDAO {
 		
 		//INSERT文準備
 		String sql = "INSERT INTO tasks"
-				+ "(case_id, task_name, manager, status, priority, start_date,"
-				+ "deadline_date, estimated_man_hours, task_progress, memo)"
-				+ "VALUES"
-				+ "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " (case_id, task_name, manager, status, priority, start_date,"
+				+ " deadline_date, estimated_man_hours, task_progress, memo)"
+				+ " VALUES"
+				+ " (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		//まとめる
 		PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -103,9 +103,9 @@ public class TaskDAO {
 		
 		//UPDATE文準備
 		String sql = "UPDATE tasks SET"
-				+ "case_id=?, task_name=?, manager=?, status=?, priority=?, start_date=?, deadline_date=?,"
-				+ "estimated_man_hours=?, task_progress=?, memo=?"
-				+ "WHERE task_id=?";
+				+ " case_id=?, task_name=?, manager=?, status=?, priority=?, start_date=?, deadline_date=?,"
+				+ " estimated_man_hours=?, task_progress=?, memo=?"
+				+ " WHERE task_id=?";
 		
 		//まとめる
 		PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -154,18 +154,18 @@ public class TaskDAO {
 		
 		//SELECT文準備
 		String sql = "SELECT tasks.case_id, cases.case_name, tasks.task_id, task_name, users.name,"
-				+ "tasks.status, tasks.priority, deadline_date, estimated_man_hours, task_progress,"
-				+ "COALESCE (SUM(today_man_hours), 0) AS actual_man_hours, tasks.memo"
-				+ "FROM tasks"
-				+ "JOIN cases"
-				+ "ON tasks.case_id=cases.case_id"
-				+ "JOIN users"
-				+ "ON tasks.manager=users.user_id"
-				+ "LEFT JOIN man_hours"
-				+ "ON tasks.task_id = man_hours.task_id"
-				+ "WHERE tasks.case_id = ?"
-				+ "GROUP BY tasks.task_id"
-				+ "ORDER BY tasks.deadline_date";
+				+ " tasks.status, tasks.priority, deadline_date, estimated_man_hours, task_progress,"
+				+ " COALESCE (SUM(today_man_hours), 0) AS actual_man_hours, tasks.memo"
+				+ " FROM tasks"
+				+ " JOIN cases"
+				+ " ON tasks.case_id=cases.case_id"
+				+ " JOIN users"
+				+ " ON tasks.manager=users.user_id"
+				+ " LEFT JOIN man_hours"
+				+ " ON tasks.task_id = man_hours.task_id"
+				+ " WHERE tasks.case_id = ?"
+				+ " GROUP BY tasks.task_id"
+				+ " ORDER BY tasks.deadline_date";
 		
 		//まとめる
 		PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -204,18 +204,18 @@ public class TaskDAO {
 		
 		//SELECT文準備
 		String sql = "SELECT tasks.case_id, cases.case_name, tasks.task_id, task_name, users.name,"
-				+ "tasks.status, tasks.priority, deadline_date, estimated_man_hours, task_progress,"
-				+ "COALESCE (SUM(today_man_hours), 0) AS actual_man_hours, tasks.memo"
-				+ "FROM tasks"
-				+ "JOIN cases"
-				+ "ON tasks.case_id=cases.case_id"
-				+ "JOIN users"
-				+ "ON tasks.manager=users.user_id"
-				+ "LEFT JOIN man_hours"
-				+ "ON tasks.task_id = man_hours.task_id"
-				+ "WHERE tasks.task_id = ?"
-				+ "GROUP BY tasks.task_id"
-				+ "ORDER BY tasks.deadline_date";
+				+ " tasks.status, tasks.priority, deadline_date, estimated_man_hours, task_progress,"
+				+ " COALESCE (SUM(today_man_hours), 0) AS actual_man_hours, tasks.memo"
+				+ " FROM tasks"
+				+ " JOIN cases"
+				+ " ON tasks.case_id=cases.case_id"
+				+ " JOIN users"
+				+ " ON tasks.manager=users.user_id"
+				+ " LEFT JOIN man_hours"
+				+ " ON tasks.task_id = man_hours.task_id"
+				+ " WHERE tasks.task_id = ?"
+				+ " GROUP BY tasks.task_id"
+				+ " ORDER BY tasks.deadline_date";
 		
 		//まとめる
 		PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -253,9 +253,9 @@ public class TaskDAO {
 		//SELECT文準備
 		String sql = "SELECT case_id,"
 				+ "	COUNT(task_id) AS 'all_tasks',"
-				+ "COUNT(CASE WHEN status='完了' THEN 1 ELSE NULL END) AS 'completed_tasks'"
-				+ "FROM tasks"
-				+ "GROUP BY case_id";
+				+ " COUNT(CASE WHEN status='完了' THEN 1 ELSE NULL END) AS 'completed_tasks'"
+				+ " FROM tasks"
+				+ " GROUP BY case_id";
 		
 		//まとめる
 		PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -283,13 +283,13 @@ public class TaskDAO {
 		
 		//SELECT文準備
 		String sql = "SELECT tasks.case_id, case_name, task_id, task_name, tasks.status,"
-				+ "tasks.priority, deadline_date, estimated_man_hours, task_progress, tasks.memo"
-				+ "FROM tasks"
-				+ "JOIN cases"
-				+ "ON tasks.case_id=cases.case_id"
-				+ "WHERE manager=?"
-				+ "AND deadline_date < CURRENT_DATE()"
-				+ "AND tasks.status!='完了'";
+				+ " tasks.priority, deadline_date, estimated_man_hours, task_progress, tasks.memo"
+				+ " FROM tasks"
+				+ " JOIN cases"
+				+ " ON tasks.case_id=cases.case_id"
+				+ " WHERE manager=?"
+				+ " AND deadline_date < CURRENT_DATE()"
+				+ " AND tasks.status!='完了'";
 		
 		//まとめる
 		PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -327,12 +327,12 @@ public class TaskDAO {
 		
 		//SELECT文準備
 		String sql = "SELECT tasks.case_id, case_name, task_id, task_name, tasks.status,"
-				+ "tasks.priority, deadline_date, estimated_man_hours, task_progress, tasks.memo"
-				+ "FROM tasks"
-				+ "JOIN cases"
-				+ "ON tasks.case_id=cases.case_id"
-				+ "WHERE manager=?"
-				+ "AND tasks.status!='完了'";
+				+ " tasks.priority, deadline_date, estimated_man_hours, task_progress, tasks.memo"
+				+ " FROM tasks"
+				+ " JOIN cases"
+				+ " ON tasks.case_id=cases.case_id"
+				+ " WHERE manager=?"
+				+ " AND tasks.status!='完了'";
 		
 		//まとめる
 		PreparedStatement pStmt = conn.prepareStatement(sql);

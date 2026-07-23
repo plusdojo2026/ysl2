@@ -25,6 +25,7 @@ public class AdminAction {
 		UserService service = new UserService();
 		ArrayList<UserDTO> userList = service.selectUsers();
 		request.setAttribute("userList", userList);
+		
 
 		return page;
 	}
@@ -37,14 +38,53 @@ public class AdminAction {
 		String id = request.getParameter("loginid");
 		String name = request.getParameter("userName");
 		String mail = request.getParameter("email");
+		String password = request.getParameter("pw");
+		String admin = request.getParameter("admin");
+		String active = request.getParameter("active");
 		
-	//ユーザー編集メソッド、updataUser
-	
-	//dto
+		
+		//dto
 		UserDTO dto = new UserDTO();
 		if (id !=null);
 		dto.setUserId(Integer.parseInt(id));
-	
+		
+		dto.setName(name);
+		dto.setMail(mail);
+		dto.setLoginId(id);
+		
+		UserService service = new UserService();
+		int isSuccess = service.UserRegist(dto);
+		
+		if (isSuccess==1) {
+			request.setAttribute("message", "ユーザーの編集に成功しました！");
+		} else {
+			request.setAttribute("message", "ユーザーの編集に失敗しました。");
+		}
+		
+		ArrayList<UserDTO> userList = service.selectUsers();
+		request.setAttribute("userList", userList);
+		
+		
+		return page;
+	}
+		
+	//ユーザー編集メソッド、updataUser
+	public String updataUser() throws UnsupportedEncodingException {
+		request.setCharacterEncoding("UTF-8");
+		
+		String page = "/WEB-INF/jsp/admin.jsp";
+		String id = request.getParameter("loginid");
+		String name = request.getParameter("userName");
+		String mail = request.getParameter("email");
+		String password = request.getParameter("pw");
+		String admin = request.getParameter("admin");
+		String active = request.getParameter("active");
+		
+		//dto
+		UserDTO dto = new UserDTO();
+		if (id !=null);
+		dto.setUserId(Integer.parseInt(id));
+		
 		dto.setName(name);
 		dto.setMail(mail);
 		dto.setLoginId(id);
@@ -61,10 +101,8 @@ public class AdminAction {
 		ArrayList<UserDTO> userList = service.selectUsers();
 		request.setAttribute("userList", userList);
 		
-
+		
 		return page;
 	}
-
-	//ユーザ編集メソッド
-
+	
 }

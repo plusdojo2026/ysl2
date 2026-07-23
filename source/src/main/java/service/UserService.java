@@ -60,7 +60,7 @@ public class UserService extends DBAccess{
 	}
 	
 	//パスワード変更メソッド
-	public int updatepassword(String loginId, String currentPassword, String newPassword) {
+	public int updatePassword(String loginId, String currentPassword, String newPassword) {
 		int result = 0;
 		UserDTO dto = null;
 				

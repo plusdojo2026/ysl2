@@ -117,8 +117,8 @@
 				<td><c:out value="${c.caseId}"/></td>
 				<td><c:out value="${c.caseName}"/></td>
 				<td><c:out value="${c.customerName}"/></td>
-				<td><c:out value="${c.pmId}"/></td>
-				<td><c:out value="${c.priority}"/></td>		
+				<td><c:out value="${c.name}"/></td>
+				<td><c:out value="${c.casePriority}"/></td>		
 			</tr>
 			</c:forEach>
 			</table>

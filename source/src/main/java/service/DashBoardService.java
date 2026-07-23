@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import dao.CaseDAO;
 import dao.TaskDAO;
 import dto.AllDTO;
-import dto.CaseDTO;
 
 public class DashBoardService extends DBAccess {
 	
@@ -50,10 +49,10 @@ public class DashBoardService extends DBAccess {
 	}
 	
 	//進行中案件検索(ダッシュボード)--------------------------------------------
-	public ArrayList<CaseDTO> selectWorkingCases(int userId) {
+	public ArrayList<AllDTO> selectWorkingCases(int userId) {
 		super.access();
 		
-		ArrayList<CaseDTO> caseList = null;
+		ArrayList<AllDTO> caseList = null;
 		
 		CaseDAO dao = new CaseDAO(super.conn);
 		try {

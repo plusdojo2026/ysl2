@@ -126,28 +126,25 @@ public class CaseDAO {
 	}
 
 	//進行中案件検索(ダッシュボード)
-	public ArrayList<CaseDTO> selectWorkingCases() throws SQLException {
-		ArrayList<CaseDTO> caseList = new ArrayList<CaseDTO>();
+	public ArrayList<AllDTO> selectWorkingCases() throws SQLException {
+		ArrayList<AllDTO> caseList = new ArrayList<AllDTO>();
 
-		String sql = "SELECT * FROM cases WHERE status = '進行中'";
+		String sql = "SELECT users.name,case_id,case_name,customer_name,pm_id,status,priority "
+					+ "FROM cases LEFT JOIN users ON users.user_id = cases.pm_id WHERE status = '進行中';";
 		PreparedStatement pStmt = conn.prepareStatement(sql);
 
 		ResultSet rs = pStmt.executeQuery();
 
 		while (rs.next()) {
-			CaseDTO dto = new CaseDTO();
+			AllDTO dto = new AllDTO();
 
 			dto.setCaseId(rs.getString("case_id"));
 			dto.setCaseName(rs.getString("case_name"));
 			dto.setCustomerName(rs.getString("customer_name"));
-			dto.setStatus(rs.getString("status"));
-			dto.setPriority(rs.getString("priority"));
 			dto.setPmId(rs.getInt("pm_id"));
-			dto.setStartDate(rs.getString("start_date"));
-			dto.setEndDate(rs.getString("end_date"));
-			dto.setBudgetedManHours(rs.getDouble("budgeted_man_hours"));
-			dto.setMemo(rs.getString("memo"));
-
+			dto.setName(rs.getString("name"));
+			dto.setTaskStatus(rs.getString("status"));
+			dto.setTaskPriority(rs.getString("priority"));
 			caseList.add(dto);
 		}
 

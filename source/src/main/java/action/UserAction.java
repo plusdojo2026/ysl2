@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import dto.AllDTO;
-import dto.CaseDTO;
 import dto.UserDTO;
 import service.DashBoardService;
 import service.UserService;
@@ -64,7 +63,7 @@ public class UserAction {
 		
 		//進行中案件
 		DashBoardService caseService = new DashBoardService();//ケースserviceをnewでインスタンス化
-		ArrayList<CaseDTO> caseList = caseService.selectWorkingCases(userId);//案件のデータをCaseListに格納
+		ArrayList<AllDTO> caseList = caseService.selectWorkingCases(userId);//案件のデータをCaseListに格納
 		request.setAttribute("caseList",caseList);//caseListの名前でcaseListをセット
 		int cases = caseList.size();//該当レコード数を計算 int型の変数"caseList"にレコード数を格納
 		request.setAttribute("cases",cases);

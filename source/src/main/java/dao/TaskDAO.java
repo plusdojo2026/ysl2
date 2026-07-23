@@ -163,11 +163,15 @@ public class TaskDAO {
 				+ "ON tasks.manager=users.user_id"
 				+ "LEFT JOIN man_hours"
 				+ "ON tasks.task_id = man_hours.task_id"
+				+ "WHERE tasks.case_id = ?"
 				+ "GROUP BY tasks.task_id"
 				+ "ORDER BY tasks.deadline_date";
 		
 		//まとめる
 		PreparedStatement pStmt = conn.prepareStatement(sql);
+		
+		//?に値をセット
+		pStmt.setString(1, caseId);
 		
 		//SELECT文を実行し、結果表を取得
 		ResultSet rs = pStmt.executeQuery();

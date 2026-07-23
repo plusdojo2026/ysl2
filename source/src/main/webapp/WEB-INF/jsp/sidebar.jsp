@@ -54,7 +54,7 @@
   </ul>
   
   <div class="sidebar-footer">
-    <a href="${pageContext.request.contextPath}/Controller?page_id=side&button_id=ログイン" class="footer-link">ログアウト</a>
+    <a href="${pageContext.request.contextPath}/Controller?page_id=side&button_id=ログアウト" class="footer-link">ログアウト</a>
   </div>
   
   <div class="sidebar-footer">

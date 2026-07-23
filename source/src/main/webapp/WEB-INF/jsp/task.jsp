@@ -47,7 +47,7 @@
 	<div>
 	<c:forEach var="t" items="${allTasksList}">
 		<p>案件名：${t.caseName}</p>
-		<a href="/Controller/?page_id=L006&button_id=task_link&task_id=${t.taskId}">タスク名：${t.task_name}</a>
+		<a href="/Controller/?page_id=L006&button_id=task_link&task_id=${t.taskId}">タスク名：${t.taskName}</a>
 		<p>担当者：${t.manager}</p>
 		<p>期限：${t.deadlineDate}</p>
 		<p>見積工数：${t.estimatedMonHours}</p>

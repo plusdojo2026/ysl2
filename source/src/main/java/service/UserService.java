@@ -116,7 +116,7 @@ public class UserService extends DBAccess{
 	}
 	
 	//アクティブユーザー一覧取得メソッド
-	public ArrayList<UserDTO> selectActiveUSers(){
+	public ArrayList<UserDTO> selectActiveUsers(){
 		ArrayList<UserDTO> userList = new ArrayList<>();
 		
 		UserDAO dao = new UserDAO(super.conn);

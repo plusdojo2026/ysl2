@@ -75,9 +75,9 @@ public class CaseService extends DBAccess {
 	}
 
 	//進行中案件検索
-	public ArrayList<CaseDTO> selectWorkingCases() {
+	public ArrayList<AllDTO> selectWorkingCases() {
 		super.access();
-		ArrayList<CaseDTO> caseList = null;
+		ArrayList<AllDTO> caseList = null;
 		CaseDAO dao = new CaseDAO(super.conn);
 		
 		try {

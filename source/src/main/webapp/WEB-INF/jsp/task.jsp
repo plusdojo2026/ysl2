@@ -20,12 +20,12 @@
 		<input type="text" name="seach_word" placeholder="キーワード検索">
 		<select name="case_name">
 			<c:forEach var="c" items="allTaskList">
-				<option value="${c.case_id}">${c.case_name}</option>
+				<option value="${c.caseId}">${c.caseName}</option>
 			</c:forEach>
 		</select>
 		<select name="manager">
 			<c:forEach var="m" items="">
-				<option value="${m.user_id}">${c.user_name}</option>
+				<option value="${m.userId}">${c.userName}</option>
 			</c:forEach>
 		</select>
 		<select name="status">
@@ -45,15 +45,15 @@
 
 	<div>
 	<c:forEach var="t" items="allTasksList">
-		<p>案件名：${t.case_name}</p>
-		<a href="/Controller/?page_id=L006&button_id=task_link&task_id=${t.task_id}">タスク名：${t.task_name}</a>
+		<p>案件名：${t.caseName}</p>
+		<a href="/Controller/?page_id=L006&button_id=task_link&task_id=${t.taskId}">タスク名：${t.task_name}</a>
 		<p>担当者：${t.manager}</p>
-		<p>期限：${t.deadline_date}</p>
-		<p>見積工数：${t.estimated_mon_hours}</p>
-		<p>実績工数：${t.actual_man_hours}</p>
-		<p>ステータス${t.task_status}</p>
-		<p>優先度：${t.priority}</p>
-		<p>説明：${t.memo}</p>
+		<p>期限：${t.deadlineDate}</p>
+		<p>見積工数：${t.estimatedMonHours}</p>
+		<p>実績工数：${t.actualManHours}</p>
+		<p>ステータス${t.taskStatus}</p>
+		<p>優先度：${t.taskPriority}</p>
+		<p>説明：${t.taskMemo}</p>
 		<input type="button" value="編集">
 	</c:forEach>
 	</div>
@@ -67,8 +67,8 @@
 		<p>
 		<label for="case_name">案件名*<br></label>
 		<select name="case_name" id="case_name">
-			<c:forEach var="c" items="">
-				<option value="${c.case_id}">${c.case_name}</option>
+			<c:forEach var="c" items="casesList">
+				<option value="${c.caseId}">${c.caseName}</option>
 			</c:forEach>
 		</select>
 		</p>
@@ -80,8 +80,8 @@
 		<p>
         <label for="manager">担当者<br></label>
 		<select name="manager" id="manager">
-			<c:forEach var="m" items="">
-				<option value="${m.user_id}">${c.user_name}</option>
+			<c:forEach var="m" items="activeUsersList">
+				<option value="${m.userId}">${c.userName}</option>
 			</c:forEach>
 		</select>
 		</p>
@@ -122,6 +122,12 @@
 			<option value="保留">保留</option>
 		</select>
 		</p>
+		<p>
+        <label>進捗率<br>
+            <input type="number" min="0" max="100" step="1" name="progress">
+        </label>
+		</p>
+		<p><label>説明<input type="textarea" name="memo"></label></p>
 		<input type="submit" name="button_id" value="登録">
 		<input type="button" value="戻る">
     </form>
@@ -135,8 +141,8 @@
 		<p>
 		<label for="case_name">案件名*<br></label>
 		<select name="case_name" id="case_name">
-			<c:forEach var="c" items="">
-				<option value="${c.case_id}">${c.case_name}</option>
+			<c:forEach var="c" items="caesList">
+				<option value="${c.caseId}">${c.caseName}</option>
 			</c:forEach>
 		</select>
 		</p>
@@ -149,13 +155,13 @@
         <label for="manager">担当者<br></label>
 		<select name="manager" id="manager">
 			<c:forEach var="m" items="activeUserList">
-				<option value="${m.user_id}">${c.user_name}</option>
+				<option value="${m.userId}">${m.userName}</option>
 			</c:forEach>
 		</select>
 		</p>
 		<p>
         <label>進捗率<br>
-            <input type="number" min="0" max="100" step="1" name="task_progress">
+            <input type="number" min="0" max="100" step="1" name="progress">
         </label>
 		</p>
 		<p>
@@ -190,9 +196,7 @@
 			<option value="保留">保留</option>
 		</select>
 		</p>
-		<p>
-		<label></label>説明
-		</p>
+		<p><label>説明<input type="textarea" name="memo"></label></p>
 		<input type="submit" name="button_id" value="保存">
 		<input type="button" value="戻る">
     </form>

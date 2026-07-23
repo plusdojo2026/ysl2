@@ -79,15 +79,15 @@ public class TaskAction {
 		
 		//入力値の取得
 		request.setCharacterEncoding("UTF-8");
-		String caseId = request.getParameter("caseId");
-		String taskName = request.getParameter("taskName");
+		String caseId = request.getParameter("case_id");
+		String taskName = request.getParameter("task_name");
 		int manager = Integer.parseInt(request.getParameter("manager"));
-		String startDate = request.getParameter("startDate");
-		String deadlineDate = request.getParameter("deadlineDate");
+		String startDate = request.getParameter("start_date");
+		String deadlineDate = request.getParameter("deadline_date");
 		String priority = request.getParameter("priority");
 		String status = request.getParameter("status");
-		double estimatedManHours = Double.parseDouble(request.getParameter("estimatedManHours"));
-		int taskProgress = Integer.parseInt(request.getParameter("taskProgress"));
+		double estimatedManHours = Double.parseDouble(request.getParameter("estimated_man_hours"));
+		int taskProgress = Integer.parseInt(request.getParameter("progress"));
 		String memo = request.getParameter("memo");
 		
 		//dtoにまとめる
@@ -139,17 +139,17 @@ public class TaskAction {
 		
 		//入力値の取得
 		request.setCharacterEncoding("UTF-8");
-		String caseId = request.getParameter("caseId");
-		String taskName = request.getParameter("taskName");
+		String caseId = request.getParameter("case_id");
+		String taskName = request.getParameter("tas_name");
 		int manager = Integer.parseInt(request.getParameter("manager"));
-		String startDate = request.getParameter("startDate");
-		String deadlineDate = request.getParameter("deadlineDate");
+		String startDate = request.getParameter("start_date");
+		String deadlineDate = request.getParameter("deadline_date");
 		String priority = request.getParameter("priority");
 		String status = request.getParameter("status");
-		double estimatedManHours = Double.parseDouble(request.getParameter("estimatedManHours"));
-		int taskProgress = Integer.parseInt(request.getParameter("taskProgress"));
+		double estimatedManHours = Double.parseDouble(request.getParameter("estimated_man_hours"));
+		int taskProgress = Integer.parseInt(request.getParameter("progress"));
 		String memo = request.getParameter("memo");
-		int taskId = Integer.parseInt(request.getParameter("taskId"));
+		int taskId = Integer.parseInt(request.getParameter("task_id"));
 		
 		//dtoにまとめる
 		dto.setCaseId(caseId);
@@ -198,7 +198,7 @@ public class TaskAction {
 		String page = "/WEB-INF/jsp/task.jsp";
 		
 		//入力値取得
-		int taskId = Integer.parseInt(request.getParameter("taskId"));
+		int taskId = Integer.parseInt(request.getParameter("task_id"));
 		
 		//Serviceを実体化
 		TaskService tService = new TaskService();
@@ -236,12 +236,26 @@ public class TaskAction {
 		TaskDTO dto = null;
 		
 		//入力値取得
-		int taskId = Integer.parseInt(request.getParameter("taskId"));
+		int taskId = Integer.parseInt(request.getParameter("task_id"));
 		String status = request.getParameter("status");
+		int taskProgress = 0;
 		
-		//dtoにまとめる
-		dto.setTaskId(taskId);
-		dto.setStatus(status);
+		if (status.equals("完了")) {
+			taskProgress = 100;
+			//dtoにまとめる
+			dto.setTaskId(taskId);
+			dto.setStatus(status);
+			dto.setTaskProgress(taskProgress);
+		}else if (status.equals("未着手")) {
+			taskProgress = 0;
+			dto.setTaskId(taskId);
+			dto.setStatus(status);
+			dto.setTaskProgress(taskProgress);
+		}else {
+			//dtoにまとめる
+			dto.setTaskId(taskId);
+			dto.setStatus(status);
+		}
 		
 		//Serviceを実体化
 		TaskService tService = new TaskService();

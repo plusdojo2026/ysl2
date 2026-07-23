@@ -107,6 +107,7 @@
 				<th>案件名</th>
 				<th>顧客名</th>
 				<th>担当者</th>
+				<th>ステータス</th>
 				<th>優先度</th>
 			</tr>
 			
@@ -118,6 +119,7 @@
 				<td><c:out value="${c.caseName}"/></td>
 				<td><c:out value="${c.customerName}"/></td>
 				<td><c:out value="${c.name}"/></td>
+				<td><c:out value="${c.caseStatus}"/></td>
 				<td><c:out value="${c.casePriority}"/></td>		
 			</tr>
 			</c:forEach>

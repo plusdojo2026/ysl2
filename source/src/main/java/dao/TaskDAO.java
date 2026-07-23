@@ -61,6 +61,7 @@ public class TaskDAO {
 			
 			taskList.add(dto);
 		}
+	
 		
 		return taskList;
 	}
@@ -337,6 +338,8 @@ public class TaskDAO {
 		//まとめる
 		PreparedStatement pStmt = conn.prepareStatement(sql);
 		
+		System.out.println("SQL文:" + sql);
+		
 		//?に値をセット
 		pStmt.setInt(1, userId);
 		
@@ -361,6 +364,7 @@ public class TaskDAO {
 			taskList.add(dto);
 		}
 		
+		System.out.println("担当タスク検索結果の行数：" + taskList.size());
 		return taskList;
 	}
 

@@ -15,6 +15,7 @@ public class CaseService extends DBAccess {
 
 	//案件全表示メソッド
 	public ArrayList<AllDTO> selectCases() {
+		super.access();
 		ArrayList<AllDTO> caseList = null;
 
 		CaseDAO dao = new CaseDAO(super.conn);
@@ -31,6 +32,7 @@ public class CaseService extends DBAccess {
 
 	//案件登録メソッド
 	public int registCase(CaseDTO dto) {
+		super.access();
 		int ans = 0;
 
 		CaseDAO dao = new CaseDAO(conn);
@@ -52,12 +54,13 @@ public class CaseService extends DBAccess {
 				e.printStackTrace();
 			}
 		}
-
+		super.close();
 		return ans;
 	}
 
 	//案件編集メソッド
 	public int editCase(CaseDTO dto) {
+		super.access();
 		int ans = 0;
 		CaseDAO dao = new CaseDAO(conn);
 		try {
@@ -66,12 +69,14 @@ public class CaseService extends DBAccess {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
-
+		
+		super.close();
 		return ans;
 	}
 
 	//進行中案件検索
 	public ArrayList<CaseDTO> selectWorkingCases() {
+		super.access();
 		ArrayList<CaseDTO> caseList = null;
 		CaseDAO dao = new CaseDAO(super.conn);
 		
@@ -87,6 +92,7 @@ public class CaseService extends DBAccess {
 	
 	//ステータス変更メソッド
 	public int updateStatus(String caseId,String status) {
+		super.access();
 		int ans = 0;
 		
 		CaseDAO dao = new CaseDAO(conn);
@@ -97,11 +103,13 @@ public class CaseService extends DBAccess {
 			e.printStackTrace();
 		}
 		
+		super.close();
 		return ans;
 		
 	}
 	//案件詳細用メソッド
 	public AllDTO selectDetailCase(String caseId) {
+		super.access();
 		AllDTO dto = null;
 		CaseDAO dao = new CaseDAO(super.conn);
 		
@@ -112,6 +120,7 @@ public class CaseService extends DBAccess {
 			e.printStackTrace();
 		}
 		
+		super.close();
 		return dto;
 	}
 

@@ -30,7 +30,7 @@
 		<input type="button" name="new_regist" value="+新規登録">
 		
 		<hr>
-		<c:forEach var="e" items="${}" >
+		<c:forEach var="e" items="${caseList}" >
 			
 		<tr>
 				<td><a href="/Controller/?page_id=L004&button_id=case_link&case_id=${e.case_id}">${e.case_id}</a></td>

@@ -14,7 +14,7 @@ public class ManHourService extends DBAccess{
 	
 	//実績工数
 	public ArrayList<AllDTO> sumCaseManHours(int tsak_id) {
-		super.access(); 
+		super.access();
 		ArrayList<AllDTO> list = null;
 		ManHourDAO dao = new ManHourDAO(conn);
 		try {
@@ -28,7 +28,7 @@ public class ManHourService extends DBAccess{
 	
 	//工数登録メソッド
 	public int registManHour(Double today_man_hours, String work_details, String work_date){
-		super.access(); 
+		super.access();
 		ManHourDAO dao = new ManHourDAO(conn);
 		int ans = 0;
 		try {
@@ -43,7 +43,7 @@ public class ManHourService extends DBAccess{
 	
 	//工数ログ削除メソッド
 	public int deleteManHour(int man_hours_id) {
-		super.access(); 
+		super.access();
 		ManHourDAO dao = new ManHourDAO(conn);
 		int ans = 0;
 		try {
@@ -58,7 +58,7 @@ public class ManHourService extends DBAccess{
 	
 	//工数ログ
 	public ArrayList<AllDTO> selectManHours(int task_id){
-		super.access(); 
+		super.access();
 		ArrayList<AllDTO> list = null;
 		ManHourDAO dao = new ManHourDAO(conn);
 		try {
@@ -72,7 +72,7 @@ public class ManHourService extends DBAccess{
 	
 	//案件名・タスク名（工数登録）
 	public ArrayList<AllDTO> selectCaseName(int task_id){
-		super.access(); 
+		super.access();
 		ArrayList<AllDTO> list = null;
 		ManHourDAO dao = new ManHourDAO(conn);
 		try {
@@ -86,7 +86,7 @@ public class ManHourService extends DBAccess{
 	
 	//タスクごとの実績工数
 	public ArrayList<AllDTO> sumTaskManHours(){
-		super.access(); 
+		super.access();
 		ArrayList<AllDTO> list = null;
 		ManHourDAO dao = new ManHourDAO(conn);
 		try {
@@ -97,5 +97,19 @@ public class ManHourService extends DBAccess{
 		super.close();
 		return list;
 		
+	}
+	//工数ログ(案件詳細)
+	public ArrayList<AllDTO> selectCaseManHours(String caseId){
+		super.access();
+		ArrayList<AllDTO> list = null;
+		ManHourDAO dao = new ManHourDAO(conn);
+		try {
+			list = dao.selectCaseManHours(caseId);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		super.close();
+		return list;
 	}
 }

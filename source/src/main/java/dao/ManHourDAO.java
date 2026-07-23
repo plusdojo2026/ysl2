@@ -155,7 +155,34 @@ public class ManHourDAO {
 			return list;
 			
 		}
-
+	
+		//工数ログ(案件詳細)
+		public ArrayList<AllDTO>selectCaseManHours(String caseId)throws SQLException{
+			ArrayList<AllDTO> caseList = new ArrayList<AllDTO>();
+			
+			String sql ="SELECT work_date, task_name , manager , today_man_hours , work_details FROM man_hours "
+					+ "    INNER JOIN tasks ON tasks.task_id = man_hours.task_id  "
+					+ "    WHERE man_hours.task_id IN (SELECT tasks.task_id FROM tasks WHERE case_id = ? )ORDER BY work_date LIMIT 10;";
+			
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			
+			pStmt.setString(1,caseId);
+			
+			ResultSet rs = pStmt.executeQuery();
+			
+			while(rs.next()) {
+				AllDTO dto = new AllDTO();
+				dto.setWorkDate(rs.getString("work_date"));
+				dto.setTaskName(rs.getString("task_name"));
+				dto.setManager(rs.getInt("manager"));
+				dto.setTodayManHours(rs.getDouble("today_man_hours"));
+				dto.setWorkDetails(rs.getString("work_details"));
+				caseList.add(dto);
+				
+			}
+			
+			return caseList;
+		}
 		
 	
 }

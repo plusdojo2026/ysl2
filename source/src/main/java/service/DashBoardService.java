@@ -19,34 +19,34 @@ public class DashBoardService extends DBAccess {
 	public ArrayList<AllDTO> selectOverTasks(int userId) {
 		super.access();
 		
-		ArrayList<AllDTO> OvertaskList = new ArrayList<AllDTO>();
+		ArrayList<AllDTO> overTaskList = new ArrayList<AllDTO>();
 		
 		TaskDAO dao = new TaskDAO(super.conn);
 		try {
-			OvertaskList = dao.selectOverTasks(userId);
+			overTaskList = dao.selectOverTasks(userId);
 		} catch (SQLException e) {
 			System.out.println("SQL文おかしい");
 			e.printStackTrace();
 		}
 		super.close();
-		return OvertaskList;
+		return overTaskList;
 	}
 	
 	//担当タスク検索（ダッシュボード）-----------------------------
 	public ArrayList<AllDTO> selectAssignedTasks(int userId) {
 		super.access();
 		
-		ArrayList<AllDTO> MytaskList = new ArrayList<AllDTO>();
+		ArrayList<AllDTO> myTaskList = new ArrayList<AllDTO>();
 		
 		TaskDAO dao = new TaskDAO(super.conn);
 		try {
-			MytaskList = dao.selectAssignedTasks(userId);
+			myTaskList = dao.selectAssignedTasks(userId);
 		} catch (SQLException e) {
 			System.out.println("SQL文おかしい");
 			e.printStackTrace();
 		}
 		super.close();
-		return MytaskList;
+		return myTaskList;
 	}
 	
 	//進行中案件検索(ダッシュボード)--------------------------------------------

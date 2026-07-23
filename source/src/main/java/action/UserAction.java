@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import dto.AllDTO;
-import dto.TaskDTO;
+import dto.CaseDTO;
 import dto.UserDTO;
 import service.DashBoardService;
 import service.UserService;
@@ -57,7 +57,7 @@ public class UserAction {
 		request.setAttribute("MytaskList",MytaskList);
 		
 		//進行中案件
-		ArrayList<TaskDTO> caseList = service.selectWorkingCases();
+		ArrayList<CaseDTO> caseList = service.selectWorkingCases(dto.getUserId());
 		request.setAttribute("caseList",caseList);
 
 		ans = "/WEB-INF/jsp/dash_board.jsp";//ページを定義

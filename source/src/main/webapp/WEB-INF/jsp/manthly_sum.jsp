@@ -9,8 +9,9 @@
 <link rel="stylesheet" action="/servlet/Controller">
 </head>
 <body>
-<header> <%@ include file="/WEB-INF/jsp/sidebar.jsp" %> </header>
-<div class ="mon">
+
+<div class ="main">
+<%@ include file="/WEB-INF/jsp/sidebar.jsp" %>
 <c:forEach >
 
 	<div>

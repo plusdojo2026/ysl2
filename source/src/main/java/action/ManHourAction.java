@@ -31,7 +31,7 @@ public class ManHourAction {
 	
 	//工数登録メソッド
 	public String registManHour() throws UnsupportedEncodingException{
-		String page ="/WEB=INF/jsp/task_detail.jsp";
+		String page ="/WEB-INF/jsp/task_detail.jsp";
 		//入力値の取得
 		request.setCharacterEncoding("UTF-8");
 		Double todayManHours =  Double.parseDouble(request.getParameter("today_man_hours"));
@@ -41,7 +41,7 @@ public class ManHourAction {
 		ManHourService service = new ManHourService();
 		service.registManHour(todayManHours, workDetails, workDate);
 		request.setAttribute("today_man_hours", todayManHours);
-		request.setAttribute("work_details", workDate);
+		request.setAttribute("work_details", workDetails);
 		request.setAttribute("work_date", workDate);
 		return page;
 		
@@ -54,7 +54,6 @@ public class ManHourAction {
 		int  manHourId = Integer.parseInt(request.getParameter("man_hour_id"));
 		
 		ManHourService service = new ManHourService();
-		service.deleteManHour(manHourId);
 		service.deleteManHour(manHourId);
 		request.setAttribute("man_hour_id", manHourId);
 		return page;

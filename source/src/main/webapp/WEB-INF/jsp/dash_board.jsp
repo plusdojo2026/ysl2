@@ -39,6 +39,7 @@
 		<div class ="deadline_over_tasks">
 			<h3>期限超過タスク</h3>
 		<!-- 項目 -->
+		<table>
 			<tr>
 				<th>タスク名</th>
 				<th>案件名</th>
@@ -61,12 +62,14 @@
 				<td><c:out value ="${o.estimatedManHours}"/></td>
 				<td><c:out value ="${o.priority}"/></td>				
 			</tr>
-			</c:forEach>		
+			</c:forEach>
+		</table>		
 		</div>
 		
 		<div class ="my_tasks">		
 			<h3>担当タスク</h3>
 			<!-- 項目 -->
+			<table>
 			<tr>
 				<th>タスク名</th>
 				<th>案件名</th>
@@ -90,13 +93,18 @@
 				<td><c:out value ="${m.priority}"/></td>		
 			</tr>		
 			</c:forEach>
+			</table>
 			<!-- 工数登録ボタン (ページIDとボタンIDを持たせる)-->
-			<input type="hidden" name="page_id" value="L002">
-			<input type="submit" name="button=id" value="工数入力">
+			<form method="POST" action="<c:url value='/Controller'/>">
+				<input type="hidden" name="page_id" value="L002">
+				<input type="submit" name="button=id" value="工数登録">
+			</form>
+			
 		</div>
 		
 		<div class ="now_cases">
 			<h3>進行中案件</h3>
+			<table>
 			<!-- 項目 -->
 			<tr>
 				<th>案件コード</th>
@@ -117,6 +125,7 @@
 				<td><c:out value="${c.priority}"/></td>		
 			</tr>
 			</c:forEach>
+			</table>
 		</div>
 <!-- 6つのカードの表示ここまで -->
 		

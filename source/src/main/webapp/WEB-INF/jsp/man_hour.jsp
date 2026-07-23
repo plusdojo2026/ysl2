@@ -9,13 +9,14 @@
 <link rel="stylesheet" href= "/css/man_hour.css">
 </head>
 <body>
+<header> <%@ include file="/WEB-INF/jsp/sidebar.jsp" %> </header>
 <div class="main">
-<c:forEach >
-<form method="POST" action="/servlet/Controller">
+<c:forEach >s
 	<div clas="pop">
 		<p>${case_name}</p>
 		<p>${task_name}</p>
 	</div>	
+<form method="POST" action="/servlet/Controller">
 	<div clas="man_h">
 	<label>作業日<br>
 		<input type="date" name="work_date"><br>

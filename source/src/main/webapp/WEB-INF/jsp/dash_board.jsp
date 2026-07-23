@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<header> <!-- sidebar.jspをインクルードする --></header>
+<header> <%@ include file="/WEB-INF/jsp/sidebar.jsp" %> </header>
 	
 <div class="main">
 		
@@ -49,17 +49,17 @@
 				<th>優先度</th>
 			</tr>
 			
-			<c:forEach var="o" o="${OverTaskList}">
+			<c:forEach var="o" items="${OverTaskList}">
 			<!-- 変数"o" で一覧取得-->
 			<!-- 期限超過分のタスクを一覧取得 -->
 			<tr>
-				<td><c:out value ="${o.taskName}"></td>
-				<td><c:out value ="${o.caseName}"></td>
-				<td><c:out value ="${o.startDate}"></td>
-				<td><c:out value ="${o.endDate}"></td>
-				<td><c:out value ="${o.actualManHours}"></td>
-				<td><c:out value ="${o.estimatedManHours}"></td>
-				<td><c:out value ="${o.priority}"></td>				
+				<td>${o.taskName}</td>
+				<td><c:out value ="${o.caseName}"/></td>
+				<td><c:out value ="${o.startDate}"/></td>
+				<td><c:out value ="${o.endDate}"/></td>
+				<td><c:out value ="${o.actualManHours}"/></td>
+				<td><c:out value ="${o.estimatedManHours}"/></td>
+				<td><c:out value ="${o.priority}"/></td>				
 			</tr>
 			</c:forEach>		
 		</div>
@@ -77,17 +77,17 @@
 				<th>優先度</th>
 			</tr>
 			
-			<c:forEach var="m" m="${MyTaskList}">
+			<c:forEach var="m" items="${MyTaskList}">
 			<!-- 変数"m" で一覧取得-->
 			<!-- "manager"が自分、つまりログイン中のセッションと一致するタスクを絞り込む -->
 			<tr>
-				<td><c:out value ="${m.taskName}"></td>
-				<td><c:out value ="${m.caseName}"></td>
-				<td><c:out value ="${m.startDate}"></td>
-				<td><c:out value ="${m.endDate}"></td>
-				<td><c:out value ="${m.actuaryDate}"></td>
-				<td><c:out value ="${m.estimatedDtae}"></td>
-				<td><c:out value ="${m.priority}"></td>		
+				<td><c:out value ="${m.taskName}"/></td>
+				<td><c:out value ="${m.caseName}"/></td>
+				<td><c:out value ="${m.startDate}"/></td>
+				<td><c:out value ="${m.endDate}"/></td>
+				<td><c:out value ="${m.actuaryDate}"/></td>
+				<td><c:out value ="${m.estimatedDate}"/></td>
+				<td><c:out value ="${m.priority}"/></td>		
 			</tr>		
 			</c:forEach>
 			<!-- 工数登録ボタン (ページIDとボタンIDを持たせる)-->
@@ -106,18 +106,18 @@
 				<th>優先度</th>
 			</tr>
 			
-			<c:forEach var="c" c="${CaseList}">
+			<c:forEach var="c" items="${CaseList}">
 			<!-- 変数"n" で一覧取得-->
 			<!-- "status"が進行中の案件を絞り込む -->
 			<tr>
-				<td><c:out value="${c.caseId}"></td>
-				<td><c:out value="${c.caseName}"></td>
-				<td><c:out value="${c.customerName}"></td>
-				<td><c:out value="${c.pmId}"></td>
-				<td><c:out value="${c.priority}"></td>		
+				<td><c:out value="${c.caseId}"/></td>
+				<td><c:out value="${c.caseName}"/></td>
+				<td><c:out value="${c.customerName}"/></td>
+				<td><c:out value="${c.pmId}"/></td>
+				<td><c:out value="${c.priority}"/></td>		
 			</tr>
 			</c:forEach>
-		</div>	
+		</div>
 <!-- 6つのカードの表示ここまで -->
 		
 </div>

@@ -19,7 +19,7 @@
 		<input type="hidden" name="page_id" value="L006">
 		<input type="text" name="seach_word" placeholder="キーワード検索">
 		<select name="case_name">
-			<c:forEach var="c" items="allTaskList">
+			<c:forEach var="c" items="${allTaskList}">
 				<option value="${c.caseId}">${c.caseName}</option>
 			</c:forEach>
 		</select>
@@ -44,7 +44,7 @@
 	</div>
 
 	<div>
-	<c:forEach var="t" items="allTasksList">
+	<c:forEach var="t" items="${allTasksList}">
 		<p>案件名：${t.caseName}</p>
 		<a href="/Controller/?page_id=L006&button_id=task_link&task_id=${t.taskId}">タスク名：${t.task_name}</a>
 		<p>担当者：${t.manager}</p>
@@ -67,7 +67,7 @@
 		<p>
 		<label for="case_name">案件名*<br></label>
 		<select name="case_name" id="case_name">
-			<c:forEach var="c" items="casesList">
+			<c:forEach var="c" items="${casesList}">
 				<option value="${c.caseId}">${c.caseName}</option>
 			</c:forEach>
 		</select>
@@ -80,7 +80,7 @@
 		<p>
         <label for="manager">担当者<br></label>
 		<select name="manager" id="manager">
-			<c:forEach var="m" items="activeUsersList">
+			<c:forEach var="m" items="${activeUsersList}">
 				<option value="${m.userId}">${c.userName}</option>
 			</c:forEach>
 		</select>
@@ -154,7 +154,7 @@
 		<p>
         <label for="manager">担当者<br></label>
 		<select name="manager" id="manager">
-			<c:forEach var="m" items="activeUserList">
+			<c:forEach var="m" items="${activeUserList}">
 				<option value="${m.userId}">${m.userName}</option>
 			</c:forEach>
 		</select>

@@ -53,7 +53,7 @@ public class ManthlySumDAO {
 	//月ごとの実績工数計算メソッド(後でserviceで詰めなおす中身2/2)
 	public ArrayList<AllDTO> sumManthlyCasesManHours(String yearManth) throws SQLException{
 		
-		ArrayList<AllDTO> ManthlyCases = new ArrayList<AllDTO>();//変数ManthlyCasesでAllDTOをnewする
+		ArrayList<AllDTO> ManthlyManHours = new ArrayList<AllDTO>();//変数ManthlyCasesでAllDTOをnewする
 		
 		//月ごとの実績工数を取得する(method.sql参照 + 加工)
 		//SQL文を準備
@@ -76,7 +76,7 @@ public class ManthlySumDAO {
 			dto.setTodayManHours(rs.getDouble("today_man_hours"));		//月ごとかつ案件ごとの実績工数
 		}
 		//Serviceに返却
-		return ManthlyCases;
+		return ManthlyManHours;
 	}
 	
 	//月別、担当者ごとの工数集計メソッド（メンバー別集計テーブル）

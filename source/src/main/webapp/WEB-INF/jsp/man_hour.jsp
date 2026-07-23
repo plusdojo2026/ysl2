@@ -11,7 +11,7 @@
 <body>
 <div class="main">
 <c:forEach >
-<form method="POST" action="/servlet/Controller" >
+<form method="POST" action="/servlet/Controller">
 	<div clas="pop">
 		<p>${case_name}</p>
 		<p>${task_name}</p>

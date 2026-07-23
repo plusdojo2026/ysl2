@@ -6,11 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>月次集計</title>
-<link rel="stylesheet" href="<c:url value= />">
+<link rel="stylesheet" action="/servlet/Controller">
 </head>
 <body>
 <div class ="mon">
-<c:forEach var="" items="${}" >
+<c:forEach >
 
 	<div>
 		<input type="date" name="work_date" ><br>

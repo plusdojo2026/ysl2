@@ -52,8 +52,9 @@ public class Controller extends HttpServlet {
 			page = action.selectTaskDetail();
 		}
 
-		System.out.println("ページ：" + pageId + " ボタン：" + buttonId);
+	
 
+		System.out.println("フォワード先ページ："+page);
 		//ログイン画面へフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 		dispatcher.forward(request, response);
@@ -172,7 +173,8 @@ public class Controller extends HttpServlet {
 			page = action.updatePassword();
 		}
 
-		System.out.println("ページ：" + pageId + " ボタン：" + buttonId);
+
+		System.out.println("フォワード先ページ："+page);
 		//ログイン画面へフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 		dispatcher.forward(request, response);

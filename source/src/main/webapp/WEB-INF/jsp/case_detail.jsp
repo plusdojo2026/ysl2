@@ -68,7 +68,7 @@ pageEncoding="UTF-8"%>
           <th>実績工数</th>
           <th>進捗バー</th>
         </tr>
-        <c:forEach var="e" items="${}">
+        <c:forEach var="e" items="${taskList}">
           <tr>
             <th>${e.task_name}</th>
             <th>${e.manager}</th>
@@ -87,7 +87,7 @@ pageEncoding="UTF-8"%>
     <div class="manhour_log">
       <h3>工数ログ(最新10件)</h3>
       <table>
-        <c:forEach var="e" items="${}">
+        <c:forEach var="e" items="${manList}">
           <tr>
             <th>${e.work_date}</th>
             <th>${e.task_name}</th>

@@ -101,6 +101,10 @@ public class CaseAction {
 
 		CaseService service = new CaseService();
 		int ans = service.editCase(dto);
+		
+		ArrayList<AllDTO> caseList = service.selectCases();
+		request.setAttribute("caseList", caseList);
+
 
 		return page;
 	}
@@ -127,11 +131,12 @@ public class CaseAction {
 		
 		request.setAttribute("taskList",taskList);
 		
+		
 		//工数ログ(最新10件)
 		ManHourService manService = new ManHourService();
-		ArrayList<AllDTO> manList = manService.sumCaseManHours();
-		request.setAttribute("manList",manList);
+		ArrayList<AllDTO> manList = manService.selectCaseManHours(caseId);
 		
+		request.setAttribute("manList",manList);
 		
 		return page;
 	}

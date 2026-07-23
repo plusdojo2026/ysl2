@@ -45,7 +45,6 @@
 				<th>案件名</th>
 				<th>開始日</th>
 				<th>期限</th>
-				<th>実績工数</th>
 				<th>見積工数</th>
 				<th>優先度</th>
 			</tr>
@@ -54,13 +53,12 @@
 			<!-- 変数"o" で一覧取得-->
 			<!-- 期限超過分のタスクを一覧取得 -->
 			<tr>
-				<td>${o.taskName}</td>
+				<td><c:out value ="${o.taskName}"/></td>
 				<td><c:out value ="${o.caseName}"/></td>
-				<td><c:out value ="${o.startDate}"/></td>
-				<td><c:out value ="${o.endDate}"/></td>
-				<td><c:out value ="${o.actualManHours}"/></td>
+				<td><c:out value ="${o.taskStartDate}"/></td>
+				<td><c:out value ="${o.deadlineDate}"/></td>
 				<td><c:out value ="${o.estimatedManHours}"/></td>
-				<td><c:out value ="${o.priority}"/></td>				
+				<td><c:out value ="${o.taskPriority}"/></td>				
 			</tr>
 			</c:forEach>
 		</table>		
@@ -75,7 +73,6 @@
 				<th>案件名</th>
 				<th>開始日</th>
 				<th>期限</th>
-				<th>実績工数</th>
 				<th>見積工数</th>
 				<th>優先度</th>
 			</tr>
@@ -86,11 +83,10 @@
 			<tr>
 				<td><c:out value ="${m.taskName}"/></td>
 				<td><c:out value ="${m.caseName}"/></td>
-				<td><c:out value ="${m.startDate}"/></td>
-				<td><c:out value ="${m.endDate}"/></td>
-				<td><c:out value ="${m.actuaryDate}"/></td>
-				<td><c:out value ="${m.estimatedDate}"/></td>
-				<td><c:out value ="${m.priority}"/></td>		
+				<td><c:out value ="${m.taskStartDate}"/></td>
+				<td><c:out value ="${m.deadlineDate}"/></td>
+				<td><c:out value ="${m.estimatedManHours}"/></td>
+				<td><c:out value ="${m.taskPriority}"/></td>		
 			</tr>		
 			</c:forEach>
 			</table>

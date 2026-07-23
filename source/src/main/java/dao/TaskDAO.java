@@ -286,7 +286,7 @@ public class TaskDAO {
 		
 		//SELECT文準備
 		String sql = "SELECT tasks.case_id, case_name, task_id, task_name, tasks.status,"
-				+ " tasks.priority, deadline_date, estimated_man_hours, task_progress, tasks.memo"
+				+ " tasks.priority, tasks.start_date, deadline_date, estimated_man_hours, task_progress, tasks.memo"
 				+ " FROM tasks"
 				+ " JOIN cases"
 				+ " ON tasks.case_id=cases.case_id"
@@ -315,6 +315,7 @@ public class TaskDAO {
 			dto.setTaskName(rs.getString("task_name"));
 			dto.setTaskStatus(rs.getString("status"));
 			dto.setTaskPriority(rs.getString("priority"));
+			dto.setTaskStartDate(rs.getString("start_date"));
 			dto.setDeadlineDate(rs.getString("deadline_date"));
 			dto.setEstimatedManHours(rs.getDouble("estimated_man_hours"));
 			dto.setTaskProgress(rs.getInt("task_progress"));
@@ -333,7 +334,7 @@ public class TaskDAO {
 		
 		//SELECT文準備
 		String sql = "SELECT tasks.case_id, case_name, task_id, task_name, tasks.status,"
-				+ " tasks.priority, deadline_date, estimated_man_hours, task_progress, tasks.memo"
+				+ " tasks.priority,tasks.start_date, deadline_date, estimated_man_hours, task_progress, tasks.memo"
 				+ " FROM tasks"
 				+ " JOIN cases"
 				+ " ON tasks.case_id=cases.case_id"
@@ -361,6 +362,7 @@ public class TaskDAO {
 			dto.setTaskName(rs.getString("task_name"));
 			dto.setTaskStatus(rs.getString("status"));
 			dto.setTaskPriority(rs.getString("priority"));
+			dto.setTaskStartDate(rs.getString("start_date"));
 			dto.setDeadlineDate(rs.getString("deadline_date"));
 			dto.setEstimatedManHours(rs.getDouble("estimated_man_hours"));
 			dto.setTaskProgress(rs.getInt("task_progress"));

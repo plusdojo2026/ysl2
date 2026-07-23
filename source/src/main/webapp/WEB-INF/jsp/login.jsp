@@ -10,7 +10,7 @@
       <h1>ログイン</h1>
 
       <form action="/ysl2/Controller" method="post">
-        <div class="err-message">エラーメッセージ表示エリア</div>
+        <div class="err-message">${errMsg}</div>
         <div>
           <p>ログインID</p>
           <input type="text" name="login_id" id="login_id" required />

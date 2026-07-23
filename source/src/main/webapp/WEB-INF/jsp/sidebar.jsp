@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>サイドバー</title>
- <link rel="stylesheet" type="text/html" href="${pageContext.request.contextPath}/css/sidebar.css">
+ <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/sidebar.css">
 </head>
 
 <body>
@@ -54,11 +54,11 @@
   </ul>
   
   <div class="sidebar-footer">
-    <a href="#" class="footer-link">ログアウト</a>
+    <a href="${pageContext.request.contextPath}/jsp/login.jsp" class="footer-link">ログアウト</a>
   </div>
   
   <div class="sidebar-footer">
-    <a href="#" class="footer-link">パスワード変更</a>
+    <a href="${pageContext.request.contextPath}/jsp/change_password.jsp" class="footer-link">パスワード変更</a>
   </div>
 </div>
 

@@ -15,9 +15,9 @@ public class DBAccess {
 				// JDBCドライバを読み込む
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				//データベースに接続                 
-				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/xxxxxxxxx?"
+				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ysl2?"
 						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-						"xxxx", "xxxxx");
+						"ysl2", "ZwH54wxWJQt378SN");
 				
 		}catch (ClassNotFoundException e) {
 			e.printStackTrace();

@@ -9,7 +9,7 @@
     <div>
       <h1>ログイン</h1>
 
-      <form action="<c:url value='/Controller'/>">
+      <form action="/ysl2/Controller" method="post">
         <div class="err-message">エラーメッセージ表示エリア</div>
         <div>
           <p>ログインID</p>
@@ -17,10 +17,10 @@
         </div>
         <div>
           <p>パスワード</p>
-          <input type="password" name="pw" id="pw" req />
+          <input type="password" name="pw" id="pw" required />
         </div>
         <input type="hidden" name="page_id" value="L001" />
-        <button id="button_id" value="ログイン">ログイン</button>
+        <input type="submit" name="button_id" value="ログイン" />
       </form>
     </div>
   </body>

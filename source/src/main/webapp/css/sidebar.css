@@ -38,60 +38,6 @@
   flex: 1;
 }
 
-/* メニュー */
-.nav-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 16px;
-  margin-bottom: 4px;
-  border-radius: 8px;
-  cursor: pointer;
-  
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); 
-  position: relative;
-}
-
-/* high lightいるかいらんか後で決める tech blue*/
-.nav-item.active {
-	background: rgba(59, 130, 246, 0.15);
-	  color: #3b82f6;
-  font-weight: 600;
-}
-.nav-item.active::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 15%;
-  height: 70%;
-  width: 4px;
-  background: #3b82f6;
-  border-radius: 0 4px 4px 0;
-}
-
-.nav-text {
-  font-size: 14px;
-  line-height: 1.4;
-}
-.sub-text {
-  font-size: 11px;
-  opacity: 0.6;
-}
-
-/* 可要可不要*/
-.nav-badge {
-  font-size: 11px;
-  background: rgba(255, 255, 255, 0.1);
-  color: #94a3b8;
-  padding: 2px 8px;
-  border-radius: 20px;
-  min-width: 18px;
-  text-align: center;
-}
-.nav-badge.alert {
-  background: #ef4444; 
-  color: white;
-}
 
 /* foot */
 .sidebar-footer {

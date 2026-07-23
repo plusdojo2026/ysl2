@@ -169,14 +169,35 @@ public class CaseDAO {
 	public AllDTO selectDetailCase(String caseId) throws SQLException {
 		AllDTO dto = new AllDTO();
 		
-		String sql = "SELECT * FROM cases WHERE case_id = ? ";
+		String sql = "SELECT cases.case_id , case_name , customer_name , cases.status , cases.priority , cases.pm_id , cases.start_date , cases.end_date , cases.memo , budgeted_man_hours , SUM(today_man_hours) AS actual_man_hours,"
+				+ "    COUNT(tasks.task_id) AS all_tasks ,COUNT(CASE WHEN tasks.status='完了' THEN 1 ELSE NULL END) AS completed_tasks"
+				+ "	FROM tasks JOIN man_hours"
+				+ "    ON tasks.task_id = man_hours.task_id"
+				+ "    JOIN cases"
+				+ "    ON tasks.case_id = cases.case_id"
+				+ "    GROUP BY tasks.case_id"
+				+ "    HAVING case_id = ?";
 		PreparedStatement pStmt = conn.prepareStatement(sql);
 		
 		pStmt.setString(1,caseId);
 		
 		ResultSet rs = pStmt.executeQuery();
 		
-		dto.setCaseId(rs.getString("case_id"));
+		
+			dto.setCaseId(rs.getString("cases.case_id"));
+			dto.setCaseName(rs.getString("case_name"));
+			dto.setCustomerName(rs.getString("customer_name"));
+			dto.setCaseStatus(rs.getString("cases.status"));
+			dto.setCasePriority(rs.getString("cases.priority"));
+			dto.setPmId(rs.getInt("cases.pm_id"));
+			dto.setCaseStartDate(rs.getString("cases.start_date"));
+			dto.setEndDate(rs.getString("cases.end_date"));
+			dto.setBudgetedManHours(rs.getDouble("budgeted_man_hours"));
+			dto.setCaseMemo(rs.getString("cases.memo"));
+			dto.setActualManHours(rs.getDouble("actual_man_hours"));
+			dto.setAllTasks(rs.getInt("all_tasks"));
+			dto.setCompletedTasks(rs.getInt("completed_tasks"));
+			
 		
 		return dto;
 	}

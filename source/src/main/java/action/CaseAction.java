@@ -9,6 +9,7 @@ import dto.AllDTO;
 import dto.CaseDTO;
 import service.CaseService;
 import service.ManHourService;
+import service.TaskService;
 
 public class CaseAction {
 
@@ -108,14 +109,23 @@ public class CaseAction {
 	public String selectCaseDetail() throws UnsupportedEncodingException {
 		String page = "/WEB-INF/jsp/case_detail.jsp";
 		
+		request.setCharacterEncoding("UTF-8");
+		String caseId = request.getParameter("case_id");
+		
 		//案件詳細取得
+		AllDTO dedto = new AllDTO();
+		
 		CaseService caseservice = new CaseService();
+		dedto = caseservice.selectDetailCase(caseId);
 		
-		
+		request.setAttribute("dedto",dedto);
 		
 		//案件タスク一覧取得
 		
+		TaskService service = new TaskService();
+		ArrayList<AllDTO> taskList = service.selectTaskOfCase(caseId);
 		
+		request.setAttribute("taskList",taskList);
 		
 		//工数ログ(最新10件)
 		ManHourService manService = new ManHourService();

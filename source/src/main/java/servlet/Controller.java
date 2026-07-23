@@ -21,11 +21,11 @@ import action.UserAction;
 @WebServlet("/Controller")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+
 		String page = "/WEB-INF/jsp/login.jsp";
 		//ページIDを取得
 		String pageId = request.getParameter("page_id");
@@ -34,7 +34,6 @@ public class Controller extends HttpServlet {
 
 		System.out.println("ページ：" + pageId + " ボタン：" + buttonId);
 
-		
 		//何もわたってきて無ければログイン画面へ
 		if (pageId == null && buttonId == null) {
 			page = "/WEB-INF/jsp/login.jsp";
@@ -70,40 +69,42 @@ public class Controller extends HttpServlet {
 			//タスク一覧のタスク詳細への遷移リンク
 			TaskAction action = new TaskAction(request);
 			page = action.selectTaskDetail();
-		} 
-
-	
-
-		System.out.println("フォワード先ページ："+page);
-		//ログイン画面へフォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-		dispatcher.forward(request, response);
-	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		
-		String page = null;
-		
-		//ページIDを取得
-		String pageId = request.getParameter("page_id");
-		//ボタンの詳細を取得
-		String buttonId = request.getParameter("button_id");
-		
-		//何が入っているか確認
-		System.out.println("ページ：" + pageId + " ボタン：" + buttonId);
-		
-		if (pageId.equals("L001") && buttonId.equals("ログイン")) {
-			//ログインボタン
+		} else if (pageId.equals("L010") && buttonId.equals("変更")) {
+			//パスワード変更画面の変更ボタン
 			UserAction action = new UserAction(request);
-			page = action.login();
+			page = action.updatePassword();
 		} else if (pageId.equals("side") && buttonId.equals("ログアウト")) {
 			//ログアウトボタン
 			HttpSession session = request.getSession();
 			session.invalidate();
 			page = "/WEB-INF/jsp/login.jsp";
-		}else if (pageId.equals("L002") && buttonId.equals("工数登録")) {
+		}
+
+		System.out.println("フォワード先ページ：" + page);
+		//ログイン画面へフォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+		dispatcher.forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+
+		String page = null;
+
+		//ページIDを取得
+		String pageId = request.getParameter("page_id");
+		//ボタンの詳細を取得
+		String buttonId = request.getParameter("button_id");
+
+		//何が入っているか確認
+		System.out.println("ページ：" + pageId + " ボタン：" + buttonId);
+
+		if (pageId.equals("L001") && buttonId.equals("ログイン")) {
+			//ログインボタン
+			UserAction action = new UserAction(request);
+			page = action.login();
+		} else if (pageId.equals("L002") && buttonId.equals("工数登録")) {
 			//ダッシュボードの工数登録ボタン
 			ManHourAction action = new ManHourAction(request);
 			page = action.registManHour();
@@ -167,14 +168,9 @@ public class Controller extends HttpServlet {
 			//メンバー一覧のメンバー編集モーダルの保存ボタン
 			AdminAction action = new AdminAction(request);
 			page = action.updataUser();
-		} else if (pageId.equals("L010") && buttonId.equals("変更")) {
-			//パスワード変更画面の変更ボタン
-			UserAction action = new UserAction(request);
-			page = action.updatePassword();
 		}
 
-
-		System.out.println("フォワード先ページ："+page);
+		System.out.println("フォワード先ページ：" + page);
 		//ログイン画面へフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 		dispatcher.forward(request, response);

@@ -21,7 +21,6 @@ public class ManHourService extends DBAccess{
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		super.close();
 		return list;
 	}
 	

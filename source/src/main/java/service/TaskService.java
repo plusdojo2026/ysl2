@@ -70,6 +70,20 @@ public class TaskService extends DBAccess{
 		return ans;
 	}
 	
+	//その案件のタスク一覧表示メソッド（案件詳細）
+	public ArrayList<AllDTO> selectTaskOfCase(String caseId) {
+		ArrayList<AllDTO> taskList = new ArrayList<AllDTO>();
+		
+		TaskDAO dao = new TaskDAO(super.conn);
+		try {
+			taskList = dao.selectTaskOfCase(caseId);
+		} catch (SQLException e) {
+			System.out.println("SQL文おかしい");
+			e.printStackTrace();
+		}
+		return taskList;
+	}
+	
 	//タスク1件表示メソッド（タスク詳細）----------------------
 	public AllDTO selectTaskDetail(int taskId) {
 		AllDTO dto = null;

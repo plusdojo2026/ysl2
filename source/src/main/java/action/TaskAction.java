@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import dto.AllDTO;
 import dto.TaskDTO;
 import dto.UserDTO;
+import service.CaseService;
+import service.ManHourService;
 import service.TaskService;
 import service.UserService;
 
@@ -28,14 +30,17 @@ public class TaskAction {
 		//DTOの箱
 		ArrayList<AllDTO> tList = null;
 		ArrayList<UserDTO> uList = null;
+		ArrayList<AllDTO> cList = null;
 		//Servicrの実体化
 		TaskService tService = new TaskService();
 		tList = tService.selectTasks();
 		request.setAttribute("allTasksList", tList);
-		
 		UserService uService = new UserService();
 		uList = uService.selectActiveUsers();
 		request.setAttribute("activeUsersList", uList);
+		CaseService cService = new CaseService();
+		cList = cService.selectCases();
+		request.setAttribute("casesList", cList);
 		
 		return page;
 	}
@@ -43,7 +48,7 @@ public class TaskAction {
 	//タスク詳細表示メソッド------------------------------------------
 	public String selectTaskDetail() throws UnsupportedEncodingException {
 		//戻り値（遷移先）のURL
-		String page = "/WEB-INF/jsp/task.jsp";
+		String page = "/WEB-INF/jsp/task_detail.jsp";
 		
 		//入力値の取得
 		request.setCharacterEncoding("UTF-8");
@@ -52,11 +57,15 @@ public class TaskAction {
 		//以下、タスク詳細表示用データの取得と格納↓
 		//dtoの箱
 		AllDTO dto = null;
+		ArrayList<AllDTO> mdto = null;
 		//Serviceの実体化
 		TaskService tService = new TaskService();
 		dto = tService.selectTaskDetail(taskId);
+		ManHourService mService = new ManHourService();
+		mdto  = mService.selectManHours(taskId);
 		//リクエストスコープに格納
 		request.setAttribute("task", dto);
+		request.setAttribute("manHoursList", mdto);
 		
 		return page;
 	}
@@ -107,13 +116,16 @@ public class TaskAction {
 		//DTOの箱
 		ArrayList<AllDTO> tList = null;
 		ArrayList<UserDTO> uList = null;
+		ArrayList<AllDTO> cList = null;
 		//Servicrの実体化
 		tList = tService.selectTasks();
 		request.setAttribute("allTasksList", tList);
-		
 		UserService uService = new UserService();
 		uList = uService.selectActiveUsers();
 		request.setAttribute("activeUsersList", uList);
+		CaseService cService = new CaseService();
+		cList = cService.selectCases();
+		request.setAttribute("casesList", cList);
 	
 		return page;
 	}
@@ -166,13 +178,16 @@ public class TaskAction {
 		//DTOの箱
 		ArrayList<AllDTO> tList = null;
 		ArrayList<UserDTO> uList = null;
+		ArrayList<AllDTO> cList = null;
 		//Servicrの実体化
 		tList = tService.selectTasks();
 		request.setAttribute("allTasksList", tList);
-		
 		UserService uService = new UserService();
 		uList = uService.selectActiveUsers();
 		request.setAttribute("activeUsersList", uList);
+		CaseService cService = new CaseService();
+		cList = cService.selectCases();
+		request.setAttribute("casesList", cList);
 		
 		return page;
 	}
@@ -199,13 +214,16 @@ public class TaskAction {
 		//DTOの箱
 		ArrayList<AllDTO> tList = null;
 		ArrayList<UserDTO> uList = null;
+		ArrayList<AllDTO> cList = null;
 		//Servicrの実体化
 		tList = tService.selectTasks();
 		request.setAttribute("allTasksList", tList);
-		
 		UserService uService = new UserService();
 		uList = uService.selectActiveUsers();
 		request.setAttribute("activeUsersList", uList);
+		CaseService cService = new CaseService();
+		cList = cService.selectCases();
+		request.setAttribute("casesList", cList);
 		
 		return page;
 	}
@@ -237,11 +255,15 @@ public class TaskAction {
 		
 		//以下、タスク詳細表示用データの取得と格納↓
 		//dtoの箱
-		AllDTO task = null;
+		AllDTO tdto = null;
+		ArrayList<AllDTO> mdto = null;
 		//Serviceの実体化
-		task = tService.selectTaskDetail(taskId);
+		tdto = tService.selectTaskDetail(taskId);
+		ManHourService mService = new ManHourService();
+		mdto  = mService.selectManHours(taskId);
 		//リクエストスコープに格納
-		request.setAttribute("task", task);
+		request.setAttribute("task", tdto);
+		request.setAttribute("manHoursList", mdto);
 		
 		return page;
 	}

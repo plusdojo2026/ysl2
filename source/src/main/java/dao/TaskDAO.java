@@ -148,6 +148,52 @@ public class TaskDAO {
 		return ans;
 	}
 	
+	//その案件のタスク一覧（案件詳細）
+	public ArrayList<AllDTO> selectTaskOfCase(String caseId) throws SQLException{
+		ArrayList<AllDTO> taskList = new ArrayList<AllDTO>();
+		
+		//SELECT文準備
+		String sql = "SELECT tasks.case_id, cases.case_name, tasks.task_id, task_name, users.name,"
+				+ "tasks.status, tasks.priority, deadline_date, estimated_man_hours, task_progress,"
+				+ "COALESCE (SUM(today_man_hours), 0) AS actual_man_hours, tasks.memo"
+				+ "FROM tasks"
+				+ "JOIN cases"
+				+ "ON tasks.case_id=cases.case_id"
+				+ "JOIN users"
+				+ "ON tasks.manager=users.user_id"
+				+ "LEFT JOIN man_hours"
+				+ "ON tasks.task_id = man_hours.task_id"
+				+ "GROUP BY tasks.task_id"
+				+ "ORDER BY tasks.deadline_date";
+		
+		//まとめる
+		PreparedStatement pStmt = conn.prepareStatement(sql);
+		
+		//SELECT文を実行し、結果表を取得
+		ResultSet rs = pStmt.executeQuery();
+		
+		//結果の移し替え
+		while(rs.next()) {
+			AllDTO dto = new AllDTO();
+			
+			dto.setCaseId(rs.getString("case_id"));
+			dto.setCaseName(rs.getString("case_name"));
+			dto.setTaskId(rs.getInt("task_id"));
+			dto.setTaskName(rs.getString("task_name"));
+			dto.setName(rs.getString("name"));
+			dto.setTaskStatus(rs.getString("status"));
+			dto.setTaskPriority(rs.getString("priority"));
+			dto.setDeadlineDate(rs.getString("deadline_date"));
+			dto.setEstimatedManHours(rs.getDouble("estimated_man_hours"));
+			dto.setTaskProgress(rs.getInt("task_progress"));
+			dto.setActualManHours(rs.getDouble("actual_man_hours"));
+			dto.setTaskMemo(rs.getString("memo"));
+			
+			taskList.add(dto);
+		}
+		
+		return taskList;
+	}
 	//タスク1件検索（タスク詳細）
 	public AllDTO selectTaskDetail(int taskId) throws SQLException{
 		AllDTO dto = new AllDTO();

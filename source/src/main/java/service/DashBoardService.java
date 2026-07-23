@@ -3,11 +3,12 @@ package service;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import dao.CaseDAO;
 import dao.TaskDAO;
 import dto.AllDTO;
-import dto.TaskDTO;
+import dto.CaseDTO;
 
-public class DashBoardService {
+public class DashBoardService extends DBAccess{
 	
 	//コンストラクタ
 		public DashBoardService() {
@@ -16,38 +17,47 @@ public class DashBoardService {
 	
 	//期限超過タスク検索（ダッシュボード）------------------------
 	public ArrayList<AllDTO> selectOverTasks(int userId){
-		ArrayList<AllDTO> taskList = new ArrayList<AllDTO>();
+		ArrayList<AllDTO> OvertaskList = new ArrayList<AllDTO>();
 		
 		TaskDAO dao = new TaskDAO(super.conn);
 		try {
-			taskList = dao.selectOverTasks(userId);
+			OvertaskList = dao.selectOverTasks(userId);
 		} catch (SQLException e) {
 			System.out.println("SQL文おかしい");
 			e.printStackTrace();
 		}
-		return taskList;
+		super.close();
+		return OvertaskList;
 	}
 
 	//担当タスク検索（ダッシュボード）-----------------------------
 	public ArrayList<AllDTO> selectAssignedTasks(int userId) {
-		ArrayList<AllDTO> taskList = new ArrayList<AllDTO>();
+		ArrayList<AllDTO> MytaskList = new ArrayList<AllDTO>();
 		
 		TaskDAO dao = new TaskDAO(super.conn);
 		try {
-			taskList = dao.selectAssignedTasks(userId);
+			MytaskList = dao.selectAssignedTasks(userId);
 		} catch (SQLException e) {
 			System.out.println("SQL文おかしい");
 			e.printStackTrace();
 		}
-		return taskList;
+		super.close();
+		return MytaskList;
 	}
 	
 	
 	//進行中案件検索(ダッシュボード)--------------------------------------------
-		public ArrayList<TaskDTO> selectWorkingCases(){
-			ArrayList<TaskDTO> taskList = null;
+		public ArrayList<CaseDTO> selectWorkingCases(int userId){
+			ArrayList<CaseDTO> caseList = null;
 			
-			return taskList;
+			CaseDAO dao = new CaseDAO(super.conn);
+			try {
+				caseList = dao.selectWorkingCases();
+			} catch (SQLException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+			super.close();	
+			return caseList;
 		}
-
 }

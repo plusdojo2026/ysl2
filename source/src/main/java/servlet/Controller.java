@@ -105,8 +105,9 @@ public class Controller extends HttpServlet {
 			page = action.login();
 		} else if (pageId.equals("L002") && buttonId.equals("工数登録")) {
 			//ダッシュボードの工数登録ボタン
-			ManHourAction action = new ManHourAction(request);
-			page = action.registManHour();
+//			ManHourAction action = new ManHourAction(request);
+//			page = action.registManHour();
+			page = "/WEB-INF/jsp/man_hour.jsp";
 		} else if (pageId.equals("L003") && (buttonId.equals("完了") || buttonId.equals("中止"))) {
 			//案件詳細のステータスボタン(完了 or 中止)
 			CaseAction action = new CaseAction(request);

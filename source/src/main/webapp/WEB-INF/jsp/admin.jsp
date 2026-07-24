@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="<c:url value='/css/admin.css' />">
 </head>
 <body>
-<header> <!-- sidebar.jspをインクルードする --> </header>
+<main>
+<!-- sidebar.jspをインクルード -->
+<%@ include file="/WEB-INF/jsp/sidebar.jsp"%>
 <div class ="main">
 	<h1>メンバー管理（管理者画面）</h1>
 		
@@ -61,7 +63,7 @@
 			
 			<!-- 各編集ボタンに対応するユーザーidをセットする -->
 			<td>
-			<button onclick = "openEditModal('${m.userId}')" >編集</button>
+			<button onclick = "openEditModal('${m.userId}','${m.name}','${m.mail}','${m.isAdmin}','${m.isActive}')" >編集</button>
 			<!-- 
 			<input type ="hidden" name ="page_id" value ="L009">
 			<input type ="hidden" name ="id" value ="${m.userId}">
@@ -79,16 +81,16 @@
 		<button class = "close" onclick = "closeRModal()">×</button><!-- 関数"closeModal" -->
 		<form action ="POST" action="<c:url value='/Controller'/>">
 			<p>ログインID*</p><br>
-			<input type = "text" id = "login" name="login_iod" value ="login_id" required>
+			<input type = "text" id = "login" name="login_iod" required>
 			
 			<p>氏名*</p><br>
-			<input type = "text" class = "name" name="name" value ="name" required>
+			<input type = "text" class = "name" name="name" required>
 			
 			<p>初期パスワード*(6文字以上)</p><br>
-			<input type = "text" id = "pw" name="pw" value ="pw" required>
+			<input type = "text" id = "pw" name="pw" required>
 			
 			<p>メールアドレス</p><br>
-			<input type = "text" name="mail" value ="mail">
+			<input type = "text" name="mail">
 			
 			<p>権限</p><br>
 			<label><input type = "radio" name ="is_addmin" value ="1">一般</label>
@@ -105,8 +107,8 @@
    <div class = "e_modal">
 	<h2>メンバー編集</h2>		 <!-- 関数"closeModal" -->
 		<button class = "close" onclick = "closeEModal()">×</button>
-		<form action="POST" id = "user" action="<c:url value='/Controller'/>">
-			<p>ユーザーID: "${m.userId}"</p>
+		<form action="POST" id = "edit" action="<c:url value='/Controller'/>">
+			<p>ユーザーID: "${userId}"</p>
 		
 			<p>氏名</p>	<br>
 			<input type = "text" class = "name" name="name" value ="${m.name}" required>
@@ -115,8 +117,8 @@
 			<input type = "text" name="mail" value ="${m.mail}">
 			
 			<p>権限</p><br>
-			<label><input type = "radio" name ="is_addmin" value ="1">一般</label>
-			<label><input type = "radio" name ="is_addmin" value ="2">管理者</label>
+			<label><input type = "radio" name ="is_admin" value ="1">一般</label>
+			<label><input type = "radio" name ="is_admin" value ="2">管理者</label>
 			
 			<p>状態</p><br>
 			<label><input type = "radio" name ="is_active" value ="1">有効</label>
@@ -137,8 +139,13 @@
  	 	}
 
  	//編集モーダル・引数(user_id)
- 	function openEditModal(userId){
+ 	function openEditModal(userId,name,mail,isAdmin,isActive){
 		document.getElementById("edit_modal").style.display = "block";
+		let form = document.getElementById('edit');
+		form.elements["name"].value = name;
+		form.elements["mail"].value = mail;
+		form.elements["is_admin"].value = isAdmin;
+		form.elements["is_active"].value = isActive;
  	 	}
 
  	//『×』新規登録モーダルを閉じる
@@ -149,7 +156,7 @@
 	function closeEModal(){
 		document.getElementById("edit_modal").style.display = "none";
  	 	}
- 	//入力チェック
+ 	//入力チェック//仮
  	if(document.getElementById("login").value == ""){
 		alert("入力必須項目です");
  	 	}
@@ -160,6 +167,7 @@
 		alert("入力必須項目です");
  	 	}
  </script>
- <!-- JavaScriptここまで
+ <!-- JavaScriptここまで -->
+ </main>
 </body>
 </html>

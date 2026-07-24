@@ -171,12 +171,14 @@ public class CaseDAO {
 	public AllDTO selectDetailCase(String caseId) throws SQLException {
 		AllDTO dto = new AllDTO();
 
-		String sql = "SELECT cases.case_id , case_name , customer_name , cases.status , cases.priority , cases.pm_id , cases.start_date , cases.end_date , cases.memo , budgeted_man_hours , SUM(today_man_hours) AS actual_man_hours,"
+		String sql = "SELECT name , cases.case_id , case_name , customer_name , cases.status , cases.priority , cases.pm_id , cases.start_date , cases.end_date , cases.memo , budgeted_man_hours , SUM(today_man_hours) AS actual_man_hours,"
 				+ "    COUNT(tasks.task_id) AS all_tasks ,COUNT(CASE WHEN tasks.status='完了' THEN 1 ELSE NULL END) AS completed_tasks"
 				+ "	FROM tasks JOIN man_hours"
 				+ "    ON tasks.task_id = man_hours.task_id"
 				+ "    JOIN cases"
 				+ "    ON tasks.case_id = cases.case_id"
+				+ "    JOIN users"
+				+ "    ON users.user_id = cases.pm_id"
 				+ "    GROUP BY tasks.case_id"
 				+ "    HAVING case_id = ?";
 		
@@ -188,6 +190,7 @@ public class CaseDAO {
 		
 		while (rs.next()) {
 		
+		dto.setName(rs.getString("name"));
 		dto.setCaseId(rs.getString("case_id"));
 		dto.setCaseName(rs.getString("case_name"));
 		dto.setCustomerName(rs.getString("customer_name"));

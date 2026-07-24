@@ -168,6 +168,10 @@ public class Controller extends HttpServlet {
 			//メンバー一覧のメンバー編集モーダルの保存ボタン
 			AdminAction action = new AdminAction(request);
 			page = action.updataUser();
+		} else if (pageId.equals("L010") && buttonId.equals("変更")) {
+			//パスワード変更画面の変更ボタン
+			UserAction action = new UserAction(request);
+			page = action.updatePassword();
 		}
 
 		System.out.println("フォワード先ページ：" + page);

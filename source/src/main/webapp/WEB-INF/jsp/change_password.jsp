@@ -11,7 +11,7 @@
       <form action="/ysl2/Controller" method="post">
         <div>
           <p>パスワード</p>
-          <input type="text" name="pw" id="pw" required />
+          <input type="text" name="password" id="password" required />
         </div>
         <div>
           <p>新パスワード</p>

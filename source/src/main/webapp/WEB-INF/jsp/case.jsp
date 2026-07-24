@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -34,16 +35,16 @@
 		<c:forEach var="e" items="${caseList}" >
 			
 		<tr>
-				<td><a href="/Controller/?page_id=L004&button_id=case_link&case_id=${e.case_id}">${e.case_id}</a></td>
-				<td>${e.case_name}</td>
-				<td>顧客:${e.customer_name}</td>
-				<td>優先度${e.priority}</td>
-				<td>PM:${e.name}</td>
-				<td>タスク進捗:${e.completed_tasks}/${e.all_tasks}</td>
-				<td>実績工数:${e.actual_man_hours}</td>
-				<td>ステータス${e.status}</td>
-				<td>開始日:${e.start_date}</td>
-				<td>終了日:${e.end_date}</td>
+				<td><a href="/Controller/?page_id=L004&button_id=case_link&case_id=${e.caseId}">${e.caseId}</a></td>
+				<td>${e.caseName}</td>
+				<td>顧客:${e.customerName}</td>
+				<td>優先度${e.casePriority}</td>
+				<td>PM:${e.pmId}</td>
+				<td>タスク進捗:${e.completedTasks}/${e.allTasks}</td>
+				<td>実績工数:${e.actualManHours}</td>
+				<td>ステータス${e.caseStatus}</td>
+				<td>開始日:${e.caseStartDate}</td>
+				<td>終了日:${e.endDate}</td>
 		</tr>	
 		<input type="button" name="back_regist" value="編集">
 		</c:forEach>

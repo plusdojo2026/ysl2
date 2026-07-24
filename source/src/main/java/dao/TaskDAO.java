@@ -79,6 +79,7 @@ public class TaskDAO {
 		
 		//まとめる
 		PreparedStatement pStmt = conn.prepareStatement(sql);
+		System.out.println("SQL文：" + sql);
 		
 		//?に値をセット
 		pStmt.setString(1, dto.getCaseId());
@@ -111,6 +112,7 @@ public class TaskDAO {
 		//まとめる
 		PreparedStatement pStmt = conn.prepareStatement(sql);
 		
+		
 		//?に値をセット
 		pStmt.setString(1, dto.getCaseId());
 		pStmt.setString(2, dto.getTaskName());
@@ -123,6 +125,8 @@ public class TaskDAO {
 		pStmt.setInt(9, dto.getTaskProgress());
 		pStmt.setString(10, dto.getMemo());
 		pStmt.setInt(11, dto.getTaskId());
+		
+		System.out.println("SQL文：" + sql);
 		
 		//INSERT文を実行し、結果表を取得
 		ans = pStmt.executeUpdate();
@@ -174,6 +178,8 @@ public class TaskDAO {
 		//?に値をセット
 		pStmt.setString(1, caseId);
 		
+		System.out.println("SQL文：" + sql);
+		
 		//SELECT文を実行し、結果表を取得
 		ResultSet rs = pStmt.executeQuery();
 		
@@ -220,6 +226,8 @@ public class TaskDAO {
 		
 		//まとめる
 		PreparedStatement pStmt = conn.prepareStatement(sql);
+		
+		System.out.println("SQL文：" + sql);
 		
 		//?に値をセット
 		pStmt.setInt(1, taskId);

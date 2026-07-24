@@ -3,6 +3,8 @@
   width: 240px;
   background-color: #f0f0f0; /* 浅灰色 */
   padding: 30px; /* 四周空隙 */
+  position: sticky;
+  top: 0px;
   height: 100vh; /* sidebar高度填满和屏幕一样高 */
 }
 

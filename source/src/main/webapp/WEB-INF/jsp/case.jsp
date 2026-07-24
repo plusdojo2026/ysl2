@@ -39,7 +39,7 @@
 				<td>${e.caseName}</td>
 				<td>顧客:${e.customerName}</td>
 				<td>優先度${e.casePriority}</td>
-				<td>PM:${e.pmId}</td>
+				<td>PM:${e.name}</td>
 				<td>タスク進捗:${e.completedTasks}/${e.allTasks}</td>
 				<td>実績工数:${e.actualManHours}</td>
 				<td>ステータス${e.caseStatus}</td>
@@ -69,7 +69,7 @@
 		</p>
 		<p>
 			<label for="manager">担当PM<br /></label>
-          <select name="manager" id="manager">
+          <select name="pm_id" id="pm_id">
             <c:forEach var="m" items="">
               <option value="${m.user_id}">${e.user_name}</option>
             </c:forEach>

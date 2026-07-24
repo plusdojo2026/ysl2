@@ -102,7 +102,7 @@
         </label>
 		</p>
 		<p>
-        <label for="priority">優先度*<br></label>
+        <label for="priority">優先度<br></label>
         <select name="priority" id="priority">
             <option value="高">高</option>
             <option value="中" selected>中</option>
@@ -111,7 +111,7 @@
 		</p>
 		<p>
         <label>見積工数<br>
-            <input type="number" min="0" max="24" step="0.5" name="estimated_mon_hours">
+            <input type="number" min="0" max="24" step="0.5" name="estimated_man_hours">
         </label>
 		</p>
 		<p>
@@ -185,7 +185,7 @@
 		</p>
 		<p>
         <label>見積工数<br>
-            <input type="number" min="0" max="24" step="0.5" name="estimated_mon_hours">
+            <input type="number" min="0" max="24" step="0.5" name="estimated_man_hours">
         </label>
 		</p>
 		<p>

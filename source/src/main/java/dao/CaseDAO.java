@@ -80,7 +80,7 @@ public class CaseDAO {
 		pStmt.setString(10, dto.getMemo());
 
 		ans = pStmt.executeUpdate();
-		System.out.println(ans);
+		
 		return ans;
 	}
 

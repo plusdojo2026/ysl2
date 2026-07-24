@@ -109,6 +109,7 @@
               max="24"
               step="0.5"
               name="budgeted_man_hours"
+              value="0"
             />
           </label>
         </p>
@@ -146,7 +147,7 @@
 		</p>
 		<p>
 			<label for="manager">担当PM<br /></label>
-          <select name="pm_id" id="pm_id">
+          <select name="pm_id" id="pm_id" required>
             <c:forEach var="m" items="${userList}">
               <option value="${m.userId}">${m.name}</option>
             </c:forEach>

@@ -74,7 +74,9 @@ public class CaseAction {
 		ArrayList<AllDTO> caseList = service.selectCases();
 		request.setAttribute("caseList", caseList);
 		
-		System.out.println("アクション"+ans);
+		UserService uservice = new UserService();
+		ArrayList<UserDTO> userList = uservice.selectActiveUsers();
+		request.setAttribute("userList" , userList);
 
 		return page;
 	}
@@ -113,6 +115,10 @@ public class CaseAction {
 		
 		ArrayList<AllDTO> caseList = service.selectCases();
 		request.setAttribute("caseList", caseList);
+		
+		UserService uservice = new UserService();
+		ArrayList<UserDTO> userList = uservice.selectActiveUsers();
+		request.setAttribute("userList" , userList);
 
 
 		return page;

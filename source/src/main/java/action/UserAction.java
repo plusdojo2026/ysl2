@@ -94,10 +94,12 @@ public class UserAction {
 		int result = loginService.updatePassword(loginId, pw, newPw);
 		
 		if (result == 0) {
-			request.setAttribute("errMsg", "パスワード変更ができませんでした。");
+			request.setAttribute("message", "パスワード変更ができませんでした。");
 		}
 		
 		//正常にパスワード変更出来たら
+		request.setAttribute("message", "パスワード変更完了");
+
 		ans = "/WEB-INF/jsp/change_password.jsp";
 		return ans;
 	}

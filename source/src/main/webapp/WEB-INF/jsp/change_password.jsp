@@ -7,7 +7,8 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
   </head>
   <body>
-    <div>
+	<%@ include file="/WEB-INF/jsp/sidebar.jsp" %>    
+    <main>
       <form action="/ysl2/Controller" method="post">
         <div class="message">${message}</div>
         <div>
@@ -26,8 +27,7 @@
         <input type="hidden" name="page_id" value="L010" />
         <input type="submit" name="button_id" value="変更" />
       </form>
-      <button>キャンセル</button>
-    </div>
+    </main>
     <script src="/ysl2/js/change_password.js"></script>
   </body>
 </html>

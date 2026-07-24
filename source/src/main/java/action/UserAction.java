@@ -87,8 +87,6 @@ public class UserAction {
 		String pw = request.getParameter("password");
 		String newPw = request.getParameter("new_pw");
 		
-		System.out.println("取得値" + loginId + pw + newPw);
-		
 		//serviceの実体化
 		UserService loginService = new UserService();
 		int result = loginService.updatePassword(loginId, pw, newPw);
@@ -99,7 +97,6 @@ public class UserAction {
 		
 		//正常にパスワード変更出来たら
 		request.setAttribute("message", "パスワード変更完了");
-
 		ans = "/WEB-INF/jsp/change_password.jsp";
 		return ans;
 	}

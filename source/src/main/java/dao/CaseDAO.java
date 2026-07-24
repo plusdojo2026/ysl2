@@ -65,7 +65,7 @@ public class CaseDAO {
 	public int registCase(CaseDTO dto) throws SQLException {
 		int ans = 0;
 
-		String sql = "INSERT INTO cases VALUES(?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO cases (case_id, case_name, customer_name, status, priority, pm_id, start_date, end_date, budgeted_man_hours, memo) VALUES(?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement pStmt = conn.prepareStatement(sql);
 
 		pStmt.setString(1, dto.getCaseId());
@@ -80,7 +80,7 @@ public class CaseDAO {
 		pStmt.setString(10, dto.getMemo());
 
 		ans = pStmt.executeUpdate();
-
+		System.out.println(ans);
 		return ans;
 	}
 

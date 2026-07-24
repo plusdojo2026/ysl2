@@ -73,6 +73,8 @@ public class CaseAction {
 
 		ArrayList<AllDTO> caseList = service.selectCases();
 		request.setAttribute("caseList", caseList);
+		
+		System.out.println("アクション"+ans);
 
 		return page;
 	}

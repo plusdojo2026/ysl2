@@ -55,6 +55,7 @@ public class CaseService extends DBAccess {
 			}
 		}
 		super.close();
+		System.out.println("サービス"+ans);
 		return ans;
 	}
 

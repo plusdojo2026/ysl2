@@ -50,6 +50,8 @@
 </head>
 <body>
 <main>
+<%@ include file="/WEB-INF/jsp/sidebar.jsp"%>
+<div>
 	<h1>タスク一覧</h1>
 	<div>${msg}</div>
 
@@ -81,7 +83,7 @@
 				<td>
 					<a href="${pageContext.request.contextPath}/Controller?page_id=L006&button_id=task_link&task_id=${t.taskId}">${t.taskName}</a>
 				</td>
-				<td>${t.manager}</td>
+				<td>${t.name}</td>
 				<td>${t.deadlineDate}</td>
 				<td>${t.estimatedManHours}</td>
 				<td>${t.actualManHours}</td>
@@ -131,7 +133,7 @@
 						</td>
 						<td>
 							<label>進捗率
-					            <input type="number" min="0" max="100" step="1" name="task_progress">
+					            <input type="number" min="0" max="100" step="1" name="task_progress" value="0">
 					        </label>
 						</td>
 					</tr>
@@ -157,7 +159,7 @@
 		        		</td>
 		        		<td>
 		        			<label>見積工数
-					            <input type="number" min="0" step="0.5" name="estimated_man_hours">
+					            <input type="number" min="0" step="0.5" name="estimated_man_hours" value="0">
 					        </label>
 		        		</td>
 		        	</tr>
@@ -173,7 +175,7 @@
 						</td>
 		        		<td>
 							 <label>進捗率
-					            <input type="number" min="0" max="100" step="1" name="progress">
+					            <input type="number" min="0" max="100" step="1" name="progress" value="0">
 					        </label>
 						</td>
 					</tr>
@@ -265,6 +267,7 @@
 		    </form>
 		</div>
 	</div>
+</div>
 </main>
 </body>
 </html>

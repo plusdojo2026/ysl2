@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!doctype html>
 <html>
   <head>
@@ -74,14 +75,14 @@ pageEncoding="UTF-8"%>
         </tr>
         <c:forEach var="e" items="${taskList}">
           <tr>
-            <th>${e.task_name}</th>
-            <th>${e.manager}</th>
-            <th>${e.status}</th>
-            <th>${e.priority}</th>
-            <th>${e.deadline_date}</th>
-            <th>${e.estimated_man_hours}</th>
-            <th>${e.actual_man_hours}</th>
-            <th>${e.task_progress}</th>
+            <th>${e.taskName}</th>
+            <th>${e.name}</th>
+            <th>${e.taskStatus}</th>
+            <th>${e.taskPriority}</th>
+            <th>${e.deadlineDate}</th>
+            <th>${e.estimatedManHours}</th>
+            <th>${e.actualManHours}</th>
+            <th>${e.taskProgress}</th>
           </tr>
         </c:forEach>
       </table>
@@ -93,16 +94,16 @@ pageEncoding="UTF-8"%>
       <table>
         <c:forEach var="e" items="${manList}">
           <tr>
-            <th>${e.work_date}</th>
-            <th>${e.task_name}</th>
+            <th>${e.workDate}</th>
+            <th>${e.taskName}</th>
             <th>${e.manager}</th>
-            <th>${e.today_man_hours}</th>
-            <th>${e.work_detail}</th>
+            <th>${e.todayManHours}</th>
+            <th>${e.workDetails}</th>
           </tr>
         </c:forEach>
       </table>
     </div>
-
+ 
     <div>
       <h2>タスク登録</h2>
       <form method="POST" action="<c:url value='/Controller'/>">

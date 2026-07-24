@@ -71,8 +71,7 @@ public class Controller extends HttpServlet {
 			page = action.selectTaskDetail();
 		} else if (pageId.equals("L010") && buttonId.equals("変更")) {
 			//パスワード変更画面の変更ボタン
-			UserAction action = new UserAction(request);
-			page = action.updatePassword();
+			page = "/WEB-INF/jsp/change_password.jsp";
 		} else if (pageId.equals("side") && buttonId.equals("ログアウト")) {
 			//ログアウトボタン
 			HttpSession session = request.getSession();
@@ -106,8 +105,9 @@ public class Controller extends HttpServlet {
 			page = action.login();
 		} else if (pageId.equals("L002") && buttonId.equals("工数登録")) {
 			//ダッシュボードの工数登録ボタン
-			ManHourAction action = new ManHourAction(request);
-			page = action.registManHour();
+//			ManHourAction action = new ManHourAction(request);
+//			page = action.registManHour();
+			page = "/WEB-INF/jsp/man_hour.jsp";
 		} else if (pageId.equals("L003") && (buttonId.equals("完了") || buttonId.equals("中止"))) {
 			//案件詳細のステータスボタン(完了 or 中止)
 			CaseAction action = new CaseAction(request);
@@ -168,6 +168,10 @@ public class Controller extends HttpServlet {
 			//メンバー一覧のメンバー編集モーダルの保存ボタン
 			AdminAction action = new AdminAction(request);
 			page = action.updataUser();
+		} else if (pageId.equals("L010") && buttonId.equals("変更")) {
+			//パスワード変更画面の変更ボタン
+			UserAction action = new UserAction(request);
+			page = action.updatePassword();
 		}
 
 		System.out.println("フォワード先ページ：" + page);

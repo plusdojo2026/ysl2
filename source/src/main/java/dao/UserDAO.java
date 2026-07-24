@@ -68,7 +68,7 @@ public class UserDAO {
 			UserDTO dto = new UserDTO();
 			dto.setUserId(rs.getInt("user_id"));
 			dto.setLoginId(rs.getString("login_id"));
-			dto.setName(rs.getNString("name"));
+			dto.setName(rs.getString("name"));
 			dto.setMail(rs.getString("mail"));
 			dto.setIsAdmin(rs.getInt("is_admin"));
 			dto.setIsActive(rs.getInt("is_active"));
@@ -80,7 +80,7 @@ public class UserDAO {
 	}
 	
 	//アクティブユーザー一覧取得メソッド
-	public ArrayList<UserDTO> selectActiveUSers() throws SQLException {
+	public ArrayList<UserDTO> selectActiveUsers() throws SQLException {
 		ArrayList<UserDTO> userList = new ArrayList<UserDTO>();
 		
 		String sql = "SELECT user_id, name FROM users WHERE is_active = 1";

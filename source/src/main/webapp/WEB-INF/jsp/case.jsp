@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
 </head>
 <body>
+	<%@ include file="/WEB-INF/jsp/sidebar.jsp" %>
 	<div class="case">
 	<h1>案件一覧</h1>
 	<from  method="POST" action="<c:url value='/Controller'/>">

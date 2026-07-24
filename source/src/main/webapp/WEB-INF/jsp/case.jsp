@@ -35,7 +35,7 @@
 		<c:forEach var="e" items="${caseList}" >
 			
 		<tr>
-				<td><a href="/Controller/?page_id=L004&button_id=case_link&case_id=${e.caseId}">${e.caseId}</a></td>
+				<td><a href="/Controller/?page_id=L004&button_id=case_link&caseId=${e.caseId}">${e.caseId}</a></td>
 				<td>${e.caseName}</td>
 				<td>顧客:${e.customerName}</td>
 				<td>優先度${e.casePriority}</td>

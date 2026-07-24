@@ -17,7 +17,7 @@
 		<p>${case_name}</p>
 		<p>${task_name}</p>
 	</div>	
-
+	<form method="POST" action="/Controller">
 	<div clas="man_h">
 	<label>作業日<br>
 		<input type="date" name="work_date"><br>
@@ -28,7 +28,7 @@
 	<label>作業内容<br>
 		<input type="text" name="work_details" ><br>
 	</label>
-	<form method="POST" action="/servlet/Controller">
+	
 	<input type="hidden" name="page_id" value="L005">
 	<input type="submit" name="button_id" value="登録" >
 	</form>

@@ -179,25 +179,30 @@ public class CaseDAO {
 				+ "    ON tasks.case_id = cases.case_id"
 				+ "    GROUP BY tasks.case_id"
 				+ "    HAVING case_id = ?";
+		
 		PreparedStatement pStmt = conn.prepareStatement(sql);
 
 		pStmt.setString(1, caseId);
 
 		ResultSet rs = pStmt.executeQuery();
-
-		dto.setCaseId(rs.getString("cases.case_id"));
+		
+		while (rs.next()) {
+		
+		dto.setCaseId(rs.getString("case_id"));
 		dto.setCaseName(rs.getString("case_name"));
 		dto.setCustomerName(rs.getString("customer_name"));
-		dto.setCaseStatus(rs.getString("cases.status"));
-		dto.setCasePriority(rs.getString("cases.priority"));
-		dto.setPmId(rs.getInt("cases.pm_id"));
-		dto.setCaseStartDate(rs.getString("cases.start_date"));
-		dto.setEndDate(rs.getString("cases.end_date"));
+		dto.setCaseStatus(rs.getString("status"));
+		dto.setCasePriority(rs.getString("priority"));
+		dto.setPmId(rs.getInt("pm_id"));
+		dto.setCaseStartDate(rs.getString("start_date"));
+		dto.setEndDate(rs.getString("end_date"));
 		dto.setBudgetedManHours(rs.getDouble("budgeted_man_hours"));
-		dto.setCaseMemo(rs.getString("cases.memo"));
+		dto.setCaseMemo(rs.getString("memo"));
 		dto.setActualManHours(rs.getDouble("actual_man_hours"));
 		dto.setAllTasks(rs.getInt("all_tasks"));
 		dto.setCompletedTasks(rs.getInt("completed_tasks"));
+		
+		}
 
 		return dto;
 	}

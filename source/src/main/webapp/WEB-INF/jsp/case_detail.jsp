@@ -8,6 +8,9 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
   </head>
   <body>
+  <main>
+   <%@ include file="/WEB-INF/jsp/sidebar.jsp" %>
+   <div>
     <h1>案件詳細</h1>
     <input type="hidden" name="page_id" value="L003" />
     <div class="case_detail">
@@ -15,40 +18,40 @@ pageEncoding="UTF-8"%>
         <h3>案件詳細</h3>
         <tr>
           <td>案件コード</td>
-          <td>${case_id}</td>
+          <td>${dedto.caseId}</td>
           <td>優先度</td>
-          <td>${priority}</td>
+          <td>${dedto.casePriority}</td>
         </tr>
 
         <tr>
           <td>名称</td>
-          <td>${case_name}</td>
+          <td>${dedto.caseName}</td>
           <td>期間</td>
-          <td>${start_date}~${end_date}</td>
+          <td>${dedto.caseStartDate}~${dedto.endDate}</td>
         </tr>
         <tr>
           <td>顧客名</td>
-          <td>${customer_name}</td>
+          <td>${dedto.customerName}</td>
           <td>予算</td>
-          <td>${budget_man_hours}</td>
+          <td>${dedto.budgetedManHours}</td>
         </tr>
         <tr>
           <td>担当PM</td>
-          <td>${name}</td>
+          <td>${dedto.name}</td>
           <td>実績工数</td>
-          <td>${actual_man_hours}</td>
+          <td>${dedto.actualManHours}</td>
         </tr>
         <tr>
           <td>説明</td>
-          <td>${memo}</td>
-          <td>進捗バー</td>
-          <td>${task_progress}</td>
+          <td>${dedto.caseMemo}</td>
+         <td>進捗バー</td>
+          <!-- <td>${taskProgress}</td> -->
         </tr>
         <tr>
           <td></td>
           <td></td>
           <td>ステータス</td>
-          <td>${status}</td>
+          <td>${dedto.caseStatus}</td>
         </tr>
       </table>
       <input type="button" name="edit_button" value="編集" />
@@ -183,5 +186,7 @@ pageEncoding="UTF-8"%>
         <input type="button" value="戻る" />
       </form>
     </div>
+    </div>
+   </main>
   </body>
 </html>

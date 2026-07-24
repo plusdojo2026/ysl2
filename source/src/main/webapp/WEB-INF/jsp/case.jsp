@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
 </head>
 <body>
+<main>
 	<%@ include file="/WEB-INF/jsp/sidebar.jsp" %>
 	<div class="case">
 	<h1>案件一覧</h1>
@@ -36,7 +37,7 @@
 		<c:forEach var="e" items="${caseList}" >
 			
 		<tr>
-				<td><a href="${pageContext.request.contextPath}/Controller?page_id=L004&button_id=case_link&caseId=${e.caseId}">${e.caseId}</a></td>
+				<td><a href="${pageContext.request.contextPath}/Controller?page_id=L004&button_id=case_link&case_id=${e.caseId}">${e.caseId}</a></td>
 				<td>${e.caseName}</td>
 				<td>顧客:${e.customerName}</td>
 				<td>優先度${e.casePriority}</td>
@@ -207,5 +208,6 @@
 	</div>
 	
 	</div>
+	</main>
 </body>
 </html>

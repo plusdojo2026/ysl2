@@ -66,16 +66,16 @@
     <form method="POST" action="<c:url value='/Controller'/>">
         <input type="hidden" name="page_id" value="L006">
 		<p>
-		<label for="case_name">案件名*<br></label>
-		<select name="case_name" id="case_name">
+		<label for="case_name">案件名<br></label>
+		<select name="case_name" id="case_name" required>
 			<c:forEach var="c" items="${casesList}">
 				<option value="${c.caseId}">${c.caseName}</option>
 			</c:forEach>
 		</select>
 		</p>
 		<p>
-        <label>タスク名*<br>
-            <input type="text" name="task_name">
+        <label>タスク名<br>
+            <input type="text" name="task_name" required>
         </label>
 		</p>
 		<p>
@@ -115,8 +115,8 @@
         </label>
 		</p>
 		<p>
-		<label for="status">ステータス*<br></label>
-		<select name="status">
+		<label for="status">ステータス<br></label>
+		<select name="status" required>
 			<option value="未着手" selected>未着手</option>
 			<option value="進行中">進行中</option>
 			<option value="完了">完了</option>
@@ -140,16 +140,16 @@
     <form method="POST" action="<c:url value='/Controller'/>">
         <input type="hidden" name="page_id" value="L006">
 		<p>
-		<label for="case_name">案件名*<br></label>
-		<select name="case_name" id="case_name">
-			<c:forEach var="c" items="caesList">
+		<label for="case_name">案件名<br></label>
+		<select name="case_name" id="case_name" required>
+			<c:forEach var="c" items="${casesList}">
 				<option value="${c.caseId}">${c.caseName}</option>
 			</c:forEach>
 		</select>
 		</p>
 		<p>
-        <label>タスク名*<br>
-            <input type="text" name="task_name">
+        <label>タスク名<br>
+            <input type="text" name="task_name" required>
         </label>
 		</p>
 		<p>
@@ -176,8 +176,8 @@
         </label>
 		</p>
 		<p>
-        <label for="priority">優先度*<br></label>
-        <select name="priority" id="priority">
+        <label for="priority">優先度<br></label>
+        <select name="priority" id="priority" required>
             <option value="高">高</option>
             <option value="中" selected>中</option>
             <option value="低">低</option>
@@ -189,8 +189,8 @@
         </label>
 		</p>
 		<p>
-		<label for="status">ステータス*<br></label>
-		<select name="status">
+		<label for="status">ステータス<br></label>
+		<select name="status" required>
 			<option value="未着手" selected>未着手</option>
 			<option value="進行中">進行中</option>
 			<option value="完了">完了</option>

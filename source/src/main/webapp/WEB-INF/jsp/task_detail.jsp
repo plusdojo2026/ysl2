@@ -11,14 +11,14 @@
 </head>
 <body>
 <main>
+<%@ include file="/WEB-INF/jsp/sidebar.jsp"%>
+	<div>
     <h1>タスク詳細</h1>
         <p>案件名：${task.caseName}</p>
         <p>タスク名：${task.taskName}</p>
-        <p>担当者：${task.manager}</p>
+        <p>担当者：${task.name}</p>
         <p>開始日：${task.taskStartDate}</p>
         <p>案件名：${task.caseName}</p>
-		<p>タスク名：${task.taskName}</a>
-		<p>担当者：${task.manager}</p>
 		<p>期限：${task.deadlineDate}</p>
 		<p>見積工数：${task.estimatedManHours}</p>
 		<p>実績工数：${task.actualManHours}</p>
@@ -39,7 +39,7 @@
 		<p>優先度：${task.taskPriority}</p>
 		<p>進捗率：${task.taskProgress}</p>
 		<input type="button" value="編集">
-	<button><a href="{pageContext.request.contextPath}/Controller?page_id=L007&button_id=man_hours_link&task_id=${t.taskId}">工数登録</a></button>
+	<button><a href="${pageContext.request.contextPath}/Controller?page_id=L007&button_id=工数登録&task_id=${task.taskId}">工数登録</a></button>
 	<div>
 	<h2>工数ログ</h2>
 	<c:forEach var="m" items="${manHoursList}">
@@ -57,5 +57,7 @@
 	<!--タスク編集モーダル-->
 	<h2>タスク編集</h2>
 	タスク一覧ページのモーダル部分を後でコピペする予定です。
+	</div>
+</main>
 </body>
 </html>

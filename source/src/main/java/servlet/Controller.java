@@ -61,7 +61,7 @@ public class Controller extends HttpServlet {
 			//案件一覧の案件詳細への遷移リンク
 			CaseAction action = new CaseAction(request);
 			page = action.selectCaseDetail();
-		} else if ((pageId.equals("L001") || pageId.equals("L007")) && buttonId.equals("工数登録")) {
+		} else if ((pageId.equals("L002") || pageId.equals("L007")) && buttonId.equals("工数登録")) {
 			//ダッシュボード、タスク編集ページからの工数登録ボタン
 			ManHourAction action = new ManHourAction(request);
 			page = action.registManHour();

@@ -1,4 +1,4 @@
-/* 4.sidebar */
+/* sidebar */
 .sidebar {
   width: 240px;
   background-color: #f0f0f0; /* 浅灰色 */
@@ -6,9 +6,27 @@
   position: sticky;
   top: 0px;
   height: 100vh; /* sidebar高度填满和屏幕一样高 */
+  
+  transform: translateX(-100%); /* 100% 完全隐藏 */
+  transition: transform 0.3s ease;
 }
 
-/* 5. 侧边栏里的链接*/
+.sidebar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -15px; /* 伸出到侧边栏外面，刚好贴在屏幕左侧边缘 */
+  width: 15px;
+  height: 100%;
+  background: transparent; /* 透明 */
+}
+
+/* 拉出 */
+.sidebar:hover {
+  transform: translateX(0);
+}
+
+/* 侧边栏里的链接*/
 .sidebar a {
   display: block; /* 项目的上下排列 */
   padding: 20px 0; /* 字体间距 */

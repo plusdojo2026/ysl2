@@ -9,7 +9,11 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
     <link rel="stylesheet" href="<c:url value='/css/admin.css' />">
 </head>
+
 <body>
+	<main>
+		<%@ include file="/WEB-INF/jsp/sidebar.jsp"%>
+		
 <header> <!-- sidebar.jspをインクルードする --> </header>
 <div class ="main">
 	<h1>メンバー管理（管理者画面）</h1>

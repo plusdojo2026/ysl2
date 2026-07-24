@@ -7,6 +7,7 @@
 	<meta charset="UTF-8">
 	<title>案件一覧</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/case.css" />
 </head>
 <body>
 <main>

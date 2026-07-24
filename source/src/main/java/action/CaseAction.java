@@ -7,9 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import dto.AllDTO;
 import dto.CaseDTO;
+import dto.UserDTO;
 import service.CaseService;
 import service.ManHourService;
 import service.TaskService;
+import service.UserService;
 
 public class CaseAction {
 
@@ -28,6 +30,11 @@ public class CaseAction {
 		CaseService service = new CaseService();
 		ArrayList<AllDTO> caseList = service.selectCases();
 		request.setAttribute("caseList", caseList);
+		
+		UserService uservice = new UserService();
+		ArrayList<UserDTO> userList = uservice.selectActiveUsers();
+		request.setAttribute("userList" , userList);
+		
 		
 		return page;
 	}

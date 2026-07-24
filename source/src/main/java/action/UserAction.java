@@ -78,8 +78,7 @@ public class UserAction {
 		
 		//入力値の取得
 		request.setCharacterEncoding("UTF-8");
-		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		HttpSession session = httpRequest.getSession();
+		HttpSession session = request.getSession();
 		
 		//セッションスコープからUserDTOを取り出す
 		UserDTO user = (UserDTO) session.getAttribute("user");

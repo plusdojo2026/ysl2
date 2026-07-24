@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>メンバー管理 | TaskManager</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
+    <link rel="stylesheet" href="<c:url value='/css/admin.css' />">
 </head>
 <body>
 <header> <!-- sidebar.jspをインクルードする --> </header>
@@ -28,14 +29,15 @@
 		</form>
 		
 		<!-- +新規登録モーダルを表示 -->
-		<button onclick = "openfRegistModal" >+新規登録</button>
+		<button onclick = "openRegistModal()" >+新規登録</button>
 		<!-- 保留(完成時削除?)<input type="button" name="button_id" value="+新規登録"> -->
 
 	<!-- メンバー一覧をテーブルで表示 -->
-  <table>
-	<h2>メンバー一覧</h2>
+  
 	<div class ="list">
-		<!-- 表示項目 -->
+	<h2>メンバー一覧</h2>
+	    <!-- 表示項目 -->
+		<table>
 		<tr>
 			<th>ユーザーID</th>
 			<th>ログインID</th>	
@@ -47,7 +49,7 @@
 			<th>編集</th>
 		</tr>
 		<!-- 表示データ -->
-		<c:forEach var="m" items="${menberList}">
+		<c:forEach var="m" items="${memberList}">
 		<tr>
 			<td><c:out value ="${m.userId}"/></td>
 			<td><c:out value ="${m.loginId}"/></td>	
@@ -59,9 +61,7 @@
 			
 			<!-- 各編集ボタンに対応するユーザーidをセットする -->
 			<td>
-			
 			<button onclick = "openEditModal('${m.userId}')" >編集</button>
-			
 			<!-- 
 			<input type ="hidden" name ="page_id" value ="L009">
 			<input type ="hidden" name ="id" value ="${m.userId}">
@@ -70,23 +70,22 @@
 			</td>
 		</tr>	
 		</c:forEach>
-	</div>
   </table>
- 		 
+ </div> 
 <!-- メンバー登録モーダル -->
   <div id = "regist_modal" class = "modal_background">
-   <div class = "modal">
+   <div class = "r_modal">
 	<h2>メンバー新規登録</h2>
-		<form action ="POST">		 <!-- 関数"closeModal" -->
-			<button class = "close" onclick = "closeModal()">×</button>
+		<button class = "close" onclick = "closeRModal()">×</button><!-- 関数"closeModal" -->
+		<form action ="POST" action="<c:url value='/Controller'/>">
 			<p>ログインID*</p><br>
-			<input type = "text" name="login_iod" value ="login_id" required>
+			<input type = "text" id = "login" name="login_iod" value ="login_id" required>
 			
 			<p>氏名*</p><br>
-			<input type = "text" name="name" value ="name" required>
+			<input type = "text" class = "name" name="name" value ="name" required>
 			
 			<p>初期パスワード*(6文字以上)</p><br>
-			<input type = "text" name="pw" value ="pw" required>
+			<input type = "text" id = "pw" name="pw" value ="pw" required>
 			
 			<p>メールアドレス</p><br>
 			<input type = "text" name="mail" value ="mail">
@@ -103,14 +102,14 @@
   </div>
 <!-- メンバー編集モーダル -->
   <div id = "edit_modal" class = "modal_background">
-   <div class = "modal">
+   <div class = "e_modal">
 	<h2>メンバー編集</h2>		 <!-- 関数"closeModal" -->
-		<button class = "close" onclick = "closeModal()">×</button>
-		<form action="POST">
+		<button class = "close" onclick = "closeEModal()">×</button>
+		<form action="POST" id = "user" action="<c:url value='/Controller'/>">
 			<p>ユーザーID: "${m.userId}"</p>
 		
 			<p>氏名</p>	<br>
-			<input type = "text" name="name" value ="${m.name}" required>
+			<input type = "text" class = "name" name="name" value ="${m.name}" required>
 			
 			<p>メールアドレス</p><br>
 			<input type = "text" name="mail" value ="${m.mail}">
@@ -130,5 +129,37 @@
 	 </div>	
 	</div>
   </div>
+<!-- JavaScriptここから(jsファイルに後で移行) -->
+ <script>
+ 	//新規登録モーダル・引数なし
+ 	function openRegistModal(){
+		document.getElementById("regist_modal").style.display = "block";
+ 	 	}
+
+ 	//編集モーダル・引数(user_id)
+ 	function openEditModal(userId){
+		document.getElementById("edit_modal").style.display = "block";
+ 	 	}
+
+ 	//『×』新規登録モーダルを閉じる
+ 	function closeRModal(){
+		document.getElementById("regist_modal").style.display = "none";
+ 	 	}
+	//『×』編集モーダルを閉じる
+	function closeEModal(){
+		document.getElementById("edit_modal").style.display = "none";
+ 	 	}
+ 	//入力チェック
+ 	if(document.getElementById("login").value == ""){
+		alert("入力必須項目です");
+ 	 	}
+ 	if(document.getElementById("name").value == ""){
+		alert("入力必須項目です");
+ 	 	}
+	if(document.getElementById("pw").value == ""){
+		alert("入力必須項目です");
+ 	 	}
+ </script>
+ <!-- JavaScriptここまで
 </body>
 </html>

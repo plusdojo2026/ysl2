@@ -71,8 +71,7 @@ public class Controller extends HttpServlet {
 			page = action.selectTaskDetail();
 		} else if (pageId.equals("L010") && buttonId.equals("変更")) {
 			//パスワード変更画面の変更ボタン
-			UserAction action = new UserAction(request);
-			page = action.updatePassword();
+			page = "/WEB-INF/jsp/change_password.jsp";
 		} else if (pageId.equals("side") && buttonId.equals("ログアウト")) {
 			//ログアウトボタン
 			HttpSession session = request.getSession();

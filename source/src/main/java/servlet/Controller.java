@@ -61,7 +61,7 @@ public class Controller extends HttpServlet {
 			//案件一覧の案件詳細への遷移リンク
 			CaseAction action = new CaseAction(request);
 			page = action.selectCaseDetail();
-		} else if ((pageId.equals("L001") && pageId.equals("L007")) && buttonId.equals("工数登録")) {
+		} else if ((pageId.equals("L001") || pageId.equals("L007")) && buttonId.equals("工数登録")) {
 			//ダッシュボード、タスク編集ページからの工数登録ボタン
 			ManHourAction action = new ManHourAction(request);
 			page = action.registManHour();
@@ -71,7 +71,8 @@ public class Controller extends HttpServlet {
 			page = action.selectTaskDetail();
 		} else if (pageId.equals("L010") && buttonId.equals("変更")) {
 			//パスワード変更画面の変更ボタン
-			page = "/WEB-INF/jsp/change_password.jsp";
+			UserAction action = new UserAction(request);
+			page = action.updatePassword();
 		} else if (pageId.equals("side") && buttonId.equals("ログアウト")) {
 			//ログアウトボタン
 			HttpSession session = request.getSession();
@@ -125,8 +126,8 @@ public class Controller extends HttpServlet {
 			page = action.registTask();
 		} else if (pageId.equals("L004") && buttonId.equals("登録")) {
 			//案件一覧の案件登録モーダルの登録ボタン
-			CaseAction action = new CaseAction(request);
-			page = action.registCase();
+			TaskAction action = new TaskAction(request);
+			page = action.registTask();
 		} else if (pageId.equals("L004") && buttonId.equals("保存")) {
 			//案件一覧の案件編集モーダルの保存ボタン
 			CaseAction action = new CaseAction(request);
@@ -167,9 +168,6 @@ public class Controller extends HttpServlet {
 			//メンバー一覧のメンバー編集モーダルの保存ボタン
 			AdminAction action = new AdminAction(request);
 			page = action.updataUser();
-		} else if (pageId.equals("L010") && buttonId.equals("変更")) {
-			UserAction action = new UserAction(request);
-			page = action.updatePassword();
 		}
 
 		System.out.println("フォワード先ページ：" + page);

@@ -17,7 +17,7 @@
 		<p>${case_name}</p>
 		<p>${task_name}</p>
 	</div>	
-	<form method="POST" action="/Controller">
+	<form method="POST" action="/Controller" >
 	<div clas="man_h">
 	<label>作業日<br>
 		<input type="date" name="work_date"><br>

@@ -49,13 +49,13 @@
 			<th>編集</th>
 		</tr>
 		<!-- 表示データ -->
-		<c:forEach var="m" items="${memberList}">
+		<c:forEach var="m" items="${userList}">
 		<tr>
 			<td><c:out value ="${m.userId}"/></td>
 			<td><c:out value ="${m.loginId}"/></td>	
 			<td><c:out value ="${m.name}"/></td>
 			<td><c:out value ="${m.mail}"/></td>
-			<td><c:out value ="${m.isAddmin}"/></td>
+			<td><c:out value ="${m.isAdmin}"/></td>
 			<td><c:out value ="${m.isActive}"/></td>
 			<td><c:out value ="${m.createdAt}"/></td>
 			

@@ -21,5 +21,5 @@ const validatePassword = () => {
   }
 };
 
-newPwdInput?.addEventListener("input", validatePassword);
-confirmPwdInput?.addEventListener("input", validatePassword);
+new_pw?.addEventListener("input", validatePassword);
+new_pw_confirm?.addEventListener("input", validatePassword);

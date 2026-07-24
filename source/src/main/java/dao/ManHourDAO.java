@@ -78,7 +78,7 @@ public class ManHourDAO {
 	//工数ログ(タスク詳細)
 	public ArrayList<AllDTO> selectManHours(int task_id) throws SQLException {
 		ArrayList<AllDTO> list = new ArrayList<AllDTO>();
-		String sql ="SELECT m.work_date AS '作業日', t.manager AS '担当者', m.today_man_hours AS '工数', m.work_details AS '作業内容' FROM man_hours m"
+		String sql ="SELECT m.work_date AS '作業日', t.manager AS '担当者', m.today_man_hours AS '工数', m.work_details AS '作業内容' task_name AS 'タスク名' FROM man_hours m"
 					+ "JOIN tasks t ON m.task_id = t.task_id ORDER BY m.work_date WHERE t.task_id = ?";
 		System.out.println(sql);
 		PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -88,11 +88,11 @@ public class ManHourDAO {
 		
 		while(rs.next()) {
 			AllDTO dto = new AllDTO();
-			dto.setWorkDate(rs.getString("work_date"));
-			dto.setTaskName(rs.getString("task_name"));
-			dto.setManager(rs.getInt("manager"));
-			dto.setTodayManHours(rs.getDouble("today_man_hours"));
-			dto.setWorkDetails(rs.getString("work_details"));
+			dto.setWorkDate(rs.getString("作業日"));
+			dto.setTaskName(rs.getString("タスク名"));
+			dto.setManager(rs.getInt("担当者"));
+			dto.setTodayManHours(rs.getDouble("工数"));
+			dto.setWorkDetails(rs.getString("作業内容"));
 			list.add(dto);
 		}
 		rs.close();

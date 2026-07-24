@@ -1,28 +1,17 @@
-
-/* 3. 让侧边栏和右边的内容左右并排 */
-.layout {
-  display: flex;
-}
-
 /* 4.sidebar */
 .sidebar {
   width: 240px;
   background-color: #f0f0f0; /* 浅灰色 */
-  padding: 30px;             /* 四周空隙 */
-  height: 100vh;             /* sidebar高度填满和屏幕一样高 */
+  padding: 30px; /* 四周空隙 */
+  height: 100vh; /* sidebar高度填满和屏幕一样高 */
 }
 
 /* 5. 侧边栏里的链接*/
 .sidebar a {
-  display: block;            /* 项目的上下排列 */
-  color: #333333;            /* 字用深灰色 */
-  text-decoration: none;     /* 去掉链接自带的下划线 */
-  padding: 20px 0;           /* 字体间距 */
+  display: block; /* 项目的上下排列 */
+  padding: 20px 0; /* 字体间距 */
 }
-
 
 .sidebar a:hover {
   text-decoration: underline; /* 鼠标放上去时出现下划线 */
 }
-
-

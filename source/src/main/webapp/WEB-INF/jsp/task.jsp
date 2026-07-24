@@ -8,7 +8,6 @@
 	<meta charset="UTF-8">
 	<title>タスク一覧</title>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
-	<link rel="stylesheet" href="<c:url value='/css/menu.css' />">
 	<link rel="stylesheet" href="<c:url value='/css/task.css' />">
 	<link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/>
  	<script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.js"></script>
@@ -53,30 +52,6 @@
 <main>
 	<h1>タスク一覧</h1>
 	<div>${msg}</div>
-	<div>
-	<%-- <form method="POST" action="<c:url value='/Controller'/>">
-		<input type="hidden" name="page_id" value="L006">
-		<input type="text" name="seach_word" placeholder="キーワード検索">
-		<select name="case_name">
-			<c:forEach var="c" items="${allTaskList}">
-				<option value="${c.caseId}">${c.caseName}</option>
-			</c:forEach>
-		</select>
-		<select name="manager">
-			<c:forEach var="m" items="">
-				<option value="${m.userId}">${c.userName}</option>
-			</c:forEach>
-		</select>
-		<select name="status">
-			<option value="">ステータス</option>
-			<option value="未着手">未着手</option>
-			<option value="進行中">進行中</option>
-			<option value="完了">完了</option>
-			<option value="保留">保留</option>
-		</select>
-		<input type="submit" name="button_id" value="検索">
-	</form>
-	</div> --%>
 
 	<div>
 		<button onclick="openModal()">新規登録</button>
@@ -104,7 +79,7 @@
 			<tr>
 				<td>${t.caseName}</td>
 				<td>
-					<a href="/Controller/?page_id=L006&button_id=task_link&task_id=${t.taskId}">${t.taskName}</a>
+					<a href="${pageContext.request.contextPath}/Controller?page_id=L006&button_id=task_link&task_id=${t.taskId}">${t.taskName}</a>
 				</td>
 				<td>${t.manager}</td>
 				<td>${t.deadlineDate}</td>
@@ -150,7 +125,7 @@
 							<label for="manager">担当者</label>
 							<select name="manager" id="manager">
 								<c:forEach var="m" items="${activeUsersList}">
-									<option value="${m.userId}">${c.userName}</option>
+									<option value="${m.userId}">${m.name}</option>
 								</c:forEach>
 							</select>
 						</td>
@@ -182,14 +157,14 @@
 		        		</td>
 		        		<td>
 		        			<label>見積工数
-					            <input type="number" min="0" max="24" step="0.5" name="estimated_man_hours">
+					            <input type="number" min="0" step="0.5" name="estimated_man_hours">
 					        </label>
 		        		</td>
 		        	</tr>
 		        	<tr>
 		        		<td>
 		        			<label for="status">ステータス</label>
-							<select name="status" required>
+							<select name="status" id="status" required>
 								<option value="未着手" selected>未着手</option>
 								<option value="進行中">進行中</option>
 								<option value="完了">完了</option>
@@ -242,8 +217,8 @@
 				<p>
 		        <label for="manager">担当者<br></label>
 				<select name="manager" id="manager">
-					<c:forEach var="m" items="${activeUserList}">
-						<option value="${m.userId}">${m.userName}</option>
+					<c:forEach var="m" items="${activeUsersList}">
+						<option value="${m.userId}">${m.name}</option>
 					</c:forEach>
 				</select>
 				</p>
@@ -272,12 +247,12 @@
 				</p>
 				<p>
 		        <label>見積工数<br>
-		            <input type="number" min="0" max="24" step="0.5" name="estimated_man_hours">
+		            <input type="number" min="0" step="0.5" name="estimated_man_hours">
 		        </label>
 				</p>
 				<p>
 				<label for="status">ステータス<br></label>
-				<select name="status" required>
+				<select name="status" id="status" required>
 					<option value="未着手" selected>未着手</option>
 					<option value="進行中">進行中</option>
 					<option value="完了">完了</option>

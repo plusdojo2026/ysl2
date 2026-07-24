@@ -211,7 +211,7 @@ public class TaskDAO {
 		
 		//SELECT文準備
 		String sql = "SELECT tasks.case_id, cases.case_name, tasks.task_id, task_name, users.name,"
-				+ " tasks.status, tasks.priority, deadline_date, estimated_man_hours, task_progress,"
+				+ " tasks.status, tasks.priority, tasks.start_date, deadline_date, estimated_man_hours, task_progress,"
 				+ " COALESCE (SUM(today_man_hours), 0) AS actual_man_hours, tasks.memo"
 				+ " FROM tasks"
 				+ " JOIN cases"
@@ -245,6 +245,7 @@ public class TaskDAO {
 			dto.setName(rs.getString("name"));
 			dto.setTaskStatus(rs.getString("status"));
 			dto.setTaskPriority(rs.getString("priority"));
+			dto.setTaskStartDate(rs.getString("start_date"));
 			dto.setDeadlineDate(rs.getString("deadline_date"));
 			dto.setEstimatedManHours(rs.getDouble("estimated_man_hours"));
 			dto.setTaskProgress(rs.getInt("task_progress"));

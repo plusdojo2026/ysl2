@@ -52,7 +52,7 @@ public class TaskAction {
 		
 		//入力値の取得
 		request.setCharacterEncoding("UTF-8");
-		int taskId = Integer.parseInt(request.getParameter("taskId"));
+		int taskId = Integer.parseInt(request.getParameter("task_id"));
 		
 		//以下、タスク詳細表示用データの取得と格納↓
 		//dtoの箱
@@ -63,6 +63,8 @@ public class TaskAction {
 		dto = tService.selectTaskDetail(taskId);
 		ManHourService mService = new ManHourService();
 		mdto  = mService.selectManHours(taskId);
+		
+		System.out.println(taskId);
 		//リクエストスコープに格納
 		request.setAttribute("task", dto);
 		request.setAttribute("manHoursList", mdto);
@@ -75,7 +77,7 @@ public class TaskAction {
 		//戻り値（遷移先）のURL
 		String page = "/WEB-INF/jsp/task.jsp";
 		//DTOの箱
-		TaskDTO dto = null;
+		TaskDTO dto = new TaskDTO();
 		
 		//入力値の取得
 		request.setCharacterEncoding("UTF-8");
@@ -89,8 +91,9 @@ public class TaskAction {
 		double estimatedManHours = Double.parseDouble(request.getParameter("estimated_man_hours"));
 		int taskProgress = Integer.parseInt(request.getParameter("progress"));
 		String memo = request.getParameter("memo");
+
 		
-		//dtoにまとめる
+		//dtoにまとめる	
 		dto.setCaseId(caseId);
 		dto.setTaskName(taskName);
 		dto.setManager(manager);
@@ -135,7 +138,7 @@ public class TaskAction {
 		//戻り値（遷移先）のURL
 		String page = "/WEB-INF/jsp/task.jsp";
 		//DTOの箱
-		TaskDTO dto = null;
+		TaskDTO dto = new TaskDTO();
 		
 		//入力値の取得
 		request.setCharacterEncoding("UTF-8");
@@ -150,6 +153,7 @@ public class TaskAction {
 		int taskProgress = Integer.parseInt(request.getParameter("progress"));
 		String memo = request.getParameter("memo");
 		int taskId = Integer.parseInt(request.getParameter("task_id"));
+		
 		
 		//dtoにまとめる
 		dto.setCaseId(caseId);
@@ -233,7 +237,7 @@ public class TaskAction {
 		//戻り値（遷移先）のURL
 		String page = "/WEB-INF/jsp/task_detail.jsp";
 		//DTOの箱
-		TaskDTO dto = null;
+		TaskDTO dto = new TaskDTO();
 		
 		//入力値取得
 		int taskId = Integer.parseInt(request.getParameter("task_id"));

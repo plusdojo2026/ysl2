@@ -13,20 +13,20 @@
 <main>
     <h1>タスク詳細</h1>
         <p>案件名：${task.caseName}</p>
-        <p>タスク名：${task.taskaName}</p>
+        <p>タスク名：${task.taskName}</p>
         <p>担当者：${task.manager}</p>
-        <p>開始日：${task.startDate}</p>
+        <p>開始日：${task.taskStartDate}</p>
         <p>案件名：${task.caseName}</p>
 		<p>タスク名：${task.taskName}</a>
 		<p>担当者：${task.manager}</p>
 		<p>期限：${task.deadlineDate}</p>
-		<p>見積工数：${task.estimatedMonHours}</p>
+		<p>見積工数：${task.estimatedManHours}</p>
 		<p>実績工数：${task.actualManHours}</p>
 		<!-- ステータス変更フォーム -->
 		<form method="POST" action="<c:url value='/Controller'/>">
 			<label for="status">ステータス<br></label>
 			<input type="hidden" name="page_id" value="L007">
-			<input type="hidden" name="task_id" value="${task.taskId}">"
+			<input type="hidden" name="task_id" value="${task.taskId}">
 			<select name="status" id="status">
 				<option value="未着手" selected>未着手</option>
 				<option value="進行中">進行中</option>
@@ -36,10 +36,10 @@
 			<input type="submit" name="button_id" value="変更">
 		</form>
 		<!-- --------------------------- -->
-		<p>優先度：${task.priority}</p>
+		<p>優先度：${task.taskPriority}</p>
 		<p>進捗率：${task.taskProgress}</p>
 		<input type="button" value="編集">
-	<button><a href="/Controller/?page_id=L007&button_id=mon_hours_link&task_id=${t.task_id}">工数登録</a></button>
+	<button><a href="{pageContext.request.contextPath}/Controller?page_id=L007&button_id=man_hours_link&task_id=${t.taskId}">工数登録</a></button>
 	<div>
 	<h2>工数ログ</h2>
 	<c:forEach var="m" items="${manHoursList}">
@@ -47,7 +47,7 @@
 		<input type="hidden" name="man_hours_id" value="${m.manHoursId}"
 		<p>${m.workDate}</p>
 		<p>${m.manager}</p>
-		<p>${m.todaysManHours}</p>
+		<p>${m.todayManHours}</p>
 		<p>${m.workDetail}</p>
 		<input type="submit" name="button_id" value="削除">
 	</form>

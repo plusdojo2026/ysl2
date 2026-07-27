@@ -148,14 +148,8 @@
               <label for="case_name">顧客名</label> 
               <input type="text" name="customer_name">
             </div>
-<<<<<<< Updated upstream
             <div class="form-group">
               <label for="manager">担当PM</label> 
-=======
-            <div>
-              <label for="manager">担当PM<br/></label> 
-              
->>>>>>> Stashed changes
               <select name="pm_id" id="pm_id" required>
              
                 <c:forEach var="m" items="${userList}">
@@ -183,15 +177,9 @@
                 <option value="低">低</option>
               </select>
             </div>
-<<<<<<< Updated upstream
             <div class="form-group">
               <label>予算工数</label>
               <input type="number" min="0" max="24" step="0.5" name="budgetted_man_hours" />
-=======
-            <div>
-              <label>予算工数<br/></label>
-              <input type="number" min="0" max="24" step="0.5" name="budgetted_man_hours" value =""/>
->>>>>>> Stashed changes
             </div>
             <div class="form-group">
               <label for="status">ステータス*</label> 

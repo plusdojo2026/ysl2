@@ -67,7 +67,6 @@
       <div class="r_modal">
         <h2>案件登録</h2>
         <form method="POST" action="<c:url value='/Controller'/>">
-          <input type="hidden" name="page_id" value="L004" />
           <div class="case_modal">
             <div>
               <label for="">案件コード*<br/></label> 
@@ -123,6 +122,7 @@
               </select>
             </div>
           </div>
+          <input type="hidden" name="page_id" value="L004" />
           <input type="submit" name="button_id" value="登録">
         </form>
         <button class="close" onclick="closeRModal()">戻る</button>
@@ -134,7 +134,6 @@
       <div class="e_modal">
         <h2>案件編集</h2>
         <form method="POST" action="<c:url value='/Controller'/>" id="edit">
-          <input type="hidden" name="page_id" value="L004"/>
           <div class=case_modal>
             <div>
               <label for="case_id">案件コード*<br/></label> 
@@ -191,6 +190,7 @@
               </select>
             </div>
           </div>
+          <input type="hidden" name="page_id" value="L004"/>
           <input type="submit" name="button_id" value="保存">
         </form>
         <button class="close" onclick="closeEModal()">戻る</button>

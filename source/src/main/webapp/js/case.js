@@ -17,7 +17,7 @@ function openRegistModal() {
 }
 
 //編集モーダル・引数
-function openEditModal(caseId, caseName, customerName, name, caseMemo, caseStartDate, endDate, casePriority, budgetedManHours, caseStatus) {
+function openEditModal(caseId, caseName, customerName, name, caseMemo, caseStartDate, endDate, casePriority, budgetedManHours, caseStatus, pmId) {
   document.getElementById("edit_modal").style.display = "flex";
   let form = document.getElementById("edit");
   form.elements["case_id"].value = caseId;

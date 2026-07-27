@@ -31,17 +31,32 @@ public class ManHourAction {
 		AllDTO dto = new AllDTO();
 		dto.setTaskId(taskId);
 		ManHourService service = new ManHourService();
-		//ArrayList<AllDTO> list = service.selectManHours(taskId);
-		ArrayList<AllDTO> clist = service.selectCaseName(taskId);
-		//request.setAttribute("list", list);
-		request.setAttribute("clist", clist);
+		ArrayList<AllDTO> list = service.selectManHours(taskId);
+		//ArrayList<AllDTO> clist = service.selectCaseName(taskId);
+		request.setAttribute("list", list);
+		//request.setAttribute("clist", clist);
 		
 		return page;
 	}
 	
+	//casename,taskname
+	public String selectName() throws UnsupportedEncodingException {
+		String page ="/WEB-INF/jsp/man_hour.jsp";
+		
+		request.setCharacterEncoding("UTF-8");
+		int taskId = Integer.parseInt(request.getParameter("task_id"));
+		AllDTO dto = new AllDTO();
+		dto.setTaskId(taskId);
+		ManHourService service = new ManHourService();
+		ArrayList<AllDTO> list = service.selectManHours(taskId);
+		request.setAttribute("list", list);
+		return page;
+		
+	}
+	
 	//工数登録メソッド
 	public String registManHour() throws UnsupportedEncodingException{
-		String page ="/WEB-INF/jsp/man_hour.jsp";
+		String page ="/WEB-INF/jsp/task_detail.jsp";
 		//入力値の取得
 		request.setCharacterEncoding("UTF-8");
 		System.out.println("page_id=" + request.getParameter("page_id"));
@@ -53,10 +68,12 @@ public class ManHourAction {
 		String workDetails = request.getParameter("work_details");
 		String workDate = request.getParameter("work_date");
 		
+		
 		ManHourDTO dto = new ManHourDTO();
 		dto.setTodayManHours(todayManHours);
 		dto.setWorkDetails(workDetails);
 		dto.setWorkDate(workDate);
+		
 		
 		ManHourService service = new ManHourService();
 		service.registManHour(todayManHours, workDate, workDate);

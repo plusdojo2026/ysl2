@@ -15,15 +15,15 @@
 <div class="main">
     <%@ include file="/WEB-INF/jsp/sidebar.jsp" %>
 
-    <div class="pop" var="c" items="${clist}">
+    <div class="pop" var="c" items="${list}">
 	    <p>案件名:${c.caseName}</p>
-	    <p>タスク名:${c.taskName}</p>\
+	    <p>タスク名:${c.taskName}</p>
 	</div>
 	<form method="POST" action="<c:url value='/Controller'/>">
-    <a href="${pageContext.request.contextPath}/Controlle"></a>
+    <a href="${pageContext.request.contextPath}/Controller"></a>
 
         <div class="man_h">
-
+        
             <label>
                 作業日<br>
                 <input type="date" name="work_date" required>
@@ -50,7 +50,7 @@
 
             <input type="hidden" name="page_id" value="L005">
             <input type="submit" name="button_id" value="登録">
-
+		
         </div>
 
     </form>

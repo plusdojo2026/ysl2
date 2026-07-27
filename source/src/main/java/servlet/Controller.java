@@ -63,8 +63,9 @@ public class Controller extends HttpServlet {
 			page = action.selectCaseDetail();
 		} else if ((pageId.equals("L002") || pageId.equals("L007")) && buttonId.equals("工数登録")) {
 			//ダッシュボード、タスク編集ページからの工数登録ボタン
-			ManHourAction action = new ManHourAction(request);
-			page = action.registManHour();
+//			ManHourAction action = new ManHourAction(request);
+//			page = action.registManHour();
+			page = "/WEB-INF/jsp/man_hour.jsp";
 		} else if (pageId.equals("L006") && buttonId.equals("task_link")) {
 			//タスク一覧のタスク詳細への遷移リンク
 			TaskAction action = new TaskAction(request);

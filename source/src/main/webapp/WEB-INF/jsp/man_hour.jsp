@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/man_hour.css" />
 </head>
 <body>
+<main>
 <%@ include file="/WEB-INF/jsp/sidebar.jsp" %>
 <div class="main">
     <div class="pop" >
@@ -56,6 +57,6 @@
 
     </form>
 </div>
-
+</main>
 </body>
 </html>

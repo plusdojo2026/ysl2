@@ -126,8 +126,8 @@ public class Controller extends HttpServlet {
 			page = action.registTask();
 		} else if (pageId.equals("L004") && buttonId.equals("登録")) {
 			//案件一覧の案件登録モーダルの登録ボタン
-			TaskAction action = new TaskAction(request);
-			page = action.registTask();
+			CaseAction action = new CaseAction(request);
+			page = action.registCase();
 		} else if (pageId.equals("L004") && buttonId.equals("保存")) {
 			//案件一覧の案件編集モーダルの保存ボタン
 			CaseAction action = new CaseAction(request);

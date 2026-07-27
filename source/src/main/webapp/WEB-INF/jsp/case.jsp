@@ -32,7 +32,9 @@
 		
 		<input type="button" name="search_button" value="検索">
 		
-		<input type="button" name="new_regist" value="+新規登録">
+		<button onclick = "openRegistModal()" >
+		+新規登録
+		</button>
 		
 		<hr>
 		<c:forEach var="e" items="${caseList}" >
@@ -48,16 +50,20 @@
 				<td>ステータス${e.caseStatus}</td>
 				<td>開始日:${e.caseStartDate}</td>
 				<td>終了日:${e.endDate}</td>
+				<td>${e.caseMemo}</td>
 		</tr>	
-		<input type="button" name="back_regist" value="編集">
+		<button onclick = "openEditModal('${e.caseName}','${e.customerName}','${e.caseId}','${e.name}','${e.caseMemo}','${e.caseStartDate}','${e.endDate}','${e.casePriority}','${e.budgetedManHours}','${e.caseStatus}')">編集</button>
 		</c:forEach>
 	</from>
 
 
 	<div>
+	<div id = "case_regist_modal" class = "modal_background" >
+	<div class = "r_modal">
 		<h2>案件登録</h2>
 		<form method="POST" action="<c:url value='/Controller'/>">
         <input type="hidden" name="page_id" value="L004" />
+        <div class="case_modal">
 		<p>
 			<label for="">案件コード*<br /></label>
 			<input type="text" name="case_id">
@@ -125,19 +131,24 @@
             <option value="保留">保留</option>
           </select>
         </p>
+        </div>
 		<input type="submit" name="button_id" value="登録">
-		<input type="button" name="back_button" value="戻る">
-
+		<button class = "close" onclick = "closeEModal()">戻る</button>
 
 
 	</div>
+	</div>
+	</div>
 	
 	<div>
+	<div id = "edit_modal" class = "modal_background">
+   <div class = "e_modal">
 		<h2>案件編集</h2>
-		<form method="POST" action="<c:url value='/Controller'/>">
+		<form method="POST" action="<c:url value='/Controller'/>" id= "edit">
         <input type="hidden" name="page_id" value="L004" />
+        <div class = case_modal>
 		<p>
-			<label for="">案件コード*<br /></label>
+			<label for="case_id">案件コード*<br /></label>
 			<input type="text" name="case_id">
 		</p>
 		<p>
@@ -201,14 +212,49 @@
             <option value="保留">保留</option>
           </select>
         </p>
+        </div>
 		<input type="submit" name="button_id" value="保存">
-		<input type="button" name="back_button" value="戻る">
+		
+		<button class = "close" onclick = "closeEModal()">戻る</button>
 
 
-
+	 </div>	
+	</div>
 	</div>
 	
 	</div>
+	<script>
+ 	//新規登録モーダル・引数なし
+ 	function openRegistModal(){
+		document.getElementById("case_regist_modal").style.display = "block";
+ 	 	}
+
+ 	//編集モーダル・引数
+ 	function openEditModal(caseId,caseName,customerName,name,caseMemo,caseStartDate,endDate,casePriority,budgetedManHours,caseStatus){
+		document.getElementById("edit_modal").style.display = "block";
+		let form = document.getElementById('edit');
+		form.elements["case_id"].value = caseId;
+		form.elements["case_name"].value = caseName;
+		form.elements["customer_name"].value = customerName;
+		form.elements["pm_id"].value = name;
+		form.elements["memo"].value = caseMemo;
+		form.elements["start_date"].value = caseStartDate;
+		form.elements["end_date"].value = endDate;
+		form.elements["priority"].value = casePriority;
+		form.elements["budgeted_man_hours"].value = budgetedManHours;
+		form.elements["status"].value = caseStatus;
+ 	 	}
+
+ 	//『×』新規登録モーダルを閉じる。
+ 	function closeRModal(){
+		document.getElementById("regist_modal").style.display = "none";
+ 	 	}
+	//『×』編集モーダルを閉じる
+	function closeEModal(){
+		document.getElementById("edit_modal").style.display = "none";
+ 	 	}
+
+	 </script>
 	</main>
 </body>
 </html>

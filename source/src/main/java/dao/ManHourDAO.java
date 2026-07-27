@@ -52,7 +52,7 @@ public class ManHourDAO {
 	//案件名・タスク名（工数登録）
 	public AllDTO selectCaseName(int task_id) throws SQLException {
 		AllDTO list = new AllDTO();
-		String sql ="SELECT c.case_name, t.task_name FROM tasks t JOIN cases c ON t.case_id = c.case_id WHERE t.task_id = ?";
+		String sql ="SELECT t.task_id, c.case_name, t.task_name FROM tasks t JOIN cases c ON t.case_id = c.case_id WHERE t.task_id = ?";
 		System.out.println(sql);
 		PreparedStatement pStmt = conn.prepareStatement(sql);
 		pStmt.setInt(1, task_id);
@@ -64,11 +64,11 @@ public class ManHourDAO {
 			System.out.println("case_name=" + rs.getString("case_name"));
 			System.out.println("task_name=" + rs.getString("task_name"));
 			
-			AllDTO dto = new AllDTO();
 			
-			dto.setCaseName(rs.getString("case_name"));
-			dto.setTaskName(rs.getString("task_name"));
-			dto.setTaskId(rs.getInt("task_id"));
+			
+			list.setCaseName(rs.getString("case_name"));
+			list.setTaskName(rs.getString("task_name"));
+			list.setTaskId(rs.getInt("task_id"));
 			
 		}
 

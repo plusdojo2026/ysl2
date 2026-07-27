@@ -8,35 +8,33 @@
 	<title>月次集計</title>
 	
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
-	
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/manthly_sum.css" />
 </head>
 <body>
-
-<div class ="main">
+<main>
 <%@ include file="/WEB-INF/jsp/sidebar.jsp" %>
+<div class ="main">
 
-	<div>
-		<input type="date" name="work_date" ><br>
-	    <input type="submit" value="集計" ><br>
+	<form method="POST" action="<c:url value='/Controller'/>">
+		<input type="month" name="work_date" >
+		<input type="hidden" name="page_id" value="L008"> 
+	    <input type="submit" name = "button_id" value="集計" >
+    </form>
+    
+    <div class = "total_mh">
+	    <h3>合計工数</h3>
+	    <p>工数データをここに表示</p>
+    </div>
+    <div class = "total_case">
+	    <h3>合計案件数</h3>
+	    <p>${TotalCasesAndManHours.size()}</p>
+    </div>
+    <div class = "total_member">
+	    <h3>合計稼働メンバー数</h3>
+	    <p>${ManthAndMembers.size()}</p>
     </div>
     
-    <!-- <a href="">CSV出力→</a> -->
-    
-    <div>
-	    <h3>工数</h3>
-	    <p>工数データをここに表示<!-- ${all_man_hours} --></p>
-    </div>
-    <div>
-	    <h3>案件数</h3>
-	    <p>${allCaseSum}</p>
-    </div>
-    <div>
-	    <h3>稼働メンバー数</h3>
-	    <p>${allUserSum}</p>
-    </div>
-    
-    <div>
-    
+    <div class = "case_table">
     	<h3>案件別集計テーブル</h3>
  			<table>
     			 <tr>
@@ -49,32 +47,31 @@
     			 <tr>
       				<td><c:out value = "${c.caseId}"/></td>
 				    <td><c:out value = "${c.caseName}"/></td>
-				    <td><c:out value = "${c.todayManHours}"/></td>
+				    <td>${ManthlyManHours.todayManHours}</td>
 				    <td><c:out value = "${c.budgetedManHours}"/></td>
     			</tr>
     			</c:forEach>
    			 </table>
     </div>
-    <!-- <div>
-    	<label>メンバー別集計テーブル</label>
-    	
-    		<table>
-    			 <thead>
-    			 	<tr>
-    			 		<th scope="col">担当者名</th>
-      					<th scope="col">工数</th>
-      					<th scope="col">割合プログレスバー</th>
-    			 	</tr>
-    			 </thead>
-    			 <tbody>
-    			 	<tr>
-      					<th scope="row">${name}</th>
-					    <td>${actual_man_hours}</td>
-					    <td>${}</td>
-    				</tr>
-    			 </tbody>
-    		</table>
-    </div> -->
+    
+    <div class = "user_table">
+      <h3>メンバー別集計テーブル</h3>
+    	<table>
+    		<tr>
+    			<td>担当者名</td>
+    			<td>工数</td>
+    			<td>進捗率</td> 		
+    		</tr>
+    		<c:forEach var="m" items="${ManthAndMembers}">
+    		<tr>
+    			<td><c:out value = "${m.name}"/></td>
+    			<td><c:out value = "${m.actualManHours}"/></td>
+    			<td>ここで進捗率表示</td>
+    		</tr>
+    		</c:forEach>
+		</table>    
+    </div>
+</main>
 </div>
 </body>
 </html>

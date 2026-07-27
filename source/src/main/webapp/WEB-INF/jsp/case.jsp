@@ -69,26 +69,22 @@
         <h2>案件登録</h2>
         <form method="POST" action="<c:url value='/Controller'/>">
           <div class="case_modal">
-            <div>
+            <div class="case_modal_left">
               <div class="form-group">
                 <label for="">案件コード*</label> 
-                <input type="text" name="case_id">
+                <input type="text" name="case_id" required>
               </div>
               <div class="form-group">
                 <label for="case_name">案件名*</label> 
-                <input type="text" name="case_name">
+                <input type="text" name="case_name" required>
               </div>
               <div class="form-group">
                 <label for="case_name">顧客名</label> 
                 <input type="text" name="customer_name">
               </div>
               <div class="form-group">
-                <label for="manager">担当PM</label> 
-                <select name="pm_id" id="pm_id">
-                  <c:forEach var="m" items="${userList}">
-                    <option value="${m.userId}">${m.name}</option>
-                  </c:forEach>
-                </select>
+                <label>予算工数</label>
+                <input type="number" min="0" max="24" step="0.5" name="budgeted_man_hours" value="0" />
               </div>
               <div class="form-group">
                 <label for="memo">説明</label> 
@@ -113,8 +109,12 @@
                 </select>
               </div>
               <div class="form-group">
-                <label>予算工数</label>
-                <input type="number" min="0" max="24" step="0.5" name="budgeted_man_hours" value="0" />
+                <label for="manager">担当PM</label> 
+                <select name="pm_id" id="pm_id">
+                  <c:forEach var="m" items="${userList}">
+                    <option value="${m.userId}">${m.name}</option>
+                  </c:forEach>
+                </select>
               </div>
               <div class="form-group">
                 <label for="status">ステータス*</label> 
@@ -142,11 +142,11 @@
           <div class=case_modal>
             <div class="form-group">
               <label for="case_id">案件コード*</label> 
-              <input type="text" name="case_id">
+              <input type="text" name="case_id" required>
             </div>
             <div class="form-group">
               <label for="case_name">案件名*</label> 
-              <input type="text" name="case_name">
+              <input type="text" name="case_name" required>
             </div>
             <div class="form-group">
               <label for="case_name">顧客名</label> 

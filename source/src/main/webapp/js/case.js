@@ -13,12 +13,12 @@ jQuery(function ($) {
 
 //新規登録モーダル・引数なし
 function openRegistModal() {
-  document.getElementById("case_regist_modal").style.display = "block";
+  document.getElementById("case_regist_modal").style.display = "flex";
 }
 
 //編集モーダル・引数
 function openEditModal(caseId, caseName, customerName, name, caseMemo, caseStartDate, endDate, casePriority, budgetedManHours, caseStatus) {
-  document.getElementById("edit_modal").style.display = "block";
+  document.getElementById("edit_modal").style.display = "flex";
   let form = document.getElementById("edit");
   form.elements["case_id"].value = caseId;
   form.elements["case_name"].value = caseName;

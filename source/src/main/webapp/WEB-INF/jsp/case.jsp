@@ -125,7 +125,7 @@
           <input type="hidden" name="page_id" value="L004" />
           <input type="submit" name="button_id" value="登録">
         </form>
-        <button class="close" onclick="closeRModal()">戻る</button>
+        <button class="close" onclick="closeRModal()">×</button>
       </div>
     </div>
 
@@ -193,7 +193,7 @@
           <input type="hidden" name="page_id" value="L004"/>
           <input type="submit" name="button_id" value="保存">
         </form>
-        <button class="close" onclick="closeEModal()">戻る</button>
+        <button class="close" onclick="closeEModal()">×</button>
       </div>
     </div>
 

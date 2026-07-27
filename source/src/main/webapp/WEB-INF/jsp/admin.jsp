@@ -59,27 +59,29 @@
 	<h2>メンバー新規登録</h2>
 		<button class = "close" onclick = "closeRModal()">×</button><!-- 関数"closeModal" -->
 		<form action ="POST" action="<c:url value='/Controller'/>">
-      <div>
-        <label>ログインID*</label>
-        <input type = "text" id = "login" name="login_iod" required>
-			</div>
-      <div>
-        <label>氏名*</label>
-        <input type = "text" class = "name" name="name" required>
-			</div>
-      <div>
-        <label>初期パスワード*(6文字以上)</label>
-        <input type = "text" id = "pw" name="pw" required>
-			</div>
-      <div>
-        <label>メールアドレス</label>
-        <input type = "text" name="mail">
-			</div>
-      <div>
-			<label>権限</label>
-        <label><input type = "radio" name ="is_addmin" value ="1">一般</label>
-        <label><input type = "radio" name ="is_addmin" value ="2">管理者</label>
-			</div>
+      <div class="modal-contents-1">
+        <div class="form-group">
+          <label>ログインID*</label>
+          <input type = "text" id = "login" name="login_iod" required>
+        </div>
+        <div class="form-group">
+          <label>氏名*</label>
+          <input type = "text" class = "name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label>初期パスワード*(6文字以上)</label>
+          <input type = "text" id = "pw" name="pw" required>
+        </div>
+        <div class="form-group">
+          <label>メールアドレス</label>
+          <input type = "text" name="mail">
+        </div>
+        <div class="form-group">
+        <label>権限</label>
+          <label><input type = "radio" name ="is_addmin" value ="1">一般</label>
+          <label><input type = "radio" name ="is_addmin" value ="2">管理者</label>
+        </div>
+      </div>
 			<input type ="hidden" name ="page_id" value ="L009">
 			<input type ="submit" name ="save" value ="保存">
 		</form>
@@ -92,30 +94,32 @@
     <h2>メンバー編集</h2>
 		<button class = "close" onclick = "closeEModal()">×</button>
 		<form action="POST" id = "edit" action="<c:url value='/Controller'/>">
-      <div>
-        <label>ユーザーID: "${userId}"</label>
+      <div class="modal-contents-1">  
+        <div class="form-group">
+          <label>ユーザーID: "${userId}"</label>
+        </div>
+        <div class="form-group">
+          <label>氏名</label>
+          <input type = "text" class = "name" name="name" value ="${m.name}" required>
+        </div>
+        <div class="form-group">
+          <label>メールアドレス</label>
+          <input type = "text" name="mail" value ="${m.mail}">
+        </div>
+        <div class="form-group">
+          <label>権限</label> 
+          <input type = "radio" name ="is_admin" value ="1">一般
+          <input type = "radio" name ="is_admin" value ="2">管理者
+        </div>
+        <div class="form-group">
+          <label>状態</label>
+          <input type = "radio" name ="is_active" value ="1">有効
+          <input type = "radio" name ="is_active" value ="2">無効
+        </div>
+        <input type ="hidden" name ="page_id" value ="L009">
+        <input type ="hidden" name ="id" value ="${m.userId}">
+        <input type ="submit" name ="save" value ="保存">
       </div>
-      <div>
-        <label>氏名</label>
-        <input type = "text" class = "name" name="name" value ="${m.name}" required>
-      </div>
-      <div>
-        <label>メールアドレス</label>
-        <input type = "text" name="mail" value ="${m.mail}">
-			</div>
-      <div>
-        <label>権限</label> 
-        <input type = "radio" name ="is_admin" value ="1">一般
-        <input type = "radio" name ="is_admin" value ="2">管理者
-			</div>
-      <div>
-        <label>状態</label>
-        <input type = "radio" name ="is_active" value ="1">有効
-        <input type = "radio" name ="is_active" value ="2">無効
-			</div>
-			<input type ="hidden" name ="page_id" value ="L009">
-			<input type ="hidden" name ="id" value ="${m.userId}">
-			<input type ="submit" name ="save" value ="保存">
 		</form>
     </div>	
 	</div>

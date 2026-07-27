@@ -68,8 +68,8 @@
       <div class="r_modal">
         <h2>案件登録</h2>
         <form method="POST" action="<c:url value='/Controller'/>">
-          <div class="case_modal">
-            <div class="case_modal_left">
+          <div class="modal-contents-2">
+            <div class="modal_left">
               <div class="form-group">
                 <label for="">案件コード*</label> 
                 <input type="text" name="case_id" required>
@@ -139,8 +139,8 @@
       <div class="e_modal">
         <h2>案件編集</h2>
         <form method="POST" action="<c:url value='/Controller'/>" id="edit">
-          <div class=case_modal>
-           <div class="case_modal_left">
+          <div class=modal-contents-2>
+           <div class="modal_left">
             <div class="form-group">
               <label for="case_id">案件コード*</label> 
               <input type="text" name="case_id" required>

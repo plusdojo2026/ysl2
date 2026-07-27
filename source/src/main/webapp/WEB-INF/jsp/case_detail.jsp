@@ -57,10 +57,11 @@ pageEncoding="UTF-8"%>
           <td>ステータス</td>
           <td>${dedto.caseStatus}</td>
         </tr>
+        	${dedto.pmId}
       </table>
        <button onclick="openEditModal('${dedto.caseId}','${dedto.casePriority}','${dedto.caseName}',
        '${dedto.caseStartDate}','${dedto.endDate}','${dedto.customerName}','${dedto.budgetedManHours}',
-       '${dedto.name}','${dedto.caseMemo}','${dedto.caseStatus}',)">編集</button>
+       '${dedto.name}','${dedto.caseMemo}','${dedto.caseStatus}','${dedto.pmId}')">編集</button>
        
       <input type="submit" name="button_id" value="完了" />
       <input type="submit" name="button_id" value="中止" />
@@ -114,7 +115,7 @@ pageEncoding="UTF-8"%>
  
  
  
-    <div>
+   
     <div id="case_regist_modal" class="modal_background">
     <div class="r_modal">
       <h2>タスク登録</h2>
@@ -202,7 +203,7 @@ pageEncoding="UTF-8"%>
       </form>
     </div>
     </div>
-	</div>
+	
     
     
     
@@ -214,7 +215,7 @@ pageEncoding="UTF-8"%>
 		<form method="POST" action="<c:url value='/Controller'/>">
         <input type="hidden" name="page_id" value="L004" />
 		<p>
-			<label for="">案件コード*<br /></label>
+			<label for="case_id">案件コード*<br /></label>
 			<input type="text" name="case_id">
 		</p>
 		<p>
@@ -284,8 +285,7 @@ pageEncoding="UTF-8"%>
 	</form>
 	</div>
     </div>
-    
-       <script src="${pageContext.request.contextPath}/js/case_detail.js"></script>
+        <script src="${pageContext.request.contextPath}/js/case_detail.js"></script>
    </main>
   </body>
 </html>

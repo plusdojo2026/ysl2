@@ -54,7 +54,7 @@
                 <td>${e.caseStartDate}</td>
                 <td>${e.endDate}</td>
                 <td>${e.caseMemo}</td>
-               ${e.pmId}
+               <input type="hidden" name= "pm_id" value="${e.pmId}">
                 <td><button onclick="openEditModal('${e.caseName}','${e.customerName}','${e.caseId}','${e.name}','${e.caseMemo}','${e.caseStartDate}','${e.endDate}','${e.casePriority}','${e.budgetedManHours}','${e.caseStatus}', '${e.pmId}')">編集</button></td>
               </tr>
             </c:forEach> 

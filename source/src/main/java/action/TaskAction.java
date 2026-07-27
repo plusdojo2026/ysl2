@@ -58,11 +58,19 @@ public class TaskAction {
 		//dtoの箱
 		AllDTO dto = null;
 		ArrayList<AllDTO> mdto = null;
+		ArrayList<UserDTO> uList = null;
+		ArrayList<AllDTO> cList = null;
 		//Serviceの実体化
 		TaskService tService = new TaskService();
 		dto = tService.selectTaskDetail(taskId);
 		ManHourService mService = new ManHourService();
 		mdto  = mService.selectManHours(taskId);
+		UserService uService = new UserService();
+		uList = uService.selectActiveUsers();
+		request.setAttribute("activeUsersList", uList);
+		CaseService cService = new CaseService();
+		cList = cService.selectCases();
+		request.setAttribute("casesList", cList);
 		
 		System.out.println(taskId);
 		//リクエストスコープに格納
@@ -301,10 +309,18 @@ public class TaskAction {
 		//dtoの箱
 		AllDTO tdto = null;
 		ArrayList<AllDTO> mdto = null;
+		ArrayList<UserDTO> uList = null;
+		ArrayList<AllDTO> cList = null;
 		//Serviceの実体化
 		tdto = tService.selectTaskDetail(taskId);
 		ManHourService mService = new ManHourService();
 		mdto  = mService.selectManHours(taskId);
+		UserService uService = new UserService();
+		uList = uService.selectActiveUsers();
+		request.setAttribute("activeUsersList", uList);
+		CaseService cService = new CaseService();
+		cList = cService.selectCases();
+		request.setAttribute("casesList", cList);
 		//リクエストスコープに格納
 		request.setAttribute("task", tdto);
 		request.setAttribute("manHoursList", mdto);

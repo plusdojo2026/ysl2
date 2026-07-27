@@ -104,7 +104,7 @@ public class ManHourAction {
 				
 				System.out.println(taskId);
 				//リクエストスコープに格納
-				request.setAttribute("task", dto);
+				request.setAttribute("task", tdto);
 				request.setAttribute("manHoursList", mdto);
 		return page;
 		

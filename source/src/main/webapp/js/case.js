@@ -1,3 +1,16 @@
+//データテーブル作成
+jQuery(function ($) {
+  // デフォルトの設定を変更（日本語化）--------------------
+  $.extend($.fn.dataTable.defaults, {
+    language: {
+      url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Japanese.json",
+    },
+  });
+  //------------------------------------------------
+  //データテーブルを使用
+  $("#foo-table").DataTable();
+});
+
 //新規登録モーダル・引数なし
 function openRegistModal() {
   document.getElementById("case_regist_modal").style.display = "block";

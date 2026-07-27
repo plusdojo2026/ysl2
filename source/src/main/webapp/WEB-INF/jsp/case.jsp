@@ -10,30 +10,15 @@
 	href="${pageContext.request.contextPath}/css/common.css" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/case.css" />
+<link rel="stylesheet" 
+  href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/>
 </head>
 <body>
 	<main>
 		<%@ include file="/WEB-INF/jsp/sidebar.jsp"%>
 		<div class="case">
 			<h1>案件一覧</h1>
-			<form method="POST" action="<c:url value='/Controller'/>"> 
-        <input type="hidden" name="page_id" value="L004"> 
-        <input type="text" name="case_search" value="検索"> 
-        <select class="priority_select">
-          <option value="高">高</option>
-          <option value="中">中</option>
-          <option value="低">低</option>
-        </select> 
-        <select class="status_search">
-          <option value="進行中">進行中</option>
-          <option value="完了">完了</option>
-          <option value="中止">中止</option>
-        </select> 
-        <input type="button" name="search_button" value="検索">
-        <button onclick="openRegistModal()">+新規登録</button>
-      </form>
-
-			<hr>
+      <button onclick="openRegistModal()">+新規登録</button>
 
       <div>
         <table border="1" id="foo-table" class="table table-bordered">
@@ -60,14 +45,14 @@
                   <a href="${pageContext.request.contextPath}/Controller?page_id=L004&button_id=case_link&case_id=${e.caseId}">${e.caseId}</a>
                 </td>
                 <td>${e.caseName}</td>
-                <td>顧客:${e.customerName}</td>
-                <td>優先度${e.casePriority}</td>
-                <td>PM:${e.name}</td>
-                <td>タスク進捗:${e.completedTasks}/${e.allTasks}</td>
-                <td>実績工数:${e.actualManHours}</td>
-                <td>ステータス${e.caseStatus}</td>
-                <td>開始日:${e.caseStartDate}</td>
-                <td>終了日:${e.endDate}</td>
+                <td>${e.customerName}</td>
+                <td>${e.casePriority}</td>
+                <td>${e.name}</td>
+                <td>${e.completedTasks}/${e.allTasks}</td>
+                <td>${e.actualManHours}</td>
+                <td>${e.caseStatus}</td>
+                <td>${e.caseStartDate}</td>
+                <td>${e.endDate}</td>
                 <td>${e.caseMemo}</td>
                 <td><button onclick="openEditModal('${e.caseName}','${e.customerName}','${e.caseId}','${e.name}','${e.caseMemo}','${e.caseStartDate}','${e.endDate}','${e.casePriority}','${e.budgetedManHours}','${e.caseStatus}')">編集</button></td>
               </tr>
@@ -212,6 +197,7 @@
       </div>
     </div>
 
+    <script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/case.js"></script>
 	</main>
 </body>

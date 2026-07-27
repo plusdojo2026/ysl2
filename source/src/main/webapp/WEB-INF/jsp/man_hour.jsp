@@ -15,11 +15,9 @@
 <div class="main">
     <%@ include file="/WEB-INF/jsp/sidebar.jsp" %>
 
-    <div class="pop">
-    <c:forEach var="c" items="${clist}">
+    <div class="pop" var="c" items="${clist}">
 	    <p>案件名:${c.caseName}</p>
-	    <p>タスク名:${c.taskName}</p>
-    </c:forEach>
+	    <p>タスク名:${c.taskName}</p>\
 	</div>
 	<form method="POST" action="<c:url value='/Controller'/>">
     <a href="${pageContext.request.contextPath}/Controlle"></a>

@@ -83,6 +83,7 @@ public class ManHourDAO {
 		System.out.println(sql);
 		PreparedStatement pStmt = conn.prepareStatement(sql);
 		pStmt.setInt(1, task_id);
+		
 		//セレクト文を実行し結果票を取得
 		ResultSet rs = pStmt.executeQuery();
 		

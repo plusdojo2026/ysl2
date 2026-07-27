@@ -69,58 +69,62 @@
         <h2>案件登録</h2>
         <form method="POST" action="<c:url value='/Controller'/>">
           <div class="case_modal">
-            <div class="form-group">
-              <label for="">案件コード*</label> 
-              <input type="text" name="case_id">
+            <div>
+              <div class="form-group">
+                <label for="">案件コード*</label> 
+                <input type="text" name="case_id">
+              </div>
+              <div class="form-group">
+                <label for="case_name">案件名*</label> 
+                <input type="text" name="case_name">
+              </div>
+              <div class="form-group">
+                <label for="case_name">顧客名</label> 
+                <input type="text" name="customer_name">
+              </div>
+              <div class="form-group">
+                <label for="manager">担当PM</label> 
+                <select name="pm_id" id="pm_id">
+                  <c:forEach var="m" items="${userList}">
+                    <option value="${m.userId}">${m.name}</option>
+                  </c:forEach>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="memo">説明</label> 
+                <input type="text" name="memo">
+              </div>
             </div>
-            <div class="form-group">
-              <label for="case_name">案件名*</label> 
-              <input type="text" name="case_name">
-            </div>
-            <div class="form-group">
-              <label for="case_name">顧客名</label> 
-              <input type="text" name="customer_name">
-            </div>
-            <div class="form-group">
-              <label for="manager">担当PM</label> 
-              <select name="pm_id" id="pm_id">
-                <c:forEach var="m" items="${userList}">
-                  <option value="${m.userId}">${m.name}</option>
-                </c:forEach>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="memo">説明</label> 
-              <input type="text" name="memo">
-            </div>
-            <div class="form-group">
-              <label>開始日</label>
-              <input type="date" name="start_date"/>
-            </div>
-            <div class="form-group">
-              <label>終了予定日</label>
-              <input type="date"name="end_date"/>
-            </div>
-            <div class="form-group">
-              <label for="priority">優先度*</label> 
-              <select name="priority" id="priority">
-                <option value="高">高</option>
-                <option value="中" selected>中</option>
-                <option value="低">低</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>予算工数</label>
-              <input type="number" min="0" max="24" step="0.5" name="budgeted_man_hours" value="0" />
-            </div>
-            <div class="form-group">
-              <label for="status">ステータス*</label> 
-              <select name="status">
-                <option value="未着手" selected>未着手</option>
-                <option value="進行中">進行中</option>
-                <option value="完了">完了</option>
-                <option value="保留">保留</option>
-              </select>
+            <div>
+              <div class="form-group">
+                <label>開始日</label>
+                <input type="date" name="start_date"/>
+              </div>
+              <div class="form-group">
+                <label>終了予定日</label>
+                <input type="date"name="end_date"/>
+              </div>
+              <div class="form-group">
+                <label for="priority">優先度*</label> 
+                <select name="priority" id="priority">
+                  <option value="高">高</option>
+                  <option value="中" selected>中</option>
+                  <option value="低">低</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>予算工数</label>
+                <input type="number" min="0" max="24" step="0.5" name="budgeted_man_hours" value="0" />
+              </div>
+              <div class="form-group">
+                <label for="status">ステータス*</label> 
+                <select name="status">
+                  <option value="未着手" selected>未着手</option>
+                  <option value="進行中">進行中</option>
+                  <option value="完了">完了</option>
+                  <option value="保留">保留</option>
+                </select>
+              </div>
             </div>
           </div>
           <input type="hidden" name="page_id" value="L004" />
@@ -151,7 +155,6 @@
             <div class="form-group">
               <label for="manager">担当PM</label> 
               <select name="pm_id" id="pm_id" required>
-             
                 <c:forEach var="m" items="${userList}">
                   <option value="${m.userId}">${m.name}</option>
                 </c:forEach>

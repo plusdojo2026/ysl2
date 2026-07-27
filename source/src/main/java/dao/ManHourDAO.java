@@ -50,8 +50,8 @@ public class ManHourDAO {
 
 	
 	//案件名・タスク名（工数登録）
-	public ArrayList<AllDTO> selectCaseName(int task_id) throws SQLException {
-		ArrayList<AllDTO> list = new ArrayList<AllDTO>();
+	public AllDTO selectCaseName(int task_id) throws SQLException {
+		AllDTO list = new AllDTO();
 		String sql ="SELECT c.case_name, t.task_name FROM tasks t JOIN cases c ON t.case_id = c.case_id WHERE t.task_id = ?";
 		System.out.println(sql);
 		PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -68,8 +68,8 @@ public class ManHourDAO {
 			
 			dto.setCaseName(rs.getString("case_name"));
 			dto.setTaskName(rs.getString("task_name"));
+			dto.setTaskId(rs.getInt("task_id"));
 			
-			list.add(dto);
 		}
 
 		return list;

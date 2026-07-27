@@ -11,15 +11,13 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/man_hour.css" />
 </head>
 <body>
-
+<%@ include file="/WEB-INF/jsp/sidebar.jsp" %>
 <div class="main">
-    <%@ include file="/WEB-INF/jsp/sidebar.jsp" %>
-
     <div class="pop" >
-    <c:forEach var="c" items="${list}">
-	    <p>案件名:${c.caseName}</p>
-	    <p>タスク名:${c.taskName}</p>
-	</c:forEach>
+   
+	    <p>案件名:${list.caseName}</p>
+	    <p>タスク名:${list.taskName}</p>
+	
 	</div>
 	<form method="POST" action="<c:url value='/Controller'/>">
     <a href="${pageContext.request.contextPath}/Controller"></a>
@@ -51,6 +49,7 @@
             <br>
 
             <input type="hidden" name="page_id" value="L005">
+            <imput type="hidden" name="task_id" value="${list.task_id}">
             <input type="submit" name="button_id" value="登録">
 		
         </div>

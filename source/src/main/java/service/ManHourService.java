@@ -71,9 +71,9 @@ public class ManHourService extends DBAccess{
 	}
 	
 	//案件名・タスク名（工数登録）
-	public ArrayList<AllDTO> selectCaseName(int task_id){
+	public AllDTO selectCaseName(int task_id){
 		super.access();
-		ArrayList<AllDTO> list = null;
+		AllDTO list = null;
 		ManHourDAO dao = new ManHourDAO(conn);
 		try {
 			list = dao.selectCaseName(task_id);

@@ -48,7 +48,7 @@ public class ManHourAction {
 		AllDTO dto = new AllDTO();
 		dto.setTaskId(taskId);
 		ManHourService service = new ManHourService();
-		ArrayList<AllDTO> list = service.selectCaseName(taskId);
+		AllDTO list = service.selectCaseName(taskId);
 		request.setAttribute("list", list);
 		return page;
 		

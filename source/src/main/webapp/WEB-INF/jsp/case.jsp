@@ -50,6 +50,7 @@
               <th>開始日</th>
               <th>終了日</th>
               <th>メモ</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -68,8 +69,8 @@
                 <td>開始日:${e.caseStartDate}</td>
                 <td>終了日:${e.endDate}</td>
                 <td>${e.caseMemo}</td>
+                <td><button onclick="openEditModal('${e.caseName}','${e.customerName}','${e.caseId}','${e.name}','${e.caseMemo}','${e.caseStartDate}','${e.endDate}','${e.casePriority}','${e.budgetedManHours}','${e.caseStatus}')">編集</button></td>
               </tr>
-              <button onclick="openEditModal('${e.caseName}','${e.customerName}','${e.caseId}','${e.name}','${e.caseMemo}','${e.caseStartDate}','${e.endDate}','${e.casePriority}','${e.budgetedManHours}','${e.caseStatus}')">編集</button>
             </c:forEach> 
           </tbody>
         </table>

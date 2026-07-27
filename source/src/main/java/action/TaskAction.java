@@ -91,7 +91,17 @@ public class TaskAction {
 		double estimatedManHours = Double.parseDouble(request.getParameter("estimated_man_hours"));
 		int taskProgress = Integer.parseInt(request.getParameter("progress"));
 		String memo = request.getParameter("memo");
-
+		
+		//入力値のバリデーション
+		if (startDate.trim().equals("")) {
+			startDate = null;
+		}
+		if (deadlineDate.trim().equals("")) {
+			deadlineDate = null;
+		}
+		if (memo.trim().equals("")) {
+			memo = null;
+		}
 		
 		//dtoにまとめる	
 		dto.setCaseId(caseId);
@@ -110,9 +120,9 @@ public class TaskAction {
 		int ans = tService.registTask(dto);
 		
 		if(ans == 1) {
-			request.setAttribute("msg", "案件を登録しました");
+			request.setAttribute("msg", "タスクを登録しました");
 		}else {
-			request.setAttribute("msg", "案件の登録に失敗しました");
+			request.setAttribute("msg", "タスクの登録に失敗しました");
 		}
 		
 		//以下、タスク一覧表示用データの取得と格納↓
@@ -167,6 +177,16 @@ public class TaskAction {
 		dto.setTaskProgress(taskProgress);
 		dto.setMemo(memo);
 		dto.setTaskId(taskId);
+		
+		if (startDate.trim().equals("")) {
+			startDate = null;
+		}
+		if (deadlineDate.trim().equals("")) {
+			deadlineDate = null;
+		}
+		if (memo.trim().equals("")) {
+			memo = null;
+		}
 		
 		//Serviceを実体化
 		TaskService tService = new TaskService();

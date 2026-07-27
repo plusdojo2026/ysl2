@@ -32,12 +32,22 @@
 	    function closeModal() {
 	      document.getElementById("modal").style.display = "none";
 	    }
+	    
 	    // モーダル表示２
-	    function openModal2(caseName,taskName,manager,deadlineDate,estimatedManHours,actualManHours,taskStatus,taskPriority,taskMemo) {
+	    function openModal2(caseName,taskName,manager,taskStartDate,deadlineDate,estimatedManHours,actualManHours,taskStatus,taskPriority,taskMemo, taskProgress) {
 	     	//編集モーダルの全体をformという名前とする
 	    	const form = document.getElementById('conform');
 	     	//そのformの中のname="task_name"のところに値を入れる（引数）
 	     	form.elements['task_name'].value = taskName;
+	     	form.elements['progress'].value = taskProgress;
+	     	form.elements['start_date'].value = taskStartDate;
+	     	form.elements['deadline_date'].value = deadlineDate;
+	     	form.elements['priority'].value = taskPriority;
+	     	form.elements['status'].value = taskStatus;
+	     	form.elements['estimated_man_hours'].value = estimatedManHours;
+	     	form.elements['memo'].value = taskMemo;
+	     	form.elements['manager'].value = manager;
+	     	
 	     	//他にもたくさんあるけど後はよろしく。モーダルの整形もお願いね
 	    	document.getElementById("modal2").style.display = "block";
 	    }
@@ -72,6 +82,7 @@
 				<th>実績工数</th>
 				<th>ステータス</th>
 				<th>優先度</th>
+				<th>進捗率</th>
 				<th>説明</th>
 				<th></th>
 			</tr>
@@ -89,8 +100,9 @@
 				<td>${t.actualManHours}</td>
 				<td>${t.taskStatus}</td>
 				<td>${t.taskPriority}</td>
+				<td>${t.taskProgress}%</td>
 				<td>${t.taskMemo}</td>
-				<td><button onclick="openModal2('${t.caseName}','${t.taskName}','${t.manager}','${t.deadlineDate}','${t.estimatedManHours}','${t.actualManHours}','${t.taskStatus}','${t.taskPriority}','${t.taskMemo}')">編集</button></td>
+				<td><button onclick="openModal2('${t.caseId}','${t.taskName}','${t.manager}','${t.taskStartDate}','${t.deadlineDate}','${t.estimatedManHours}','${t.actualManHours}','${t.taskStatus}','${t.taskPriority}','${t.taskMemo}','${t.taskProgress }')">編集</button></td>
 			</tr>
 		</c:forEach>
 		</tbody>
@@ -108,7 +120,7 @@
 					<tr>
 						<td colspan="2">
 							<label for="case_name">案件名</label>
-							<select name="case_name" id="case_name" required>
+							<select name="case_id" id="case_name" required>
 							<c:forEach var="c" items="${casesList}">
 								<option value="${c.caseId}">${c.caseName}</option>
 							</c:forEach>
@@ -203,43 +215,30 @@
 			<h2>タスク編集</h2>
 		    <form method="POST" action="<c:url value='/Controller'/>" id="conform">
 		        <input type="hidden" name="page_id" value="L006">
-				<p>
 				<label for="case_name">案件名<br></label>
-				<select name="case_name" id="case_name" required>
+				<select name="case_id" id="case_name" required>
 					<c:forEach var="c" items="${casesList}">
 						<option value="${c.caseId}">${c.caseName}</option>
 					</c:forEach>
 				</select>
-				</p>
-				<p>
 		        <label>タスク名<br>
 		            <input type="text" name="task_name" required>
 		        </label>
-				</p>
-				<p>
 		        <label for="manager">担当者<br></label>
 				<select name="manager" id="manager">
 					<c:forEach var="m" items="${activeUsersList}">
 						<option value="${m.userId}">${m.name}</option>
 					</c:forEach>
 				</select>
-				</p>
-				<p>
 		        <label>進捗率<br>
 		            <input type="number" min="0" max="100" step="1" name="progress">
 		        </label>
-				</p>
-				<p>
 		        <label>開始日<br>
 		            <input type="date" name="start_date">
 		        </label>
-				</p>
-				<p>
 		        <label>期限<br>
 		        <input type="date" name="deadline_date">
 		        </label>
-				</p>
-				<p>
 		        <label for="priority">優先度<br></label>
 		        <select name="priority" id="priority" required>
 		            <option value="高">高</option>
@@ -251,8 +250,6 @@
 		        <label>見積工数<br>
 		            <input type="number" min="0" step="0.5" name="estimated_man_hours">
 		        </label>
-				</p>
-				<p>
 				<label for="status">ステータス<br></label>
 				<select name="status" id="status" required>
 					<option value="未着手" selected>未着手</option>
@@ -260,10 +257,9 @@
 					<option value="完了">完了</option>
 					<option value="保留">保留</option>
 				</select>
-				</p>
-				<p><label>説明<input type="textarea" name="memo"></label></p>
+				<label>説明<input type="textarea" name="memo"></label></p>
 				<input type="submit" name="button_id" value="保存">
-				<input type="button" value="戻る">
+				<input type="button" value="戻る" onclick="closeModal2()">
 		    </form>
 		</div>
 	</div>

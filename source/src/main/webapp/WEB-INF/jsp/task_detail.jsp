@@ -31,12 +31,12 @@
     	</tr>
     	<tr>
         <td>${task.caseName}</td>
-        <td${task.taskName}</td>
-        <p>担当者：${task.name}</p>
-        <p>開始日：
+        <td>${task.taskName}</td>
+        <td>${task.name}</td>
+        <td>
         	<c:if test="${empty t.taskStartDate}">未設定</c:if>
         	${task.taskStartDate}
-        </p>
+        </td>
         <p>案件名：${task.caseName}</p>
 		<p>期限：
 			<c:if test="${empty t.deadlineDate}">未設定</c:if>
@@ -66,13 +66,14 @@
 	<button><a href="${pageContext.request.contextPath}/Controller?page_id=L007&button_id=工数登録&task_id=${task.taskId}">工数登録</a></button>
 	<div>
 	<h2>工数ログ</h2>
-	<c:forEach var="m" items="${clist}">
+	<c:forEach var="m" items="${manHoursList}">
 	<form method="POST" action="<c:url value='/Controller'/>">
-		<input type="hidden" name="man_hours_id" value="${m.manHoursId}"
+		<input type="hidden" name="page_id" value="L007">
+		<input type="hidden" name="man_hours_id" value="${m.manHoursId}">
 		<p>${m.workDate}</p>
-		<p>${m.name}</p>
+		<p>${m.manager}</p>
 		<p>${m.todayManHours}</p>
-		<p>${m.workDetail}</p>
+		<p>${m.workDetails}</p>
 		<input type="submit" name="button_id" value="削除">
 	</form>
 	</c:forEach>

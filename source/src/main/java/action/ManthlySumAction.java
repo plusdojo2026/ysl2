@@ -1,7 +1,6 @@
 package action;
 
 import java.io.UnsupportedEncodingException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,8 +23,7 @@ public class ManthlySumAction {
 
 		//値の取得(年月)
 		request.setCharacterEncoding("UTF-8");
-		
-		
+		String yearManth = request.getParameter("");
 		
 		ManthlySumService service = new ManthlySumService();
 		
@@ -36,13 +34,15 @@ public class ManthlySumAction {
 		request.setAttribute("ManthlyCases", ManthlyCases);
 		
 		//月ごとの実績工数
-		ArrayList<AllDTO> 
-		
+		ArrayList<AllDTO> ManthlyManHours = service.sumManthlyCasesManHours(yearManth);
+		request.setAttribute("ManthlyManHours",ManthlyManHours);
 		
 		//担当者名ごとかつ月ごとの工数
+		ArrayList<AllDTO> ManthAndMembers = service.sumUsersManHours(yearManth);
+		request.setAttribute("ManthlyManHours",ManthlyManHours);
+		int ManthlyMemberManHours = ManthAndMembers.size();//今月の稼働メンバー数を取得
+		request.setAttribute("ManthlyMemberManHours",ManthlyMemberManHours);
 		
-		
-
         return page;
     }
 }

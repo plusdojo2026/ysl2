@@ -34,10 +34,12 @@
 	    }
 	    
 	    // モーダル表示２
-	    function openModal2(caseName,taskName,manager,taskStartDate,deadlineDate,estimatedManHours,actualManHours,taskStatus,taskPriority,taskMemo, taskProgress) {
+	    function openModal2(caseId,taskId,taskName,manager,taskStartDate,deadlineDate,estimatedManHours,actualManHours,taskStatus,taskPriority,taskMemo, taskProgress) {
 	     	//編集モーダルの全体をformという名前とする
 	    	const form = document.getElementById('conform');
 	     	//そのformの中のname="task_name"のところに値を入れる（引数）
+	     	form.elements['case_id'].value = caseId;
+	     	form.elements['task_id'].value = taskId;
 	     	form.elements['task_name'].value = taskName;
 	     	form.elements['progress'].value = taskProgress;
 	     	form.elements['start_date'].value = taskStartDate;
@@ -95,14 +97,17 @@
 					<a href="${pageContext.request.contextPath}/Controller?page_id=L006&button_id=task_link&task_id=${t.taskId}">${t.taskName}</a>
 				</td>
 				<td>${t.name}</td>
-				<td>${t.deadlineDate}</td>
+				<td>
+					<c:if test="${empty t.deadlineDate}">未設定</c:if>
+					${t.deadlineDate}
+				</td>
 				<td>${t.estimatedManHours}</td>
 				<td>${t.actualManHours}</td>
 				<td>${t.taskStatus}</td>
 				<td>${t.taskPriority}</td>
 				<td>${t.taskProgress}%</td>
 				<td>${t.taskMemo}</td>
-				<td><button onclick="openModal2('${t.caseId}','${t.taskName}','${t.manager}','${t.taskStartDate}','${t.deadlineDate}','${t.estimatedManHours}','${t.actualManHours}','${t.taskStatus}','${t.taskPriority}','${t.taskMemo}','${t.taskProgress }')">編集</button></td>
+				<td><button onclick="openModal2('${t.caseId}','${t.taskId}','${t.taskName}','${t.manager}','${t.taskStartDate}','${t.deadlineDate}','${t.estimatedManHours}','${t.actualManHours}','${t.taskStatus}','${t.taskPriority}','${t.taskMemo}','${t.taskProgress }')">編集</button></td>
 			</tr>
 		</c:forEach>
 		</tbody>
@@ -215,12 +220,14 @@
 			<h2>タスク編集</h2>
 		    <form method="POST" action="<c:url value='/Controller'/>" id="conform">
 		        <input type="hidden" name="page_id" value="L006">
-				<label for="case_name">案件名<br></label>
+		        <input type="hidden" name="task_id">
+				<label>案件名<br>
 				<select name="case_id" id="case_name" required>
 					<c:forEach var="c" items="${casesList}">
 						<option value="${c.caseId}">${c.caseName}</option>
 					</c:forEach>
 				</select>
+				</label>
 		        <label>タスク名<br>
 		            <input type="text" name="task_name" required>
 		        </label>

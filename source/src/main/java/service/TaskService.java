@@ -57,6 +57,21 @@ public class TaskService extends DBAccess {
 		return taskList;
 	}
 
+	//タスクステータス変更メソッド
+	public int changeStatus(TaskDTO dto) {
+		super.access();
+		int ans = 0;
+		
+		TaskDAO dao = new TaskDAO(super.conn);
+		try {
+			ans = dao.changeStatus(dto);
+		} catch (SQLException e) {
+			System.out.println("SQL文おかしい");
+			e.printStackTrace();
+		}
+		super.close();
+		return ans;
+	}
 	//タスク削除メソッド--------------------------------------
 	public int deleteTask(int taskId) {
 		super.access();

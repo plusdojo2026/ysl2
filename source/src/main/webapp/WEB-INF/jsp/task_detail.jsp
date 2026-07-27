@@ -14,12 +14,19 @@
 <%@ include file="/WEB-INF/jsp/sidebar.jsp"%>
 	<div>
     <h1>タスク詳細</h1>
+    <div>${msg}</div>
         <p>案件名：${task.caseName}</p>
         <p>タスク名：${task.taskName}</p>
         <p>担当者：${task.name}</p>
-        <p>開始日：${task.taskStartDate}</p>
+        <p>開始日：
+        	<c:if test="${empty t.taskStartDate}">未設定</c:if>
+        	${task.taskStartDate}
+        </p>
         <p>案件名：${task.caseName}</p>
-		<p>期限：${task.deadlineDate}</p>
+		<p>期限：
+			<c:if test="${empty t.deadlineDate}">未設定</c:if>
+			${task.deadlineDate}
+		</p>
 		<p>見積工数：${task.estimatedManHours}</p>
 		<p>実績工数：${task.actualManHours}</p>
 		<!-- ステータス変更フォーム -->
@@ -27,11 +34,12 @@
 			<label for="status">ステータス<br></label>
 			<input type="hidden" name="page_id" value="L007">
 			<input type="hidden" name="task_id" value="${task.taskId}">
+			<input type="hidden" name="progress" value="${task.taskProgress}">
 			<select name="status" id="status">
-				<option value="未着手" selected>未着手</option>
-				<option value="進行中">進行中</option>
-				<option value="完了">完了</option>
-				<option value="保留">保留</option>
+				<option value="未着手" ${task.taskStatus == '未着手' ? 'selected' : ''}>未着手</option>
+				<option value="進行中" ${task.taskStatus == '進行中' ? 'selected' : ''}>進行中</option>
+				<option value="完了" ${task.taskStatus == '完了' ? 'selected' : ''}>完了</option>
+				<option value="保留" ${task.taskStatus == '保留' ? 'selected' : ''}>保留</option>
 			</select>
 			<input type="submit" name="button_id" value="変更">
 		</form>

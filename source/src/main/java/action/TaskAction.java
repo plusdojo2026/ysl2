@@ -93,13 +93,16 @@ public class TaskAction {
 		String memo = request.getParameter("memo");
 		
 		//入力値のバリデーション
-		if (startDate.trim().equals("")) {
+		if (startDate.equals(null)) {			
+		} else if (startDate.trim().equals("")) {
 			startDate = null;
 		}
-		if (deadlineDate.trim().equals("")) {
+		if (deadlineDate.equals(null)) {			
+		} else if (deadlineDate.trim().equals("")) {
 			deadlineDate = null;
 		}
-		if (memo.trim().equals("")) {
+		if (memo.equals(null)) {			
+		} else if (memo.trim().equals("")) {
 			memo = null;
 		}
 		
@@ -153,7 +156,7 @@ public class TaskAction {
 		//入力値の取得
 		request.setCharacterEncoding("UTF-8");
 		String caseId = request.getParameter("case_id");
-		String taskName = request.getParameter("tas_name");
+		String taskName = request.getParameter("task_name");
 		int manager = Integer.parseInt(request.getParameter("manager"));
 		String startDate = request.getParameter("start_date");
 		String deadlineDate = request.getParameter("deadline_date");
@@ -164,6 +167,19 @@ public class TaskAction {
 		String memo = request.getParameter("memo");
 		int taskId = Integer.parseInt(request.getParameter("task_id"));
 		
+		//入力値のバリデーション
+		if (startDate.equals(null)) {			
+		} else if (startDate.trim().equals("")) {
+			startDate = null;
+		}
+		if (deadlineDate.equals(null)) {			
+		} else if (deadlineDate.trim().equals("")) {
+			deadlineDate = null;
+		}
+		if (memo.equals(null)) {			
+		} else if (memo.trim().equals("")) {
+			memo = null;
+		}
 		
 		//dtoにまとめる
 		dto.setCaseId(caseId);
@@ -177,16 +193,6 @@ public class TaskAction {
 		dto.setTaskProgress(taskProgress);
 		dto.setMemo(memo);
 		dto.setTaskId(taskId);
-		
-		if (startDate.trim().equals("")) {
-			startDate = null;
-		}
-		if (deadlineDate.trim().equals("")) {
-			deadlineDate = null;
-		}
-		if (memo.trim().equals("")) {
-			memo = null;
-		}
 		
 		//Serviceを実体化
 		TaskService tService = new TaskService();
@@ -262,7 +268,7 @@ public class TaskAction {
 		//入力値取得
 		int taskId = Integer.parseInt(request.getParameter("task_id"));
 		String status = request.getParameter("status");
-		int taskProgress = 0;
+		int taskProgress = Integer.parseInt(request.getParameter("progress"));
 		
 		if (status.equals("完了")) {
 			taskProgress = 100;
@@ -283,12 +289,12 @@ public class TaskAction {
 		
 		//Serviceを実体化
 		TaskService tService = new TaskService();
-		int ans = tService.updateTask(dto);
+		int ans = tService.changeStatus(dto);
 		
 		if (ans == 1) {
-			request.setAttribute("ans", "タスクを削除しました");
+			request.setAttribute("msg", "ステータスを変更しました");
 		}else {
-			request.setAttribute("ans", "タスクの削除に失敗しました");
+			request.setAttribute("msg", "ステータス変更に失敗しました");
 		}
 		
 		//以下、タスク詳細表示用データの取得と格納↓

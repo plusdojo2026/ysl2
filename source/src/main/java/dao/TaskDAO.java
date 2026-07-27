@@ -136,6 +136,26 @@ public class TaskDAO {
 		return ans;
 	}
 	
+	
+	//タスクステータス変更
+	public int changeStatus(TaskDTO dto) throws SQLException {
+		int ans = 0;
+		
+		//UPDATE文準備
+		String sql = "UPDATE tasks SET status=?, task_progress=? WHERE task_id=?";
+		
+		PreparedStatement pStmt = conn.prepareStatement(sql);
+		
+		System.out.println("SQL文"+sql);
+
+		pStmt.setString(1, dto.getStatus());
+		pStmt.setInt(2, dto.getTaskProgress());
+		pStmt.setInt(3, dto.getTaskId());
+		
+		ans = pStmt.executeUpdate();
+		
+		return ans;
+	}
 	//タスク削除（案件詳細）
 	public int deleteTask(int taskId) throws SQLException{
 		int ans = 0;

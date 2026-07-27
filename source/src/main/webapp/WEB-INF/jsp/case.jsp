@@ -54,7 +54,8 @@
                 <td>${e.caseStartDate}</td>
                 <td>${e.endDate}</td>
                 <td>${e.caseMemo}</td>
-                <td><button onclick="openEditModal('${e.caseName}','${e.customerName}','${e.caseId}','${e.name}','${e.caseMemo}','${e.caseStartDate}','${e.endDate}','${e.casePriority}','${e.budgetedManHours}','${e.caseStatus}')">編集</button></td>
+               ${e.pmId}
+                <td><button onclick="openEditModal('${e.caseName}','${e.customerName}','${e.caseId}','${e.name}','${e.caseMemo}','${e.caseStartDate}','${e.endDate}','${e.casePriority}','${e.budgetedManHours}','${e.caseStatus}', '${e.pmId}')">編集</button></td>
               </tr>
             </c:forEach> 
           </tbody>
@@ -147,9 +148,16 @@
               <label for="case_name">顧客名</label> 
               <input type="text" name="customer_name">
             </div>
+<<<<<<< Updated upstream
             <div class="form-group">
               <label for="manager">担当PM</label> 
+=======
+            <div>
+              <label for="manager">担当PM<br/></label> 
+              
+>>>>>>> Stashed changes
               <select name="pm_id" id="pm_id" required>
+             
                 <c:forEach var="m" items="${userList}">
                   <option value="${m.userId}">${m.name}</option>
                 </c:forEach>
@@ -175,9 +183,15 @@
                 <option value="低">低</option>
               </select>
             </div>
+<<<<<<< Updated upstream
             <div class="form-group">
               <label>予算工数</label>
               <input type="number" min="0" max="24" step="0.5" name="budgetted_man_hours" />
+=======
+            <div>
+              <label>予算工数<br/></label>
+              <input type="number" min="0" max="24" step="0.5" name="budgetted_man_hours" value =""/>
+>>>>>>> Stashed changes
             </div>
             <div class="form-group">
               <label for="status">ステータス*</label> 

@@ -7,6 +7,9 @@ pageEncoding="UTF-8"%>
     <meta charset="UTF-8" />
     <title>案件詳細</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
+    <link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/case_detail.css" />
+    
   </head>
   <body>
   <main>
@@ -86,7 +89,7 @@ pageEncoding="UTF-8"%>
           </tr>
         </c:forEach>
       </table>
-      <input type="button" name="add_button" value="+タスク追加" />
+      <button onclick="openRegistModal()">+タスク追加</button>
     </div>
 
     <div class="manhour_log">
@@ -105,9 +108,12 @@ pageEncoding="UTF-8"%>
     </div>
  
     <div>
+    <div id="case_regist_modal" class="modal_background">
+    <div class="r_modal">
       <h2>タスク登録</h2>
       <form method="POST" action="<c:url value='/Controller'/>">
         <input type="hidden" name="page_id" value="L003" />
+        <div class=casedetail_modal>
         <p>
           <label for="case_name">案件名*<br /></label>
           <select name="case_name" id="case_name">
@@ -183,10 +189,14 @@ pageEncoding="UTF-8"%>
             <option value="保留">保留</option>
           </select>
         </p>
+        </div>
         <input type="submit" name="button_id" value="保存" />
         <input type="button" value="戻る" />
       </form>
     </div>
+    </div>
+	</div>
+    
     
     <div>
 		<h2>案件編集</h2>
@@ -258,6 +268,7 @@ pageEncoding="UTF-8"%>
           </select>
         </p>
 		<input type="submit" name="button_id" value="保存">
+		
 		<input type="button" name="back_button" value="戻る">
 
 	</div>

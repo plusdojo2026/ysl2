@@ -1,9 +1,11 @@
 package action;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
+import dto.AllDTO;
 import dto.ManHourDTO;
 import service.ManHourService;
 
@@ -26,9 +28,13 @@ public class ManHourAction {
 		String id = request.getParameter("task_id");System.out.println("task_id=" + id);
 		int taskId = Integer.parseInt(request.getParameter("task_id"));
 		
+		AllDTO dto = new AllDTO();
+		dto.setTaskId(taskId);
 		ManHourService service = new ManHourService();
-		service.selectManHours(taskId);
-		request.setAttribute("task_id", taskId);
+		ArrayList<AllDTO> list = service.selectManHours(taskId);
+		ArrayList<AllDTO> clist = service.selectCaseName(taskId);
+		request.setAttribute("list", list);
+		request.setAttribute("clist", clist);
 		
 		return page;
 	}
@@ -43,7 +49,7 @@ public class ManHourAction {
 		System.out.println("today_man_hours=" + request.getParameter("today_man_hours"));
 		System.out.println("work_date=" + request.getParameter("work_date"));
 		System.out.println("work_details=" + request.getParameter("work_details"));
-		Double todayManHours =  Double.parseDouble(request.getParameter("today_man_hours"));
+		double todayManHours =  Double.parseDouble(request.getParameter("today_man_hours"));
 		String workDetails = request.getParameter("work_details");
 		String workDate = request.getParameter("work_date");
 		
@@ -53,10 +59,10 @@ public class ManHourAction {
 		dto.setWorkDate(workDate);
 		
 		ManHourService service = new ManHourService();
-		service.registManHour(todayManHours, workDetails, workDate);
-		request.setAttribute("today_man_hours", todayManHours);
-		request.setAttribute("work_details", workDetails);
-		request.setAttribute("work_date", workDate);
+		service.registManHour(todayManHours, workDate, workDate);
+		int list = service.registManHour(todayManHours, workDate, workDate);
+		request.setAttribute("list", list);
+		
 		return page;
 		
 	}
@@ -66,10 +72,12 @@ public class ManHourAction {
 		String page ="/WEB-INF/jsp/task_detail.jsp";
 		request.setCharacterEncoding("UTF-8");
 		int  manHourId = Integer.parseInt(request.getParameter("man_hour_id"));
-		
+		AllDTO dto = new AllDTO();
+		dto.setTaskId(manHourId);
 		ManHourService service = new ManHourService();
-		service.deleteManHour(manHourId);
-		request.setAttribute("man_hour_id", manHourId);
+		service.selectManHours(manHourId);
+		int list = service.deleteManHour(manHourId);
+		request.setAttribute("list", list);
 		return page;
 		
 	}

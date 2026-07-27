@@ -27,7 +27,7 @@ public class ManHourService extends DBAccess{
 	}
 	
 	//工数登録メソッド
-	public int registManHour(Double today_man_hours, String work_details, String work_date){
+	public int registManHour(double today_man_hours, String work_details, String work_date){
 		super.access();
 		ManHourDAO dao = new ManHourDAO(conn);
 		int ans = 0;

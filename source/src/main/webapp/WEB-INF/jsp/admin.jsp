@@ -157,15 +157,15 @@
 		document.getElementById("edit_modal").style.display = "none";
  	 	}
  	//入力チェック//仮
- 	if(document.getElementById("login").value == ""){
-		alert("入力必須項目です");
- 	 	}
- 	if(document.getElementById("name").value == ""){
-		alert("入力必須項目です");
- 	 	}
-	if(document.getElementById("pw").value == ""){
-		alert("入力必須項目です");
- 	 	}
+// 	if(document.getElementById("login").value == ""){
+//		alert("入力必須項目です");
+// 	 	}
+// 	if(document.getElementById("name").value == ""){
+//		alert("入力必須項目です");
+// 	 	}
+//	if(document.getElementById("pw").value == ""){
+//		alert("入力必須項目です");
+// 	 	}
  </script>
  <!-- JavaScriptここまで -->
  </main>

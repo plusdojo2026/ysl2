@@ -16,12 +16,16 @@
     /* 新規登録モーダルの本体 */
     .r_modal {
       background-color: white;
-      width: 25%;
+      width: 50%;
+      height:auto;
       margin: 100px auto;
+      box-sizing: border-box;
       padding: 20px;
       border-radius: 10px;
       text-align: center;
       z-index: 11;
+      display: grid;
+	  grid-template-columns:1fr 1fr;
     }
     
 
@@ -29,9 +33,14 @@
     .e_modal {
       background-color: white;
       width: 25%;
+      height: auto;
       margin: 100px auto;
+      box-sizing: border-box;
       padding: 20px;
       border-radius: 10px;
       text-align: center;
       z-index: 11;
+      display: grid;
+	  grid-template-columns:1fr 1fr;
+      
     }

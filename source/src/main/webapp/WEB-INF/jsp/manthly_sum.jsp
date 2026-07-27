@@ -13,71 +13,69 @@
 
 <div class ="main">
 <%@ include file="/WEB-INF/jsp/sidebar.jsp" %>
-<c:forEach >
 
 	<div>
 		<input type="date" name="work_date" ><br>
 	    <input type="submit" value="集計" ><br>
     </div>
     
-    <a href="">CSV出力→</a>
+    <!-- <a href="">CSV出力→</a> -->
     
     <div>
 	    <label>工数</label>
-	    <p>${all_man_hours}</p>
+	    <p>工数データをここに表示<!-- ${all_man_hours} --></p>
     </div>
     <div>
 	    <label>案件数</label>
-	    <p>${all_case_sum}</p>
+	    <p><%-- ${all_case_sum} --%></p>
     </div>
     <div>
 	    <label>稼働メンバー数</label>
-	    <p>${all_user_sum}</p>
+	    <p><%-- ${all_user_sum} --%></p>
     </div>
     
     <div>
+    
     	<label>案件別集計テーブル</label>
-    		<table>
-    			 <thead>
-    			 	<tr>
-    			 		<th scope="col">案件コード</th>
-      					<th scope="col">案件名</th>
-      					<th scope="col">実績工数</th>
-      					<th scope="col">予算工数</th>
-      					<th scope="col">達成率プログレスバー</th>
-    			 	</tr>
-    			 </thead>
-    			 <tbody>
-    			 	<tr>
-      					<th scope="row">${case_id}</th>
-					    <td>${case_name}</td>
-					    <td>${}</td>
-					    <td>${budgeted_man_hours}</td>
-					    <td>${}</td>
-    				</tr>
-    			 </tbody>
-    		</table>
+ 			<table>
+    			 <tr>
+    				<th>案件コード</th>
+      				<th>案件名</th>
+      				<th>実績工数</th>
+      				<th>予算工数</th>
+    				<!-- <th scope="col">達成率プログレスバー</th> -->
+    			 </tr>
+    			 <c:forEach var="c" items="${TotalCasesAndManHours}">
+    			 <tr>
+      				<td><c:out value = "${c.case_id}"/></td>
+				    <td><c:out value = "${c.case_name}"/></td>
+				    <td><c:out value = "${c.today_man_hours}"/></td>
+				    <td><c:out value = "${c.budgeted_man_hours}"/></td>
+					    <!-- <td>${}</td> -->
+    			</tr>
+    			</c:forEach>
+   			 </table>
     </div>
-    <div>
+    <%-- <div>
     	<label>メンバー別集計テーブル</label>
+    	
     		<table>
     			 <thead>
     			 	<tr>
     			 		<th scope="col">担当者名</th>
       					<th scope="col">工数</th>
-      					<th scope="col">割合プログレスバー</th>
+      					<!-- <th scope="col">割合プログレスバー</th> -->
     			 	</tr>
     			 </thead>
     			 <tbody>
     			 	<tr>
-      					<th scope="row">${}</th>
-					    <td>${}</td>
-					    <td>${}</td>
+      					<th scope="row">${name}</th>
+					    <td>${actual_man_hours}</td>
+					    <!-- <td>${}</td> -->
     				</tr>
     			 </tbody>
     		</table>
-    </div>
-</c:forEach>
+    </div> --%>
 </div>
 </body>
 </html>

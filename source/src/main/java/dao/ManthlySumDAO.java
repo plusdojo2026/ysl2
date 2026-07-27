@@ -22,8 +22,7 @@ public class ManthlySumDAO {
 					
 		ArrayList<AllDTO> TotalCasesAndManHours = new ArrayList<AllDTO>();//変数TotalManHoursで工数DTOをnewする
 		
-		//目的→案件コード(case_id)ごとに案件名、実績工数、予算工数(プログレスバー)を取得
-		//↓casesテーブルから案件コードと案件名、累計の実績工数、予算工数を取得
+		//目的→案件コード(case_id)ごとに案件名、実績工数、予算工数(プログレスバー?)を取得
 		String sql ="SELECT tasks.case_id AS '案件コード', cases.case_name AS '案件名', SUM(today_man_hours) AS '累計実績工数',"
 					+ "cases.budgeted_man_hours AS '予算工数'"
 					+ "FROM tasks"
@@ -55,13 +54,13 @@ public class ManthlySumDAO {
 		
 		ArrayList<AllDTO> ManthlyManHours = new ArrayList<AllDTO>();//変数ManthlyCasesでAllDTOをnewする
 		
-		//月ごとの実績工数を取得する(method.sql参照 + 加工)
+		//月ごとの実績工数を取得する
 		//SQL文を準備
 		String sql ="SELECT tasks.case_id AS '案件コード',SUM(today_man_hours) AS '今月の実績工数',"
 				+ "FROM tasks"
 				+ "LEFT JOIN man_hours"
 				+ "ON tasks.task_id = man_hours.task_id"
-				+ "WHERE work_date LIKE '2___-__%'"//今月分だけをヒットさせる
+				+ "WHERE work_date LIKE ?"//今月分だけをヒットさせる
 				+ "GROUP BY tasks.case_id;";
 			
 		System.out.println(sql);//SQL文の確認用
@@ -89,7 +88,7 @@ public class ManthlySumDAO {
 		//user_idをもとに、担当者名とその人の今月の工数を表示
 		String sql ="SELECT users.name AS '担当者名' , SUM(man_hours.today_man_hours) AS '今月の実績工数'"
 				+ "	FROM users LEFT JOIN man_hours ON users.user_id = man_hours.user_id "
-				+ "WHERE work_date LIKE '2___-__%' GROUP BY users.user_id;";
+				+ "WHERE work_date LIKE ? GROUP BY users.user_id;";
 		
 		System.out.println(sql);//SQL文の確認用
 		PreparedStatement pStmt = conn.prepareStatement(sql);//connとSQLをpStmtにまとめる

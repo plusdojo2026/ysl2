@@ -1,6 +1,8 @@
 package action;
 
 import java.io.UnsupportedEncodingException;
+import java.time.YearMonth;//リアルタイムの年月を取得
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,9 +23,15 @@ public class ManthlySumAction {
     public String selectManthlySum() throws UnsupportedEncodingException {
         String page = "/WEB-INF/jsp/manthly_sum.jsp";
 
-		//値の取得(年月)
-		request.setCharacterEncoding("UTF-8");
-		String yearManth = request.getParameter("");
+		//遷移時に今月分を自動取得する
+        request.setCharacterEncoding("UTF-8");
+        
+        //リアルタイムの年月を取得し、検索のためStringに変換
+        YearMonth ym = YearMonth.now();
+        String yearManth = ym.format(DateTimeFormatter.ofPattern("yyyy/MM"));
+        
+		
+		//String yearManth = request.getParameter("work_date");
 		
 		ManthlySumService service = new ManthlySumService();
 		
@@ -31,7 +39,7 @@ public class ManthlySumAction {
 		ArrayList<AllDTO> TotalCasesAndManHours = service.selectManthlySum();
 		request.setAttribute("TotalCasesAndManHours",TotalCasesAndManHours);
 		int ManthlyCases = TotalCasesAndManHours.size();//今月の稼働案件数を取得
-		request.setAttribute("ManthlyCases", ManthlyCases);
+		request.setAttribute("all_case_sum", ManthlyCases);
 		
 		//月ごとの実績工数
 		ArrayList<AllDTO> ManthlyManHours = service.sumManthlyCasesManHours(yearManth);
@@ -41,7 +49,7 @@ public class ManthlySumAction {
 		ArrayList<AllDTO> ManthAndMembers = service.sumUsersManHours(yearManth);
 		request.setAttribute("ManthlyManHours",ManthlyManHours);
 		int ManthlyMemberManHours = ManthAndMembers.size();//今月の稼働メンバー数を取得
-		request.setAttribute("ManthlyMemberManHours",ManthlyMemberManHours);
+		request.setAttribute("all_user_sum",ManthlyMemberManHours);
 		
         return page;
     }

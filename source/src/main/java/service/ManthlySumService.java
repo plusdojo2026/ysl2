@@ -15,7 +15,7 @@ public class ManthlySumService extends DBAccess {
 	}
 	
 	//集計案件一覧検索
-	public ArrayList<AllDTO> selectManthlySum() throws SQLException{
+	public ArrayList<AllDTO> selectManthlySum() {
 		
 		super.access();
 		ArrayList<AllDTO> TotalCasesAndManHours = new ArrayList<AllDTO>();
@@ -33,7 +33,7 @@ public class ManthlySumService extends DBAccess {
 	}
 	
 	//月ごとの実績工数
-	public ArrayList<AllDTO> sumManthlyCasesManHours(String yearManth) throws SQLException{
+	public ArrayList<AllDTO> sumManthlyCasesManHours(String yearManth) {
 		
 		super.access();
 		ArrayList<AllDTO> ManthlyManHours = new ArrayList<AllDTO>();
@@ -51,7 +51,7 @@ public class ManthlySumService extends DBAccess {
 	}
 	
 	//担当者名・月ごと
-	public ArrayList <AllDTO> sumUsersManHours(String yearManth) throws SQLException{
+	public ArrayList <AllDTO> sumUsersManHours(String yearManth) {
 		
 		super.access();
 		ArrayList<AllDTO> ManthAndMembers = new ArrayList<AllDTO>();

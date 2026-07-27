@@ -133,7 +133,8 @@
         </p>
         </div>
 		<input type="submit" name="button_id" value="登録">
-		<button class = "close" onclick = "closeEModal()">戻る</button>
+		</form>
+		<button class = "close" onclick = "closeRModal()">戻る</button>
 
 
 	</div>
@@ -214,6 +215,7 @@
         </p>
         </div>
 		<input type="submit" name="button_id" value="保存">
+		</form>
 		
 		<button class = "close" onclick = "closeEModal()">戻る</button>
 
@@ -247,7 +249,7 @@
 
  	//『×』新規登録モーダルを閉じる。
  	function closeRModal(){
-		document.getElementById("regist_modal").style.display = "none";
+		document.getElementById("case_regist_modal").style.display = "none";
  	 	}
 	//『×』編集モーダルを閉じる
 	function closeEModal(){

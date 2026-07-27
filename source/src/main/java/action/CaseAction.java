@@ -55,6 +55,12 @@ public class CaseAction {
 		double budgetedManHours = Double.parseDouble(request.getParameter("budgeted_man_hours"));
 		String status = request.getParameter("status");
 
+		//入力値のバリデーションチェック
+		if(customerName.trim().equals("")) customerName = null;
+		if(memo.trim().equals("")) memo = null;
+		if(startDate.trim().equals("")) startDate = null;
+		if(endDate.trim().equals("")) endDate = null;
+
 		//dto
 		CaseDTO dto = new CaseDTO();
 		dto.setCaseId(caseId);
@@ -96,6 +102,12 @@ public class CaseAction {
 		String priority = request.getParameter("priority");
 		double budgetedManHours = Double.parseDouble(request.getParameter("budgeted_man_hours"));
 		String status = request.getParameter("status");
+
+		//入力値のバリデーションチェック
+		if(customerName.trim().equals("")) customerName = null;
+		if(memo.trim().equals("")) memo = null;
+		if(startDate.trim().equals("")) startDate = null;
+		if(endDate.trim().equals("")) endDate = null;
 
 		//dto
 		CaseDTO dto = new CaseDTO();

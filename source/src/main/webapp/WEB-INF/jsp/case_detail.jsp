@@ -58,10 +58,14 @@ pageEncoding="UTF-8"%>
           <td>${dedto.caseStatus}</td>
         </tr>
       </table>
-      <input type="button" name="edit_button" value="編集" />
+       <button onclick="openEditModal('${dedto.caseId}','${dedto.casePriority}','${dedto.caseName}',
+       '${dedto.caseStartDate}','${dedto.endDate}','${dedto.customerName}','${dedto.budgetedManHours}',
+       '${dedto.name}','${dedto.caseMemo}','${dedto.caseStatus}',)">編集</button>
+       
       <input type="submit" name="button_id" value="完了" />
       <input type="submit" name="button_id" value="中止" />
     </div>
+    
 
     <div class="case_task_list">
       <table>
@@ -107,6 +111,9 @@ pageEncoding="UTF-8"%>
       </table>
     </div>
  
+ 
+ 
+ 
     <div>
     <div id="case_regist_modal" class="modal_background">
     <div class="r_modal">
@@ -117,8 +124,8 @@ pageEncoding="UTF-8"%>
         <p>
           <label for="case_name">案件名*<br /></label>
           <select name="case_name" id="case_name">
-            <c:forEach var="c" items="">
-              <option value="${c.case_id}">${c.case_name}</option>
+            <c:forEach var="c" items="${caseList}">
+              <option value="${c.caseId}">${c.caseName}</option>
             </c:forEach>
           </select>
         </p>
@@ -131,8 +138,8 @@ pageEncoding="UTF-8"%>
         <p>
           <label for="manager">担当者<br /></label>
           <select name="manager" id="manager">
-            <c:forEach var="m" items="">
-              <option value="${m.user_id}">${c.user_name}</option>
+            <c:forEach var="m" items="${userList}">
+              <option value="${m.userId}">${c.userName}</option>
             </c:forEach>
           </select>
         </p>
@@ -191,15 +198,19 @@ pageEncoding="UTF-8"%>
         </p>
         </div>
         <input type="submit" name="button_id" value="保存" />
-        <input type="button" value="戻る" />
+        <button class="close" onclick="closeRModal()">戻る</button>
       </form>
     </div>
     </div>
 	</div>
     
     
-    <div>
-		<h2>案件編集</h2>
+    
+    
+    
+	<div id="edit_modal" class="modal_background">
+    <div class="e_modal">
+        <h2>案件編集</h2>
 		<form method="POST" action="<c:url value='/Controller'/>">
         <input type="hidden" name="page_id" value="L004" />
 		<p>
@@ -269,10 +280,12 @@ pageEncoding="UTF-8"%>
         </p>
 		<input type="submit" name="button_id" value="保存">
 		
-		<input type="button" name="back_button" value="戻る">
-
+		<button class="close" onclick="closeEModal()">戻る</button>
+	</form>
 	</div>
     </div>
+    
+       <script src="${pageContext.request.contextPath}/js/case_detail.js"></script>
    </main>
   </body>
 </html>

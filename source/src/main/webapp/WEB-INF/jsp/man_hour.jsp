@@ -49,7 +49,7 @@
             <br>
 
             <input type="hidden" name="page_id" value="L005">
-            <imput type="hidden" name="task_id" value="${list.task_id}">
+            <imput type="hidden" name="task_id" value="${list.taskId}">
             <input type="submit" name="button_id" value="登録">
 		
         </div>

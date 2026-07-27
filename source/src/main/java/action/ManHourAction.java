@@ -7,7 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import dto.AllDTO;
 import dto.ManHourDTO;
+import dto.UserDTO;
+import service.CaseService;
 import service.ManHourService;
+import service.TaskService;
+import service.UserService;
 
 public class ManHourAction {
 	
@@ -67,7 +71,7 @@ public class ManHourAction {
 		double todayManHours =  Double.parseDouble(request.getParameter("today_man_hours"));
 		String workDetails = request.getParameter("work_details");
 		String workDate = request.getParameter("work_date");
-		
+		int taskId = Integer.parseInt(request.getParameter("task_id"));
 		
 		ManHourDTO dto = new ManHourDTO();
 		dto.setTodayManHours(todayManHours);
@@ -80,6 +84,28 @@ public class ManHourAction {
 		int list = service.registManHour(todayManHours, workDate, workDate);
 		request.setAttribute("list", list);
 		
+		//以下、タスク詳細表示用データの取得と格納↓
+				//dtoの箱
+				AllDTO tdto = null;
+				ArrayList<AllDTO> mdto = null;
+				ArrayList<UserDTO> uList = null;
+				ArrayList<AllDTO> cList = null;
+				//Serviceの実体化
+				TaskService tService = new TaskService();
+				tdto = tService.selectTaskDetail(taskId);
+				ManHourService mService = new ManHourService();
+				mdto  = mService.selectManHours(taskId);
+				UserService uService = new UserService();
+				uList = uService.selectActiveUsers();
+				request.setAttribute("activeUsersList", uList);
+				CaseService cService = new CaseService();
+				cList = cService.selectCases();
+				request.setAttribute("casesList", cList);
+				
+				System.out.println(taskId);
+				//リクエストスコープに格納
+				request.setAttribute("task", dto);
+				request.setAttribute("manHoursList", mdto);
 		return page;
 		
 	}

@@ -28,7 +28,7 @@ public class ManthlySumAction {
         
         //リアルタイムの年月を取得し、検索のためStringに変換
         YearMonth ym = YearMonth.now();
-        String yearManth = ym.format(DateTimeFormatter.ofPattern("yyyy/MM"));
+        String yearManth = ym.format(DateTimeFormatter.ofPattern("yyyy-MM"));
         
 		
 		//String yearManth = request.getParameter("work_date");
@@ -39,7 +39,8 @@ public class ManthlySumAction {
 		ArrayList<AllDTO> TotalCasesAndManHours = service.selectManthlySum();
 		request.setAttribute("TotalCasesAndManHours",TotalCasesAndManHours);
 		int ManthlyCases = TotalCasesAndManHours.size();//今月の稼働案件数を取得
-		request.setAttribute("all_case_sum", ManthlyCases);
+		Integer ManthlyCases_integer = ManthlyCases;//int型ではrequstにセット出来ないため、Integer型に変換する!!
+		request.setAttribute("all_case_sum", ManthlyCases_integer);
 		
 		//月ごとの実績工数
 		ArrayList<AllDTO> ManthlyManHours = service.sumManthlyCasesManHours(yearManth);
@@ -47,9 +48,10 @@ public class ManthlySumAction {
 		
 		//担当者名ごとかつ月ごとの工数
 		ArrayList<AllDTO> ManthAndMembers = service.sumUsersManHours(yearManth);
-		request.setAttribute("ManthlyManHours",ManthlyManHours);
+		request.setAttribute("ManthAndMembers",ManthAndMembers);
 		int ManthlyMemberManHours = ManthAndMembers.size();//今月の稼働メンバー数を取得
-		request.setAttribute("all_user_sum",ManthlyMemberManHours);
+		Integer ManthlyMemberManHours_integer = ManthlyMemberManHours;//int型ではrequstにセット出来ないため、Integer型に変換する!!
+		request.setAttribute("all_user_sum",ManthlyMemberManHours_integer);
 		
         return page;
     }

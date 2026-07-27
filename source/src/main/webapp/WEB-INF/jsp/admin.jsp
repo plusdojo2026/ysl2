@@ -77,6 +77,7 @@
 <!-- メンバー登録モーダル -->
   <div id = "regist_modal" class = "modal_background">
    <div class = "r_modal">
+   
 	<h2>メンバー新規登録</h2>
 		<button class = "close" onclick = "closeRModal()">×</button><!-- 関数"closeModal" -->
 		<form action ="POST" action="<c:url value='/Controller'/>">
@@ -101,7 +102,8 @@
 			<input type ="submit" name ="save" value ="保存">
 		</form>
 	</div>
-  </div>
+ </div>
+ 
 <!-- メンバー編集モーダル -->
   <div id = "edit_modal" class = "modal_background">
    <div class = "e_modal">
@@ -129,18 +131,19 @@
 			<input type ="submit" name ="save" value ="保存">
 		</form>
 	 </div>	
-	</div>
-  </div>
+</div>
+
+
 <!-- JavaScriptここから(jsファイルに後で移行) -->
  <script>
  	//新規登録モーダル・引数なし
  	function openRegistModal(){
-		document.getElementById("regist_modal").style.display = "block";
+		document.getElementById("regist_modal").style.display = "flex";
  	 	}
 
  	//編集モーダル・引数(user_id)
  	function openEditModal(userId,name,mail,isAdmin,isActive){
-		document.getElementById("edit_modal").style.display = "block";
+		document.getElementById("edit_modal").style.display = "flex";
 		let form = document.getElementById('edit');
 		form.elements["name"].value = name;
 		form.elements["mail"].value = mail;

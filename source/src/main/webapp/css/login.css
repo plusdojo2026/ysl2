@@ -1,0 +1,13 @@
+p
+{
+	color:black;
+	text-align: center;
+}
+
+body{
+	margin:0;
+	padding:0;
+	height: 100vh;
+	display: flex
+	
+}

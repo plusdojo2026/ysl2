@@ -1,6 +1,4 @@
 
-/* 樋口講師のtask.cssを暫定的に流用 */
-
 /* モーダルの背景（暗い部分） */
     .modal_background {
       display: none; /* 最初は非表示 */
@@ -9,38 +7,60 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.5);
-      z-index: 10;
+      background-color: rgba(0,0,0,0.5); /*モーダル開く時外の画面を少し暗くする*/
+      z-index: 1000;
+      
+      justify-content: center; /*中央揃え*/
+      align-items: center;
     }
 
     /* 新規登録モーダルの本体 */
-    .r_modal {
+    .r_modal,.e_modal {
       background-color: white;
-      width: 50%;
-      height:auto;
-      margin: 100px auto;
-      box-sizing: border-box;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      z-index: 11;
-      display: grid;
-	  grid-template-columns:1fr 1fr;
+      padding: 30px;
+      border-radius: 8px; /*円滑*/
+      width: 100%;
+      max-width: 450px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      position:relative;
+      animation: fadeInModal 0.25s ease-out;
+     }
+     
+     /* 表の本体 */
+	   .r_modal p, .e_modal p {
+	    margin: 12px 0 6px 0;
+	    font-weight: bold;
+	    font-size: 14px;
+	    color: #555;
+	   }
+	   
+	 /* スペース開かないようにする */
+	   .r_modal br, .e_modal br {
+    	display: none;
+		}
+     
+     /*　閉じるボタン */
+	   .close {
+	    position: absolute;
+	    top: 15px;
+	    right: 20px;
+	    background: none;
+	    border: none;
+	    font-size: 24px;
+	    color: #999;
+	    cursor: pointer;
+	    transition: color 0.2s;
+	}
+     
+     /*モーダル開く時一瞬の動画*/
+     @keyframes fadeInModal {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
     }
-    
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-    /* 編集モーダルの本体 */
-    .e_modal {
-      background-color: white;
-      width: 25%;
-      height: auto;
-      margin: 100px auto;
-      box-sizing: border-box;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      z-index: 11;
-      display: grid;
-	  grid-template-columns:1fr 1fr;
-      
-    }

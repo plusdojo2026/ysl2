@@ -140,6 +140,7 @@
         <h2>案件編集</h2>
         <form method="POST" action="<c:url value='/Controller'/>" id="edit">
           <div class=case_modal>
+           <div class="case_modal_left">
             <div class="form-group">
               <label for="case_id">案件コード*</label> 
               <input type="text" name="case_id" required>
@@ -164,6 +165,9 @@
               <label for="memo">説明</label> 
               <input type="text" name="memo">
             </div>
+            
+            </div>
+           <div>
             <div class="form-group">
               <label>開始日</label>
               <input type="date" name="start_date"/>
@@ -193,6 +197,7 @@
                 <option value="保留">保留</option>
               </select>
             </div>
+           </div>
           </div>
           <input type="hidden" name="page_id" value="L004"/>
           <input type="submit" name="button_id" value="保存">

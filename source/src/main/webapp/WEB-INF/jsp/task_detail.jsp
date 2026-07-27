@@ -15,8 +15,23 @@
 	<div>
     <h1>タスク詳細</h1>
     <div>${msg}</div>
-        <p>案件名：${task.caseName}</p>
-        <p>タスク名：${task.taskName}</p>
+    <table border="1">
+    	<tr>
+    		<th>案件名</th>
+    		<th>タスク名</th>
+    		<th>担当者</th>
+    		<th>案件名</th>
+    		<th>開始日</th>
+    		<th>期限</th>
+    		<th>見積工数</th>
+    		<th>実績工数</th>
+    		<th>ステータス</th>
+    		<th>優先度</th>
+    		<th>進捗率</th>
+    	</tr>
+    	<tr>
+        <td>${task.caseName}</td>
+        <td${task.taskName}</td>
         <p>担当者：${task.name}</p>
         <p>開始日：
         	<c:if test="${empty t.taskStartDate}">未設定</c:if>
@@ -46,15 +61,16 @@
 		<!-- --------------------------- -->
 		<p>優先度：${task.taskPriority}</p>
 		<p>進捗率：${task.taskProgress}</p>
-		<input type="button" value="編集">
+		</table>
+	<input type="button" value="編集">
 	<button><a href="${pageContext.request.contextPath}/Controller?page_id=L007&button_id=工数登録&task_id=${task.taskId}">工数登録</a></button>
 	<div>
 	<h2>工数ログ</h2>
-	<c:forEach var="m" items="${manHoursList}">
+	<c:forEach var="m" items="${clist}">
 	<form method="POST" action="<c:url value='/Controller'/>">
 		<input type="hidden" name="man_hours_id" value="${m.manHoursId}"
 		<p>${m.workDate}</p>
-		<p>${m.manager}</p>
+		<p>${m.name}</p>
 		<p>${m.todayManHours}</p>
 		<p>${m.workDetail}</p>
 		<input type="submit" name="button_id" value="削除">

@@ -128,7 +128,7 @@ public class ManHourAction {
 			    "]"
 			);
 
-		int  manHourId = Integer.parseInt(request.getParameter("man_hour_id"));
+		int  manHourId = Integer.parseInt(request.getParameter("man_hours_id"));
 		AllDTO dto = new AllDTO();
 		dto.setTaskId(manHourId);
 		ManHourService service = new ManHourService();

@@ -109,7 +109,7 @@
 			<input type="hidden" name="page_id" value="L007">
 			<input type="hidden" name="man_hours_id" value="${m.manHoursId}">
 			<td>${m.workDate}</td>
-			<td>${m.manager}</td>
+			<td>${m.name}</td>
 			<td>${m.todayManHours}</td>
 			<td>${m.workDetails}</td>
 			<td><input type="submit" name="button_id" value="削除" class="btn"><td>

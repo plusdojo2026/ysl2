@@ -20,19 +20,19 @@
 	<form method="POST" action="<c:url value='/Controller'/>" class="search-form">
 		<input type="month" name="month" value="${yearManth}" required>
 		<input type="hidden" name="page_id" value="L008"> 
-	    <input type="submit" name="button_id" value="集計" class="btn-submit-sum">
+	    <input type="submit" name="button_id" value="集計" class="btn-submit-sum" id = "total">
     </form>
-    
-    
+	
+	
+	<div class = "data">
     <div class="dash_boards_sum">
 		<div class="total_mh">
 			<h3>合計工数</h3>
 			<c:set var="totalmh" value="0"/>
 			<c:forEach var="k" items="${ManthAndMembers}">
 				<c:set var="totalmh" value="${totalmh + k.actualManHours}"/>
-				
+				<p><c:out value="${totalmh}"/></p>
 			</c:forEach>
-			<p><c:out value="${totalmh}"/></p>
 		</div>
 		<div class="total_case">
 			<h3>合計案件数</h3>
@@ -42,29 +42,6 @@
 			<h3>合計稼働メンバー数</h3>
 			<p>${ManthAndMembers.size()}</p>
 		</div>
-    </div>
-    
-    
-    <div class="case_table">
-    	<h3>案件別集計テーブル</h3>
-	    <input type="submit" name = "button_id" value="集計" id = "total">
-    </form>
-   <div class = "data">
-    <div class = "total_mh">
-	    <h3>今月の合計工数</h3>
-	    <c:set var = "totalmh" value = "0"/>
-	    <c:forEach var="k" items="${ManthAndMembers}">
-	    <c:set var = "totalmh" value = "${total + k.actualManHours}"/>
-	    <c:out value ="${k.actualManHours}"/>
-	    </c:forEach>
-    </div>
-    <div class = "total_case">
-	    <h3>今月の合計案件数</h3>
-	    <p>${TotalCasesAndManHours.size()}</p>
-    </div>
-    <div class = "total_member">
-	    <h3>今月の合計稼働メンバー数</h3>
-	    <p>${ManthAndMembers.size()}</p>
     </div>
     
     <div class = "case_table">
@@ -114,7 +91,7 @@
     		</tbody>
 		</table>    
     </div>
-    
+    </div>
 </div>
 </main> 
 <script src="${pageContext.request.contextPath}/js/manthly_sum.js"></script>

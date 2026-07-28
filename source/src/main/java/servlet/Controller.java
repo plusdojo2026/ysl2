@@ -114,7 +114,7 @@ public class Controller extends HttpServlet {
 			page = action.updateStatus();
 		} else if (pageId.equals("L003") && buttonId.equals("削除")) {
 			//案件詳細の削除ボタン
-			TaskAction action = new TaskAction(request);
+			CaseAction action = new CaseAction(request);
 			page = action.deleteTask();
 		} else if (pageId.equals("L003") && buttonId.equals("変更")) {
 			//案件詳細の案件編集モーダルの変更ボタン

@@ -89,7 +89,11 @@ pageEncoding="UTF-8"%>
             <th>${e.estimatedManHours}</th>
             <th>${e.actualManHours}</th>
             <th>${e.taskProgress}</th>
-            <th><input type="button" name="button_id" value="削除"></th>
+            <form action="Controller" method="post">
+            <th><input type="submit" name="button_id" value="削除"></th>
+            <input type="hidden" name="page_id" value="L003" />
+       		<input type="hidden" name="case_id" value="${dedto.caseId}" >
+       		</form>
           </tr>
         </c:forEach>
       </table>

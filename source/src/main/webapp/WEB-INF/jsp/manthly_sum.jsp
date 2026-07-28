@@ -67,7 +67,7 @@
     			</tr>
     			</c:forEach>
     			</tbody>
-   			 </table>
+   			</table>
     </div>
     
     <div class = "user_table">

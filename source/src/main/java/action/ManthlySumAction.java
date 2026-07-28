@@ -1,6 +1,8 @@
 package action;
 
 import java.io.UnsupportedEncodingException;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,35 +27,25 @@ public class ManthlySumAction {
       request.setCharacterEncoding("UTF-8");
         //遷移時に今月分を自動取得する
         //リアルタイムの年月を取得し、検索のためStringに変換
-        					   //↓今月の分だけ取れる。念のために保存
-						       //YearMonth ym = YearMonth.now();
-						       //String yearManth = ym.format(DateTimeFormatter.ofPattern("yyyy-MM"));
+      		//↓今月の分だけ取れる。念のために保存
+			//YearMonth ym = YearMonth.now();
+			//String yearManth = ym.format(DateTimeFormatter.ofPattern("yyyy-MM"));
       
 //    YearMonth ym = YearMonth.now();
 //	  String defaultYM = ym.format(DateTimeFormatter.ofPattern("yyyy-MM"));
 //	  request.setAttribute("defaultYM",defaultYM);
        
+      
+      	YearMonth ym = YearMonth.now();
+      	String yearManth = ym.format(DateTimeFormatter.ofPattern("yyyy-MM"));
+        yearManth = request.getParameter("month");//集計のためのgetParameter
        
-       
-       String yearManth = request.getParameter("month");
-       
-       
-       
-// YearMonth ym = request.getParameter("month");  //monthをゲットパラメータで取る。
-       //①if分でnullなら現在を取得する?       
-//       if(ym1 != null) {
-//    	   yearManth = request.getParameter("month");
-//       }else if (ym1 == null) {
-//    	   YearMonth ym = YearMonth.now();
-//    	   yearManth = ym.format(DateTimeFormatter.ofPattern("yyyy-MM"));
-//       }
-		
 		ManthlySumService service = new ManthlySumService();
 		
-		request.setAttribute("yearManth",yearManth);
+		request.setAttribute("yearManth",yearManth);//集計時に年月ボックスを空にしないように、yearManthで返す。
 		
 		//集計案件一覧検索とその件数カウント
-		ArrayList<AllDTO> TotalCasesAndManHours = service.selectManthlySum();
+		ArrayList<AllDTO> TotalCasesAndManHours = service.selectManthlySum(yearManth);
 		request.setAttribute("TotalCasesAndManHours",TotalCasesAndManHours);
 		int ManthlyCases = TotalCasesAndManHours.size();//今月の稼働案件数を取得
 		Integer ManthlyCases_integer = ManthlyCases;//int型ではrequstにセット出来ないため、Integer型に変換する!!
@@ -61,7 +53,7 @@ public class ManthlySumAction {
 		
 		//月ごとの実績工数
 		ArrayList<AllDTO> ManthlyManHours = service.sumManthlyCasesManHours(yearManth);
-		//TotalCasesAndManHoursに詰めるため、MnnthlyManHoursは不要に。
+		//TotalCasesAndManHoursに詰めるため、ManthlyManHoursは不要に。
 		//request.setAttribute("ManthlyManHours",ManthlyManHours);
 		
 		//再梱包。上2つのArrayListを基に、case_idが一致するところでループしながら詰める。

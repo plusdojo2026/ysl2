@@ -1,40 +1,9 @@
-/* モーダルの背景（暗い部分） */
-    .modal_background {
-      display: none; /* 最初は非表示 */
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.5);
-      z-index: 10;
-    }
 
-    /* 新規登録モーダルの本体 */
-    .r_modal {
-      background-color: white;
-      width: 60%;
-      height: 80%;
-      margin: 100px auto;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      z-index: 11;
-      
-    }
-     /* 編集モーダルの本体 */
-    .e_modal {
-      background-color: white;
-      width: 60%;
-      height:80%;
-      margin: 100px auto;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      z-index: 11;
-    }
-    .edit_case{
-	  display: flex;
-	  flex-wrap: wrap; /*改行*/
-	  justify-content: spce-between; /*二列*/
-	}
+.one_case_detail{
+	background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    margin-bottom: 24px; /* カード上下距離 */
+    /*letter-spacing: 3px;*/
+}

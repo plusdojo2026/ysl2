@@ -18,7 +18,7 @@ public class ManthlySumDAO {
 	}
 	
 	//集計案件一覧検索メソッド(後でserviceで詰めなおす中身1/2)
-	public ArrayList<AllDTO> selectManthlySum() throws SQLException{
+	public ArrayList<AllDTO> selectManthlySum(String yearManth) throws SQLException{
 					
 		ArrayList<AllDTO> TotalCasesAndManHours = new ArrayList<AllDTO>();//変数TotalManHoursで工数DTOをnewする
 		
@@ -30,11 +30,12 @@ public class ManthlySumDAO {
 					+ "ON tasks.task_id = man_hours.task_id "
 					+ "LEFT JOIN cases "
 					+ "ON tasks.case_id = cases.case_id "
+					+ "WHERE work_date LIKE ? "
 					+ "GROUP BY tasks.case_id;";
 		
 		System.out.println(sql);//SQL文の確認用
 		PreparedStatement pStmt = conn.prepareStatement(sql);//connとSQLをpStmtにまとめる
-		
+		pStmt.setString(1,'%'+yearManth+'%');//?に年月のデータを入れる
 		ResultSet rs = pStmt.executeQuery();//結果をrsにまとめる
 		
 		//DTOに取得したデータをセットする
@@ -56,12 +57,6 @@ public class ManthlySumDAO {
 		
 		//月ごとの実績工数を取得する
 		//SQL文を準備 //今月分だけをヒットさせる
-//		String sql ="SELECT tasks.case_id ,SUM(today_man_hours)AS today_man_hours, "
-//				+ "FROM tasks "
-//				+ "LEFT JOIN man_hours "
-//				+ "ON tasks.task_id = man_hours.task_id "
-//				+ "WHERE work_date LIKE ? "
-//				+ "GROUP BY tasks.case_id;";
 		String sql = "SELECT case_id ,SUM(today_man_hours) AS actual_man_hours FROM tasks LEFT JOIN man_hours ON tasks.task_id = man_hours.task_id  WHERE work_date LIKE ? GROUP BY tasks.case_id";	
 		System.out.println(sql);//SQL文の確認用
 		PreparedStatement pStmt = conn.prepareStatement(sql);//connとSQLをpStmtにまとめる

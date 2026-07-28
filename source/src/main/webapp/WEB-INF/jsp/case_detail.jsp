@@ -13,10 +13,10 @@ pageEncoding="UTF-8"%>
   <body>
   <main>
    <%@ include file="/WEB-INF/jsp/sidebar.jsp" %>
-   <div>
+   <div class = "case_detail">
     <h1>案件詳細</h1>
     <input type="hidden" name="page_id" value="L003" />
-    <div class="case_detail">
+    <div class="one_case_detail">
       <table>
         <h3>案件詳細</h3>
         <tr>
@@ -50,7 +50,7 @@ pageEncoding="UTF-8"%>
           <td>ステータス</td>
           <td>${dedto.caseStatus}</td>
         </tr>
-        	${dedto.pmId}
+        	<input type="hidden" name="pm_id" value="${dedto.pmId}">
       </table>
        <button onclick="openEditModal('${dedto.caseId}','${dedto.casePriority}','${dedto.caseName}',
        '${dedto.caseStartDate}','${dedto.endDate}','${dedto.customerName}','${dedto.budgetedManHours}',
@@ -237,7 +237,7 @@ pageEncoding="UTF-8"%>
               </div>
               <div class="form-group">
                 <label>予算工数</label>
-                <input type="number" min="0" max="24" step="0.5" name="budgetted_man_hours" value="${dedto.budgetedManHours}"/>
+                <input type="number" min="0" max="24" step="0.5" name="budgeted_man_hours" value="${dedto.budgetedManHours}"/>
               </div>
             <div class="form-group">
               <label for="status">ステータス*</label>
@@ -250,8 +250,8 @@ pageEncoding="UTF-8"%>
             </div>
           </div>
         </div>
-        <input type="hidden" name="page_id" value="L004" />
-        <input type="submit" name="button_id" value="変更 ">
+        <input type="hidden" name="page_id" value="L003" />
+        <input type="submit" name="button_id" value="変更">
       </form>
       <button class="close" onclick="closeEModal()">×</button>
       </div>

@@ -70,7 +70,7 @@
 					<option value="完了" ${task.taskStatus == '完了' ? 'selected' : ''}>完了</option>
 					<option value="保留" ${task.taskStatus == '保留' ? 'selected' : ''}>保留</option>
 				</select>
-				<input type="submit" name="button_id" value="変更">
+				<input type="submit" name="button_id" value="変更" class="btn">
 			</form>
 			</td>
 			<!-- --------------------------- -->
@@ -88,10 +88,14 @@
     		<td>${task.taskMemo}</td>
     	</tr>
 		</table>
-	<button onclick="openModal2('${task.caseId}','${task.taskId}','${task.taskName}','${task.manager}','${task.taskStartDate}','${task.deadlineDate}','${task.estimatedManHours}','${task.actualManHours}','${task.taskStatus}','${task.taskPriority}','${task.taskMemo}','${task.taskProgress }')">編集</button>
-	<button><a href="${pageContext.request.contextPath}/Controller?page_id=L007&button_id=工数登録&task_id=${task.taskId}">工数登録</a></button>
+	<button class="btn" onclick="openModal2('${task.caseId}','${task.taskId}','${task.taskName}','${task.manager}','${task.taskStartDate}','${task.deadlineDate}','${task.estimatedManHours}','${task.actualManHours}','${task.taskStatus}','${task.taskPriority}','${task.taskMemo}','${task.taskProgress }')">編集</button>
+	<button class="btn"><a href="${pageContext.request.contextPath}/Controller?page_id=L007&button_id=工数登録&task_id=${task.taskId}">工数登録</a></button>
 	<div>
 	<h2>工数ログ</h2>
+	<c:if test="${empty manHoursList}">
+		<p>工数は登録されていません。</p>
+	</c:if>
+	<c:if test="${not empty manHoursList}">
 	<table border="1">
 		<tr>
 			<th>作業日</th>
@@ -108,11 +112,12 @@
 			<td>${m.manager}</td>
 			<td>${m.todayManHours}</td>
 			<td>${m.workDetails}</td>
-			<td><input type="submit" name="button_id" value="削除"><td>
+			<td><input type="submit" name="button_id" value="削除" class="btn"><td>
 		</tr>
 	</form>
 	</c:forEach>
-	</table>	
+	</table>
+	</c:if>	
 	</div>
 
 	<!------------以下モーダル表示---------->

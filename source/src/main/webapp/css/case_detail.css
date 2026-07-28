@@ -1,4 +1,5 @@
 
+/*案件詳細CSS*/
 .one_case_detail{
 	background-color: #ffffff;
     padding: 20px;
@@ -7,3 +8,25 @@
     margin-bottom: 24px; /* カード上下距離 */
     /*letter-spacing: 3px;*/
 }
+/*完了、中止ボタンのCSS*/
+.case_button{
+	display: flex;
+	justify-content: right;
+}
+/*テーブルのデザイン*/
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14px;
+}
+th,td {
+	padding: 10px 12px;
+    border-bottom: 1px solid #edf2f7; 
+    vertical-align: middle;
+}
+/* h3タグのCSS */
+h3 {
+	color: #004d99;
+}
+

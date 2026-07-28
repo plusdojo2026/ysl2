@@ -27,8 +27,8 @@
 	    <c:set var = "totalmh" value = "0"/>
 	    <c:forEach var="k" items="${ManthAndMembers}">
 	    <c:set var = "totalmh" value = "${total + k.actualManHours}"/>
-	    </c:forEach>
 	    <c:out value ="${k.actualManHours}"/>
+	    </c:forEach>
     </div>
     <div class = "total_case">
 	    <h3>合計案件数</h3>
@@ -45,7 +45,7 @@
     			 <tr>
     				<th>案件コード</th>
       				<th>案件名</th>
-      				<th>月実績工数</th>
+      				<th>月別実績工数</th>
       				<th>総実績工数</th>
       				<th>予算工数</th>
     			 </tr>

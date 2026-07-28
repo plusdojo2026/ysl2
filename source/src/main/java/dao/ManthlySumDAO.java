@@ -56,12 +56,6 @@ public class ManthlySumDAO {
 		
 		//月ごとの実績工数を取得する
 		//SQL文を準備 //今月分だけをヒットさせる
-//		String sql ="SELECT tasks.case_id ,SUM(today_man_hours)AS today_man_hours, "
-//				+ "FROM tasks "
-//				+ "LEFT JOIN man_hours "
-//				+ "ON tasks.task_id = man_hours.task_id "
-//				+ "WHERE work_date LIKE ? "
-//				+ "GROUP BY tasks.case_id;";
 		String sql = "SELECT case_id ,SUM(today_man_hours) AS actual_man_hours FROM tasks LEFT JOIN man_hours ON tasks.task_id = man_hours.task_id  WHERE work_date LIKE ? GROUP BY tasks.case_id";	
 		System.out.println(sql);//SQL文の確認用
 		PreparedStatement pStmt = conn.prepareStatement(sql);//connとSQLをpStmtにまとめる

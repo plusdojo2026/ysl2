@@ -22,10 +22,10 @@
 	<div class ="list">
     <h2>メンバー一覧</h2>
     <!-- 表示項目 -->
-    <table border="1" id="foo-table" class="table table-bordered">
+    <table id="foo-table" class="table table-bordered">
       <thead>
         <tr>
-          <th>ユーザーID</th>
+          <th class="nowrap">ユーザーID</th>
           <th>ログインID</th>	
           <th>氏名</th>
           <th>メールアドレス</th>

@@ -19,7 +19,11 @@
 	<div>${msg}</div>
 
 	<div>
-		<button onclick="openModal()">新規登録</button>
+		<button onclick="openModal()">
+      		<svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+  			<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/></svg>
+  			新規登録
+		</button>
 	</div>
 
 	<div>
@@ -35,7 +39,6 @@
 				<th>ステータス</th>
 				<th>優先度</th>
 				<th>進捗率</th>
-				<th>説明</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -47,7 +50,7 @@
 					<a href="${pageContext.request.contextPath}/Controller?page_id=L006&button_id=task_link&task_id=${t.taskId}">${t.taskName}</a>
 				</td>
 				<td>${t.name}</td>
-				<td>
+				<td class="nowrap">
 					<c:if test="${empty t.deadlineDate}">未設定</c:if>
 					${t.deadlineDate}
 				</td>
@@ -56,7 +59,6 @@
 				<td>${t.taskStatus}</td>
 				<td>${t.taskPriority}</td>
 				<td>${t.taskProgress}%</td>
-				<td>${t.taskMemo}</td>
 				<td><button onclick="openModal2('${t.caseId}','${t.taskId}','${t.taskName}','${t.manager}','${t.taskStartDate}','${t.deadlineDate}','${t.estimatedManHours}','${t.actualManHours}','${t.taskStatus}','${t.taskPriority}','${t.taskMemo}','${t.taskProgress }')">編集</button></td>
 			</tr>
 		</c:forEach>

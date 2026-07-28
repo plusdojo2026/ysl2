@@ -144,14 +144,30 @@ main {
   }
 }
 
+/*ボタンデザイン*/
 .btn {
+  background-color: var(--main-color);
+  color: #fff;
   border: none;
   padding: 6px 12px;
-  font-size: 12px;
+  font-size: 13px;
   border-radius: 4px;
   cursor: pointer;
   transition:
     background-color 0.2s ease,
     transform 0.1s ease;
   white-space: nowrap;
+}
+.btn:hover {
+    background-color: #004d99;
+    color: #fff;
+}
+.btn:active{
+	background-color: var(--main-color);
+	color: #fff;
+}
+
+/*見出し*/
+h1,h2 {
+	color: var(--main-color);
 }

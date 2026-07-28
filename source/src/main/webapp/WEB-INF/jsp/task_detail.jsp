@@ -111,6 +111,7 @@
 			<tr>
 				<input type="hidden" name="page_id" value="L007">
 				<input type="hidden" name="man_hours_id" value="${m.manHoursId}">
+				<input type="hidden" name="task_id" value="${m.manHoursId}">
 				<td>${m.workDate}</td>
 				<td>${m.name}</td>
 				<td>${m.todayManHours}</td>

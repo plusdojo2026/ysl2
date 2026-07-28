@@ -129,17 +129,22 @@ public class ManHourAction {
 			);
 
 		int  manHourId = Integer.parseInt(request.getParameter("man_hours_id"));
+		int  taskId = Integer.parseInt(request.getParameter("task_id"));
 		AllDTO dto = new AllDTO();
-		dto.setTaskId(manHourId);
+		
+		dto.setTaskId(taskId);
+		dto.setManHoursId(manHourId);
 		ManHourService service = new ManHourService();
-		service.selectManHours(manHourId);
+		
 		int list = service.deleteManHour(manHourId);
+		ArrayList<AllDTO> man =  service.selectManHours(taskId);
 		request.setAttribute("list", list);
 		if (list==1) {
 			System.out.println("削除成功");
 		}else {
 			System.out.println("削除失敗");
 		}
+		request.setAttribute("man", man);
 		return page;
 		
 	}

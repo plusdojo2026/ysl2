@@ -1,0 +1,151 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    background-color: #f4f6f9; /* 背景のいろ */
+    color: #333333;
+}
+
+/*  Flex  */
+main {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* 右侧主内容区域 */
+.main {
+    flex: 1;
+    padding: 24px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+/* テーマ文字 */
+h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 600;
+}
+
+
+/* 上のカード */
+.dash_boards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 三列にする */
+    gap: 20px;                             /* 卡片间距 */
+    margin-bottom: 24px;
+}
+
+/* 円滑 */
+.deadline_over_tasks_counts, 
+.my_tasks_counts, 
+.now_cases_counts {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    text-align: center;
+}
+
+/* 数量数字的通用样式 */
+.deadline_over_tasks_counts p,
+.my_tasks_counts p,
+.now_cases_counts p {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 10px 0 0 0;
+}
+
+/* 期限超過タスク数 */
+.deadline_over_tasks_counts p {
+    color: #e74c3c;
+}
+
+/* 担当タスク数、進行中案件数 */
+.my_tasks_counts p, 
+.now_cases_counts p {
+    color:var(--add-button);
+}
+
+/*---------------------------------Tenyee Wang------------------------------------*/
+
+/* 下の三つカード */
+.deadline_over_tasks, 
+.my_tasks, 
+.now_cases {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    margin-bottom: 24px; /* カード上下距離 */
+}
+
+/* 当页面缩小时，允许表格在卡片内部横向滚动，防止撑破布局 */
+.deadline_over_tasks, 
+.my_tasks, 
+.now_cases {
+    overflow-x: auto;
+}
+
+/* tableのデザイン */
+table {
+    width: 100%;
+    border-collapse: collapse; /* 合并边框 */
+    text-align: left;
+    font-size: 14px;
+}
+
+/* 表头与单元格的基本间距 */
+th, td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #edf2f7; /* 分割线 */
+    vertical-align: middle;
+}
+
+/* 表头特殊背景与文字颜色 */
+th {
+    background-color: #f8fafc;
+    color: #4a5568;
+    font-weight: 600;
+    white-space: nowrap; /* 防止表头换行折叠 */
+}
+
+/* 鼠标悬停在表格行上时的变色反馈 */
+tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* 表格按钮 BUTTON */
+
+/* 去除表单默认间距，确保单元格对齐 */
+.my_tasks table form {
+    margin: 0;
+    padding: 0;
+}
+
+/* “工数登録” BUTTON */
+.btn-submit {
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    white-space: nowrap;
+}
+
+
+/* 按钮悬停效果 */
+.btn-submit:hover {
+    background-color: #2980b9;
+}
+
+/* 按钮点击瞬间的按压反馈 */
+.btn-submit:active {
+    transform: scale(0.98);
+}

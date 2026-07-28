@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>ダッシュボード|Task Manager</title>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/common.css" />
+	href="${pageContext.request.contextPath}/css/dash_board.css" />
 </head>
 <body>
 	<main>
@@ -41,27 +42,31 @@
 				<h3>期限超過タスク</h3>
 				<!-- 項目 -->
 				<table>
-					<tr>
-						<th>タスク名</th>
-						<th>案件名</th>
-						<th>開始日</th>
-						<th>期限</th>
-						<th>見積工数</th>
-						<th>優先度</th>
-					</tr>
-
-					<c:forEach var="o" items="${overTaskList}">
-						<!-- 変数"o" で一覧取得-->
-						<!-- 期限超過分のタスクを一覧取得 -->
+					<thead>
 						<tr>
-							<td><c:out value="${o.taskName}" /></td>
-							<td><c:out value="${o.caseName}" /></td>
-							<td><c:out value="${o.taskStartDate}" /></td>
-							<td><c:out value="${o.deadlineDate}" /></td>
-							<td><c:out value="${o.estimatedManHours}" /></td>
-							<td><c:out value="${o.taskPriority}" /></td>
+							<th>タスク名</th>
+							<th>案件名</th>
+							<th>開始日</th>
+							<th>期限</th>
+							<th>見積工数</th>
+							<th>優先度</th>
 						</tr>
-					</c:forEach>
+					</thead>
+
+					<tbody>
+						<c:forEach var="o" items="${overTaskList}">
+							<!-- 変数"o" で一覧取得-->
+							<!-- 期限超過分のタスクを一覧取得 -->
+							<tr>
+								<td><c:out value="${o.taskName}" /></td>
+								<td><c:out value="${o.caseName}" /></td>
+								<td><c:out value="${o.taskStartDate}" /></td>
+								<td><c:out value="${o.deadlineDate}" /></td>
+								<td><c:out value="${o.estimatedManHours}" /></td>
+								<td><c:out value="${o.taskPriority}" /></td>
+							</tr>
+						</c:forEach>
+					</tbody>
 				</table>
 			</div>
 
@@ -69,34 +74,39 @@
 				<h3>担当タスク</h3>
 				<!-- 項目 -->
 				<table>
-					<tr>
-						<th>タスク名</th>
-						<th>案件名</th>
-						<th>開始日</th>
-						<th>期限</th>
-						<th>見積工数</th>
-						<th>優先度</th>
-					</tr>
-
-					<c:forEach var="m" items="${myTaskList}">
-						<!-- 変数"m" で一覧取得-->
-						<!-- "manager"が自分、つまりログイン中のセッションと一致するタスクを絞り込む -->
+					<thead>
 						<tr>
-							<td><c:out value="${m.taskName}" /></td>
-							<td><c:out value="${m.caseName}" /></td>
-							<td><c:out value="${m.taskStartDate}" /></td>
-							<td><c:out value="${m.deadlineDate}" /></td>
-							<td><c:out value="${m.estimatedManHours}" /></td>
-							<td><c:out value="${m.taskPriority}" /></td>
-							<td>
-								<form method="POST" action="<c:url value='/Controller'/>">
-									<input type="hidden" name="page_id" value="L002">
-									<input type="hidden" name="task_id" value="${m.taskId}">
-									<input type="submit" name="button_id" value="工数登録">
-								</form>
-							</td>
+							<th>タスク名</th>
+							<th>案件名</th>
+							<th>開始日</th>
+							<th>期限</th>
+							<th>見積工数</th>
+							<th>優先度</th>
+							<th>操作</th> 
 						</tr>
-					</c:forEach>
+					</thead>
+
+					<tbody>
+						<c:forEach var="m" items="${myTaskList}">
+							<!-- 変数"m" で一覧取得-->
+							<!-- "manager"が自分、つまりログイン中のセッションと一致するタスクを絞り込む -->
+							<tr>
+								<td><c:out value="${m.taskName}" /></td>
+								<td><c:out value="${m.caseName}" /></td>
+								<td><c:out value="${m.taskStartDate}" /></td>
+								<td><c:out value="${m.deadlineDate}" /></td>
+								<td><c:out value="${m.estimatedManHours}" /></td>
+								<td><c:out value="${m.taskPriority}" /></td>
+								<td>
+									<form method="POST" action="<c:url value='/Controller'/>">
+										<input type="hidden" name="page_id" value="L002">
+										<input type="hidden" name="task_id" value="${m.taskId}">
+										<input type="submit" name="button_id" value="工数登録" class="btn-submit">
+									</form>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
 				</table>
 
 			</div>
@@ -104,28 +114,32 @@
 			<div class="now_cases">
 				<h3>進行中案件</h3>
 				<table>
-					<!-- 項目 -->
-					<tr>
-						<th>案件コード</th>
-						<th>案件名</th>
-						<th>顧客名</th>
-						<th>担当者</th>
-						<th>ステータス</th>
-						<th>優先度</th>
-					</tr>
-
-					<c:forEach var="c" items="${caseList}">
-						<!-- 変数"n" で一覧取得-->
-						<!-- "status"が進行中の案件を絞り込む -->
+					<thead>
+						<!-- 項目 -->
 						<tr>
-							<td><c:out value="${c.caseId}" /></td>
-							<td><c:out value="${c.caseName}" /></td>
-							<td><c:out value="${c.customerName}" /></td>
-							<td><c:out value="${c.name}" /></td>
-							<td><c:out value="${c.caseStatus}" /></td>
-							<td><c:out value="${c.casePriority}" /></td>
+							<th>案件コード</th>
+							<th>案件名</th>
+							<th>顧客名</th>
+							<th>担当者</th>
+							<th>ステータス</th>
+							<th>優先度</th>
 						</tr>
-					</c:forEach>
+					</thead>
+
+					<tbody>
+						<c:forEach var="c" items="${caseList}">
+							<!-- 変数"n" で一覧取得-->
+							<!-- "status"が進行中の案件を絞り込む -->
+							<tr>
+								<td><c:out value="${c.caseId}" /></td>
+								<td><c:out value="${c.caseName}" /></td>
+								<td><c:out value="${c.customerName}" /></td>
+								<td><c:out value="${c.name}" /></td>
+								<td><c:out value="${c.caseStatus}" /></td>
+								<td><c:out value="${c.casePriority}" /></td>
+							</tr>
+						</c:forEach>
+					</tbody>
 				</table>
 			</div>
 			<!-- 6つのカードの表示ここまで -->

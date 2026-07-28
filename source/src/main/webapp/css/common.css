@@ -14,6 +14,7 @@ body {
   margin: 0;
   padding: 0;
   color: var(--color-text);
+  background-color: #f4f6f9; /* 背景のいろ */
 }
 
 /* aタグの装飾（青文字・下線）を無効化 */

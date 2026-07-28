@@ -132,9 +132,10 @@
               <label>進捗率</label>
               <input type="number" min="0" max="100" step="1" name="progress" value="0">
             </div>
-          <div class="form-group">
-            <label>説明<br><textarea name="memo"></textarea></label>
-          </div>
+            <div class="form-group">
+              <label>説明</label>
+              <textarea name="memo"></textarea>
+            </div>
           </div>
         </div>
         <input type="hidden" name="page_id" value="L006">

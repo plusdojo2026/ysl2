@@ -6,9 +6,9 @@
 	<head>
 	<meta charset="UTF-8">
 	<title>タスク詳細</title>
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
 	<link rel="stylesheet" href="<c:url value='/css/task_detail.css' />">
-	<script src="<c:url value='js/task_detail.js'/>"></script>
 </head>
 <body>
 <main>
@@ -114,64 +114,86 @@
 	</c:forEach>
 	</table>	
 	</div>
+
 	<!------------以下モーダル表示---------->
 	<!--タスク編集モーダル-->
-	<div id="modal2" class="modal-background2">
-	    <div class="modal-content2">
-			<h2>タスク編集</h2>
-		    <form method="POST" action="<c:url value='/Controller'/>" id="conform">
-		        <input type="hidden" name="page_id" value="L006">
-		        <input type="hidden" name="task_id">
-				<label>案件名<br>
-				<select name="case_id" id="case_name" required>
-					<c:forEach var="c" items="${casesList}">
-						<option value="${c.caseId}">${c.caseName}</option>
-					</c:forEach>
-				</select>
-				</label>
-		        <label>タスク名<br>
-		            <input type="text" name="task_name" required>
-		        </label>
-		        <label for="manager">担当者<br></label>
-				<select name="manager" id="manager">
-					<c:forEach var="m" items="${activeUsersList}">
-						<option value="${m.userId}">${m.name}</option>
-					</c:forEach>
-				</select>
-		        <label>進捗率<br>
-		            <input type="number" min="0" max="100" step="1" name="progress">
-		        </label>
-		        <label>開始日<br>
-		            <input type="date" name="start_date">
-		        </label>
-		        <label>期限<br>
-		        <input type="date" name="deadline_date">
-		        </label>
-		        <label for="priority">優先度<br></label>
-		        <select name="priority" id="priority" required>
-		            <option value="高">高</option>
-		            <option value="中" selected>中</option>
-		            <option value="低">低</option>
-		        </select>
-				</p>
-				<p>
-		        <label>見積工数<br>
-		            <input type="number" min="0" step="0.5" name="estimated_man_hours">
-		        </label>
-				<label for="status">ステータス<br></label>
-				<select name="status" id="status" required>
-					<option value="未着手" selected>未着手</option>
-					<option value="進行中">進行中</option>
-					<option value="完了">完了</option>
-					<option value="保留">保留</option>
-				</select>
-				<label>説明<input type="textarea" name="memo"></label></p>
-				<input type="submit" name="button_id" value="保存">
-				<input type="button" value="戻る" onclick="closeModal2()">
-		    </form>
+	<div id="modal2" class="modal_background">
+    <div class="r_modal">
+      <h2>タスク編集</h2>
+      <form method="POST" action="<c:url value='/Controller'/>" id="conform">
+        <div class="modal-contents-2">
+          <div class="modal_left">
+            <div class="form-group">
+              <label for="case_name">案件名</label>
+              <select name="case_id" id="case_name" required>
+                <c:forEach var="c" items="${casesList}">
+                  <option value="${c.caseId}">${c.caseName}</option>
+                </c:forEach>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>タスク名</label>
+              <input type="text" name="task_name" required>
+            </div>
+            <div class="form-group">
+              <label for="manager">担当者</label>
+              <select name="manager" id="manager">
+                <c:forEach var="m" items="${activeUsersList}">
+                  <option value="${m.userId}">${m.name}</option>
+                </c:forEach>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>進捗率</label>
+              <input type="number" min="0" max="100" step="1" name="progress">
+            </div>
+            <div class="form-group">
+              <label>開始日</label>
+              <input type="date" name="start_date">
+            </div>
+            <div class="form-group">
+              <label>期限</label>
+              <input type="date" name="deadline_date">
+            </div>
+          </div>
+          <div>
+            <div class="form-group">
+              <label for="priority">優先度</label>
+              <select name="priority" id="priority">
+                <option value="高">高</option>
+                <option value="中" selected>中</option>
+                <option value="低">低</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>見積工数</label>
+              <input type="number" min="0" step="0.5" name="estimated_man_hours">
+            </div>
+            <div class="form-group">
+              <label for="status">ステータス</label>
+              <select name="status" id="status" required>
+                <option value="未着手" selected>未着手</option>
+                <option value="進行中">進行中</option>
+                <option value="完了">完了</option>
+                <option value="保留">保留</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>説明</label>
+              <textarea name="memo"></textarea>
+            </div>  
+          </div>
+        </div>
+        <input type="hidden" name="page_id" value="L006">
+        <input type="hidden" name="task_id">
+        <input type="submit" name="button_id" value="保存">
+      </form>
+      <button class="close" onclick="closeModal2()">×</button>
 		</div>
 	</div>
 </div>
+<script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.js"></script>
+<script src="<c:url value='js/task_detail.js'/>"></script>
 </main>
 </body>
 </html>

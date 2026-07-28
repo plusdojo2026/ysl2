@@ -25,7 +25,7 @@
 		</button>
       <p>${msg}</p>
 
-      <div>
+      <div class="main">
         <table id="foo-table" class="table table-bordered">
           <thead>
             <tr>

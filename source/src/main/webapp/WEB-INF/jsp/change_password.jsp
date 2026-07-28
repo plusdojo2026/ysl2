@@ -12,7 +12,7 @@
 	<main>
 		<%@ include file="/WEB-INF/jsp/sidebar.jsp"%>
 
-		<div class="login">
+		<div class="login main">
       <form action="/ysl2/Controller" method="post" class="change-password-form">
         <h1>パスワード変更</h1>
 				<div class="message">${message}</div>

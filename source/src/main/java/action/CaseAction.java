@@ -119,7 +119,12 @@ public class CaseAction {
 			startDate = null;
 		if (endDate.trim().equals(""))
 			endDate = null;
-
+		//if (StbudgetedManHours.trim().equals(""))
+			//StbudgetedManHours = null;
+		
+		//double budgetedManHours = Double.parseDouble("StbudgetedManHours");
+		
+		
 		//dto
 		CaseDTO dto = new CaseDTO();
 		dto.setCaseId(caseId);

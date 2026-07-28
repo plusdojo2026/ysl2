@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import dto.AllDTO;
 import dto.ManHourDTO;
@@ -70,18 +71,26 @@ public class ManHourAction {
 		String workDetails = request.getParameter("work_details");
 		String workDate = request.getParameter("work_date");
 		int taskId = Integer.parseInt(request.getParameter("task_id"));
+		HttpSession session = request.getSession();
+		UserDTO user = (UserDTO) session.getAttribute("user");
+		int userId = user.getUserId();
 		
 		ManHourDTO dto = new ManHourDTO();
 		dto.setTodayManHours(todayManHours);
 		dto.setWorkDetails(workDetails);
 		dto.setWorkDate(workDate);
 		dto.setTaskId(taskId);
-		
+		dto.setUserId(userId);
 		
 		ManHourService service = new ManHourService();
-		service.registManHour(todayManHours, workDate, workDate);
-		int list = service.registManHour(todayManHours, workDate, workDate);
+		int list = service.registManHour(todayManHours, workDate, workDate, taskId, userId);
 		request.setAttribute("list", list);
+		
+		if (list==1) {
+			System.out.println("登録成功");
+		}else {
+			System.out.println("登録失敗");
+		}
 		
 		//以下、タスク詳細表示用データの取得と格納↓
 				//dtoの箱

@@ -213,7 +213,12 @@ pageEncoding="UTF-8"%>
               <label for="manager">担当PM</label>
                 <select name="pm_id" id="pm_id" required>
                   <c:forEach var="m" items="${userList}">
-                    <option value="${m.userId}">${m.name}</option>
+                    <option value="${m.userId}" 
+                    	<c:if test="${m.userId==dedto.pmId}">
+                    		selected
+                    	</c:if>   >
+                    	${m.name}
+                    </option>
                   </c:forEach>
                 </select>
               </div>
@@ -234,9 +239,9 @@ pageEncoding="UTF-8"%>
               <div class="form-group">
                 <label for="priority">優先度*</label>
                 <select name="priority" id="priority" value="${dedto.casePriority}">
-                  <option value="高">高</option>
-                  <option value="中">中</option>
-                  <option value="低">低</option>
+                  <option value="高" <c:if test= "${dedto.casePriority=='高'}">selected</c:if>>高</option>
+                  <option value="中" <c:if test= "${dedto.casePriority=='中'}">selected</c:if>>中</option>
+                  <option value="低" <c:if test= "${dedto.casePriority=='低'}">selected</c:if>>低</option>
                 </select>
               </div>
               <div class="form-group">
@@ -246,10 +251,10 @@ pageEncoding="UTF-8"%>
             <div class="form-group">
               <label for="status">ステータス*</label>
               <select name="status" value="${dedto.caseStatus}">
-                <option value="未着手">未着手</option>
-                <option value="進行中">進行中</option>
-                <option value="完了">完了</option>
-                <option value="保留">保留</option>
+                <option value="未着手" <c:if test= "${dedto.caseStatus=='未着手'}">selected</c:if>>未着手</option>
+                <option value="進行中" <c:if test= "${dedto.caseStatus=='進行中'}">selected</c:if>>進行中</option>
+                <option value="完了"   <c:if test= "${dedto.caseStatus=='完了'}">selected</c:if>>完了</option>
+                <option value="保留"   <c:if test= "${dedto.caseStatus=='保留'}">selected</c:if>>保留</option>
               </select>
             </div>
           </div>

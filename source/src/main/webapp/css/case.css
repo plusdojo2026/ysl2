@@ -2,7 +2,6 @@
   border-collapse: collapse;
   width: 100%;
   max-width: 650px;
-  border-radius: 20px;
   overflow: hidden;
   text-align: center;
 }
@@ -29,19 +28,6 @@
 	white-space: nowrap;
 }
 
-/*角を丸める*/
-#foo-table tr th:first-child {
-  border-top-left-radius: 10px; /* 左上の角 */
-}
-#foo-table tr th:last-child {
-  border-top-right-radius: 10px; /* 右上の角 */
-}
-#foo-table tr:last-child td:last-child {
-  border-bottom-right-radius: 10px; /* 右下の角 */
-}
-#foo-table tr:last-child td:first-child {
-  border-bottom-left-radius: 10px; /* 左下の角 */
-}
 
 /*テーブル内のリンクのクリック可能領域を広げる*/
 table td a {

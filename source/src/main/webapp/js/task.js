@@ -32,7 +32,7 @@ function openModal2(
   taskStatus,
   taskPriority,
   taskMemo,
-  taskProgress,
+  taskProgress
 ) {
   //編集モーダルの全体をformという名前とする
   const form = document.getElementById("conform");

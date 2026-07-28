@@ -1,0 +1,18 @@
+table {
+	border-collapse: collapse;
+	padding: 3em;
+}
+td,th {
+	padding: 0.5em;
+}
+
+.task_details {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+}
+
+.memo th{
+	min-height: 30	px;
+	vertical-align: middle;
+}

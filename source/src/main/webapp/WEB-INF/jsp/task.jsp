@@ -44,13 +44,13 @@
 		</thead>
 		<tbody>
 		<c:forEach var="t" items="${allTasksList}">
-			<tr>
+			<tr id="task">
 				<td>${t.caseName}</td>
 				<td>
 					<a href="${pageContext.request.contextPath}/Controller?page_id=L006&button_id=task_link&task_id=${t.taskId}">${t.taskName}</a>
 				</td>
 				<td>${t.name}</td>
-				<td class="nowrap">
+				<td class="nowrap" id="deadlinedate">
 					<c:if test="${empty t.deadlineDate}">未設定</c:if>
 					${t.deadlineDate}
 				</td>

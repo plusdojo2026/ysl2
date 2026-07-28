@@ -19,9 +19,9 @@
 	<form method="POST" action="<c:url value='/Controller'/>">
 		<input type="month" name="month" value = "${yearManth}" required>
 		<input type="hidden" name="page_id" value="L008"> 
-	    <input type="submit" name = "button_id" value="集計" >
+	    <input type="submit" name = "button_id" value="集計" id = "total">
     </form>
-    
+   <div class = "data">
     <div class = "total_mh">
 	    <h3>今月の合計工数</h3>
 	    <c:set var = "totalmh" value = "0"/>
@@ -78,7 +78,7 @@
     		</c:forEach>
 		</table>    
     </div>
-    
+   </div>
 <script src="${pageContext.request.contextPath}/js/manthly_sum.js"></script>
 </main>
 </div>

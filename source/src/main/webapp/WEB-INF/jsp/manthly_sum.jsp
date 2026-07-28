@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ page import="java.time.LocalDate, java.time.format.DateTimeFormatter" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,14 +17,18 @@
 <div class ="main">
 
 	<form method="POST" action="<c:url value='/Controller'/>">
-		<input type="month" name="work_date" >
+		<input type="month" name="month" value = "${yearManth}" required>
 		<input type="hidden" name="page_id" value="L008"> 
 	    <input type="submit" name = "button_id" value="集計" >
     </form>
     
     <div class = "total_mh">
 	    <h3>合計工数</h3>
-	    <p>工数データをここに表示</p>
+	    <c:set var = "totalmh" value = "0"/>
+	    <c:forEach var="k" items="${ManthAndMembers}">
+	    <c:set var = "totalmh" value = "${total + k.actualManHours}"/>
+	    </c:forEach>
+	    <c:out value ="${k.actualManHours}"/>
     </div>
     <div class = "total_case">
 	    <h3>合計案件数</h3>
@@ -40,14 +45,16 @@
     			 <tr>
     				<th>案件コード</th>
       				<th>案件名</th>
-      				<th>実績工数</th>
+      				<th>月実績工数</th>
+      				<th>総実績工数</th>
       				<th>予算工数</th>
     			 </tr>
     			 <c:forEach var="c" items="${TotalCasesAndManHours}">
     			 <tr>
       				<td><c:out value = "${c.caseId}"/></td>
 				    <td><c:out value = "${c.caseName}"/></td>
-				    <td><%-- ${} --%></td>
+				    <td><c:out value = "${c.actualManHours}"/></td>
+				    <td><c:out value = "${c.todayManHours}"/></td>
 				    <td><c:out value = "${c.budgetedManHours}"/></td>
     			</tr>
     			</c:forEach>
@@ -71,6 +78,8 @@
     		</c:forEach>
 		</table>    
     </div>
+    
+<script src="${pageContext.request.contextPath}/js/manthly_sum.js"></script>
 </main>
 </div>
 </body>

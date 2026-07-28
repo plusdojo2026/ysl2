@@ -62,7 +62,7 @@ public class ManthlySumDAO {
 //				+ "ON tasks.task_id = man_hours.task_id "
 //				+ "WHERE work_date LIKE ? "
 //				+ "GROUP BY tasks.case_id;";
-		String sql = "SELECT case_id ,SUM(today_man_hours) AS today_man_hours FROM tasks LEFT JOIN man_hours ON tasks.task_id = man_hours.task_id  WHERE work_date LIKE ? GROUP BY tasks.case_id";	
+		String sql = "SELECT case_id ,SUM(today_man_hours) AS actual_man_hours FROM tasks LEFT JOIN man_hours ON tasks.task_id = man_hours.task_id  WHERE work_date LIKE ? GROUP BY tasks.case_id";	
 		System.out.println(sql);//SQL文の確認用
 		PreparedStatement pStmt = conn.prepareStatement(sql);//connとSQLをpStmtにまとめる
 		pStmt.setString(1,'%'+yearManth+'%');//?に年月のデータを入れる
@@ -71,7 +71,7 @@ public class ManthlySumDAO {
 		while(rs.next()) {
 			AllDTO dto = new AllDTO();
 			dto.setCaseId(rs.getString("case_id"));					//案件コード
-			dto.setTodayManHours(rs.getDouble("today_man_hours"));	//月ごとかつ案件ごとの実績工数
+			dto.setActualManHours(rs.getDouble("actual_man_hours"));//月ごとかつ案件ごとの実績工数
 			ManthlyManHours.add(dto);								//詰め直す工程を忘れずに!!
 		}
 		//Serviceに返却

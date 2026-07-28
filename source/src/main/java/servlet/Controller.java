@@ -51,8 +51,7 @@ public class Controller extends HttpServlet {
 			page = action.selectTask();
 		} else if (pageId.equals("side") && buttonId.equals("月次集計")) {
 			//サイドバーの月次集計
-			ManthlySumAction action = new ManthlySumAction(request);
-			page = action.selectManthlySum();
+			page = "/WEB-INF/jsp/manthly_sum.jsp";
 		} else if (pageId.equals("side") && buttonId.equals("メンバー管理")) {
 			//サイドバーのメンバー管理（管理者）
 			AdminAction action = new AdminAction(request);

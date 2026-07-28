@@ -155,24 +155,22 @@ public class CaseAction {
 
 		//案件詳細取得
 		AllDTO dedto = new AllDTO();
-
+		
 		CaseService caseservice = new CaseService();
 		dedto = caseservice.selectDetailCase(caseId);
 		request.setAttribute("dedto", dedto);
 
 		//案件タスク一覧取得
-
 		TaskService service = new TaskService();
 		ArrayList<AllDTO> taskList = service.selectTaskOfCase(caseId);
-
 		request.setAttribute("taskList", taskList);
-
+		
 		//工数ログ(最新10件)
 		ManHourService manService = new ManHourService();
 		ArrayList<AllDTO> manList = manService.selectCaseManHours(caseId);
-
 		request.setAttribute("manList", manList);
-
+		
+		//モーダル用
 		ArrayList<AllDTO> caseList = caseservice.selectCases();
 		request.setAttribute("caseList", caseList);
 		UserService uservice = new UserService();
@@ -182,6 +180,7 @@ public class CaseAction {
 		return page;
 	}
 
+	
 	//ステータス変更メソッド
 	public String updateStatus() throws UnsupportedEncodingException {
 		String page = "/WEB-INF/jsp/case_detail.jsp";
@@ -227,18 +226,43 @@ public class CaseAction {
 
 		return page;
 	}
-	
+
 	//タスク削除メソッド
 	public String deleteTask() throws UnsupportedEncodingException {
 		String page = "/WEB-INF/jsp/case_detail.jsp";
-		
+		request.setCharacterEncoding("UTF-8");
+		String caseId = request.getParameter("case_id");
 		int taskId = Integer.parseInt(request.getParameter("task_id"));
+		
 		TaskService tservice = new TaskService();
 		int ans = tservice.deleteTask(taskId);
 		
 		
-		
-		
+		//案件詳細取得
+		AllDTO dedto = new AllDTO();
+
+		CaseService caseservice = new CaseService();
+		dedto = caseservice.selectDetailCase(caseId);
+		request.setAttribute("dedto", dedto);
+
+		//案件タスク一覧取得
+
+		TaskService service = new TaskService();
+		ArrayList<AllDTO> taskList = service.selectTaskOfCase(caseId);
+		request.setAttribute("taskList", taskList);
+
+		//工数ログ(最新10件)
+		ManHourService manService = new ManHourService();
+		ArrayList<AllDTO> manList = manService.selectCaseManHours(caseId);
+		request.setAttribute("manList", manList);
+
+
+		ArrayList<AllDTO> caseList = caseservice.selectCases();
+		request.setAttribute("caseList", caseList);
+		UserService uservice = new UserService();
+		ArrayList<UserDTO> userList = uservice.selectActiveUsers();
+		request.setAttribute("userList", userList);
+
 		return page;
 	}
 

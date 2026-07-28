@@ -91,8 +91,9 @@ pageEncoding="UTF-8"%>
             <th>${e.taskProgress}</th>
             <form action="Controller" method="post">
             <th><input type="submit" name="button_id" value="削除"></th>
+            <input type="hidden" name="task_id" value="${e.taskId}" >
+            <input type="hidden" name="case_id" value="${dedto.caseId}">
             <input type="hidden" name="page_id" value="L003" />
-       		<input type="hidden" name="case_id" value="${dedto.caseId}" >
        		</form>
           </tr>
         </c:forEach>

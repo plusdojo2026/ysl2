@@ -176,13 +176,13 @@ public class CaseDAO {
 
 		String sql = "SELECT name , cases.case_id , case_name , customer_name , cases.status , cases.priority , cases.pm_id , cases.start_date , cases.end_date , cases.memo , budgeted_man_hours , SUM(today_man_hours) AS actual_man_hours,"
 				+ "    COUNT(tasks.task_id) AS all_tasks ,COUNT(CASE WHEN tasks.status='完了' THEN 1 ELSE NULL END) AS completed_tasks"
-				+ "	FROM tasks JOIN man_hours"
-				+ "    ON tasks.task_id = man_hours.task_id"
-				+ "    JOIN cases"
+				+ "	FROM cases LEFT JOIN tasks"
 				+ "    ON tasks.case_id = cases.case_id"
-				+ "    JOIN users"
+				+ "    LEFT JOIN man_hours"
+				+ "    ON tasks.task_id = man_hours.task_id"
+				+ "    LEFT JOIN users"
 				+ "    ON users.user_id = cases.pm_id"
-				+ "    GROUP BY tasks.case_id"
+				+ "    GROUP BY cases.case_id"
 				+ "    HAVING case_id = ?";
 		
 		PreparedStatement pStmt = conn.prepareStatement(sql);

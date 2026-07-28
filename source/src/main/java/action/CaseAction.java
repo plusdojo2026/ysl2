@@ -26,16 +26,15 @@ public class CaseAction {
 	//案件一覧メソッド
 	public String selectCase() {
 		String page = "/WEB-INF/jsp/case.jsp";
-		
+
 		CaseService service = new CaseService();
 		ArrayList<AllDTO> caseList = service.selectCases();
 		request.setAttribute("caseList", caseList);
-		
+
 		UserService uservice = new UserService();
 		ArrayList<UserDTO> userList = uservice.selectActiveUsers();
-		request.setAttribute("userList" , userList);
-		
-		
+		request.setAttribute("userList", userList);
+
 		return page;
 	}
 
@@ -56,10 +55,14 @@ public class CaseAction {
 		String status = request.getParameter("status");
 
 		//入力値のバリデーションチェック
-		if(customerName.trim().equals("")) customerName = null;
-		if(memo.trim().equals("")) memo = null;
-		if(startDate.trim().equals("")) startDate = null;
-		if(endDate.trim().equals("")) endDate = null;
+		if (customerName.trim().equals(""))
+			customerName = null;
+		if (memo.trim().equals(""))
+			memo = null;
+		if (startDate.trim().equals(""))
+			startDate = null;
+		if (endDate.trim().equals(""))
+			endDate = null;
 
 		//dto
 		CaseDTO dto = new CaseDTO();
@@ -77,12 +80,16 @@ public class CaseAction {
 		CaseService service = new CaseService();
 		int ans = service.registCase(dto);
 
+		if (ans == 1) {
+			request.setAttribute("msg", "案件コードが重複しています。");
+		}
+
 		ArrayList<AllDTO> caseList = service.selectCases();
 		request.setAttribute("caseList", caseList);
-		
+
 		UserService uservice = new UserService();
 		ArrayList<UserDTO> userList = uservice.selectActiveUsers();
-		request.setAttribute("userList" , userList);
+		request.setAttribute("userList", userList);
 
 		return page;
 	}
@@ -104,10 +111,14 @@ public class CaseAction {
 		String status = request.getParameter("status");
 
 		//入力値のバリデーションチェック
-		if(customerName.trim().equals("")) customerName = null;
-		if(memo.trim().equals("")) memo = null;
-		if(startDate.trim().equals("")) startDate = null;
-		if(endDate.trim().equals("")) endDate = null;
+		if (customerName.trim().equals(""))
+			customerName = null;
+		if (memo.trim().equals(""))
+			memo = null;
+		if (startDate.trim().equals(""))
+			startDate = null;
+		if (endDate.trim().equals(""))
+			endDate = null;
 
 		//dto
 		CaseDTO dto = new CaseDTO();
@@ -124,14 +135,13 @@ public class CaseAction {
 
 		CaseService service = new CaseService();
 		int ans = service.editCase(dto);
-		
+
 		ArrayList<AllDTO> caseList = service.selectCases();
 		request.setAttribute("caseList", caseList);
-		
+
 		UserService uservice = new UserService();
 		ArrayList<UserDTO> userList = uservice.selectActiveUsers();
-		request.setAttribute("userList" , userList);
-
+		request.setAttribute("userList", userList);
 
 		return page;
 	}
@@ -139,44 +149,95 @@ public class CaseAction {
 	//案件詳細メソッド
 	public String selectCaseDetail() throws UnsupportedEncodingException {
 		String page = "/WEB-INF/jsp/case_detail.jsp";
-		
+
 		request.setCharacterEncoding("UTF-8");
 		String caseId = request.getParameter("case_id");
-		
+
 		//案件詳細取得
 		AllDTO dedto = new AllDTO();
-		
+
 		CaseService caseservice = new CaseService();
 		dedto = caseservice.selectDetailCase(caseId);
-		
-		request.setAttribute("dedto",dedto);
-		
+		request.setAttribute("dedto", dedto);
+
 		//案件タスク一覧取得
-		
+
 		TaskService service = new TaskService();
 		ArrayList<AllDTO> taskList = service.selectTaskOfCase(caseId);
-		
-		request.setAttribute("taskList",taskList);
-		
-		
+
+		request.setAttribute("taskList", taskList);
+
 		//工数ログ(最新10件)
 		ManHourService manService = new ManHourService();
 		ArrayList<AllDTO> manList = manService.selectCaseManHours(caseId);
-		
-		request.setAttribute("manList",manList);
-		
+
+		request.setAttribute("manList", manList);
+
+		ArrayList<AllDTO> caseList = caseservice.selectCases();
+		request.setAttribute("caseList", caseList);
+		UserService uservice = new UserService();
+		ArrayList<UserDTO> userList = uservice.selectActiveUsers();
+		request.setAttribute("userList", userList);
+
 		return page;
 	}
 
 	//ステータス変更メソッド
 	public String updateStatus() throws UnsupportedEncodingException {
-		String page = "/WEB-INF/jsp/case.jsp";
-		
-		String caseId = request.getParameter("caseId");
-		String status = request.getParameter("status");
-		CaseService service = new CaseService();
-		int ans = service.updateStatus(caseId,status);
+		String page = "/WEB-INF/jsp/case_detail.jsp";
 
+		String caseId = request.getParameter("case_id");
+		String button_id = request.getParameter("button_id");
+		String status = null;
+
+		if ("完了".equals(button_id)) {
+			status = "完了";
+		} else if ("中止".equals(button_id)) {
+			status = "中止";
+		}
+
+		CaseService stservice = new CaseService();
+		int ans = stservice.updateStatus(caseId, status);
+
+		//案件詳細取得
+		AllDTO dedto = new AllDTO();
+
+		CaseService caseservice = new CaseService();
+		dedto = caseservice.selectDetailCase(caseId);
+		request.setAttribute("dedto", dedto);
+
+		//案件タスク一覧取得
+
+		TaskService service = new TaskService();
+		ArrayList<AllDTO> taskList = service.selectTaskOfCase(caseId);
+
+		request.setAttribute("taskList", taskList);
+
+		//工数ログ(最新10件)
+		ManHourService manService = new ManHourService();
+		ArrayList<AllDTO> manList = manService.selectCaseManHours(caseId);
+
+		request.setAttribute("manList", manList);
+
+		ArrayList<AllDTO> caseList = caseservice.selectCases();
+		request.setAttribute("caseList", caseList);
+		UserService uservice = new UserService();
+		ArrayList<UserDTO> userList = uservice.selectActiveUsers();
+		request.setAttribute("userList", userList);
+
+		return page;
+	}
+	
+	//タスク削除メソッド
+	public String deleteTask() throws UnsupportedEncodingException {
+		String page = "/WEB-INF/jsp/case_detail.jsp";
+		
+		int taskId = Integer.parseInt(request.getParameter("task_id"));
+		TaskService tservice = new TaskService();
+		int ans = tservice.deleteTask(taskId);
+		
+		
+		
 		return page;
 	}
 

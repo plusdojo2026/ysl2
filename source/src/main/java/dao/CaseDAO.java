@@ -105,6 +105,9 @@ public class CaseDAO {
 		pStmt.setString(11, dto.getCaseId());
 
 		ans = pStmt.executeUpdate();
+		
+		System.out.println("更新件数"+ans);
+		System.out.println("caseId" + dto.getCaseId());
 
 		return ans;
 	}

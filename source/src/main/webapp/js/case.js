@@ -28,7 +28,7 @@ function openEditModal(caseId, caseName, customerName, name, caseMemo, caseStart
   form.elements["start_date"].value = caseStartDate;
   form.elements["end_date"].value = endDate;
   form.elements["priority"].value = casePriority;
-  form.elements["budgetted_man_hours"].value = budgetedManHours;
+  form.elements["budgeted_man_hours"].value = budgetedManHours;
   form.elements["status"].value = caseStatus;
 }
 

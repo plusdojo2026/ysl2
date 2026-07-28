@@ -48,12 +48,6 @@ pageEncoding="UTF-8"%>
         <tr>
           <td>説明</td>
           <td>${dedto.caseMemo}</td>
-         <td>進捗バー</td>
-          <!-- <td>${taskProgress}</td> -->
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
           <td>ステータス</td>
           <td>${dedto.caseStatus}</td>
         </tr>
@@ -63,8 +57,12 @@ pageEncoding="UTF-8"%>
        '${dedto.caseStartDate}','${dedto.endDate}','${dedto.customerName}','${dedto.budgetedManHours}',
        '${dedto.name}','${dedto.caseMemo}','${dedto.caseStatus}','${dedto.pmId}')">編集</button>
        
-      <input type="submit" name="button_id" value="完了" />
-      <input type="submit" name="button_id" value="中止" />
+       <form action="Controller" method="post">
+       <input type="hidden" name="page_id" value="L003" />
+       <input type="hidden" name="case_id" value="${dedto.caseId}" >
+      <button type="submit" name="button_id" value="完了" />完了</button>
+      <button type="submit" name="button_id" value="中止" />中止</button>
+       </form>
     </div>
     
 
@@ -79,7 +77,7 @@ pageEncoding="UTF-8"%>
           <th>期限</th>
           <th>見積</th>
           <th>実績工数</th>
-          <th>進捗バー</th>
+          <th>進捗率</th>
         </tr>
         <c:forEach var="e" items="${taskList}">
           <tr>
@@ -91,6 +89,7 @@ pageEncoding="UTF-8"%>
             <th>${e.estimatedManHours}</th>
             <th>${e.actualManHours}</th>
             <th>${e.taskProgress}</th>
+            <th><input type="button" name="button_id" value="削除"></th>
           </tr>
         </c:forEach>
       </table>
@@ -214,17 +213,18 @@ pageEncoding="UTF-8"%>
         <h2>案件編集</h2>
 		<form method="POST" action="<c:url value='/Controller'/>">
         <input type="hidden" name="page_id" value="L004" />
+        <div class = edit_case>
 		<p>
 			<label for="case_id">案件コード*<br /></label>
-			<input type="text" name="case_id">
+			<input type="text" name="case_id" value="${dedto.caseId}">
 		</p>
 		<p>
 			<label for="case_name">案件名*<br /></label>
-			<input type="text" name="case_name"> 
+			<input type="text" name="case_name"value="${dedto.caseName}"> 
 		</p>
 		<p>
 			<label for="case_name">顧客名<br /></label>
-			<input type="text" name="customer_name"> 
+			<input type="text" name="customer_name" value="${dedto.customerName}"> 
 		</p>
 		<p>
 			<label for="manager">担当PM<br /></label>
@@ -236,25 +236,25 @@ pageEncoding="UTF-8"%>
 		</p>
 		<p>
 			<label for="memo">説明<br /></label>
-			<input type="text" name="memo">
+			<input type="text" name="memo" value="${dedto.caseMemo}">
 		</p>
 		<p>
 			<label
             >開始日<br />
-            <input type="date" name="start_date" />
+            <input type="date" name="start_date" value="${dedto.caseStartDate}" />
           </label>
 		</p>
 		<p>
 		<label
             >終了予定日<br />
-            <input type="date" name="end_date" />
+            <input type="date" name="end_date" value="${dedto.endDate}"/>
           </label>
 		</p>
 		<p>
           <label for="priority">優先度*<br /></label>
-          <select name="priority" id="priority">
+          <select name="priority" id="priority" value="${dedto.casePriority}">
             <option value="高">高</option>
-            <option value="中" selected>中</option>
+            <option value="中">中</option>
             <option value="低">低</option>
           </select>
         </p>
@@ -267,18 +267,20 @@ pageEncoding="UTF-8"%>
               max="24"
               step="0.5"
               name="budgetted_man_hours"
+              value="${dedto.budgetedManHours}"
             />
           </label>
         </p>
 		 <p>
           <label for="status">ステータス*<br /></label>
-          <select name="status">
-            <option value="未着手" selected>未着手</option>
+          <select name="status" value="${dedto.caseStatus}">
+            <option value="未着手">未着手</option>
             <option value="進行中">進行中</option>
             <option value="完了">完了</option>
             <option value="保留">保留</option>
           </select>
         </p>
+        </div>
 		<input type="submit" name="button_id" value="保存">
 		
 		<button class="close" onclick="closeEModal()">戻る</button>

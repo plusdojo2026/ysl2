@@ -19,6 +19,7 @@
 		<div class="case">
 			<h1>案件一覧</h1>
       <button onclick="openRegistModal()">+新規登録</button>
+      <p>${msg}</p>
 
       <div>
         <table border="1" id="foo-table" class="table table-bordered">
@@ -186,7 +187,7 @@
             </div>
             <div class="form-group">
               <label>予算工数</label>
-              <input type="number" min="0" max="24" step="0.5" name="budgetted_man_hours" />
+              <input type="number" min="0" max="24" step="0.5" name="budgeted_man_hours" />
             </div>
             <div class="form-group">
               <label for="status">ステータス*</label> 

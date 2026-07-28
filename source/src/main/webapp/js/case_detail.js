@@ -6,17 +6,17 @@ function openRegistModal() {
 //編集モーダル・引数
 function openEditModal(caseId,casePriority,caseName,caseStartDate,endDate,customerName,budgetedManHours,name,caseMemo,caseStatus,pmId) {
   document.getElementById("edit_modal").style.display = "flex";
-  let form = document.getElementById("edit");
-  form.elements["case_id"].value = caseId;
-  form.elements["case_name"].value = caseName;
-  form.elements["customer_name"].value = customerName;
-  form.elements["pm_id"].value = pmId;
-  form.elements["memo"].value = caseMemo;
-  form.elements["start_date"].value = caseStartDate;
-  form.elements["end_date"].value = endDate;
-  form.elements["priority"].value = casePriority;
-  form.elements["budgetted_man_hours"].value = budgetedManHours;
-  form.elements["status"].value = caseStatus;
+  let form = document.getElementById("edit_modal");
+//  form.elements["case_id"].value = caseId;
+//  form.elements["case_name"].value = caseName;
+//  form.elements["customer_name"].value = customerName;
+//  form.elements["pm_id"].value = pmId;
+//  form.elements["memo"].value = caseMemo;
+//  form.elements["start_date"].value = caseStartDate;
+//  form.elements["end_date"].value = endDate;
+//  form.elements["priority"].value = casePriority;
+//  form.elements["budgetted_man_hours"].value = budgetedManHours;
+//  form.elements["status"].value = caseStatus;
 }
 
 

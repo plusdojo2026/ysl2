@@ -30,7 +30,6 @@
                 <input type="date" name="work_date" required>
             </label>
             <br>
-
             <label>
                 工数<br>
                 <input id="todayManHours"

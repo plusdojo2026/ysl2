@@ -19,16 +19,17 @@ public class ManHourDAO {
 	
 	//工数登録
 	public int registManHour(double today_man_hours, String work_details, String work_date) throws SQLException{
-		int ans = 0;
+ 		int ans = 0;
 		String sql ="INSERT INTO man_hours (today_man_hours, work_details, work_date) VALUES(?,?,?)";
 		System.out.println(sql);
 		// まとめる
 		PreparedStatement pStmt = conn.prepareStatement(sql);
-		
+		System.out.println("today_man_hours = " + today_man_hours);
+		System.out.println("work_details = " + work_details);
+		System.out.println("work_date = " + work_date);
 		pStmt.setDouble(1, today_man_hours);
 		pStmt.setString(2, work_details);
 		pStmt.setString(3, work_date);
-		pStmt.executeUpdate();
 		
 		return ans;
 
@@ -65,7 +66,6 @@ public class ManHourDAO {
 			System.out.println("task_name=" + rs.getString("task_name"));
 			
 			
-			
 			list.setCaseName(rs.getString("case_name"));
 			list.setTaskName(rs.getString("task_name"));
 			list.setTaskId(rs.getInt("task_id"));
@@ -79,7 +79,7 @@ public class ManHourDAO {
 	//工数ログ(タスク詳細)
 	public ArrayList<AllDTO> selectManHours(int task_id) throws SQLException {
 		ArrayList<AllDTO> list = new ArrayList<AllDTO>();
-		String sql ="SELECT m.work_date AS '作業日', t.manager AS '担当者', m.today_man_hours AS '工数', m.work_details AS '作業内容' ,task_name AS 'タスク名' FROM man_hours m JOIN tasks t ON m.task_id = t.task_id JOIN users u ON u.user_id = m.user_id WHERE t.task_id = ? ORDER BY m.work_date ";
+		String sql ="SELECT m.work_date, u.name, m.today_man_hours, m.work_details,task_name FROM man_hours m JOIN tasks t ON m.task_id = t.task_id JOIN users u ON u.user_id = m.user_id WHERE t.task_id = ? ORDER BY m.work_date ";
 		System.out.println(sql);
 		PreparedStatement pStmt = conn.prepareStatement(sql);
 		pStmt.setInt(1, task_id);
@@ -89,11 +89,11 @@ public class ManHourDAO {
 		
 		while(rs.next()) {
 			AllDTO dto = new AllDTO();
-			dto.setWorkDate(rs.getString("作業日"));
-			dto.setTaskName(rs.getString("タスク名"));
-			dto.setManager(rs.getInt("担当者"));
-			dto.setTodayManHours(rs.getDouble("工数"));
-			dto.setWorkDetails(rs.getString("作業内容"));
+			dto.setWorkDate(rs.getString("work_date"));
+			dto.setTaskName(rs.getString("task_name"));
+			dto.setName(rs.getString("name"));
+			dto.setTodayManHours(rs.getDouble("today_man_hours"));
+			dto.setWorkDetails(rs.getString("work_details"));
 			list.add(dto);
 		}
 		
@@ -155,14 +155,14 @@ public class ManHourDAO {
 		}
 	
 		//工数ログ(案件詳細)
-		public ArrayList<AllDTO>selectCaseManHours(String caseId)throws SQLException{
+		public ArrayList<AllDTO>selectCaseManHours(String case_id)throws SQLException{
 			ArrayList<AllDTO> list = new ArrayList<AllDTO>();
 			
-			String sql = "SELECT work_date, task_name , manager , today_man_hours , work_details FROM man_hours JOIN tasks ON tasks.task_id = man_hours.task_id WHERE case_id = ?  ORDER BY work_date LIMIT 10";
+			String sql = "SELECT work_date, task_name , manager , today_man_hours , work_details FROM man_hours JOIN tasks ON tasks.task_id = man_hours.task_id WHERE tasks.case_id = ?  ORDER BY work_date LIMIT 10";
 			
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
-			pStmt.setString(1,caseId);
+			pStmt.setString(1,case_id);
 			
 			
 			ResultSet rs = pStmt.executeQuery();

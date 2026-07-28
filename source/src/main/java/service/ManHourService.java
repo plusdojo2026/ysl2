@@ -99,12 +99,12 @@ public class ManHourService extends DBAccess{
 		
 	}
 	//工数ログ(案件詳細)
-	public ArrayList<AllDTO> selectCaseManHours(String caseId){
+	public ArrayList<AllDTO> selectCaseManHours(String cas_id){
 		super.access();
 		ArrayList<AllDTO> list = null;
 		ManHourDAO dao = new ManHourDAO(conn);
 		try {
-			list = dao.selectCaseManHours(caseId);
+			list = dao.selectCaseManHours(cas_id);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -112,4 +112,6 @@ public class ManHourService extends DBAccess{
 		super.close();
 		return list;
 	}
+
+	
 }

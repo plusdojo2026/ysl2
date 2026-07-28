@@ -29,16 +29,18 @@ public class ManHourAction {
 		
 		//値の取得
 		request.setCharacterEncoding("UTF-8");
-		String id = request.getParameter("task_id");System.out.println("task_id=" + id);
+		String caseId = request.getParameter("task_id");
+		System.out.println("case_id=" + caseId);
 		int taskId = Integer.parseInt(request.getParameter("task_id"));
+		System.out.println("task_id=" + taskId);
 		
 		AllDTO dto = new AllDTO();
 		dto.setTaskId(taskId);
 		ManHourService service = new ManHourService();
 		ArrayList<AllDTO> list = service.selectManHours(taskId);
-		//ArrayList<AllDTO> clist = service.selectCaseName(taskId);
+		ArrayList<AllDTO> clist = service.selectCaseManHours(caseId);
 		request.setAttribute("list", list);
-		//request.setAttribute("clist", clist);
+		request.setAttribute("clist", clist);
 		
 		return page;
 	}
@@ -63,12 +65,7 @@ public class ManHourAction {
 		String page ="/WEB-INF/jsp/task_detail.jsp";
 		//入力値の取得
 		request.setCharacterEncoding("UTF-8");
-		System.out.println("page_id=" + request.getParameter("page_id"));
-		System.out.println("button_id=" + request.getParameter("button_id"));
-		System.out.println("today_man_hours=" + request.getParameter("today_man_hours"));
-		System.out.println("work_date=" + request.getParameter("work_date"));
-		System.out.println("work_details=" + request.getParameter("work_details"));
-		System.out.println("task_id=" + request.getParameter("task_id"));
+		
 		double todayManHours =  Double.parseDouble(request.getParameter("today_man_hours"));
 		String workDetails = request.getParameter("work_details");
 		String workDate = request.getParameter("work_date");

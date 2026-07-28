@@ -92,3 +92,26 @@
     margin-bottom: 24px;
     overflow-x: auto; /* 响应式防溢出滚动 */
 }
+
+
+
+.case_table table, 
+.user_table table {
+    width: 100%;
+    min-width: 800px;       
+    border-collapse: collapse;
+}
+
+
+.case_table th, .case_table td,
+.user_table th, .user_table td {
+    padding: 16px 24px;      /* 左右间距 */
+    padding-top: 0px;
+    text-align: left;        /* 文字左对齐 */
+    white-space: nowrap;     
+}
+
+.case_table th, .case_table td {
+    box-sizing: border-box;
+}
+

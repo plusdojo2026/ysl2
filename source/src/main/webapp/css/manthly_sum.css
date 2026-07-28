@@ -28,7 +28,7 @@
 
 /* 集计提交按钮 */
 .btn-submit-sum {
-    background-color: #3498db; 
+    background-color: var(--main-color);
     color: #ffffff;
     border: none;
     padding: 9px 20px;

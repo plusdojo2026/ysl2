@@ -128,7 +128,7 @@ tbody tr:hover {
 
 /* “工数登録” BUTTON */
 .btn-submit {
-    background-color: #3498db;
+    background-color: var(--main-color);
     color: #ffffff;
     border: none;
     padding: 6px 12px;

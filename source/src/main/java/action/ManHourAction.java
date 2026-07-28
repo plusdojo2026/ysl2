@@ -83,7 +83,7 @@ public class ManHourAction {
 		dto.setUserId(userId);
 		
 		ManHourService service = new ManHourService();
-		int list = service.registManHour(todayManHours, workDate, workDate, taskId, userId);
+		int list = service.registManHour(todayManHours, workDetails, workDate, taskId, userId);
 		request.setAttribute("list", list);
 		
 		if (list==1) {

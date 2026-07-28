@@ -13,13 +13,6 @@ main {
     min-height: 100vh;
 }
 
-/* 右侧主内容区域 */
-.main {
-    flex: 1;
-    padding: 24px;
-    box-sizing: border-box;
-    overflow-y: auto;
-}
 
 /* テーマ文字 */
 h3 {

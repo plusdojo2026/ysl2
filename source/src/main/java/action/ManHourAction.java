@@ -122,6 +122,12 @@ public class ManHourAction {
 	public String deleteManHour() throws UnsupportedEncodingException{
 		String page ="/WEB-INF/jsp/task_detail.jsp";
 		request.setCharacterEncoding("UTF-8");
+		System.out.println(
+			    "man_hours_id=[" +
+			    request.getParameter("man_hours_id") +
+			    "]"
+			);
+
 		int  manHourId = Integer.parseInt(request.getParameter("man_hour_id"));
 		AllDTO dto = new AllDTO();
 		dto.setTaskId(manHourId);
@@ -129,6 +135,11 @@ public class ManHourAction {
 		service.selectManHours(manHourId);
 		int list = service.deleteManHour(manHourId);
 		request.setAttribute("list", list);
+		if (list==1) {
+			System.out.println("削除成功");
+		}else {
+			System.out.println("削除失敗");
+		}
 		return page;
 		
 	}

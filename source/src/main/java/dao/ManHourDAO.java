@@ -45,9 +45,8 @@ public class ManHourDAO {
 		PreparedStatement pStmt = conn.prepareStatement(sql);
 		
 		pStmt.setInt(1, man_hours_id);
-		pStmt.executeUpdate();
-
-
+		ans = pStmt.executeUpdate();
+		
 		return ans;
 	}
 

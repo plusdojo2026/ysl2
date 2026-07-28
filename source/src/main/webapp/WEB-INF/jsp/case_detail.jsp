@@ -124,7 +124,7 @@ pageEncoding="UTF-8"%>
           <div class="modal_left">
             <div class="form-group">
               <label for="case_name">案件名*</label>
-              <select name="case_name" id="case_name">
+              <select name="case_id" id="case_name">
                 <c:forEach var="c" items="${caseList}">
                   <option value="${c.caseId}">${c.caseName}</option>
                 </c:forEach>
@@ -138,13 +138,13 @@ pageEncoding="UTF-8"%>
               <label for="manager">担当者</label>
               <select name="manager" id="manager">
                 <c:forEach var="m" items="${userList}">
-                  <option value="${m.userId}">${c.userName}</option>
+                  <option value="${m.userId}">${m.name}</option>
                 </c:forEach>
               </select>
             </div>
             <div class="form-group">
               <label>進捗率</label>
-                <input type="number" min="0" max="100" step="1" name="task_progress"/>
+                <input type="number" min="0" max="100" step="1" name="progress"/>
             </div>
             <div class="form-group">
               <label>開始日</label>
@@ -166,7 +166,7 @@ pageEncoding="UTF-8"%>
             </div>
             <div class="form-group">
               <label>見積工数</label>
-              <input type="number" min="0" max="24" step="0.5" name="estimated_mon_hours"/>
+              <input type="number" min="0" max="24" step="0.5" name="estimated_man_hours"/>
             </div>
             <div class="form-group">
               <label for="status">ステータス*</label>
@@ -177,10 +177,14 @@ pageEncoding="UTF-8"%>
                 <option value="保留">保留</option>
               </select>
             </div>
+            <div class="form-group">
+            <label>説明</label>
+            <input type="text" name="memo">
+            </div>
           </div>
         </div>
         <input type="hidden" name="page_id" value="L003" />
-        <input type="submit" name="button_id" value="保存" />
+        <input type="submit" name="button_id" value="登録" />
       </form>
       <button class="close" onclick="closeRModal()">×</button>
     </div>

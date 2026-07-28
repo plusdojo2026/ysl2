@@ -1,6 +1,8 @@
 package action;
 
 import java.io.UnsupportedEncodingException;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +35,10 @@ public class ManthlySumAction {
 //	  String defaultYM = ym.format(DateTimeFormatter.ofPattern("yyyy-MM"));
 //	  request.setAttribute("defaultYM",defaultYM);
        
-        String yearManth = request.getParameter("month");//集計のためのgetParameter
+      
+      	YearMonth ym = YearMonth.now();
+      	String yearManth = ym.format(DateTimeFormatter.ofPattern("yyyy-MM"));
+        yearManth = request.getParameter("month");//集計のためのgetParameter
        
 		ManthlySumService service = new ManthlySumService();
 		

@@ -1,0 +1,94 @@
+
+.search-form {
+    background-color: #f4f6f9;
+    padding: 16px 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+.search-form input[type="month"] {
+    padding:18px 42px;
+    font-size: 18px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    outline: none;
+    color: #333333;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.search-form input[type="month"]:focus {
+    border-color: #3498db;
+}
+
+/* 集计提交按钮 */
+.btn-submit-sum {
+    background-color: #3498db; 
+    color: #ffffff;
+    border: none;
+    padding: 9px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.data {
+	display: none;
+}
+
+.btn-submit-sum:hover {
+    background-color: #27ae60;
+}
+
+/* ==========================================================================
+   三つサマリーカード (Summary Cards Grid)  */
+.dash_boards_sum {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 16px;
+}
+
+/* 3个数据卡片的统一样式 */
+.total_mh, 
+.total_case, 
+.total_member {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    text-align: center;
+}
+
+/* 卡片内数字样式 */
+.total_mh p, 
+.total_case p, 
+.total_member p {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 10px 0 0 0;
+    color: #2c3e50; /* 深邃的商务深蓝灰色 */
+}
+
+/* 给合计工数一个醒目的主题色强化显眼度 */
+.total_mh p {
+    color: #333; 
+}
+
+/* 下のカード　*/
+.case_table, 
+.user_table {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    margin-bottom: 24px;
+    overflow-x: auto; /* 响应式防溢出滚动 */
+}

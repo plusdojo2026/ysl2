@@ -23,7 +23,7 @@
     </form>
     
     <div class = "total_mh">
-	    <h3>合計工数</h3>
+	    <h3>今月の合計工数</h3>
 	    <c:set var = "totalmh" value = "0"/>
 	    <c:forEach var="k" items="${ManthAndMembers}">
 	    <c:set var = "totalmh" value = "${total + k.actualManHours}"/>
@@ -31,16 +31,16 @@
 	    </c:forEach>
     </div>
     <div class = "total_case">
-	    <h3>合計案件数</h3>
+	    <h3>今月の合計案件数</h3>
 	    <p>${TotalCasesAndManHours.size()}</p>
     </div>
     <div class = "total_member">
-	    <h3>合計稼働メンバー数</h3>
+	    <h3>今月の合計稼働メンバー数</h3>
 	    <p>${ManthAndMembers.size()}</p>
     </div>
     
     <div class = "case_table">
-    	<h3>案件別集計テーブル</h3>
+    	<h3>今月の案件別集計</h3>
  			<table>
     			 <tr>
     				<th>案件コード</th>
@@ -62,7 +62,7 @@
     </div>
     
     <div class = "user_table">
-      <h3>メンバー別集計テーブル</h3>
+      <h3>今月のメンバー別集計</h3>
     	<table>
     		<tr>
     			<td>担当者名</td>

@@ -4,6 +4,7 @@ function openRegistModal() {
 }
 
 //編集モーダル・引数
+//
 function openEditModal(caseId, casePriority, caseName, caseStartDate, endDate, customerName, budgetedManHours, name, caseMemo, caseStatus, pmId) {
   document.getElementById("edit_modal").style.display = "flex";
   let form = document.getElementById("edit_modal");

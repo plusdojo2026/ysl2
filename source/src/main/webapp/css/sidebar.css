@@ -6,9 +6,9 @@
   position: sticky;
   top: 0px;
   height: 100vh; /* sidebar高度填满和屏幕一样高 */
-  
-  transform: translateX(-100%); /* 100% 完全隐藏 */
-  transition: transform 0.3s ease;
+
+  /* transform: translateX(-100%);
+  transition: transform 0.3s ease; */
 }
 
 .sidebar::before {
@@ -22,9 +22,9 @@
 }
 
 /* 拉出 */
-.sidebar:hover {
+/* .sidebar:hover {
   transform: translateX(0);
-}
+} */
 
 /* 侧边栏里的链接*/
 .sidebar a {

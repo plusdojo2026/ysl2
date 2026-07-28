@@ -50,6 +50,12 @@ main {
   display: flex;
 }
 
+.main {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+}
+
 /* モーダル用 */
 /* モーダルの背景（暗い部分） */
 .modal_background {

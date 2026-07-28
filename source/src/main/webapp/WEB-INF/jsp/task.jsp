@@ -14,7 +14,7 @@
 <body>
 <main>
 <%@ include file="/WEB-INF/jsp/sidebar.jsp"%>
-<div>
+<div class="main">
 	<h1>タスク一覧</h1>
 	<div>${msg}</div>
 

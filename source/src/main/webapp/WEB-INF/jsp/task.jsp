@@ -18,13 +18,13 @@
 	<h1>タスク一覧</h1>
 	<div>${msg}</div>
 
-	<div>
-		<button onclick="openModal()">
+	<p>
+		<button onclick="openModal()" class="btn">
       		<svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
   			<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/></svg>
   			新規登録
 		</button>
-	</div>
+	</p>
 
 	<div>
 	<table border="1" id="foo-table" class="table table-bordered">
@@ -59,7 +59,7 @@
 				<td>${t.taskStatus}</td>
 				<td>${t.taskPriority}</td>
 				<td>${t.taskProgress}%</td>
-				<td><button onclick="openModal2('${t.caseId}','${t.taskId}','${t.taskName}','${t.manager}','${t.taskStartDate}','${t.deadlineDate}','${t.estimatedManHours}','${t.actualManHours}','${t.taskStatus}','${t.taskPriority}','${t.taskMemo}','${t.taskProgress }')">編集</button></td>
+				<td><button class="btn" onclick="openModal2('${t.caseId}','${t.taskId}','${t.taskName}','${t.manager}','${t.taskStartDate}','${t.deadlineDate}','${t.estimatedManHours}','${t.actualManHours}','${t.taskStatus}','${t.taskPriority}','${t.taskMemo}','${t.taskProgress }')">編集</button></td>
 			</tr>
 		</c:forEach>
 		</tbody>
@@ -141,7 +141,7 @@
           </div>
         </div>
         <input type="hidden" name="page_id" value="L006">
-        <input type="submit" name="button_id" value="登録">
+        <input type="submit" name="button_id" value="登録" class="btn">
       </form>
       <button class="close" onclick="closeModal()">×</button>
   </div>
@@ -217,7 +217,7 @@
       </div>
       <input type="hidden" name="page_id" value="L006">
       <input type="hidden" name="task_id">
-      <input type="submit" name="button_id" value="保存">
+      <input type="submit" name="button_id" value="保存" class="btn">
     </form>
     <button class="close" onclick="closeModal2()">×</button>
   </div>

@@ -4,6 +4,7 @@
   max-width: 650px;
   overflow: hidden;
   text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 #foo-table tr {
   background-color: #e6f1f6;
@@ -14,9 +15,10 @@
 #foo-table th, #foo-table td {
   padding: 0.5em;
   vertical-align: middle;
+  border: none;
 }
 #foo-table thead th {
-  background-color: #4d9bc1;
+  background-color: var(--main-color);
   color: #fff;
   font-weight: bold;
   text-align: center;

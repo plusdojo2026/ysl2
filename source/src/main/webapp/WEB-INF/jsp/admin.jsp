@@ -16,7 +16,7 @@
 <%@ include file="/WEB-INF/jsp/sidebar.jsp"%>
 <div class ="main">
 	<h1>メンバー管理（管理者画面）</h1>
-	<button onclick = "openRegistModal()" >+新規登録</button>
+	<button onclick = "openRegistModal()" class="btn">+新規登録</button>
 
 	<!-- メンバー一覧をテーブルで表示 -->
 	<div class ="list">
@@ -29,8 +29,8 @@
           <th>ログインID</th>	
           <th>氏名</th>
           <th>メールアドレス</th>
-          <th>権限(一般/管理者)</th>
-          <th>状態(有効/無効)</th>
+          <th class="nowrap">権限<br>(一般/管理者)</th>
+          <th class="nowrap">状態<br>(有効/無効)</th>
           <th>登録日</th>
           <th>編集</th>
         </tr>
@@ -45,7 +45,7 @@
           <td class="adFlag"><c:out value ="${m.isAdmin}"/></td>
           <td class="activeFlag"><c:out value ="${m.isActive}"/></td>
           <td><c:out value ="${m.createdAt}"/></td>
-					<td><button onclick = "openEditModal('${m.userId}','${m.name}','${m.mail}','${m.isAdmin}','${m.isActive}')" >編集</button></td>
+		  <td><button class="btn" onclick = "openEditModal('${m.userId}','${m.name}','${m.mail}','${m.isAdmin}','${m.isActive}')" >編集</button></td>
         </tr>	
       </c:forEach>
       </tbody>

@@ -1,0 +1,55 @@
+#foo-table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 650px;
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: center;
+}
+#foo-table tr {
+  background-color: #e6f1f6;
+}
+#foo-table tr:nth-child(even) {
+  background-color: #fff;
+}
+#foo-table th, #foo-table td {
+  padding: 0.5em;
+  vertical-align: middle;
+}
+#foo-table thead th {
+  background-color: #4d9bc1;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+#foo-table tbody th {
+  color: #4d9bc1;
+}
+#foo-table td.nowrap {
+	white-space: nowrap;
+}
+
+/*角を丸める*/
+#foo-table tr th:first-child {
+  border-top-left-radius: 10px; /* 左上の角 */
+}
+#foo-table tr th:last-child {
+  border-top-right-radius: 10px; /* 右上の角 */
+}
+#foo-table tr:last-child td:last-child {
+  border-bottom-right-radius: 10px; /* 右下の角 */
+}
+#foo-table tr:last-child td:first-child {
+  border-bottom-left-radius: 10px; /* 左下の角 */
+}
+
+/*テーブル内のリンクのクリック可能領域を広げる*/
+table td a {
+   display: block;       /* リンクをブロックレベル化して表示 */
+   padding: 1em 1em;   /* 内側の余白量を上下に0.6文字分＆左右に1文字分にする */
+}
+
+/*アイコンの中央寄せ*/
+.icon {
+	vertical-align: middle;
+}

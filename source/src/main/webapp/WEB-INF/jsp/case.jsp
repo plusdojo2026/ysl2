@@ -6,23 +6,27 @@
 <head>
 <meta charset="UTF-8">
 <title>案件一覧</title>
+<link rel="stylesheet" 
+  href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/common.css" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/case.css" />
-<link rel="stylesheet" 
-  href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/>
 </head>
 <body>
 	<main>
 		<%@ include file="/WEB-INF/jsp/sidebar.jsp"%>
 		<div class="case">
 			<h1>案件一覧</h1>
-      <button onclick="openRegistModal()">+新規登録</button>
+		<button onclick="openRegistModal()">
+      		<svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+  			<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/></svg>
+  			新規登録
+		</button>
       <p>${msg}</p>
 
       <div>
-        <table border="1" id="foo-table" class="table table-bordered">
+        <table id="foo-table" class="table table-bordered">
           <thead>
             <tr>
               <th>案件コード</th>
@@ -35,7 +39,6 @@
               <th>ステータス</th>
               <th>開始日</th>
               <th>終了日</th>
-              <th>メモ</th>
               <th></th>
             </tr>
           </thead>
@@ -52,9 +55,8 @@
                 <td>${e.completedTasks}/${e.allTasks}</td>
                 <td>${e.actualManHours}</td>
                 <td>${e.caseStatus}</td>
-                <td>${e.caseStartDate}</td>
-                <td>${e.endDate}</td>
-                <td>${e.caseMemo}</td>
+                <td class="nowrap">${e.caseStartDate}</td>
+                <td class="nowrap">${e.endDate}</td>
                <input type="hidden" name= "pm_id" value="${e.pmId}">
                 <td><button onclick="openEditModal('${e.caseName}','${e.customerName}','${e.caseId}','${e.name}','${e.caseMemo}','${e.caseStartDate}','${e.endDate}','${e.casePriority}','${e.budgetedManHours}','${e.caseStatus}', '${e.pmId}')">編集</button></td>
               </tr>

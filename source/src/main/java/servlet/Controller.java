@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -51,6 +53,9 @@ public class Controller extends HttpServlet {
 			page = action.selectTask();
 		} else if (pageId.equals("side") && buttonId.equals("月次集計")) {
 			//サイドバーの月次集計
+			YearMonth ym = YearMonth.now();
+			String yearManth = ym.format(DateTimeFormatter.ofPattern("yyyy-MM"));
+			request.setAttribute("yearManth",yearManth);
 			page = "/WEB-INF/jsp/manthly_sum.jsp";
 		} else if (pageId.equals("side") && buttonId.equals("メンバー管理")) {
 			//サイドバーのメンバー管理（管理者）

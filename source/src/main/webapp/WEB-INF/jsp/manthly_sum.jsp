@@ -18,9 +18,9 @@
 
 	
 	<form method="POST" action="<c:url value='/Controller'/>" class="search-form">
-		<input type="month" name="month" value="${yearManth}" required>
+		<input type="month" name="month" value="${yearManth}" id = "total" required>
 		<input type="hidden" name="page_id" value="L008"> 
-	    <input type="submit" name="button_id" value="集計" class="btn-submit-sum" id = "total">
+	    <input type="submit" name="button_id" value="集計" class="btn-submit-sum" >
     </form>
 	
 	

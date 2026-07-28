@@ -1,8 +1,6 @@
 package action;
 
 import java.io.UnsupportedEncodingException;
-import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,16 +34,16 @@ public class ManthlySumAction {
 //	  request.setAttribute("defaultYM",defaultYM);
        
       
-      	YearMonth ym = YearMonth.now();
-      	String yearManth = ym.format(DateTimeFormatter.ofPattern("yyyy-MM"));
-        yearManth = request.getParameter("month");//集計のためのgetParameter
+//      YearMonth ym = YearMonth.now();
+//      String yearManth = ym.format(DateTimeFormatter.ofPattern("yyyy-MM"));
+        String yearManth = request.getParameter("month");//集計のためのgetParameter
        
 		ManthlySumService service = new ManthlySumService();
 		
 		request.setAttribute("yearManth",yearManth);//集計時に年月ボックスを空にしないように、yearManthで返す。
 		
 		//集計案件一覧検索とその件数カウント
-		ArrayList<AllDTO> TotalCasesAndManHours = service.selectManthlySum(yearManth);
+		ArrayList<AllDTO> TotalCasesAndManHours = service.selectManthlySum();
 		request.setAttribute("TotalCasesAndManHours",TotalCasesAndManHours);
 		int ManthlyCases = TotalCasesAndManHours.size();//今月の稼働案件数を取得
 		Integer ManthlyCases_integer = ManthlyCases;//int型ではrequstにセット出来ないため、Integer型に変換する!!

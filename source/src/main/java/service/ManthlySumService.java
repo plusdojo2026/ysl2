@@ -15,14 +15,14 @@ public class ManthlySumService extends DBAccess {
 	}
 	
 	//集計案件一覧検索
-	public ArrayList<AllDTO> selectManthlySum(String yearManth) {
+	public ArrayList<AllDTO> selectManthlySum() {
 		
 		super.access();
 		ArrayList<AllDTO> TotalCasesAndManHours = new ArrayList<AllDTO>();
 		ManthlySumDAO dao = new ManthlySumDAO(super.conn);
 		
 		try {
-			TotalCasesAndManHours = dao.selectManthlySum(yearManth);
+			TotalCasesAndManHours = dao.selectManthlySum();
 		}catch(SQLException e) {
 			System.out.println("SQL文おかしいよ");
 			e.printStackTrace();

@@ -18,7 +18,7 @@ public class ManthlySumDAO {
 	}
 	
 	//集計案件一覧検索メソッド(後でserviceで詰めなおす中身1/2)
-	public ArrayList<AllDTO> selectManthlySum(String yearManth) throws SQLException{
+	public ArrayList<AllDTO> selectManthlySum() throws SQLException{
 					
 		ArrayList<AllDTO> TotalCasesAndManHours = new ArrayList<AllDTO>();//変数TotalManHoursで工数DTOをnewする
 		
@@ -30,12 +30,10 @@ public class ManthlySumDAO {
 					+ "ON tasks.task_id = man_hours.task_id "
 					+ "LEFT JOIN cases "
 					+ "ON tasks.case_id = cases.case_id "
-					+ "WHERE work_date LIKE ? "
 					+ "GROUP BY tasks.case_id;";
 		
 		System.out.println(sql);//SQL文の確認用
 		PreparedStatement pStmt = conn.prepareStatement(sql);//connとSQLをpStmtにまとめる
-		pStmt.setString(1,'%'+yearManth+'%');//?に年月のデータを入れる
 		ResultSet rs = pStmt.executeQuery();//結果をrsにまとめる
 		
 		//DTOに取得したデータをセットする

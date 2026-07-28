@@ -47,7 +47,7 @@
     			 <tr>
       				<td><c:out value = "${c.caseId}"/></td>
 				    <td><c:out value = "${c.caseName}"/></td>
-				    <td>${ManthlyManHours.todayManHours}</td>
+				    <td><%-- ${} --%></td>
 				    <td><c:out value = "${c.budgetedManHours}"/></td>
     			</tr>
     			</c:forEach>

@@ -39,9 +39,9 @@
     transition: background-color 0.2s;
 }
 
-.data {
-	display: none;
-}
+/*.data {*/
+/*	display: none;*/
+/*}*/
 
 .btn-submit-sum:hover {
     background-color: #27ae60;

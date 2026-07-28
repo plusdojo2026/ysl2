@@ -10,8 +10,8 @@
 //});
 
 //集計ボタンを押した時に初めてデータを表示する
-const button = document.getElementById('total');
-const list = document.getElementById('data');
-button.addEventListener('click', function(){
-  list.style.display = 'block';
-});
+//const button = document.getElementById('total');
+//const list = document.getElementById('data');
+//button.addEventListener('click', function(){
+//  list.style.display = 'block';
+//});

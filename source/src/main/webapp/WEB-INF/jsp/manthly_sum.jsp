@@ -94,6 +94,7 @@
     </div>
 </div>
 </main> 
-<script src="${pageContext.request.contextPath}/js/manthly_sum.js"></script>
+<script src="${pageContext.request.contextPath}/js/manthly_sum.js" defer></script>
+				<!-- deferで、ページの読み込み後最後にjsを実行することを明示的に。 -->
 </body>
 </html>

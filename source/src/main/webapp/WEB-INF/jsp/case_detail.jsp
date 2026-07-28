@@ -6,10 +6,9 @@ pageEncoding="UTF-8"%>
   <head>
     <meta charset="UTF-8" />
     <title>案件詳細</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
-    <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/case_detail.css" />
-    
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/case_detail.css" />
   </head>
   <body>
   <main>
@@ -115,184 +114,149 @@ pageEncoding="UTF-8"%>
         </c:forEach>
       </table>
     </div>
- 
- 
- 
- 
-   
+
+    <!-- タスク追加モーダル -->
     <div id="case_regist_modal" class="modal_background">
     <div class="r_modal">
       <h2>タスク登録</h2>
       <form method="POST" action="<c:url value='/Controller'/>">
-        <input type="hidden" name="page_id" value="L003" />
-        <div class=casedetail_modal>
-        <p>
-          <label for="case_name">案件名*<br /></label>
-          <select name="case_name" id="case_name">
-            <c:forEach var="c" items="${caseList}">
-              <option value="${c.caseId}">${c.caseName}</option>
-            </c:forEach>
-          </select>
-        </p>
-        <p>
-          <label
-            >タスク名*<br />
-            <input type="text" name="task_name" />
-          </label>
-        </p>
-        <p>
-          <label for="manager">担当者<br /></label>
-          <select name="manager" id="manager">
-            <c:forEach var="m" items="${userList}">
-              <option value="${m.userId}">${c.userName}</option>
-            </c:forEach>
-          </select>
-        </p>
-        <p>
-          <label
-            >進捗率<br />
-            <input
-              type="number"
-              min="0"
-              max="100"
-              step="1"
-              name="task_progress"
-            />
-          </label>
-        </p>
-        <p>
-          <label
-            >開始日<br />
-            <input type="date" name="start_date" />
-          </label>
-        </p>
-        <p>
-          <label
-            >期限<br />
-            <input type="date" name="deadline_date" />
-          </label>
-        </p>
-        <p>
-          <label for="priority">優先度*<br /></label>
-          <select name="priority" id="priority">
-            <option value="高">高</option>
-            <option value="中" selected>中</option>
-            <option value="低">低</option>
-          </select>
-        </p>
-        <p>
-          <label
-            >見積工数<br />
-            <input
-              type="number"
-              min="0"
-              max="24"
-              step="0.5"
-              name="estimated_mon_hours"
-            />
-          </label>
-        </p>
-        <p>
-          <label for="status">ステータス*<br /></label>
-          <select name="status">
-            <option value="未着手" selected>未着手</option>
-            <option value="進行中">進行中</option>
-            <option value="完了">完了</option>
-            <option value="保留">保留</option>
-          </select>
-        </p>
+        <div class="modal-contents-2">
+          <div class="modal_left">
+            <div class="form-group">
+              <label for="case_name">案件名*</label>
+              <select name="case_name" id="case_name">
+                <c:forEach var="c" items="${caseList}">
+                  <option value="${c.caseId}">${c.caseName}</option>
+                </c:forEach>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>タスク名*</label>
+              <input type="text" name="task_name" />
+            </div>
+            <div class="form-group">
+              <label for="manager">担当者</label>
+              <select name="manager" id="manager">
+                <c:forEach var="m" items="${userList}">
+                  <option value="${m.userId}">${c.userName}</option>
+                </c:forEach>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>進捗率</label>
+                <input type="number" min="0" max="100" step="1" name="task_progress"/>
+            </div>
+            <div class="form-group">
+              <label>開始日</label>
+                <input type="date" name="start_date"/>
+            </div>
+          </div>
+          <div>
+            <div class="form-group">
+              <label>期限</label>
+              <input type="date" name="deadline_date"/>
+            </div>
+            <div class="form-group">
+              <label for="priority">優先度*</label>
+              <select name="priority" id="priority">
+                <option value="高">高</option>
+                <option value="中" selected>中</option>
+                <option value="低">低</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>見積工数</label>
+              <input type="number" min="0" max="24" step="0.5" name="estimated_mon_hours"/>
+            </div>
+            <div class="form-group">
+              <label for="status">ステータス*</label>
+              <select name="status">
+                <option value="未着手" selected>未着手</option>
+                <option value="進行中">進行中</option>
+                <option value="完了">完了</option>
+                <option value="保留">保留</option>
+              </select>
+            </div>
+          </div>
         </div>
+        <input type="hidden" name="page_id" value="L003" />
         <input type="submit" name="button_id" value="保存" />
-        <button class="close" onclick="closeRModal()">戻る</button>
       </form>
+      <button class="close" onclick="closeRModal()">×</button>
     </div>
-    </div>
-	
-    
-    
-    
-    
-    
+  </div>
+
+  <!-- 案件編集モーダル -->
 	<div id="edit_modal" class="modal_background">
     <div class="e_modal">
-        <h2>案件編集</h2>
-		<form method="POST" action="<c:url value='/Controller'/>">
-        <input type="hidden" name="page_id" value="L004" />
-        <div class = edit_case>
-		<p>
-			<label for="case_id">案件コード*<br /></label>
-			<input type="text" name="case_id" value="${dedto.caseId}">
-		</p>
-		<p>
-			<label for="case_name">案件名*<br /></label>
-			<input type="text" name="case_name"value="${dedto.caseName}"> 
-		</p>
-		<p>
-			<label for="case_name">顧客名<br /></label>
-			<input type="text" name="customer_name" value="${dedto.customerName}"> 
-		</p>
-		<p>
-			<label for="manager">担当PM<br /></label>
-          <select name="pm_id" id="pm_id" required>
-            <c:forEach var="m" items="${userList}">
-              <option value="${m.userId}">${m.name}</option>
-            </c:forEach>
-		  </select>
-		</p>
-		<p>
-			<label for="memo">説明<br /></label>
-			<input type="text" name="memo" value="${dedto.caseMemo}">
-		</p>
-		<p>
-			<label
-            >開始日<br />
-            <input type="date" name="start_date" value="${dedto.caseStartDate}" />
-          </label>
-		</p>
-		<p>
-		<label
-            >終了予定日<br />
-            <input type="date" name="end_date" value="${dedto.endDate}"/>
-          </label>
-		</p>
-		<p>
-          <label for="priority">優先度*<br /></label>
-          <select name="priority" id="priority" value="${dedto.casePriority}">
-            <option value="高">高</option>
-            <option value="中">中</option>
-            <option value="低">低</option>
-          </select>
-        </p>
-		 <p>
-          <label
-            >予算工数<br />
-            <input
-              type="number"
-              min="0"
-              max="24"
-              step="0.5"
-              name="budgetted_man_hours"
-              value="${dedto.budgetedManHours}"
-            />
-          </label>
-        </p>
-		 <p>
-          <label for="status">ステータス*<br /></label>
-          <select name="status" value="${dedto.caseStatus}">
-            <option value="未着手">未着手</option>
-            <option value="進行中">進行中</option>
-            <option value="完了">完了</option>
-            <option value="保留">保留</option>
-          </select>
-        </p>
+      <h2>案件編集</h2>
+      <form method="POST" action="<c:url value='/Controller'/>">
+        <div class=modal-contents-2>
+          <div class="modal_left">
+            <div class="form-group">
+              <label for="case_id">案件コード*</label>
+              <input type="text" name="case_id" value="${dedto.caseId}">
+            </div>
+            <div class="form-group">
+              <label for="case_name">案件名*</label>
+              <input type="text" name="case_name"value="${dedto.caseName}"> 
+            </div>
+            <div class="form-group">
+              <label for="case_name">顧客名</label>
+              <input type="text" name="customer_name" value="${dedto.customerName}"> 
+            </div>
+            <div class="form-group">
+              <label for="manager">担当PM</label>
+                <select name="pm_id" id="pm_id" required>
+                  <c:forEach var="m" items="${userList}">
+                    <option value="${m.userId}">${m.name}</option>
+                  </c:forEach>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="memo">説明</label>
+                <input type="text" name="memo" value="${dedto.caseMemo}">
+              </div>
+            </div>
+            <div>
+              <div class="form-group">
+                <label>開始日</label>
+                <input type="date" name="start_date" value="${dedto.caseStartDate}" />
+              </div>
+              <div class="form-group">
+                <label>終了予定日</label>
+                <input type="date" name="end_date" value="${dedto.endDate}"/>
+              </div>
+              <div class="form-group">
+                <label for="priority">優先度*</label>
+                <select name="priority" id="priority" value="${dedto.casePriority}">
+                  <option value="高">高</option>
+                  <option value="中">中</option>
+                  <option value="低">低</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>予算工数</label>
+                <input type="number" min="0" max="24" step="0.5" name="budgetted_man_hours" value="${dedto.budgetedManHours}"/>
+              </div>
+            <div class="form-group">
+              <label for="status">ステータス*</label>
+              <select name="status" value="${dedto.caseStatus}">
+                <option value="未着手">未着手</option>
+                <option value="進行中">進行中</option>
+                <option value="完了">完了</option>
+                <option value="保留">保留</option>
+              </select>
+            </div>
+          </div>
         </div>
-		<input type="submit" name="button_id" value="保存">
-		
-		<button class="close" onclick="closeEModal()">戻る</button>
-	</form>
-	</div>
+        <input type="hidden" name="page_id" value="L004" />
+        <input type="submit" name="button_id" value="変更 ">
+      </form>
+      <button class="close" onclick="closeEModal()">×</button>
+      </div>
     </div>
-        <script src="${pageContext.request.contextPath}/js/case_detail.js"></script>
-   </main>
+    <script src="${pageContext.request.contextPath}/js/case_detail.js"></script>
+  </main>
   </body>
 </html>

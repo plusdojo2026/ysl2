@@ -45,9 +45,8 @@ public class ManHourDAO {
 		PreparedStatement pStmt = conn.prepareStatement(sql);
 		
 		pStmt.setInt(1, man_hours_id);
-		pStmt.executeUpdate();
-
-
+		ans = pStmt.executeUpdate();
+		
 		return ans;
 	}
 
@@ -81,7 +80,7 @@ public class ManHourDAO {
 	//工数ログ(タスク詳細)
 	public ArrayList<AllDTO> selectManHours(int task_id) throws SQLException {
 		ArrayList<AllDTO> list = new ArrayList<AllDTO>();
-		String sql ="SELECT m.work_date, u.name, m.today_man_hours, m.work_details,task_name FROM man_hours m JOIN tasks t ON m.task_id = t.task_id JOIN users u ON u.user_id = m.user_id WHERE t.task_id = ? ORDER BY m.work_date ";
+		String sql ="SELECT m.work_date, u.name, m.today_man_hours, m.work_details,task_name ,m.man_hours_id FROM man_hours m JOIN tasks t ON m.task_id = t.task_id JOIN users u ON u.user_id = m.user_id WHERE t.task_id = ? ORDER BY m.work_date ";
 		System.out.println(sql);
 		PreparedStatement pStmt = conn.prepareStatement(sql);
 		pStmt.setInt(1, task_id);
@@ -96,6 +95,7 @@ public class ManHourDAO {
 			dto.setName(rs.getString("name"));
 			dto.setTodayManHours(rs.getDouble("today_man_hours"));
 			dto.setWorkDetails(rs.getString("work_details"));
+			dto.setManHoursId(rs.getInt("man_hours_id"));
 			list.add(dto);
 		}
 		

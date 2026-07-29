@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>工数登録</title>
+<link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/man_hour.css" />
 </head>
@@ -14,11 +15,16 @@
 <main>
 <%@ include file="/WEB-INF/jsp/sidebar.jsp" %>
 <div class="main">
+<div class="kousu">
+<h1>工数登録</h1>
+</div>
     <div class="pop" >
-   
-	    <p>案件名:${list.caseName}</p>
-	    <p>タスク名:${list.taskName}</p>
-	
+    	<div class="case">
+	    <p>案件名: ${list.caseName}</p>
+	    </div>
+	    <div class="task">
+	    <p>タスク名: ${list.taskName}</p>
+		</div>
 	</div>
 	<form method="POST" action="<c:url value='/Controller'/>">
     <a href="${pageContext.request.contextPath}/Controller"></a>
@@ -44,13 +50,13 @@
 
             <label>
                 作業内容<br>
-                <input type="text" name="work_details" required>
+                <textarea name="work_details" class="detail" required></textarea>
             </label>
             <br>
 
             <input type="hidden" name="page_id" value="L005">
             <input type="hidden" name="task_id" value="${list.taskId}">
-            <input type="submit" name="button_id" value="登録">
+            <input type="submit" name="button_id" value="登録" class="bot">
 		
         </div>
 

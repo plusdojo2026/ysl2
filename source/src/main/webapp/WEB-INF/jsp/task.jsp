@@ -211,7 +211,7 @@
           </div>
           <div class="form-group">
             <label>説明</label>
-            <input type="textarea" name="memo">
+            <textarea name="memo"></textarea>
           </div>
         </div>
       </div>

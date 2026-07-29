@@ -29,3 +29,18 @@ function closeRModal() {
 function closeEModal() {
   document.getElementById("edit_modal").style.display = "none";
 }
+
+//ステータス変更確認ダイアログ
+     //confirm("ステータスを完了にしますか？");
+//	document.getElementById("complete").addEventListener('submit', function(e) {
+//		confirm('ステータスを完了にしますか？');
+//    if (!confirm('ステータスを完了にしますか？')){
+//        e.preventDefault(); 
+//        return;
+//    }
+//});
+
+//function canselStatusMessage() {
+     //confirm("ステータスを中止にしますか？");
+//}
+

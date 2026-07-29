@@ -63,8 +63,8 @@ pageEncoding="UTF-8"%>
        <form action="Controller" method="post">
        <input type="hidden" name="page_id" value="L003" />
        <input type="hidden" name="case_id" value="${dedto.caseId}" >
-      <button type="submit" name="button_id" value="完了" class="btn"/>完了</button>
-      <button type="submit" name="button_id" value="中止" class="btn"/>中止</button>
+      <button type="submit" name="button_id" value="完了" class="btn" id="complete"/>完了</button>
+      <button type="submit" name="button_id" value="中止" class="btn" id="cansel"/>中止</button>
        </form>
        </div>
     </div>

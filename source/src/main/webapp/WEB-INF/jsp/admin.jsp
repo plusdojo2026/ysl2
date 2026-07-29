@@ -70,7 +70,7 @@
         </div>
         <div class="form-group">
           <label>初期パスワード*(6文字以上)</label>
-          <input type = "text" id = "pw" name="pw" required>
+          <input type = "text" id = "pw" name="pw" minlength="6" required>
         </div>
         <div class="form-group">
           <label>メールアドレス</label>
@@ -78,7 +78,7 @@
         </div>
         <div class="form-group">
         <label>権限</label>
-          <label><input type = "radio" name ="is_admin" value ="0">一般</label>
+          <label><input type = "radio" name ="is_admin" value ="0" checked>一般</label>
           <label><input type = "radio" name ="is_admin" value ="1">管理者</label>
         </div>
       </div>
@@ -108,7 +108,7 @@
         </div>
         <div class="form-group">
           <label>権限</label> 
-          <input type = "radio" name ="is_admin" value ="0">一般
+          <input type = "radio" name ="is_admin" value ="0 ">一般
           <input type = "radio" name ="is_admin" value ="1">管理者
         </div>
         <div class="form-group">

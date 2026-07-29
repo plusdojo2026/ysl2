@@ -88,7 +88,7 @@
               </div>
               <div class="form-group">
                 <label>予算工数</label>
-                <input type="number" min="0" max="24" step="0.5" name="budgeted_man_hours" value="0" />
+                <input type="number" min="0" step="0.5" name="budgeted_man_hours" value="0" />
               </div>
               <div class="form-group">
                 <label for="memo">説明</label> 
@@ -195,10 +195,9 @@
             <div class="form-group">
               <label for="status">ステータス*</label> 
               <select name="status">
-                <option value="未着手" selected>未着手</option>
-                <option value="進行中">進行中</option>
+                <option value="進行中" selected>進行中</option>
                 <option value="完了">完了</option>
-                <option value="保留">保留</option>
+                <option value="中止">中止</option>
               </select>
             </div>
            </div>

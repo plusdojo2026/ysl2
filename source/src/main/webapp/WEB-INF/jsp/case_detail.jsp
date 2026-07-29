@@ -160,7 +160,7 @@ pageEncoding="UTF-8"%>
             </div>
             <div class="form-group">
               <label>進捗率</label>
-                <input type="number" min="0" max="100" step="1" name="progress"/>
+                <input type="number" min="0" max="100" step="1" name="progress" value="0"/>
             </div>
             <div class="form-group">
               <label>開始日</label>
@@ -182,7 +182,7 @@ pageEncoding="UTF-8"%>
             </div>
             <div class="form-group">
               <label>見積工数</label>
-              <input type="number" min="0" max="24" step="0.5" name="estimated_man_hours"/>
+              <input type="number" min="0" max="24" step="0.5" name="estimated_man_hours" value="0"/>
             </div>
             <div class="form-group">
               <label for="status">ステータス*</label>
@@ -262,15 +262,14 @@ pageEncoding="UTF-8"%>
               </div>
               <div class="form-group">
                 <label>予算工数</label>
-                <input type="number" min="0" max="24" step="0.5" name="budgeted_man_hours" value="${dedto.budgetedManHours}"/>
+                <input type="number" min="0" step="0.5" name="budgeted_man_hours" value="${dedto.budgetedManHours}"/>
               </div>
             <div class="form-group">
               <label for="status">ステータス*</label>
               <select name="status" value="${dedto.caseStatus}">
-                <option value="未着手" <c:if test= "${dedto.caseStatus=='未着手'}">selected</c:if>>未着手</option>
                 <option value="進行中" <c:if test= "${dedto.caseStatus=='進行中'}">selected</c:if>>進行中</option>
                 <option value="完了"   <c:if test= "${dedto.caseStatus=='完了'}">selected</c:if>>完了</option>
-                <option value="保留"   <c:if test= "${dedto.caseStatus=='保留'}">selected</c:if>>保留</option>
+                <option value="中止"   <c:if test= "${dedto.caseStatus=='中止'}">selected</c:if>>中止</option>
               </select>
             </div>
           </div>

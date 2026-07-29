@@ -30,9 +30,9 @@
 			<h3>合計工数</h3>
 			<c:set var="totalmh" value="0"/>
 			<c:forEach var="k" items="${ManthAndMembers}">
-				<c:set var="totalmh" value="${totalmh + k.actualManHours}"/>
-				<p><c:out value="${totalmh}"/></p>
+				<c:set var="totalmh" value="${totalmh + k.actualManHours}"/>			
 			</c:forEach>
+			<p><c:out value="${totalmh}"/></p>
 		</div>
 		<div class="total_case">
 			<h3>合計案件数</h3>
@@ -77,7 +77,7 @@
     </div>
     
     <div class = "user_table">
-      <h3>メンバー別集計</h3>
+      <h3>担当者別集計</h3>
     	<table>
     		<thead>
     		<tr>
@@ -91,7 +91,7 @@
     		<tr>
     			<td><c:out value="${m.name}"/></td>
     			<td><c:out value="${m.actualManHours}"/></td>
-    			<td>ここで表示予定</td>
+    			<td>${Math.round((m.actualManHours/totalmh)*100)}%</td>
     		</tr>
     		</c:forEach>
     		</tbody>

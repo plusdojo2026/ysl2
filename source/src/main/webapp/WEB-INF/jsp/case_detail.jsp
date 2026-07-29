@@ -20,44 +20,46 @@ pageEncoding="UTF-8"%>
     <div class="one_case_detail">
       <table>
         <h3>案件詳細</h3>
+        <div class="case_edit_button">
+        <button onclick="openEditModal('${dedto.caseId}','${dedto.casePriority}','${dedto.caseName}',
+       '${dedto.caseStartDate}','${dedto.endDate}','${dedto.customerName}','${dedto.budgetedManHours}',
+       '${dedto.name}','${dedto.caseMemo}','${dedto.caseStatus}','${dedto.pmId}')"class="btn">編集</button>
+       </div>
         <tr>
-          <td>案件コード</td>
+          <th>案件コード</th>
           <td>${dedto.caseId}</td>
-          <td>優先度</td>
+          <th>優先度</th>
           <td>${dedto.casePriority}</td>
         </tr>
 
         <tr>
-          <td>名称</td>
+          <th>名称</th>
           <td>${dedto.caseName}</td>
-          <td>期間</td>
+          <th>期間</th>
           <td>${dedto.caseStartDate}~${dedto.endDate}</td>
         </tr>
         <tr>
-          <td>顧客名</td>
+          <th>顧客名</th>
           <td>${dedto.customerName}</td>
-          <td>予算</td>
+          <th>予算</th>
           <td>${dedto.budgetedManHours}</td>
         </tr>
         <tr>
-          <td>担当PM</td>
+          <th>担当PM</th>
           <td>${dedto.name}</td>
-          <td>実績工数</td>
+          <th>実績工数</th>
           <td>${dedto.actualManHours}</td>
         </tr>
         <tr>
-          <td>説明</td>
+          <th>説明</th>
           <td>${dedto.caseMemo}</td>
-          <td>ステータス</td>
+          <th>ステータス</th>
           <td>${dedto.caseStatus}</td>
         </tr>
         	<input type="hidden" name="pm_id" value="${dedto.pmId}">
       </table>
-      <class="case_edit_button">
-       <button onclick="openEditModal('${dedto.caseId}','${dedto.casePriority}','${dedto.caseName}',
-       '${dedto.caseStartDate}','${dedto.endDate}','${dedto.customerName}','${dedto.budgetedManHours}',
-       '${dedto.name}','${dedto.caseMemo}','${dedto.caseStatus}','${dedto.pmId}')" class="btn">編集</button>
-       </class>
+      
+       
        
        <div class="case_button">
        <form action="Controller" method="post">
@@ -73,6 +75,7 @@ pageEncoding="UTF-8"%>
     <div class="case_task_list">
       <table id="foo-table" class="table table-bordered">
         <h3>案件タスク一覧</h3>
+        <thead>
         <tr>
           <th>タスク名</th>
           <th>担当者</th>
@@ -82,19 +85,21 @@ pageEncoding="UTF-8"%>
           <th>見積</th>
           <th>実績工数</th>
           <th>進捗率</th>
+          <th></th>
         </tr>
+        </thead>
         <c:forEach var="e" items="${taskList}">
           <tr>
-            <th>${e.taskName}</th>
-            <th>${e.name}</th>
-            <th>${e.taskStatus}</th>
-            <th>${e.taskPriority}</th>
-            <th>${e.deadlineDate}</th>
-            <th>${e.estimatedManHours}</th>
-            <th>${e.actualManHours}</th>
-            <th>${e.taskProgress}</th>
+            <td>${e.taskName}</td>
+            <td>${e.name}</td>
+            <td>${e.taskStatus}</td>
+            <td>${e.taskPriority}</td>
+            <td>${e.deadlineDate}</td>
+            <td>${e.estimatedManHours}</td>
+            <td>${e.actualManHours}</td>
+            <td>${e.taskProgress}</td>
             <form action="Controller" method="post">
-            <th><input type="submit" name="button_id" value="削除" class="btn"></th>
+            <td><input type="submit" name="button_id" value="削除" class="btn"></td>
             <input type="hidden" name="task_id" value="${e.taskId}" >
             <input type="hidden" name="case_id" value="${dedto.caseId}">
             <input type="hidden" name="page_id" value="L003" />
@@ -108,6 +113,7 @@ pageEncoding="UTF-8"%>
     <div class="manhour_log">
       <h3>工数ログ(最新10件)</h3>
       <table id="log-table">
+      	  <thead>
       	  <tr>
       	  	<th>作業日
       	  	<th>タスク名
@@ -115,13 +121,14 @@ pageEncoding="UTF-8"%>
       	  	<th>工数
       	  	<th>作業内容
       	  </tr>
+      	  </thead>
         <c:forEach var="e" items="${manList}">
           <tr>
-            <th>${e.workDate}</th>
-            <th>${e.taskName}</th>
-            <th>${e.manager}</th>
-            <th>${e.todayManHours}</th>
-            <th>${e.workDetails}</th>
+            <td>${e.workDate}</td>
+            <td>${e.taskName}</td>
+            <td>${e.manager}</td>
+            <td>${e.todayManHours}</td>
+            <td>${e.workDetails}</td>
           </tr>
         </c:forEach>
       </table>

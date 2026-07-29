@@ -13,22 +13,24 @@
 .case_button{
 	display: flex;
 	justify-content: right;
+	margin-top: 10px;
 }
+/*編集ボタンのCSS*/
 .case_edit_button{
 	display: flex;
-	justify-content: left;
+	justify-content: right;
+	margin-top: 5px;
 }
 
 /*テーブルのデザイン*/
 th,td {
 	padding: 10px 12px;
-    border-bottom: 1px solid #edf2f7; 
+    border-bottom: 3px solid #edf2f7;
     vertical-align: middle;
-    border-left: none;
-    border-right: none;
 }
 /*案件タスク一覧テーブル*/
 #foo-table {
+  border:none;
   border-collapse: collapse;
   width: 100%;
   max-width: 850px;
@@ -38,7 +40,15 @@ th,td {
   background-color: #ffffff;
 
 }
-
+#foo-table thead th {
+  background-color: var(--main-color);
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+#foo-table td {
+	text-align: center;
+}
 
 /*工数ログテーブル*/
 #log-table{
@@ -51,6 +61,12 @@ th,td {
   background-color: #ffffff;
 }
 
+#log-table thead th {
+  background-color: var(--main-color);
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
 /* h3タグのCSS */
 h3 {
 	color: #004d99;

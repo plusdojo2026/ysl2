@@ -128,7 +128,7 @@ pageEncoding="UTF-8"%>
           <tr>
             <td>${e.workDate}</td>
             <td>${e.taskName}</td>
-            <td>${e.manager}</td>
+            <td>${e.name}</td>
             <td>${e.todayManHours}</td>
             <td>${e.workDetails}</td>
           </tr>

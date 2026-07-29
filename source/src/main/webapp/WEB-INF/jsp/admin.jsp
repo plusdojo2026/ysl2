@@ -62,7 +62,7 @@
       <div class="modal-contents-1">
         <div class="form-group">
           <label>ログインID*</label>
-          <input type = "text" id = "login" name="login_iod" required>
+          <input type = "text" id = "login" name="login_id" required>
         </div>
         <div class="form-group">
           <label>氏名*</label>
@@ -78,8 +78,8 @@
         </div>
         <div class="form-group">
         <label>権限</label>
-          <label><input type = "radio" name ="is_addmin" value ="1">一般</label>
-          <label><input type = "radio" name ="is_addmin" value ="2">管理者</label>
+          <label><input type = "radio" name ="is_admin" value ="0">一般</label>
+          <label><input type = "radio" name ="is_admin" value ="1">管理者</label>
         </div>
       </div>
 			<input type = "hidden" name = "page_id" value = "L009">

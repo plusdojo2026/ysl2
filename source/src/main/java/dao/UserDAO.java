@@ -108,8 +108,8 @@ public class UserDAO {
 	public int registUser(UserDTO dto) throws SQLException {
 		int ans = 0;
 		
-		String sql = "INSERT INTO users(login_id, pw, name, mail, is_admin, is_active)"
-				+ "VALUES(?,?,?,?,?,?)";
+		String sql = "INSERT INTO users(login_id, pw, name, mail, is_admin)"
+				+ "VALUES(?,?,?,?,?)";
 		//デバッグ（SQL文の確認用）
 		System.out.println(sql);
 		
@@ -122,7 +122,6 @@ public class UserDAO {
 		pStmt.setString(3, dto.getName());
 		pStmt.setString(4, dto.getMail());
 		pStmt.setInt(5, dto.getIsAdmin());
-		pStmt.setInt(6, dto.getIsActive());
 		
 		// SELECT文を実行し、結果表を取得する
 		ans = pStmt.executeUpdate();
@@ -145,7 +144,7 @@ public class UserDAO {
 		//?に値をセット
 		pStmt.setString(1, dto.getName());
 		pStmt.setString(2, dto.getMail());
-		pStmt.setInt(3, dto.getIsActive());
+		pStmt.setInt(3, dto.getIsAdmin());
 		pStmt.setInt(4, dto.getIsActive());
 		
 		pStmt.setInt(5, dto.getUserId());

@@ -138,11 +138,12 @@ public class ManHourAction {
 		
 		int list = service.deleteManHour(manHourId);
 		ArrayList<AllDTO> man =  service.selectManHours(taskId);
-		request.setAttribute("list", list);
 		if (list==1) {
 			System.out.println("削除成功");
+			request.setAttribute("msg", "タスクを削除しました");
 		}else {
 			System.out.println("削除失敗");
+			request.setAttribute("msg", "タスクの削除に失敗しました");
 		}
 		//以下、タスク詳細表示用データの取得と格納↓
 		//dtoの箱

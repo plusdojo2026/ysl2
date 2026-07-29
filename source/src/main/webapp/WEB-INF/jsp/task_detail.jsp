@@ -170,7 +170,7 @@
           <div>
         	<div class="form-group">
               <label>進捗率</label>
-              <input type="number" min="0" max="100" step="1" name="progress">
+              <input type="number" min="0" max="100" step="1" name="progress" id="progress">
             </div>
             <div class="form-group">
               <label for="priority">優先度</label>

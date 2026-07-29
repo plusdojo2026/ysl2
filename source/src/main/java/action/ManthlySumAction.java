@@ -21,21 +21,9 @@ public class ManthlySumAction {
     public String selectManthlySum() throws UnsupportedEncodingException {
         String page = "/WEB-INF/jsp/manthly_sum.jsp";
 
-		
       request.setCharacterEncoding("UTF-8");
-        //遷移時に今月分を自動取得する
-        //リアルタイムの年月を取得し、検索のためStringに変換
-      		//↓今月の分だけ取れる。念のために保存
-			//YearMonth ym = YearMonth.now();
-			//String yearManth = ym.format(DateTimeFormatter.ofPattern("yyyy-MM"));
-      
-//    YearMonth ym = YearMonth.now();
-//	  String defaultYM = ym.format(DateTimeFormatter.ofPattern("yyyy-MM"));
-//	  request.setAttribute("defaultYM",defaultYM);
-       
-      
-//      YearMonth ym = YearMonth.now();
-//      String yearManth = ym.format(DateTimeFormatter.ofPattern("yyyy-MM"));
+      	//今月の分だけ取れる。念のために保存→  //YearMonth ym = YearMonth.now();   //String yearManth = ym.format(DateTimeFormatter.ofPattern("yyyy-MM"));
+
         String yearManth = request.getParameter("month");//集計のためのgetParameter
        
 		ManthlySumService service = new ManthlySumService();
@@ -45,14 +33,18 @@ public class ManthlySumAction {
 		//集計案件一覧検索とその件数カウント
 		ArrayList<AllDTO> TotalCasesAndManHours = service.selectManthlySum();
 		request.setAttribute("TotalCasesAndManHours",TotalCasesAndManHours);
-		int ManthlyCases = TotalCasesAndManHours.size();//今月の稼働案件数を取得
-		Integer ManthlyCases_integer = ManthlyCases;//int型ではrequstにセット出来ないため、Integer型に変換する!!
-		request.setAttribute("allCaseSum", ManthlyCases_integer);
+		
+		//↓不要
+		//int ManthlyCases = TotalCasesAndManHours.size();
+		//Integer ManthlyCases_integer = ManthlyCases;//int型ではrequstにセット出来ないため、Integer型に変換する!!
+		//request.setAttribute("allCaseSum", ManthlyCases_integer);
 		
 		//月ごとの実績工数
 		ArrayList<AllDTO> ManthlyManHours = service.sumManthlyCasesManHours(yearManth);
-		//TotalCasesAndManHoursに詰めるため、ManthlyManHoursは不要に。
-		//request.setAttribute("ManthlyManHours",ManthlyManHours);
+		
+		int MMHsize = ManthlyManHours.size();
+		Integer MMHsize_integer = MMHsize;
+		request.setAttribute("MMHsize",MMHsize_integer);
 		
 		//再梱包。上2つのArrayListを基に、case_idが一致するところでループしながら詰める。
 		for(int i=0;i<TotalCasesAndManHours.size();i++) {
@@ -63,6 +55,7 @@ public class ManthlySumAction {
 			}
 		}
 		request.setAttribute("TotalCasesAndManHours",TotalCasesAndManHours);
+		
 		
 		//担当者名ごとかつ月ごとの工数
 		ArrayList<AllDTO> ManthAndMembers = service.sumUsersManHours(yearManth);

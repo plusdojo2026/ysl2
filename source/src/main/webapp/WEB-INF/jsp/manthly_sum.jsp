@@ -36,7 +36,7 @@
 		</div>
 		<div class="total_case">
 			<h3>合計案件数</h3>
-			<p>${TotalCasesAndManHours.size()}</p>
+			<p>${MMHsize}</p>
 		</div>
 		<div class="total_member">
 			<h3>合計稼働メンバー数</h3>
@@ -58,13 +58,17 @@
     			 </thead>
     			 <tbody>
     			 <c:forEach var="c" items="${TotalCasesAndManHours}">
-    			 <tr>
-      				<td><c:out value="${c.caseId}"/></td>
-				    <td><c:out value="${c.caseName}"/></td>
-				    <td><c:out value="${c.actualManHours}"/></td>
-				    <td><c:out value="${c.todayManHours}"/></td>
-				    <td><c:out value="${c.budgetedManHours}"/></td>
-    			</tr>
+    			  <div><!-- for分の中は繰り返されるため、idはNG -->
+    			  	<c:if test="${c.actualManHours!=0.0}"><!-- 該当カラムが0.0なら表示しない -->
+	    			 	<tr class = "onoff">
+		      				<td><c:out value="${c.caseId}"/></td>
+						    <td><c:out value="${c.caseName}"/></td>
+						    <td class = "manHoursFlg"><c:out value="${c.actualManHours}"/></td>
+						    <td><c:out value="${c.todayManHours}"/></td>
+						    <td><c:out value="${c.budgetedManHours}"/></td>
+	    				</tr>
+	    			</c:if>
+				 </div>
     			</c:forEach>
     			</tbody>
    			</table>
@@ -94,7 +98,7 @@
     </div>
 </div>
 </main> 
-<script src="${pageContext.request.contextPath}/js/manthly_sum.js" defer></script>
+<script src="${pageContext.request.contextPath}/js/manthly_sum.js"></script>
 				<!-- deferで、ページの読み込み後最後にjsを実行することを明示的に。 -->
 </body>
 </html>

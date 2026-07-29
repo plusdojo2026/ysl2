@@ -1,18 +1,43 @@
+.task_details{
+	background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    margin-bottom: 24px; 
+    width: 80%;
+}
+.tables{
+	display: grid;
+    grid-template-columns: 1fr 1fr; /* 三列にする */
+    gap: 2px;
+
+}
+
 table {
 	border-collapse: collapse;
 	padding: 3em;
 }
 td,th {
-	padding: 0.5em;
+	padding: 1em;
+}
+.table2 .memo td::before{
+	display: block;
+	float: left;
+	content: "";
+	min-height: 110px;
 }
 
-.task_details {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 20px;
+#status{
+  width: 65%; /* form面積 */
+  height: 30px;
+  padding: 0 12px;
+  border: 1px solid #999;
+  border-radius: 6px; /* 円滑 */
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: #fff;
+  transition: all 0.3s;
 }
-
-.memo th{
-	min-height: 30	px;
-	vertical-align: middle;
+.buttons {
+	padding-left: 40%;
 }

@@ -96,10 +96,6 @@
               </select>
             </div>
             <div class="form-group">
-              <label>進捗率</label>
-              <input type="number" min="0" max="100" step="1" name="task_progress" value="0">
-            </div>
-            <div class="form-group">
               <label>開始日</label>
               <input type="date" name="start_date">
             </div>
@@ -109,6 +105,10 @@
             </div>
           </div>
           <div>
+         	<div class="form-group">
+              <label>進捗率</label>
+              <input type="number" min="0" max="100" step="1" name="task_progress" value="0" id="progress1">
+            </div>
             <div class="form-group">
               <label for="priority">優先度*</label>
               <select name="priority" id="priority">
@@ -122,17 +122,13 @@
               <input type="number" min="0" step="0.5" name="estimated_man_hours" value="0">
             </div>
             <div class="form-group">
-              <label for="status">ステータス*</label>
-              <select name="status" id="status" required>
+              <label for="status" >ステータス*</label>
+              <select name="status" id="status1" required>
                 <option value="未着手" selected>未着手</option>
                 <option value="進行中">進行中</option>
                 <option value="完了">完了</option>
                 <option value="保留">保留</option>
               </select>
-            </div>
-            <div class="form-group">
-              <label>進捗率</label>
-              <input type="number" min="0" max="100" step="1" name="progress" value="0">
             </div>
             <div class="form-group">
               <label>説明</label>
@@ -175,8 +171,8 @@
             </select>
           </div>
           <div class="form-group">
-            <label>進捗率</label>
-            <input type="number" min="0" max="100" step="1" name="progress">
+            <label>期限</label>
+            <input type="date" name="deadline_date">
           </div>
           <div class="form-group">
             <label>開始日</label>
@@ -185,8 +181,8 @@
         </div>
         <div>
           <div class="form-group">
-            <label>期限</label>
-            <input type="date" name="deadline_date">
+            <label>進捗率</label>
+            <input type="number" min="0" max="100" step="1" name="progress" id="progress">
           </div>
           <div class="form-group">
             <label for="priority">優先度*</label>

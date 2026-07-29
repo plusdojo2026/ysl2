@@ -57,3 +57,29 @@ function openModal2(
 function closeModal2() {
   document.getElementById("modal2").style.display = "none";
 }
+
+//ステータスと進捗
+const sta1 = document.getElementById("status1");
+const pro1 = document.getElementById("progress1");
+sta1.addEventListener("change", () => changeProgress(sta1, pro1));
+pro1.addEventListener("change", () => changeStatus(sta1, pro1));
+
+const sta = document.getElementById("status");
+const pro = document.getElementById("progress");
+sta.addEventListener("change", () => changeProgress(sta, pro));
+pro.addEventListener("change", () => changeStatus(sta, pro));
+
+function changeProgress(status,progress){
+	if(status.value == '未着手'){
+		progress.value = 0;
+	}else if (status.value == '完了') {
+		progress.value = 100;
+	}
+}
+function changeStatus(status, progress) {
+	if(progress.value == 0) {
+		status.value = '未着手';
+	}else if (progress.value == 100) {
+		status.value = '完了';
+	}
+}

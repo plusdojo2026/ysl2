@@ -173,7 +173,6 @@ public class ManHourDAO {
 				AllDTO dto = new AllDTO();
 				dto.setWorkDate(rs.getString("work_date"));
 				dto.setTaskName(rs.getString("task_name"));
-				dto.setManager(rs.getInt("manager"));
 				dto.setTodayManHours(rs.getDouble("today_man_hours"));
 				dto.setWorkDetails(rs.getString("work_details"));
 				dto.setName(rs.getString("name"));

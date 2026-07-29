@@ -8,9 +8,8 @@
 }
 .tables{
 	display: grid;
-    grid-template-columns: 1fr 1fr; /* 三列にする */
+    grid-template-columns: 1fr 1fr; /* 2列にする */
     gap: 2px;
-
 }
 
 table {
@@ -27,7 +26,7 @@ td,th {
 	min-height: 110px;
 }
 
-#status{
+.tables #status{
   width: 65%; /* form面積 */
   height: 30px;
   padding: 0 12px;
@@ -40,4 +39,17 @@ td,th {
 }
 .buttons {
 	padding-left: 40%;
+}
+.man-log table{
+	width: 100%;
+}
+
+.man-log .memo {
+	max-width: 25%;
+}
+.man-log .nowrap {
+	min-width: 70px;
+}
+.man-log .date {
+	min-width: 100px;
 }

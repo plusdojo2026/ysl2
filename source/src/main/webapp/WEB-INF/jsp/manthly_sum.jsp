@@ -30,9 +30,9 @@
 			<h3>合計工数</h3>
 			<c:set var="totalmh" value="0"/>
 			<c:forEach var="k" items="${ManthAndMembers}">
-				<c:set var="totalmh" value="${totalmh + k.actualManHours}"/>
-				<p><c:out value="${totalmh}"/></p>
+				<c:set var="totalmh" value="${totalmh + k.actualManHours}"/>			
 			</c:forEach>
+			<p><c:out value="${totalmh}"/></p>
 		</div>
 		<div class="total_case">
 			<h3>合計案件数</h3>
@@ -45,7 +45,7 @@
     </div>
     
     <div class = "case_table">
-    	<h3>今月の案件別集計</h3>
+    	<h3>案件別集計</h3>
  			<table>
  				<thead>
     			 <tr>
@@ -54,6 +54,7 @@
       				<th>月別実績工数</th>
       				<th>総実績工数</th>
       				<th>予算工数</th>
+      				<th>達成率</th>
     			 </tr>
     			 </thead>
     			 <tbody>
@@ -66,6 +67,7 @@
 						    <td class = "manHoursFlg"><c:out value="${c.actualManHours}"/></td>
 						    <td><c:out value="${c.todayManHours}"/></td>
 						    <td><c:out value="${c.budgetedManHours}"/></td>
+						    <td><c:out value="${Math.round((c.todayManHours/c.budgetedManHours)*100)}%"/></td>
 	    				</tr>
 	    			</c:if>
 				 </div>
@@ -75,13 +77,13 @@
     </div>
     
     <div class = "user_table">
-      <h3>今月のメンバー別集計</h3>
+      <h3>担当者別集計</h3>
     	<table>
     		<thead>
     		<tr>
     			<th>担当者名</th>
     			<th>工数</th>
-    			<th>進捗率</th> 		
+    			<th>全体に占める割合</th> 		
     		</tr>
     		</thead>
     		<tbody>
@@ -89,7 +91,7 @@
     		<tr>
     			<td><c:out value="${m.name}"/></td>
     			<td><c:out value="${m.actualManHours}"/></td>
-    			<td>ここで進捗率表示</td>
+    			<td>${Math.round((m.actualManHours/totalmh)*100)}%</td>
     		</tr>
     		</c:forEach>
     		</tbody>
@@ -99,6 +101,6 @@
 </div>
 </main> 
 <script src="${pageContext.request.contextPath}/js/manthly_sum.js"></script>
-				<!-- deferで、ページの読み込み後最後にjsを実行することを明示的に。 -->
+				<!-- deferをつけると、ページの読み込み後最後にjsを実行することを明示的に。 -->
 </body>
 </html>

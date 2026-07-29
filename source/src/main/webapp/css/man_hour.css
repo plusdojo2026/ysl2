@@ -1,4 +1,44 @@
+
 .pop{
-	border-radius: 8px;
+	text-align:center;
+	margin-bottom: 0;
+	margin-top: 0;
+	}
+
+.case{
+	font-size: 30px;
+}
+
+.task{
+	font-size:25px;
+}
 	
-	};
+.detaile{
+	text-align:center
+	
+}
+textarea{
+	width: 800px;  
+	height: 200px;}
+	
+.man_h{
+	margin-top: -25px;
+	margin-left: 10%;
+}
+
+.bot{
+	width: 5%;
+	padding: 6px;
+	margin-top: 10px;
+	background-color: var(--main-color);
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-size: 12px;
+	font-weight: 600;
+	cursor: pointer;
+	transition:
+	transform 0.2s ease,
+	box-shadow 0.2s ease;
+	margin-left: 760px;
+}

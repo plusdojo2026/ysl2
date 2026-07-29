@@ -14,9 +14,9 @@
 <main>
 <%@ include file="/WEB-INF/jsp/sidebar.jsp"%>
 <div class="main">
-    <h1>タスク詳細</h1>
     <div>${msg}</div>
     <div class="task_details">
+    <h3>タスク詳細</h3>
     <div class="tables">
 	    <div class="table1">
 		    <table>
@@ -98,35 +98,37 @@
 		</div>
 		</div>	
 	</div>
-	<div>
-		<h2>工数ログ</h2>
-		<c:if test="${empty manHoursList}">
-			<p>工数は登録されていません。</p>
-		</c:if>
-		<c:if test="${not empty manHoursList}">
-		<table>
-			<tr>
-				<th>作業日</th>
-				<th>担当者</th>
-				<th>工数</th>
-				<th>作業内容</th>
-			</tr>
-		<c:forEach var="m" items="${manHoursList}">
-		<form method="POST" action="<c:url value='/Controller'/>">
-			<tr>
-				<input type="hidden" name="page_id" value="L007">
-				<input type="hidden" name="man_hours_id" value="${m.manHoursId}">
-				<input type="hidden" name="task_id" value="${task.taskId}">
-				<td>${m.workDate}</td>
-				<td>${m.name}</td>
-				<td>${m.todayManHours}</td>
-				<td>${m.workDetails}</td>
-				<td><input type="submit" name="button_id" value="削除" class="btn"><td>
-			</tr>
-		</form>
-		</c:forEach>
-		</table>
-		</c:if>	
+	<div class="task_details">
+		<h3>工数ログ</h3>
+		<div class="man-log">
+			<c:if test="${empty manHoursList}">
+				<p>工数は登録されていません。</p>
+			</c:if>
+			<c:if test="${not empty manHoursList}">
+			<table>
+				<tr>
+					<th class="date">作業日</th>
+					<th class="nowrap">担当者</th>
+					<th class="nowrap">工数</th>
+					<th>作業内容</th>
+				</tr>
+			<c:forEach var="m" items="${manHoursList}">
+			<form method="POST" action="<c:url value='/Controller'/>">
+				<tr>
+					<input type="hidden" name="page_id" value="L007">
+					<input type="hidden" name="man_hours_id" value="${m.manHoursId}">
+					<input type="hidden" name="task_id" value="${task.taskId}">
+					<td>${m.workDate}</td>
+					<td>${m.name}</td>
+					<td>${m.todayManHours}</td>
+					<td class="memo">${m.workDetails}</td>
+					<td><input type="submit" name="button_id" value="削除" class="btn"><td>
+				</tr>
+			</form>
+			</c:forEach>
+			</table>
+			</c:if>
+		</div>
 	</div>
 	<!------------以下モーダル表示---------->
 	<!--タスク編集モーダル-->
@@ -157,10 +159,6 @@
               </select>
             </div>
             <div class="form-group">
-              <label>進捗率</label>
-              <input type="number" min="0" max="100" step="1" name="progress">
-            </div>
-            <div class="form-group">
               <label>開始日</label>
               <input type="date" name="start_date">
             </div>
@@ -170,6 +168,10 @@
             </div>
           </div>
           <div>
+        	<div class="form-group">
+              <label>進捗率</label>
+              <input type="number" min="0" max="100" step="1" name="progress">
+            </div>
             <div class="form-group">
               <label for="priority">優先度</label>
               <select name="priority" id="priority">
@@ -199,7 +201,7 @@
         </div>
         <input type="hidden" name="page_id" value="L006">
         <input type="hidden" name="task_id">
-        <input type="submit" name="button_id" value="保存">
+        <input type="submit" name="button_id" value="保存" class="btn">
       </form>
       <button class="close" onclick="closeModal2()">×</button>
 		</div>

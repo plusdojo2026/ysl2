@@ -108,16 +108,16 @@
         </div>
         <div class="form-group">
           <label>権限</label> 
-          <input type = "radio" name ="is_admin" value ="1">一般
-          <input type = "radio" name ="is_admin" value ="2">管理者
+          <input type = "radio" name ="is_admin" value ="0">一般
+          <input type = "radio" name ="is_admin" value ="1">管理者
         </div>
         <div class="form-group">
           <label>状態</label>
           <input type = "radio" name ="is_active" value ="1">有効
-          <input type = "radio" name ="is_active" value ="2">無効
+          <input type = "radio" name ="is_active" value ="0">無効
         </div>
         <input type = "hidden" name = "page_id" value = "L009">
-        <input type = "hidden" name = "id" value = "${m.userId}">
+        <input type = "hidden" name = "user_id" value = user_id>
         <input type = "submit" name = "button_id" value = "保存">
       </div>
 		</form>

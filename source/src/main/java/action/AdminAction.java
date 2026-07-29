@@ -39,8 +39,8 @@ public class AdminAction {
 		String name = request.getParameter("userName");
 		String mail = request.getParameter("email");
 		String password = request.getParameter("pw");
-		String admin = request.getParameter("admin");
-		String active = request.getParameter("active");
+		int admin = Integer.parseInt(request.getParameter("is_admin"));
+		int active = Integer.parseInt(request.getParameter("is_active"));
 		
 		
 		//dto
@@ -51,6 +51,8 @@ public class AdminAction {
 		dto.setName(name);
 		dto.setMail(mail);
 		dto.setLoginId(id);
+		dto.setIsAdmin(admin);
+		dto.setIsActive(active);
 		
 		UserService service = new UserService();
 		int isSuccess = service.UserRegist(dto);
@@ -76,9 +78,14 @@ public class AdminAction {
 		String id = request.getParameter("loginid");
 		String name = request.getParameter("userName");
 		String mail = request.getParameter("email");
+<<<<<<< Updated upstream
 		String password = request.getParameter("pw");
 		int admin = request.getParameter("isAdmin");
 		int active = request.getParameter("isActive");
+=======
+		int admin = Integer.parseInt(request.getParameter("is_admin"));
+		int active = Integer.parseInt(request.getParameter("is_active"));
+>>>>>>> Stashed changes
 		
 		//dto
 		UserDTO dto = new UserDTO();

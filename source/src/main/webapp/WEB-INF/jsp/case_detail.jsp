@@ -68,10 +68,10 @@ pageEncoding="UTF-8"%>
        </form>
        </div>
     </div>
-    
+    </div>
 
     <div class="case_task_list">
-      <table>
+      <table id="foo-table" class="table table-bordered">
         <h3>案件タスク一覧</h3>
         <tr>
           <th>タスク名</th>
@@ -94,7 +94,7 @@ pageEncoding="UTF-8"%>
             <th>${e.actualManHours}</th>
             <th>${e.taskProgress}</th>
             <form action="Controller" method="post">
-            <th><input type="submit" name="button_id" value="削除"></th>
+            <th><input type="submit" name="button_id" value="削除" class="btn"></th>
             <input type="hidden" name="task_id" value="${e.taskId}" >
             <input type="hidden" name="case_id" value="${dedto.caseId}">
             <input type="hidden" name="page_id" value="L003" />
@@ -102,12 +102,12 @@ pageEncoding="UTF-8"%>
           </tr>
         </c:forEach>
       </table>
-      <button onclick="openRegistModal()">+タスク追加</button>
+      <button onclick="openRegistModal()" class="btn">+タスク追加</button>
     </div>
 
     <div class="manhour_log">
       <h3>工数ログ(最新10件)</h3>
-      <table>
+      <table id="log-table">
       	  <tr>
       	  	<th>作業日
       	  	<th>タスク名
@@ -215,7 +215,7 @@ pageEncoding="UTF-8"%>
           <div class="modal_left">
             <div class="form-group">
               <label for="case_id">案件コード*</label>
-              <input type="text" name="case_id" value="${dedto.caseId}">
+              <input type="text" name="case_id" value="${dedto.caseId}" maxlength="20">
             </div>
             <div class="form-group">
               <label for="case_name">案件名*</label>

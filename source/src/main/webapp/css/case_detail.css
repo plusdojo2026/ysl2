@@ -6,6 +6,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     margin-bottom: 24px; /* カード上下距離 */
+    max-width: 650px;
     /*letter-spacing: 3px;*/
 }
 /*完了、中止ボタンのCSS*/
@@ -19,17 +20,37 @@
 }
 
 /*テーブルのデザイン*/
-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-    font-size: 14px;
-}
 th,td {
 	padding: 10px 12px;
     border-bottom: 1px solid #edf2f7; 
     vertical-align: middle;
+    border-left: none;
+    border-right: none;
 }
+/*案件タスク一覧テーブル*/
+#foo-table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 850px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  background-color: #ffffff;
+
+}
+
+
+/*工数ログテーブル*/
+#log-table{
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 850px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  background-color: #ffffff;
+}
+
 /* h3タグのCSS */
 h3 {
 	color: #004d99;

@@ -56,12 +56,14 @@ pageEncoding="UTF-8"%>
        '${dedto.caseStartDate}','${dedto.endDate}','${dedto.customerName}','${dedto.budgetedManHours}',
        '${dedto.name}','${dedto.caseMemo}','${dedto.caseStatus}','${dedto.pmId}')">編集</button>
        
+       <div class="case_button">
        <form action="Controller" method="post">
        <input type="hidden" name="page_id" value="L003" />
        <input type="hidden" name="case_id" value="${dedto.caseId}" >
       <button type="submit" name="button_id" value="完了" />完了</button>
       <button type="submit" name="button_id" value="中止" />中止</button>
        </form>
+       </div>
     </div>
     
 
@@ -103,6 +105,13 @@ pageEncoding="UTF-8"%>
     <div class="manhour_log">
       <h3>工数ログ(最新10件)</h3>
       <table>
+      	  <tr>
+      	  	<th>作業日
+      	  	<th>タスク名
+      	  	<th>担当者
+      	  	<th>工数
+      	  	<th>作業内容
+      	  </tr>
         <c:forEach var="e" items="${manList}">
           <tr>
             <th>${e.workDate}</th>

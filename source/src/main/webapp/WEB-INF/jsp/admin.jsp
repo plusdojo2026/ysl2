@@ -96,7 +96,7 @@
 		<form method = "POST" id = "edit" action = "<c:url value = '/Controller'/>">
       <div class="modal-contents-1">  
         <div class="form-group">
-          <label>ユーザーID: "${userId}"</label>
+          <label id="uID">ユーザーID: "${m.userId}"</label>
         </div>
         <div class="form-group">
           <label>氏名</label>
@@ -117,7 +117,7 @@
           <input type = "radio" name ="is_active" value ="0">無効
         </div>
         <input type = "hidden" name = "page_id" value = "L009">
-        <input type = "hidden" name = "user_id" value = user_id>
+        <input type = "hidden" name = "user_id" value = userId>
         <input type = "submit" name = "button_id" value = "保存">
       </div>
 		</form>

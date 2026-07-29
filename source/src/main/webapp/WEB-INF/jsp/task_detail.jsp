@@ -66,7 +66,7 @@
 						<input type="hidden" name="page_id" value="L007">
 						<input type="hidden" name="task_id" value="${task.taskId}">
 						<input type="hidden" name="progress" value="${task.taskProgress}">
-						<select name="status" id="status">
+						<select name="status" class="status-form">
 							<option value="未着手" ${task.taskStatus == '未着手' ? 'selected' : ''}>未着手</option>
 							<option value="進行中" ${task.taskStatus == '進行中' ? 'selected' : ''}>進行中</option>
 							<option value="完了" ${task.taskStatus == '完了' ? 'selected' : ''}>完了</option>

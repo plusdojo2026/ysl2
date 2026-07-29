@@ -19,7 +19,9 @@ function openRegistModal() {
 //編集モーダル・引数(user_id)
 function openEditModal(userId, name, mail, isAdmin, isActive) {
   document.getElementById("edit_modal").style.display = "flex";
+  document.getElementById("uID").textContent = userId;
   let form = document.getElementById("edit");
+  form.elements["user_id"].value = userId;
   form.elements["name"].value = name;
   form.elements["mail"].value = mail;
   form.elements["is_admin"].value = isAdmin;

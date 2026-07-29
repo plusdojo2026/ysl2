@@ -77,8 +77,8 @@ public class AdminAction {
 		String name = request.getParameter("userName");
 		String mail = request.getParameter("email");
 		String password = request.getParameter("pw");
-		String admin = request.getParameter("admin");
-		String active = request.getParameter("active");
+		int admin = request.getParameter("isAdmin");
+		int active = request.getParameter("isActive");
 		
 		//dto
 		UserDTO dto = new UserDTO();
@@ -88,6 +88,8 @@ public class AdminAction {
 		dto.setName(name);
 		dto.setMail(mail);
 		dto.setLoginId(id);
+		dto.setIsAdmin(admin);
+		dto.setIsActive(active);
 		
 		UserService service = new UserService();
 		int isSuccess = service.updataUser(dto);

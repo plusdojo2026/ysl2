@@ -112,7 +112,8 @@ main {
 .form-group input[type="number"],
 .form-group input[type="date"],
 .form-group textarea,
-.form-group select {
+.form-group select,
+.form-group input {
   width: 100%; /* form面積 */
   height: 50px;
   padding: 0 12px;

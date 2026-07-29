@@ -13,9 +13,9 @@
     <div class="sidebar">
       <div class="user-profile">
         <div class="avatar"></div>
-        <span class="username">${sessionScope.user.name}</span>
+        <span class="username" style="background-color:aliceblue">&#128100;${sessionScope.user.name}さん</span>
       </div>
-
+	<hr>
       <ul class="nav-menu">
         <li class="nav-item active">
           <a href="${pageContext.request.contextPath}/Controller?page_id=side&button_id=ダッシュボード" class="sidebar-link">

@@ -18,17 +18,17 @@ public class ManHourDAO {
 	}
 	
 	//工数登録
-	public int registManHour(double today_man_hours, String work_details, String work_date, int task_id,int user_id) throws SQLException{
+	public int registManHour(double todayManHours, String workDetails, String work_date, int task_id,int user_id) throws SQLException{
  		int ans = 0;
 		String sql ="INSERT INTO man_hours (today_man_hours, work_details, work_date, task_id, user_id) VALUES(?,?,?,?,?)";
 		System.out.println(sql);
 		// まとめる
 		PreparedStatement pStmt = conn.prepareStatement(sql);
-		System.out.println("today_man_hours = " + today_man_hours);
-		System.out.println("work_details = " + work_details);
+		System.out.println("today_man_hours = " + todayManHours);
+		System.out.println("work_details = " + workDetails);
 		System.out.println("work_date = " + work_date);
-		pStmt.setDouble(1, today_man_hours);
-		pStmt.setString(2, work_details);
+		pStmt.setDouble(1, todayManHours);
+		pStmt.setString(2, workDetails);
 		pStmt.setString(3, work_date);
 		pStmt.setInt(4, task_id);
 		pStmt.setInt(5, user_id);

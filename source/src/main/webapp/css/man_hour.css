@@ -2,7 +2,7 @@
 .pop{
 	text-align:center;
 	margin-bottom: 0;
-	margin-top: 0;
+	margin-top: 25px;
 	}
 
 .case{
@@ -22,7 +22,7 @@ textarea{
 	height: 200px;}
 	
 .man_h{
-	margin-top: -25px;
+	margin-top: 25px;
 	margin-left: 10%;
 }
 

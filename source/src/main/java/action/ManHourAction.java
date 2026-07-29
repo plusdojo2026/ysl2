@@ -144,6 +144,28 @@ public class ManHourAction {
 		}else {
 			System.out.println("削除失敗");
 		}
+		//以下、タスク詳細表示用データの取得と格納↓
+		//dtoの箱
+		AllDTO tdto = null;
+		ArrayList<AllDTO> mdto = null;
+		ArrayList<UserDTO> uList = null;
+		ArrayList<AllDTO> cList = null;
+		//Serviceの実体化
+		TaskService tService = new TaskService();
+		tdto = tService.selectTaskDetail(taskId);
+		ManHourService mService = new ManHourService();
+		mdto  = mService.selectManHours(taskId);
+		UserService uService = new UserService();
+		uList = uService.selectActiveUsers();
+		request.setAttribute("activeUsersList", uList);
+		CaseService cService = new CaseService();
+		cList = cService.selectCases();
+		request.setAttribute("casesList", cList);
+		
+		System.out.println(taskId);
+		//リクエストスコープに格納
+		request.setAttribute("task", tdto);
+		request.setAttribute("manHoursList", mdto);
 		request.setAttribute("man", man);
 		return page;
 		

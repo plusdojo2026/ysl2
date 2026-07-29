@@ -29,8 +29,8 @@
           <th>ログインID</th>	
           <th>氏名</th>
           <th>メールアドレス</th>
-          <th class="nowrap">権限<br>(一般/管理者)</th>
-          <th class="nowrap">状態<br>(有効/無効)</th>
+          <th class="nowrap">権限<br>(一般／管理者)</th>
+          <th class="nowrap">状態<br>(有効／無効)</th>
           <th>登録日</th>
           <th>編集</th>
         </tr>
@@ -58,7 +58,7 @@
   <div class = "r_modal">
 	<h2>メンバー新規登録</h2>
 		<button class = "close" onclick = "closeRModal()">×</button><!-- 関数"closeModal" -->
-		<form action ="POST" action="<c:url value='/Controller'/>">
+		<form method ="POST" action="<c:url value='/Controller'/>">
       <div class="modal-contents-1">
         <div class="form-group">
           <label>ログインID*</label>
@@ -82,8 +82,8 @@
           <label><input type = "radio" name ="is_addmin" value ="2">管理者</label>
         </div>
       </div>
-			<input type ="hidden" name ="page_id" value ="L009">
-			<input type ="submit" name ="save" value ="保存">
+			<input type = "hidden" name = "page_id" value = "L009">
+			<input type = "submit" name = "button_id" value = "登録">
 		</form>
 	</div>
 </div>
@@ -93,7 +93,7 @@
   <div class = "e_modal">
     <h2>メンバー編集</h2>
 		<button class = "close" onclick = "closeEModal()">×</button>
-		<form action="POST" id = "edit" action="<c:url value='/Controller'/>">
+		<form method = "POST" id = "edit" action = "<c:url value = '/Controller'/>">
       <div class="modal-contents-1">  
         <div class="form-group">
           <label>ユーザーID: "${userId}"</label>
@@ -116,9 +116,9 @@
           <input type = "radio" name ="is_active" value ="1">有効
           <input type = "radio" name ="is_active" value ="2">無効
         </div>
-        <input type ="hidden" name ="page_id" value ="L009">
-        <input type ="hidden" name ="id" value ="${m.userId}">
-        <input type ="submit" name ="save" value ="保存">
+        <input type = "hidden" name = "page_id" value = "L009">
+        <input type = "hidden" name = "id" value = "${m.userId}">
+        <input type = "submit" name = "button_id" value = "保存">
       </div>
 		</form>
     </div>	

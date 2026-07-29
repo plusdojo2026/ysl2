@@ -39,7 +39,7 @@
               <th>実績工数</th>
               <th>ステータス</th>
               <th>開始日</th>
-              <th>終了日</th>
+              <th>終了予定日</th>
               <th></th>
             </tr>
           </thead>
@@ -190,7 +190,7 @@
             </div>
             <div class="form-group">
               <label>予算工数</label>
-              <input type="number" min="0" max="24" step="0.5" name="budgeted_man_hours" />
+              <input type="number" min="0" step="0.5" name="budgeted_man_hours" />
             </div>
             <div class="form-group">
               <label for="status">ステータス*</label> 

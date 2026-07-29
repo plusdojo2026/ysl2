@@ -76,9 +76,8 @@ public class AdminAction {
 		
 		String page = "/WEB-INF/jsp/admin.jsp";
 		int userId = Integer.parseInt(request.getParameter("user_id"));
-		String loginId = request.getParameter("login_id");
-		String name = request.getParameter("userName");
-		String mail = request.getParameter("email");
+		String name = request.getParameter("name");
+		String mail = request.getParameter("mail");
 		int admin = Integer.parseInt(request.getParameter("is_admin"));
 		int active = Integer.parseInt(request.getParameter("is_active"));
 		
@@ -86,7 +85,6 @@ public class AdminAction {
 		UserDTO dto = new UserDTO();
 		//if (loginId != null);
 		dto.setUserId(userId);
-		dto.setLoginId(loginId);
 		dto.setName(name);
 		dto.setMail(mail);
 		dto.setIsAdmin(admin);

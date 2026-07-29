@@ -96,7 +96,7 @@
 		<form method = "POST" id = "edit" action = "<c:url value = '/Controller'/>">
       <div class="modal-contents-1">  
         <div class="form-group">
-          <label>ユーザーID: "${user_id}"</label>
+          <label id="uID">ユーザーID: "${m.userId}"</label>
         </div>
         <div class="form-group">
           <label>氏名</label>

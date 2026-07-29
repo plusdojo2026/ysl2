@@ -75,7 +75,8 @@ public class AdminAction {
 		request.setCharacterEncoding("UTF-8");
 		
 		String page = "/WEB-INF/jsp/admin.jsp";
-		String id = request.getParameter("loginid");
+		int userId = Integer.parseInt(request.getParameter("user_id"));
+		String loginId = request.getParameter("login_id");
 		String name = request.getParameter("userName");
 		String mail = request.getParameter("email");
 		int admin = Integer.parseInt(request.getParameter("is_admin"));
@@ -83,12 +84,11 @@ public class AdminAction {
 		
 		//dto
 		UserDTO dto = new UserDTO();
-		if (id !=null);
-		dto.setUserId(Integer.parseInt(id));
-		
+		//if (loginId != null);
+		dto.setUserId(userId);
+		dto.setLoginId(loginId);
 		dto.setName(name);
 		dto.setMail(mail);
-		dto.setLoginId(id);
 		dto.setIsAdmin(admin);
 		dto.setIsActive(active);
 		

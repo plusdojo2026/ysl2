@@ -160,7 +160,7 @@ public class ManHourDAO {
 		public ArrayList<AllDTO>selectCaseManHours(String case_id)throws SQLException{
 			ArrayList<AllDTO> list = new ArrayList<AllDTO>();
 			
-			String sql = "SELECT m.work_date, u.name, m.today_man_hours, m.work_details, t.task_name FROM man_hours m JOIN tasks t ON m.task_id = t.task_id JOIN users u ON u.user_id = m.user_id WHERE t.task_id = ? ORDER BY m.work_date";
+			String sql = "SELECT m.work_date, u.name, m.today_man_hours, m.work_details, t.task_name, t.case_id FROM man_hours m JOIN tasks t ON m.task_id = t.task_id JOIN users u ON u.user_id = m.user_id HAVING t.case_id = ? ORDER BY m.work_date";
 			
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			

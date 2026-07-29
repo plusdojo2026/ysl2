@@ -30,20 +30,17 @@ public class ManthlySumAction {
 		
 		request.setAttribute("yearManth",yearManth);//集計時に年月ボックスを空にしないように、yearManthで返す。
 		
-		//集計案件一覧検索とその件数カウント
+		//集計案件一覧検索
 		ArrayList<AllDTO> TotalCasesAndManHours = service.selectManthlySum();
 		request.setAttribute("TotalCasesAndManHours",TotalCasesAndManHours);
 		
-		//↓不要
-		//int ManthlyCases = TotalCasesAndManHours.size();
-		//Integer ManthlyCases_integer = ManthlyCases;//int型ではrequstにセット出来ないため、Integer型に変換する!!
-		//request.setAttribute("allCaseSum", ManthlyCases_integer);
+		
 		
 		//月ごとの実績工数
 		ArrayList<AllDTO> ManthlyManHours = service.sumManthlyCasesManHours(yearManth);
-		
+		//件数カウント
 		int MMHsize = ManthlyManHours.size();
-		Integer MMHsize_integer = MMHsize;
+		Integer MMHsize_integer = MMHsize;//int型ではrequstにセット出来ないため、Integer型に変換する!!
 		request.setAttribute("MMHsize",MMHsize_integer);
 		
 		//再梱包。上2つのArrayListを基に、case_idが一致するところでループしながら詰める。

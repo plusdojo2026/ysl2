@@ -97,7 +97,7 @@ public class TaskAction {
 		String priority = request.getParameter("priority");
 		String status = request.getParameter("status");
 		double estimatedManHours = Double.parseDouble(request.getParameter("estimated_man_hours"));
-		int taskProgress = Integer.parseInt(request.getParameter("progress"));
+		int taskProgress = Integer.parseInt(request.getParameter("task_progress"));
 		String memo = request.getParameter("memo");
 		
 		//入力値のバリデーション

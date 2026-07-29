@@ -169,7 +169,7 @@ pageEncoding="UTF-8"%>
             </div>
             <div class="form-group">
               <label>進捗率</label>
-                <input type="number" min="0" max="100" step="1" name="progress" value="0"/>
+                <input type="number" min="0" max="100" step="1" name="task_progress" value="0"/>
             </div>
             <div class="form-group">
               <label>開始日</label>

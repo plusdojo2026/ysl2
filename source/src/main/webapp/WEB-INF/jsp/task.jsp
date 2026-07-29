@@ -76,7 +76,7 @@
         <div class="modal-contents-2">
           <div class="modal_left">
             <div class="form-group">
-              <label for="case_name">案件名</label>
+              <label for="case_name">案件名*</label>
               <select name="case_id" id="case_name" required>
                 <c:forEach var="c" items="${casesList}">
                   <option value="${c.caseId}">${c.caseName}</option>
@@ -84,7 +84,7 @@
               </select>
             </div>
             <div class="form-group">
-              <label>タスク名</label>
+              <label>タスク名*</label>
               <input type="text" name="task_name" required>
             </div>
             <div class="form-group">
@@ -110,7 +110,7 @@
           </div>
           <div>
             <div class="form-group">
-              <label for="priority">優先度</label>
+              <label for="priority">優先度*</label>
               <select name="priority" id="priority">
                 <option value="高">高</option>
                 <option value="中" selected>中</option>
@@ -122,7 +122,7 @@
               <input type="number" min="0" step="0.5" name="estimated_man_hours" value="0">
             </div>
             <div class="form-group">
-              <label for="status">ステータス</label>
+              <label for="status">ステータス*</label>
               <select name="status" id="status" required>
                 <option value="未着手" selected>未着手</option>
                 <option value="進行中">進行中</option>
@@ -155,7 +155,7 @@
       <div class="modal-contents-2">
         <div class="modal_left">
           <div class="form-group">
-            <label>案件名</label>
+            <label>案件名*</label>
             <select name="case_id" id="case_name" required>
               <c:forEach var="c" items="${casesList}">
                 <option value="${c.caseId}">${c.caseName}</option>
@@ -163,7 +163,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label>タスク名</label>
+            <label>タスク名*</label>
             <input type="text" name="task_name" required>
           </div>
           <div class="form-group">
@@ -189,7 +189,7 @@
             <input type="date" name="deadline_date">
           </div>
           <div class="form-group">
-            <label for="priority">優先度</label>
+            <label for="priority">優先度*</label>
             <select name="priority" id="priority" required>
               <option value="高">高</option>
               <option value="中" selected>中</option>
@@ -201,7 +201,7 @@
             <input type="number" min="0" step="0.5" name="estimated_man_hours">
           </div>
           <div class="form-group">
-            <label for="status">ステータス</label>
+            <label for="status">ステータス*</label>
             <select name="status" id="status" required>
               <option value="未着手" selected>未着手</option>
               <option value="進行中">進行中</option>

@@ -30,3 +30,7 @@
 	white-space: nowrap;
 }
 
+table td a {
+   display: block;       /* リンクをブロックレベル化して表示 */
+   padding: 1em 0.3em;   /* 内側の余白量を上下に0.6文字分＆左右に1文字分にする */
+}

@@ -59,7 +59,7 @@
                 <td class="nowrap">${e.caseStartDate}</td>
                 <td class="nowrap">${e.endDate}</td>
                <input type="hidden" name= "pm_id" value="${e.pmId}">
-                <td><button class="btn" onclick="openEditModal('${e.caseId}','${e.customerName}','${e.caseName}','${e.name}','${e.caseMemo}','${e.caseStartDate}','${e.endDate}','${e.casePriority}','${e.budgetedManHours}','${e.caseStatus}', '${e.pmId}')">編集</button></td>
+                <td><button class="btn" onclick="openEditModal('${e.caseId}','${e.caseName}','${e.customerName}','${e.name}','${e.caseMemo}','${e.caseStartDate}','${e.endDate}','${e.casePriority}','${e.budgetedManHours}','${e.caseStatus}', '${e.pmId}')">編集</button></td>
               </tr>
             </c:forEach> 
           </tbody>

@@ -80,7 +80,7 @@ public class CaseAction {
 		CaseService service = new CaseService();
 		int ans = service.registCase(dto);
 
-		if (ans == 1) {
+		if (ans == 0) {
 			request.setAttribute("msg", "案件コードが重複しています。");
 		}
 

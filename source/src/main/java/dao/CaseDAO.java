@@ -115,6 +115,7 @@ public class CaseDAO {
 	//案件コードの重複チェック
 	public int checkDuplicateCaseId(String caseId) throws SQLException {
 		int ans = 0;
+		int DuplicationNumber = 0;;
 
 		String sql = "SELECT COUNT(*) FROM cases WHERE case_id = ?";
 		PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -125,7 +126,10 @@ public class CaseDAO {
 
 		//(1)は左側から1個目を指定している。serviceの方でansの値を使用してエラーチェックを行う
 		while (rs.next()) {
-			ans = rs.getInt(1); //0か1が入る。
+			DuplicationNumber = rs.getInt(1); //重複していたら１
+		}
+		if (DuplicationNumber == 0) {
+			ans = 1;
 		}
 
 		return ans;

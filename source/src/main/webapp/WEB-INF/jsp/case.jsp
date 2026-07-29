@@ -16,6 +16,7 @@
 <body>
 	<main>
 		<%@ include file="/WEB-INF/jsp/sidebar.jsp"%>
+		<div class="main">
 		<div class="case">
 			<h1>案件一覧</h1>
 		<button onclick="openRegistModal()" class="btn">
@@ -58,7 +59,7 @@
                 <td class="nowrap">${e.caseStartDate}</td>
                 <td class="nowrap">${e.endDate}</td>
                <input type="hidden" name= "pm_id" value="${e.pmId}">
-                <td><button class="btn" onclick="openEditModal('${e.caseId}','${e.customerName}','${e.caseName}','${e.name}','${e.caseMemo}','${e.caseStartDate}','${e.endDate}','${e.casePriority}','${e.budgetedManHours}','${e.caseStatus}', '${e.pmId}')">編集</button></td>
+                <td><button class="btn" onclick="openEditModal('${e.caseId}','${e.caseName}','${e.customerName}','${e.name}','${e.caseMemo}','${e.caseStartDate}','${e.endDate}','${e.casePriority}','${e.budgetedManHours}','${e.caseStatus}', '${e.pmId}')">編集</button></td>
               </tr>
             </c:forEach> 
           </tbody>
@@ -75,7 +76,7 @@
             <div class="modal_left">
               <div class="form-group">
                 <label for="">案件コード*</label> 
-                <input type="text" name="case_id" required>
+                <input type="text" name="case_id" maxlength="20" required>
               </div>
               <div class="form-group">
                 <label for="case_name">案件名*</label> 
@@ -87,7 +88,7 @@
               </div>
               <div class="form-group">
                 <label>予算工数</label>
-                <input type="number" min="0" max="24" step="0.5" name="budgeted_man_hours" value="0" />
+                <input type="number" min="0" step="0.5" name="budgeted_man_hours" value="0" />
               </div>
               <div class="form-group">
                 <label for="memo">説明</label> 
@@ -146,7 +147,7 @@
            <div class="modal_left">
             <div class="form-group">
               <label for="case_id">案件コード*</label> 
-              <input type="text" name="case_id" required>
+              <input type="text" name="case_id" maxlength="20" required>
             </div>
             <div class="form-group">
               <label for="case_name">案件名*</label> 
@@ -194,10 +195,9 @@
             <div class="form-group">
               <label for="status">ステータス*</label> 
               <select name="status">
-                <option value="未着手" selected>未着手</option>
-                <option value="進行中">進行中</option>
+                <option value="進行中" selected>進行中</option>
                 <option value="完了">完了</option>
-                <option value="保留">保留</option>
+                <option value="中止">中止</option>
               </select>
             </div>
            </div>
@@ -207,6 +207,7 @@
         </form>
         <button class="close" onclick="closeEModal()">×</button>
       </div>
+    </div>
     </div>
 
     <script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.js"></script>

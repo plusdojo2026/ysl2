@@ -15,3 +15,15 @@
 //button.addEventListener('click', function(){
 //  list.style.display = 'block';
 //});
+
+//今月の実績が0.0の行を表示しない！
+//const manHoursFlg = document.querySelectorAll(".manHoursFlg");
+//manHoursFlg.forEach((el) => {
+//  console.log(el.textContent);
+//});
+
+// if (el.textContent == "0.0") {
+//   const name = document.querySelector(".onoff");
+//   name.style.display = "none";
+//   console.log(name);
+// }

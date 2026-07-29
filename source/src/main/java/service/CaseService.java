@@ -41,16 +41,16 @@ public class CaseService extends DBAccess {
 		try {
 			ans = dao.checkDuplicateCaseId(caseId);
 		} catch (SQLException e) {
-			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
-		if (ans == 1) {
+		// 重複していたら１
+		if (ans == 0) {
+			//重複項目があるため、追加できない。
 			return ans;
 		} else {
 			try {
 				ans = dao.registCase(dto);
 			} catch (SQLException e) {
-				// TODO 自動生成された catch ブロック
 				e.printStackTrace();
 			}
 		}

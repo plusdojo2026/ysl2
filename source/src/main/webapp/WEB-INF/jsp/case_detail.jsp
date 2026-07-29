@@ -13,6 +13,7 @@ pageEncoding="UTF-8"%>
   <body>
   <main>
    <%@ include file="/WEB-INF/jsp/sidebar.jsp" %>
+   <div class="main">
    <div class = "case_detail">
     <h1>案件詳細</h1>
     <input type="hidden" name="page_id" value="L003" />
@@ -52,23 +53,25 @@ pageEncoding="UTF-8"%>
         </tr>
         	<input type="hidden" name="pm_id" value="${dedto.pmId}">
       </table>
+      <class="case_edit_button">
        <button onclick="openEditModal('${dedto.caseId}','${dedto.casePriority}','${dedto.caseName}',
        '${dedto.caseStartDate}','${dedto.endDate}','${dedto.customerName}','${dedto.budgetedManHours}',
-       '${dedto.name}','${dedto.caseMemo}','${dedto.caseStatus}','${dedto.pmId}')">編集</button>
+       '${dedto.name}','${dedto.caseMemo}','${dedto.caseStatus}','${dedto.pmId}')" class="btn">編集</button>
+       </class>
        
        <div class="case_button">
        <form action="Controller" method="post">
        <input type="hidden" name="page_id" value="L003" />
        <input type="hidden" name="case_id" value="${dedto.caseId}" >
-      <button type="submit" name="button_id" value="完了" />完了</button>
-      <button type="submit" name="button_id" value="中止" />中止</button>
+      <button type="submit" name="button_id" value="完了" class="btn"/>完了</button>
+      <button type="submit" name="button_id" value="中止" class="btn"/>中止</button>
        </form>
        </div>
     </div>
-    
+    </div>
 
     <div class="case_task_list">
-      <table>
+      <table id="foo-table" class="table table-bordered">
         <h3>案件タスク一覧</h3>
         <tr>
           <th>タスク名</th>
@@ -91,7 +94,7 @@ pageEncoding="UTF-8"%>
             <th>${e.actualManHours}</th>
             <th>${e.taskProgress}</th>
             <form action="Controller" method="post">
-            <th><input type="submit" name="button_id" value="削除"></th>
+            <th><input type="submit" name="button_id" value="削除" class="btn"></th>
             <input type="hidden" name="task_id" value="${e.taskId}" >
             <input type="hidden" name="case_id" value="${dedto.caseId}">
             <input type="hidden" name="page_id" value="L003" />
@@ -99,12 +102,12 @@ pageEncoding="UTF-8"%>
           </tr>
         </c:forEach>
       </table>
-      <button onclick="openRegistModal()">+タスク追加</button>
+      <button onclick="openRegistModal()" class="btn">+タスク追加</button>
     </div>
 
     <div class="manhour_log">
       <h3>工数ログ(最新10件)</h3>
-      <table>
+      <table id="log-table">
       	  <tr>
       	  	<th>作業日
       	  	<th>タスク名
@@ -123,6 +126,7 @@ pageEncoding="UTF-8"%>
         </c:forEach>
       </table>
     </div>
+    </div>
 
     <!-- タスク追加モーダル -->
     <div id="case_regist_modal" class="modal_background">
@@ -135,7 +139,9 @@ pageEncoding="UTF-8"%>
               <label for="case_name">案件名*</label>
               <select name="case_id" id="case_name">
                 <c:forEach var="c" items="${caseList}">
-                  <option value="${c.caseId}">${c.caseName}</option>
+                  <option value="${c.caseId}"<c:if test="${c.caseId==dedto.caseId}">
+                  selected</c:if> >${c.caseName}
+                  </option>
                 </c:forEach>
               </select>
             </div>
@@ -147,13 +153,14 @@ pageEncoding="UTF-8"%>
               <label for="manager">担当者</label>
               <select name="manager" id="manager">
                 <c:forEach var="m" items="${userList}">
-                  <option value="${m.userId}">${m.name}</option>
+                  <option value="${m.userId}"
+                  >${m.name}</option>
                 </c:forEach>
               </select>
             </div>
             <div class="form-group">
               <label>進捗率</label>
-                <input type="number" min="0" max="100" step="1" name="progress"/>
+                <input type="number" min="0" max="100" step="1" name="progress" value="0"/>
             </div>
             <div class="form-group">
               <label>開始日</label>
@@ -175,7 +182,7 @@ pageEncoding="UTF-8"%>
             </div>
             <div class="form-group">
               <label>見積工数</label>
-              <input type="number" min="0" max="24" step="0.5" name="estimated_man_hours"/>
+              <input type="number" min="0" max="24" step="0.5" name="estimated_man_hours" value="0"/>
             </div>
             <div class="form-group">
               <label for="status">ステータス*</label>
@@ -208,7 +215,7 @@ pageEncoding="UTF-8"%>
           <div class="modal_left">
             <div class="form-group">
               <label for="case_id">案件コード*</label>
-              <input type="text" name="case_id" value="${dedto.caseId}">
+              <input type="text" name="case_id" value="${dedto.caseId}" maxlength="20">
             </div>
             <div class="form-group">
               <label for="case_name">案件名*</label>
@@ -255,15 +262,14 @@ pageEncoding="UTF-8"%>
               </div>
               <div class="form-group">
                 <label>予算工数</label>
-                <input type="number" min="0" max="24" step="0.5" name="budgeted_man_hours" value="${dedto.budgetedManHours}"/>
+                <input type="number" min="0" step="0.5" name="budgeted_man_hours" value="${dedto.budgetedManHours}"/>
               </div>
             <div class="form-group">
               <label for="status">ステータス*</label>
               <select name="status" value="${dedto.caseStatus}">
-                <option value="未着手" <c:if test= "${dedto.caseStatus=='未着手'}">selected</c:if>>未着手</option>
                 <option value="進行中" <c:if test= "${dedto.caseStatus=='進行中'}">selected</c:if>>進行中</option>
                 <option value="完了"   <c:if test= "${dedto.caseStatus=='完了'}">selected</c:if>>完了</option>
-                <option value="保留"   <c:if test= "${dedto.caseStatus=='保留'}">selected</c:if>>保留</option>
+                <option value="中止"   <c:if test= "${dedto.caseStatus=='中止'}">selected</c:if>>中止</option>
               </select>
             </div>
           </div>

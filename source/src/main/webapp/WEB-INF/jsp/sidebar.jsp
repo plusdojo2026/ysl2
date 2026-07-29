@@ -50,9 +50,6 @@
 
       <div class="sidebar-footer">
         <a href="${pageContext.request.contextPath}/Controller?page_id=side&button_id=ログアウト" class="footer-link">ログアウト</a>
-      </div>
-
-      <div class="sidebar-footer">
         <a href="${pageContext.request.contextPath}/Controller?page_id=L010&button_id=変更">パスワード変更</a>
       </div>
     </div>

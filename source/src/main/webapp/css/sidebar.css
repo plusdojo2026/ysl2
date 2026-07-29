@@ -6,6 +6,9 @@
   position: sticky;
   top: 0px;
   height: 100vh; /* sidebar高度填满和屏幕一样高 */
+  
+  display: flex;
+  flex-direction: column;
 
   /* transform: translateX(-100%);
   transition: transform 0.3s ease; */
@@ -21,6 +24,22 @@
   background: transparent; /* 透明 */
 }
 
+.nav-menu {
+	
+}
+
+.sidebar-footer {
+	margin-top: auto;
+	border-top: 1px;
+	padding-top: 15px;
+}
+
+.sidebar-footer a {
+	display: block;
+	color: #333;
+	text-decoration: none;
+	padding: 10px 0;
+}
 /* 拉出 */
 /* .sidebar:hover {
   transform: translateX(0);

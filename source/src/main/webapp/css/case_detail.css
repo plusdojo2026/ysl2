@@ -21,6 +21,10 @@
 	justify-content: right;
 	margin-top: 5px;
 }
+/*タスク追加ボタンのCSS*/
+.add_button{
+	margin-top: 10px;
+}
 
 /*テーブルのデザイン*/
 th,td {
@@ -70,5 +74,9 @@ th,td {
 /* h3タグのCSS */
 h3 {
 	color: #004d99;
+}
+/*タスクリスト、工数ログのh3タグ*/
+.list-title {
+	margin-top: 40px;
 }
 

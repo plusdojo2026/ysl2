@@ -73,8 +73,8 @@ pageEncoding="UTF-8"%>
     </div>
 
     <div class="case_task_list">
-      <table id="foo-table" class="table table-bordered">
-        <h3>案件タスク一覧</h3>
+      <table id="foo-table" >
+        <h3 class="list-title">案件タスク一覧</h3>
         <thead>
         <tr>
           <th>タスク名</th>
@@ -107,11 +107,13 @@ pageEncoding="UTF-8"%>
           </tr>
         </c:forEach>
       </table>
+      <div class="add_button">
       <button onclick="openRegistModal()" class="btn">+タスク追加</button>
+      </div>
     </div>
 
     <div class="manhour_log">
-      <h3>工数ログ(最新10件)</h3>
+      <h3 class="list-title">工数ログ(最新10件)</h3>
       <table id="log-table">
       	  <thead>
       	  <tr>

@@ -34,18 +34,20 @@
             <span class="nav-badge">タスク一覧</span>
           </a>
         </li>
-
+		
         <li class="nav-item active">
           <a href="${pageContext.request.contextPath}/Controller?page_id=side&button_id=月次集計" class="sidebar-link">
             <span class="nav-badge">月次集計</span>
           </a>
         </li>
-
+        
+		<c:if test ="${sessionScope.user.isAdmin==1}">
         <li class="nav-item active">
           <a href="${pageContext.request.contextPath}/Controller?page_id=side&button_id=メンバー管理" class="sidebar-link">
             <span class="nav-badge">メンバー管理</span>
           </a>
         </li>
+        </c:if>
       </ul>
 
       <div class="sidebar-footer">

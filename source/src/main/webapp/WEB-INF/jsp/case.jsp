@@ -16,6 +16,7 @@
 <body>
 	<main>
 		<%@ include file="/WEB-INF/jsp/sidebar.jsp"%>
+		<div class="main">
 		<div class="case">
 			<h1>案件一覧</h1>
 		<button onclick="openRegistModal()" class="btn">
@@ -207,6 +208,7 @@
         </form>
         <button class="close" onclick="closeEModal()">×</button>
       </div>
+    </div>
     </div>
 
     <script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.js"></script>

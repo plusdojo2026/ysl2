@@ -13,6 +13,7 @@ pageEncoding="UTF-8"%>
   <body>
   <main>
    <%@ include file="/WEB-INF/jsp/sidebar.jsp" %>
+   <div class="main">
    <div class = "case_detail">
     <h1>案件詳細</h1>
     <input type="hidden" name="page_id" value="L003" />
@@ -52,16 +53,18 @@ pageEncoding="UTF-8"%>
         </tr>
         	<input type="hidden" name="pm_id" value="${dedto.pmId}">
       </table>
+      <class="case_edit_button">
        <button onclick="openEditModal('${dedto.caseId}','${dedto.casePriority}','${dedto.caseName}',
        '${dedto.caseStartDate}','${dedto.endDate}','${dedto.customerName}','${dedto.budgetedManHours}',
-       '${dedto.name}','${dedto.caseMemo}','${dedto.caseStatus}','${dedto.pmId}')">編集</button>
+       '${dedto.name}','${dedto.caseMemo}','${dedto.caseStatus}','${dedto.pmId}')" class="btn">編集</button>
+       </class>
        
        <div class="case_button">
        <form action="Controller" method="post">
        <input type="hidden" name="page_id" value="L003" />
        <input type="hidden" name="case_id" value="${dedto.caseId}" >
-      <button type="submit" name="button_id" value="完了" />完了</button>
-      <button type="submit" name="button_id" value="中止" />中止</button>
+      <button type="submit" name="button_id" value="完了" class="btn"/>完了</button>
+      <button type="submit" name="button_id" value="中止" class="btn"/>中止</button>
        </form>
        </div>
     </div>
@@ -123,6 +126,7 @@ pageEncoding="UTF-8"%>
         </c:forEach>
       </table>
     </div>
+    </div>
 
     <!-- タスク追加モーダル -->
     <div id="case_regist_modal" class="modal_background">
@@ -135,7 +139,9 @@ pageEncoding="UTF-8"%>
               <label for="case_name">案件名*</label>
               <select name="case_id" id="case_name">
                 <c:forEach var="c" items="${caseList}">
-                  <option value="${c.caseId}">${c.caseName}</option>
+                  <option value="${c.caseId}"<c:if test="${c.caseId==dedto.caseId}">
+                  selected</c:if> >${c.caseName}
+                  </option>
                 </c:forEach>
               </select>
             </div>
@@ -147,7 +153,8 @@ pageEncoding="UTF-8"%>
               <label for="manager">担当者</label>
               <select name="manager" id="manager">
                 <c:forEach var="m" items="${userList}">
-                  <option value="${m.userId}">${m.name}</option>
+                  <option value="${m.userId}"
+                  >${m.name}</option>
                 </c:forEach>
               </select>
             </div>

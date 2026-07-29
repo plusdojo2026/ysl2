@@ -13,6 +13,11 @@
 	display: flex;
 	justify-content: right;
 }
+.case_edit_button{
+	display: flex;
+	justify-content: left;
+}
+
 /*テーブルのデザイン*/
 table {
     width: 100%;

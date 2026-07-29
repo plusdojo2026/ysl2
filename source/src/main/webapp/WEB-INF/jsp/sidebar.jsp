@@ -13,7 +13,7 @@
     <div class="sidebar">
       <div class="user-profile">
         <div class="avatar"></div>
-        <span class="username">ユーザー</span>
+        <span class="username">${sessionScope.user.name}</span>
       </div>
 
       <ul class="nav-menu">

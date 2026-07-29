@@ -40,20 +40,20 @@ function closeModal2() {
 //ステータスと進捗
 const sta = document.getElementById("status");
 const pro = document.getElementById("progress");
-sta.addEventListener("change",changeProgress(sta,pro));
-pro.addEventListener("change",changeStatus(sta,pro));
+sta.addEventListener("change", () => changeProgress(sta, pro));
+pro.addEventListener("change", () => changeStatus(sta, pro));
 
 function changeProgress(status,progress){
-	if(status = '未着手'){
+	if(status.value == '未着手'){
 		progress.value = 0;
-	}else if (status = '完了') {
+	}else if (status.value == '完了') {
 		progress.value = 100;
 	}
 }
 function changeStatus(status, progress) {
-	if(progress = 0) {
+	if(progress.value == 0) {
 		status.value = '未着手';
-	}else if (progress = 100) {
+	}else if (progress.value == 100) {
 		status.value = '完了';
 	}
 }

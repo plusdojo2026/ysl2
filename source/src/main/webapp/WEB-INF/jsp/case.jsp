@@ -76,7 +76,7 @@
             <div class="modal_left">
               <div class="form-group">
                 <label for="">案件コード*</label> 
-                <input type="text" name="case_id" required>
+                <input type="text" name="case_id" maxlength="20" required>
               </div>
               <div class="form-group">
                 <label for="case_name">案件名*</label> 
@@ -147,7 +147,7 @@
            <div class="modal_left">
             <div class="form-group">
               <label for="case_id">案件コード*</label> 
-              <input type="text" name="case_id" required>
+              <input type="text" name="case_id" maxlength="20" required>
             </div>
             <div class="form-group">
               <label for="case_name">案件名*</label> 

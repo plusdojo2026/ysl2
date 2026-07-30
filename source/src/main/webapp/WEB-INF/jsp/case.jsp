@@ -146,8 +146,8 @@
           <div class=modal-contents-2>
            <div class="modal_left">
             <div class="form-group">
-              <label for="case_id">案件コード*</label> 
-              <input type="text" name="case_id" maxlength="20" required>
+              <label for="case_id">案件コード(編集不可)</label> 
+              <input type="text" name="case_id" maxlength="20" readonly>
             </div>
             <div class="form-group">
               <label for="case_name">案件名*</label> 

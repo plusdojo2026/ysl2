@@ -33,7 +33,7 @@
         
             <label>
                 作業日<br>
-                <input type="date" name="work_date" required>
+                <input type="date" name="work_date" id="work_date" required>
             </label>
             <br>
             <div class="pulus" id="pulus">
@@ -51,7 +51,7 @@
 
             <label>
                 作業内容<br>
-                <textarea name="work_details" class="detail" required></textarea>
+                <textarea name="work_details" class="detail"></textarea>
             </label>
             <br>
             </div>
@@ -67,3 +67,15 @@
 </main>
 </body>
 </html>
+
+<script>
+function () {
+    var work_date = new Date();
+    work_date.setDate(work_date.getDate());
+    var yyyy = work_date.getFullYear();
+    var mm = ("0"+(work_date.getMonth()+1)).slice(-2);
+    var dd = ("0"+work_date.getDate()).slice(-2);
+    document.getElementById("work_date").value=yyyy+'-'+mm+'-'+dd;
+	}
+
+</script>

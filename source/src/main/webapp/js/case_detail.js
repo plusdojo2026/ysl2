@@ -65,3 +65,11 @@ const btn2 = document.getElementById('cansel');
             }
         }, false);
        }
+const btn3 = document.getElementById('delete');
+        btn3.addEventListener('click', function (event) {
+            const result = window.confirm("タスクを削除します。よろしいですか？");
+            if (result) {
+            } else {
+                event.preventDefault();
+            }
+        }, false);

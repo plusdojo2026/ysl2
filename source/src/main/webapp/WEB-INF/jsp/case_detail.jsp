@@ -103,7 +103,7 @@ pageEncoding="UTF-8"%>
             <td>${e.actualManHours}</td>
             <td>${e.taskProgress}</td>
             <form action="Controller" method="post">
-            <td><input type="submit" name="button_id" value="削除" class="btn"></td>
+            <td><input type="submit" name="button_id" value="削除" class="btn" id="delete"></td>
             <input type="hidden" name="task_id" value="${e.taskId}" >
             <input type="hidden" name="case_id" value="${dedto.caseId}">
             <input type="hidden" name="page_id" value="L003" />

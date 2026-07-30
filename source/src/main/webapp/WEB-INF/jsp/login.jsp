@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>ログイン</title>
+    <title>ログイン | Task Manager</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/login.css" />
   </head>

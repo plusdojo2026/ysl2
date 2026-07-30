@@ -57,3 +57,14 @@ function changeStatus(status, progress) {
 		status.value = '完了';
 	}
 }
+
+const btn = document.getElementById('delete');
+	if(btn != null){
+        btn.addEventListener('click', function (event) {
+            const result = window.confirm("工数データを削除します。よろしいですか？");
+            if (result) {
+            } else {
+                event.preventDefault();
+            }
+        }, false);
+       }

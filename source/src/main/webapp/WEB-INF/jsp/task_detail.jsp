@@ -122,7 +122,7 @@
 					<td>${m.name}</td>
 					<td>${m.todayManHours}</td>
 					<td class="memo">${m.workDetails}</td>
-					<td><input type="submit" name="button_id" value="削除" class="btn"><td>
+					<td><input type="submit" name="button_id" value="削除" class="btn" id="delete"><td>
 				</tr>
 			</form>
 			</c:forEach>

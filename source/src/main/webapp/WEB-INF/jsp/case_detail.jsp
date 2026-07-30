@@ -65,8 +65,12 @@ pageEncoding="UTF-8"%>
        <form action="Controller" method="post">
        <input type="hidden" name="page_id" value="L003" />
        <input type="hidden" name="case_id" value="${dedto.caseId}" >
-      <button type="submit" name="button_id" value="完了" class="btn" id="complete"/>完了</button>
-      <button type="submit" name="button_id" value="中止" class="btn" id="cansel"/>中止</button>
+       <c:if test="${dedto.caseStatus != '完了'}">
+      	<button type="submit" name="button_id" value="完了" class="btn" id="complete"/>完了</button>
+       </c:if>
+       <c:if test="${dedto.caseStatus != '中止'}">
+      	<button type="submit" name="button_id" value="中止" class="btn" id="cansel"/>中止</button>
+       </c:if>
        </form>
        </div>
     </div>

@@ -46,6 +46,7 @@ function closeEModal() {
 
 
 const btn = document.getElementById('complete');
+	if(btn != null){
         btn.addEventListener('click', function (event) {
             const result = window.confirm("ステータスを完了にします。よろしいですか？");
             if (result) {
@@ -53,7 +54,9 @@ const btn = document.getElementById('complete');
                 event.preventDefault();
             }
         }, false);
+       }
 const btn2 = document.getElementById('cansel');
+	if(btn2 != null){
         btn2.addEventListener('click', function (event) {
             const result = window.confirm("ステータスを中止にします。よろしいですか？");
             if (result) {
@@ -61,3 +64,4 @@ const btn2 = document.getElementById('cansel');
                 event.preventDefault();
             }
         }, false);
+       }

@@ -33,7 +33,7 @@
         
             <label>
                 作業日<br>
-                <input type="date" name="work_date" id="work_date" required>
+                <input type="date" name="work_date" id="today" required>
             </label>
             <br>
             <div class="pulus" id="pulus">
@@ -68,4 +68,15 @@
 </body>
 </html>
 
+<script>
+// 現在の日付を取得
+const today = new Date();
 
+// YYYY-MM-DD形式に変換
+const formattedDate = today.getFullYear() + '-' +
+String(today.getMonth() + 1).padStart(2, '0') + '-' +
+String(today.getDate()).padStart(2, '0');
+
+// 初期値として設定
+document.getElementById("today").value = formattedDate;
+</script>

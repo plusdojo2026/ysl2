@@ -58,7 +58,7 @@ CREATE TABLE tasks (
 );
 
 CREATE TABLE man_hours (
-    mon_hours_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    man_hours_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     task_id INT NOT NULL,
     FOREIGN KEY (task_id) REFERENCES tasks(task_id) ON DELETE CASCADE,
     today_man_hours DOUBLE NOT NULL,

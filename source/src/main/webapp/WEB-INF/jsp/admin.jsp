@@ -108,7 +108,7 @@
         </div>
         <div class="form-group">
           <label>権限</label> 
-          <input type = "radio" name ="is_admin" value ="0 ">一般
+          <input type = "radio" name ="is_admin" value ="0">一般
           <input type = "radio" name ="is_admin" value ="1">管理者
         </div>
         <div class="form-group">

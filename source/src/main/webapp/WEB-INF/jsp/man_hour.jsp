@@ -68,14 +68,4 @@
 </body>
 </html>
 
-<script>
-function () {
-    var work_date = new Date();
-    work_date.setDate(work_date.getDate());
-    var yyyy = work_date.getFullYear();
-    var mm = ("0"+(work_date.getMonth()+1)).slice(-2);
-    var dd = ("0"+work_date.getDate()).slice(-2);
-    document.getElementById("work_date").value=yyyy+'-'+mm+'-'+dd;
-	}
 
-</script>

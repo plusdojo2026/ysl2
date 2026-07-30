@@ -93,10 +93,12 @@ public class UserAction {
 		
 		if (result == 0) {
 			request.setAttribute("message", "パスワード変更ができませんでした。");
+		} else {
+			//正常にパスワード変更出来たら
+			request.setAttribute("message", "パスワード変更完了");
+			
 		}
 		
-		//正常にパスワード変更出来たら
-		request.setAttribute("message", "パスワード変更完了");
 		ans = "/WEB-INF/jsp/change_password.jsp";
 		return ans;
 	}

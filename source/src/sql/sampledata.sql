@@ -1,9 +1,9 @@
 CREATE DATABASE ysl2;
 -- ユーザー作成
-CREATE USER 'ysl1'@'localhost' IDENTIFIED BY 'ZwH54wxWJQt378SN';
+CREATE USER 'ysl2'@'localhost' IDENTIFIED BY 'ZwH54wxWJQt378SN';
 
 -- 権限を付与（全DB・全テーブルへのフルアクセス）
-GRANT ALL PRIVILEGES ON *.* TO 'ysl1'@'localhost';
+GRANT ALL PRIVILEGES ON *.* TO 'ysl2'@'localhost';
 
 -- 反映
 FLUSH PRIVILEGES;
@@ -58,7 +58,7 @@ CREATE TABLE tasks (
 );
 
 CREATE TABLE man_hours (
-    mon_hours_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    man_hours_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     task_id INT NOT NULL,
     FOREIGN KEY (task_id) REFERENCES tasks(task_id) ON DELETE CASCADE,
     today_man_hours DOUBLE NOT NULL,

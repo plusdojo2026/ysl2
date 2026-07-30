@@ -36,9 +36,10 @@
                 <input type="date" name="work_date" required>
             </label>
             <br>
+            <div class="pulus" id="pulus">
             <label>
                 工数<br>
-                <input id="todayManHours"
+                <input 
                        name="today_man_hours"
                        type="number"
                        step="0.5"
@@ -53,10 +54,11 @@
                 <textarea name="work_details" class="detail" required></textarea>
             </label>
             <br>
-
+            </div>
+            
             <input type="hidden" name="page_id" value="L005">
             <input type="hidden" name="task_id" value="${list.taskId}">
-            <input type="submit" name="button_id" value="登録" class="bot">
+            <input type="submit" name="button_id" value="登録" class="bot" >
 		
         </div>
 

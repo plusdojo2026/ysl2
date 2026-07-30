@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import dto.UserDTO;
 
-@WebFilter("/servlet")
+@WebFilter("/Controller")
 public class AuthFilter implements Filter {
 	
 	@Override
@@ -22,6 +22,22 @@ public class AuthFilter implements Filter {
 			throws IOException, ServletException {
 		
 		System.out.println("ログインチェック");
+		
+		request.setCharacterEncoding("UTF-8");
+
+		String pageId = request.getParameter("pageId");
+		String buttonId = request.getParameter("buttonId");
+		// ログイン処理だけ認証チェック対象外
+		if (pageId==null && buttonId==null) {
+			System.out.println("ログインチェックスキップnull");
+			chain.doFilter(request, response);
+			return;
+		}
+		if (pageId.equals("L001") && buttonId.equals("ログイン")) {
+			System.out.println("ログインチェックスキップ:ログイン");
+			chain.doFilter(request, response);
+			return;
+		}
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		

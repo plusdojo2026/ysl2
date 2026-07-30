@@ -293,6 +293,7 @@ public class TaskAction {
 			//dtoにまとめる
 			dto.setTaskId(taskId);
 			dto.setStatus(status);
+			dto.setTaskProgress(taskProgress);
 		}
 		
 		//Serviceを実体化

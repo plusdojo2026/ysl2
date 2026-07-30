@@ -56,10 +56,9 @@
             <br>
             </div>
             
-			<input type="hidden" name="work_details" id="allWorkDetails">
             <input type="hidden" name="page_id" value="L005">
             <input type="hidden" name="task_id" value="${list.taskId}">
-            <input type="submit" name="button_id" value="登録" class="bot"  onclick="mergeData()">
+            <input type="submit" name="button_id" value="登録" class="bot" >
 		
         </div>
 

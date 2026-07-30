@@ -23,7 +23,7 @@ public class CaseDAO {
 		ArrayList<AllDTO> caseList = new ArrayList<AllDTO>();
 
 		String sql = "SELECT users.name , cases.case_id , case_name , customer_name , cases.status , cases.priority , cases.pm_id , cases.start_date , cases.end_date , budgeted_man_hours, cases.memo , SUM(today_man_hours) AS actual_man_hours,"
-				+ "    COUNT(tasks.task_id) AS all_tasks,COUNT(CASE WHEN tasks.status='完了' THEN 1 ELSE NULL END) AS completed_tasks"
+				+ "    COUNT(DISTINCT(tasks.task_id)) AS all_tasks,COUNT(DISTINCT(CASE WHEN tasks.status='完了' THEN 1 ELSE NULL END)) AS completed_tasks"
 				+ "	   FROM cases"
 				+ "    LEFT JOIN tasks"
 				+ "    ON cases.case_id = tasks.case_id"

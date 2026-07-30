@@ -44,3 +44,20 @@ function closeEModal() {
      //confirm("ステータスを中止にしますか？");
 //}
 
+
+const btn = document.getElementById('complete');
+        btn.addEventListener('click', function (event) {
+            const result = window.confirm("ステータスを完了にします。よろしいですか？");
+            if (result) {
+            } else {
+                event.preventDefault();
+            }
+        }, false);
+const btn2 = document.getElementById('cansel');
+        btn2.addEventListener('click', function (event) {
+            const result = window.confirm("ステータスを中止にします。よろしいですか？");
+            if (result) {
+            } else {
+                event.preventDefault();
+            }
+        }, false);

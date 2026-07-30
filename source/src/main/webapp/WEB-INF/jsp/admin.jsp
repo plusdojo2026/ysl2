@@ -128,4 +128,15 @@
   <script src="${pageContext.request.contextPath}/js/admin.js"></script>
 </main>
 </body>
+
+
+<c:if test="${not empty message}">
+  <script type="text/javascript">
+    
+    window.onload = function() {
+      alert("${message}");
+    };
+  </script>
+</c:if>
+
 </html>

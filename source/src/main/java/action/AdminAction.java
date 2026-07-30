@@ -55,9 +55,9 @@ public class AdminAction {
 		int isSuccess = service.UserRegist(dto);
 		
 		if (isSuccess==1) {
-			request.setAttribute("message", "ユーザーの編集に成功しました！");
+			request.setAttribute("message", "ユーザーの登録に成功しました！");
 		} else {
-			request.setAttribute("message", "ユーザーの編集に失敗しました。");
+			request.setAttribute("message", "ユーザーの登録に失敗しました。");
 		}
 		
 		ArrayList<UserDTO> userList = service.selectUsers();
